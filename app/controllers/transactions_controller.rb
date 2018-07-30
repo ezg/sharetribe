@@ -40,7 +40,7 @@ class TransactionsController < ApplicationController
     ).on_success { |((listing_id, listing_model, author_model, process, gateway))|
       transaction_params = HashUtils.symbolize_keys(
         {listing_id: listing_model.id}
-        .merge(params.slice(:start_on, :end_on, :quantity, :delivery, :start_time, :end_time, :per_hour).permit!)
+        .merge(params.slice(:start_on, :end_on, :quantity, :delivery, :authenticate, :start_time, :end_time, :per_hour).permit!)
       )
 
       case [process.process, gateway]
@@ -147,11 +147,14 @@ class TransactionsController < ApplicationController
     @transaction.mark_as_seen_by_current(@current_user.id)
 
     is_author = m_admin || @transaction.listing_author_id == @current_user.id
+    is_actual_author = @transaction.listing_author_id == @current_user.id
 
     render "transactions/show", locals: {
       messages: messages_and_actions.reverse,
       conversation_other_party: @conversation.other_party(@current_user),
       is_author: is_author,
+      is_actual_author: is_actual_author,
+      authenticate: @transaction.authenticate,
       role: role,
       message_form: Message.new({sender_id: @current_user.id, conversation_id: @conversation.id}),
       message_form_action: person_message_messages_path(@current_user, :message_id => @conversation.id),

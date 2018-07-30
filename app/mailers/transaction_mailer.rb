@@ -18,6 +18,7 @@ class TransactionMailer < ActionMailer::Base
   add_template_helper(EmailTemplateHelper)
 
   def transaction_preauthorized(transaction)
+    # HERE
     @transaction = transaction
     @community = transaction.community
 

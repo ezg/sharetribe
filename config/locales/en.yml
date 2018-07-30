@@ -1820,6 +1820,7 @@ en:
         per_quantity_unit: "per %{quantity_unit}"
         per_day: "per day"
       delivery: "Delivery method"
+      authenticate_question: "Authenticate?"
       shipping: "Shipping (+%{price})"
       shipping_no_price: Shipping
       shipping_price_additional: "Shipping (+%{price}, additional items: +%{shipping_price_additional})"

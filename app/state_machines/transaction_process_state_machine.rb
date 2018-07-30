@@ -32,6 +32,9 @@ class TransactionProcessStateMachine
       ConfirmConversation.new(transaction, payer, current_community).activate_automatic_confirmation!
     end
 
+    # Automatically close paid listing
+    transaction.listing.open = false
+    transaction.listing.save
     Delayed::Job.enqueue(SendPaymentReceipts.new(transaction.id))
   end
 

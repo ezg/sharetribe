@@ -36,6 +36,7 @@
 #  availability                      :string(32)       default("none")
 #  booking_uuid                      :binary(16)
 #  deleted                           :boolean          default(FALSE)
+#  authenticate                      :boolean          default(FALSE)
 #
 # Indexes
 #

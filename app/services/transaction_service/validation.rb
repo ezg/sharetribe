@@ -35,6 +35,7 @@ module TransactionService
       [:end_on, :date, transform_with: PARSE_DATE],
       [:message, :string],
       [:quantity, :to_integer, validate_with: IS_POSITIVE],
+      [:authenticate, :to_bool, default: false],
       [:contract_agreed, transform_with: ->(v) { v == "1" }]
     )
 
@@ -103,11 +104,12 @@ module TransactionService
                                    quantity_selector:,
                                    shipping_enabled:,
                                    pickup_enabled:,
+                                   authenticate:,
                                    availability_enabled:,
                                    listing:,
                                    stripe_in_use:)
 
-        validate_delivery_method(tx_params: tx_params, shipping_enabled: shipping_enabled, pickup_enabled: pickup_enabled)
+        validate_delivery_method(tx_params: tx_params, shipping_enabled: shipping_enabled, pickup_enabled: pickup_enabled, authenticate: authenticate)
           .and_then { validate_booking(tx_params: tx_params, quantity_selector: quantity_selector, stripe_in_use: stripe_in_use) }
           .and_then { |result|
             if tx_params[:per_hour]
@@ -127,10 +129,11 @@ module TransactionService
                                     quantity_selector:,
                                     shipping_enabled:,
                                     pickup_enabled:,
+                                    authenticate:,
                                     transaction_agreement_in_use:,
                                     stripe_in_use:)
 
-        validate_delivery_method(tx_params: tx_params, shipping_enabled: shipping_enabled, pickup_enabled: pickup_enabled)
+        validate_delivery_method(tx_params: tx_params, shipping_enabled: shipping_enabled, pickup_enabled: pickup_enabled, authenticate: authenticate)
           .and_then { validate_booking(tx_params: tx_params, quantity_selector: quantity_selector, stripe_in_use: stripe_in_use) }
           .and_then {
             validate_transaction_agreement(tx_params: tx_params,
@@ -138,8 +141,13 @@ module TransactionService
           }
       end
 
-      def validate_delivery_method(tx_params:, shipping_enabled:, pickup_enabled:)
+      def validate_delivery_method(tx_params:, shipping_enabled:, pickup_enabled:, authenticate:)
         delivery = tx_params[:delivery]
+        #logger.error "ccc"
+        #logger.error delivery
+        #if authenticate == true && delivery == "pickup"
+        #Result::Error.new(nil, code: :delivery_method_missing, tx_params: tx_params)
+        #end
 
         case [delivery, shipping_enabled, pickup_enabled]
         when matches([:shipping, true])

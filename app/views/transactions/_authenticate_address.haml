@@ -1,0 +1,13 @@
+- fields = [:name, :phone, :street1, :street2, :postal_code, :city, :state_or_province, :country]
+- authenticate_address = {country: "USA", country_code: "US", name: "Reswings", street1: "123 Our Street", postal_code: "12345", city: "San Francisco", state_or_province: "California"}
+
+- if authenticate_address && authenticate_address.slice(*fields).values.any?
+  - authenticate_address[:country] ||= CountryI18nHelper.translate_country(authenticate_address[:country_code])
+  .shipping-address-container
+    %h2= t("shipping_address.shipping_address")
+    - fields.map do |field|
+      - if authenticate_address[field].present?
+        - if authenticate_address[field] == :name
+          .shipping-address-name= authenticate_address[field]
+        - else
+          .shipping-address-row= authenticate_address[field]

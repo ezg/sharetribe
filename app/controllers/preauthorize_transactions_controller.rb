@@ -18,7 +18,7 @@ class PreauthorizeTransactionsController < ApplicationController
         shipping_enabled: listing.require_shipping_address,
         pickup_enabled: listing.pickup_enabled)
       tx_params[:marketplace_id] = @current_community.id
-
+     
       TransactionService::Validation::Validator.validate_initiate_params(
         marketplace_uuid: @current_community.uuid_object,
         listing_uuid: listing.uuid_object,
@@ -26,11 +26,11 @@ class PreauthorizeTransactionsController < ApplicationController
         quantity_selector: listing.quantity_selector&.to_sym,
         shipping_enabled: listing.require_shipping_address,
         pickup_enabled: listing.pickup_enabled,
+        authenticate: tx_params[:authenticate],
         availability_enabled: listing.availability.to_sym == :booking,
         listing: listing,
         stripe_in_use: StripeHelper.user_and_community_ready_for_payments?(listing.author_id, @current_community.id))
     }
-
     if validation_result.success
       initiation_success(validation_result.data)
     else
@@ -39,6 +39,7 @@ class PreauthorizeTransactionsController < ApplicationController
   end
 
   def initiated
+    
     params_validator = params_per_hour? ? TransactionService::Validation::NewPerHourTransactionParams : TransactionService::Validation::NewTransactionParams
     validation_result = params_validator.validate(params).and_then { |params_entity|
       tx_params = add_defaults(
@@ -46,14 +47,22 @@ class PreauthorizeTransactionsController < ApplicationController
         shipping_enabled: listing.require_shipping_address,
         pickup_enabled: listing.pickup_enabled)
 
+      logger.error "bbb"
+      logger.error tx_params[:delivery]
+
+
       TransactionService::Validation::Validator.validate_initiated_params(
         tx_params: tx_params,
         quantity_selector: listing.quantity_selector&.to_sym,
         shipping_enabled: listing.require_shipping_address,
         pickup_enabled: listing.pickup_enabled,
+        authenticate: tx_params[:authenticate],
         transaction_agreement_in_use: @current_community.transaction_agreement_in_use?,
         stripe_in_use: StripeHelper.user_and_community_ready_for_payments?(listing.author_id, @current_community.id))
     }
+
+    logger.error "aaa"
+    logger.error validation_result.data[:authenticate]
 
     if validation_result.success
       initiated_success(validation_result.data)
@@ -240,6 +249,9 @@ class PreauthorizeTransactionsController < ApplicationController
         }
     end
 
+    logger.error "xxx"
+    logger.error opts[:authenticate]
+
     transaction = {
           community_id: opts[:community].id,
           community_uuid: opts[:community].uuid_object,
@@ -260,7 +272,8 @@ class PreauthorizeTransactionsController < ApplicationController
           payment_gateway: opts[:payment_type].to_sym,
           payment_process: :preauthorize,
           booking_fields: opts[:booking_fields],
-          delivery_method: opts[:delivery_method] || :none
+          delivery_method: opts[:delivery_method] || :none,
+          authenticate: opts[:authenticate]
     }
 
     if(opts[:delivery_method] == :shipping)
@@ -330,7 +343,6 @@ class PreauthorizeTransactionsController < ApplicationController
       "InitiatePreauthorizedTransaction",
       { listing_id: listing.id,
         listing_uuid: listing.uuid_object.to_s })
-
     render "listing_conversations/initiate",
            locals: {
              start_on:   tx_params[:start_on],
@@ -338,6 +350,7 @@ class PreauthorizeTransactionsController < ApplicationController
              start_time: tx_params[:start_time],
              end_time:   tx_params[:end_time],
              per_hour:   tx_params[:per_hour],
+             authenticate: tx_params[:authenticate],
              listing: listing,
              delivery_method: tx_params[:delivery],
              quantity: tx_params[:quantity],
@@ -395,6 +408,7 @@ class PreauthorizeTransactionsController < ApplicationController
       content: tx_params[:message],
       force_sync: !request.xhr?,
       delivery_method: tx_params[:delivery],
+      authenticate: tx_params[:authenticate],
       shipping_price: shipping_total.total,
       booking_fields: {
         start_on:   tx_params[:start_on],
