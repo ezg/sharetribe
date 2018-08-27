@@ -9,6 +9,9 @@ module TransactionService::Process
     TxStore = TransactionService::Store::Transaction
 
     def create(tx:, gateway_fields:, gateway_adapter:, force_sync:)
+      
+      Rails.logger.error('t')
+      Rails.logger.error(force_sync)
       TransactionService::StateMachine.transition_to(tx.id, :initiated)
       tx.current_state = :initiated
 
@@ -27,7 +30,9 @@ module TransactionService::Process
 
     def do_create(tx, gateway_fields)
       gateway_adapter = TransactionService::Transaction.gateway_adapter(tx.payment_gateway)
-
+      Rails.logger.error('hhhheeeehhhe')
+      Rails.logger.error(gateway_adapter)
+      Rails.logger.error(tx)
       completion = gateway_adapter.create_payment(
         tx: tx,
         gateway_fields: gateway_fields,

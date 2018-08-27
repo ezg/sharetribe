@@ -358,6 +358,7 @@ class TransactionsController < ApplicationController
   end
 
   def price_break_down_locals(tx, conversation)
+    # HERE
     if tx.payment_process == :none && tx.unit_price.cents == 0 || conversation.starting_page == Conversation::LISTING
       nil
     else

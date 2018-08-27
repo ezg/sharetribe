@@ -75,13 +75,21 @@ module TransactionService::Gateway
       PaypalService::API::Api
     end
 
+    def calculate_authenticate_fee(tx)
+      if tx.authenticate
+        return 20 * 100
+      end  
+      return 0
+    end
+
     def order_total(tx)
       # Note: Quantity may be confusing in Paypal Checkout page, thus,
       # we don't use separated unit price and quantity, only the total
       # price for now.
 
       shipping_total = Maybe(tx.shipping_price).or_else(0)
-      tx.unit_price * tx.listing_quantity + shipping_total
+      auth_fee = calculate_authenticate_fee(tx)
+      tx.unit_price * tx.listing_quantity + shipping_total + auth_fee
     end
   end
 

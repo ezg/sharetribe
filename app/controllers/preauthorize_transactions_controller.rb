@@ -249,6 +249,7 @@ class PreauthorizeTransactionsController < ApplicationController
         }
     end
 
+    #HERE
     logger.error "xxx"
     logger.error opts[:authenticate]
 
@@ -338,6 +339,7 @@ class PreauthorizeTransactionsController < ApplicationController
   end
 
   def initiation_success(tx_params)
+    #HERE
     record_event(
       flash.now,
       "InitiatePreauthorizedTransaction",

@@ -20,6 +20,7 @@
 #  real_fee_cents     :integer
 #  subtotal_cents     :integer
 #  available_on       :datetime
+#  authenticate_cents  :integer
 #
 
 class StripePayment < ApplicationRecord
@@ -32,6 +33,7 @@ class StripePayment < ApplicationRecord
   monetize :fee_cents,        with_model_currency: :currency
   monetize :real_fee_cents,   with_model_currency: :currency, allow_nil: true
   monetize :subtotal_cents,   with_model_currency: :currency
+  monetize :authenticate_cents,   with_model_currency: :currency, allow_nil: true
 
   STATUSES = %w(pending paid canceled transfered)
 end

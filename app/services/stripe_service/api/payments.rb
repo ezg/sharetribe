@@ -14,10 +14,10 @@ module StripeService::API
         seller_id  = seller_account[:stripe_seller_id]
         source_id  = gateway_fields[:stripe_token]
 
-        subtotal   = order_total(tx)
+        subtotal   = order_total(tx) # contains authentication fee
         total      = subtotal
-        commission = order_commission(tx)
-        fee        = Money.new(0, subtotal.currency)
+        commission = order_commission(tx) 
+        authenticate_fee = calculate_authenticate_fee(tx);
 
         description = "Payment #{tx.id} for #{tx.listing_title} via #{gateway_fields[:service_name]} "
         metadata = {
@@ -31,7 +31,7 @@ module StripeService::API
           token: source_id,
           seller_account_id: seller_id,
           amount: total.cents,
-          fee: commission.cents,
+          fee: commission.cents + authenticate_fee.cents,
           currency: total.currency.iso_code,
           description: description,
           metadata: metadata)
@@ -42,6 +42,7 @@ module StripeService::API
           currency: tx.unit_price.currency.iso_code,
           sum_cents: total.cents,
           commission_cents: commission.cents,
+          authenticate_cents: authenticate_fee.cents,
           fee_cents: fee.cents,
           subtotal_cents: subtotal.cents,
           stripe_charge_id: stripe_charge.id
@@ -100,9 +101,11 @@ module StripeService::API
           total      = order_total(tx)
           commission = order_commission(tx)
           fee        = Money.new(0, total.currency)
+          authenticate       = calculate_authenticate_fee(tx)
           payment = {
             sum: total,
             commission: commission,
+            authenticate: authenticate,
             real_fee: fee,
             subtotal: total - fee,
           }
@@ -127,7 +130,7 @@ module StripeService::API
         seller_account = accounts_api.get(community_id: tx.community_id, person_id: tx.listing_author_id).data
         payment = PaymentStore.get(tx.community_id, tx.id)
 
-        seller_gets = payment[:subtotal] - payment[:commission]
+        seller_gets = payment[:subtotal] - payment[:commission] - payment[:authenticate] 
 
         case stripe_api.charges_mode(tx.community_id)
         when :separate
@@ -175,7 +178,16 @@ module StripeService::API
 
       def order_total(tx)
         shipping_total = Maybe(tx.shipping_price).or_else(0)
-        tx.unit_price * tx.listing_quantity + shipping_total
+        auth_fee = calculate_authenticate_fee(tx)
+        ret = tx.unit_price * tx.listing_quantity + shipping_total + auth_fee
+        return ret
+      end
+
+      def calculate_authenticate_fee(tx)
+        if tx.authenticate
+          return Money.new(20 * 100, tx.unit_price.currency)
+        end  
+        return Money.new(0, tx.unit_price.currency)
       end
 
       def order_commission(tx)
