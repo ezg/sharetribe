@@ -171,3 +171,5 @@ gem 'intercom'
 gem 'twitter_cldr'
 gem 'memoist'
 gem 'biz'
+
+gem "unicorn-rails", "~> 2.2"
