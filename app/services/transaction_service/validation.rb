@@ -75,22 +75,35 @@ module TransactionService
       end
     end
 
+    class AuthenticationTotal
+      def total
+        Money.new(2000, "USD")
+      end
+    end
+
     class NoShippingFee
       def total
         0
       end
     end
 
-    class OrderTotal
-      attr_reader :item_total, :shipping_total
+    class NoAuthenticationFee
+      def total
+        0
+      end
+    end
 
-      def initialize(item_total:, shipping_total:)
+    class OrderTotal
+      attr_reader :item_total, :shipping_total, :authenticate_total
+
+      def initialize(item_total:, shipping_total:, authenticate_total:)
         @item_total = item_total
         @shipping_total = shipping_total
+        @authenticate_total = authenticate_total
       end
 
       def total
-        item_total.total + shipping_total.total
+        item_total.total + shipping_total.total + authenticate_total.total
       end
     end
 

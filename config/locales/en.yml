@@ -2319,6 +2319,7 @@ en:
       quantity: "Quantity:"
       subtotal: "Subtotal:"
       shipping-price: "Shipping:"
+      authentication-fee: "Authentication:"
       stripe-fee: "Stripe Fee (estimated):"
       duration_in_hours:
         one: "(1 hour)"

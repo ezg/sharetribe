@@ -37,6 +37,7 @@
 #  booking_uuid                      :binary(16)
 #  deleted                           :boolean          default(FALSE)
 #  authenticate                      :boolean          default(FALSE)
+#  authenticate_fee_cents            :integer
 #
 # Indexes
 #
@@ -84,6 +85,7 @@ class Transaction < ApplicationRecord
   monetize :minimum_commission_cents, with_model_currency: :minimum_commission_currency
   monetize :unit_price_cents, with_model_currency: :unit_price_currency
   monetize :shipping_price_cents, allow_nil: true, with_model_currency: :unit_price_currency
+  monetize :authenticate_fee_cents, allow_nil: true, with_model_currency: :unit_price_currency
 
   scope :exist, -> { where(deleted: false) }
   scope :for_person, -> (person){
@@ -251,7 +253,7 @@ class Transaction < ApplicationRecord
   end
 
   def commission
-    [(item_total * (commission_from_seller / 100.0) unless commission_from_seller.nil?),
+    [((item_total + shipping_price) * (commission_from_seller / 100.0) unless commission_from_seller.nil?),
      (minimum_commission unless minimum_commission.nil? || minimum_commission.zero?),
      Money.new(0, item_total.currency)]
       .compact
@@ -276,10 +278,11 @@ class Transaction < ApplicationRecord
   end
 
   def payment_total
-    unit_price       = self.unit_price || 0
-    quantity         = self.listing_quantity || 1
-    shipping_price   = self.shipping_price || 0
-    (unit_price * quantity) + shipping_price
+    unit_price            = self.unit_price || 0
+    quantity              = self.listing_quantity || 1
+    shipping_price        = self.shipping_price || 0
+    authenticate_fee      = self.authenticate_fee || 0
+    (unit_price * quantity) + shipping_price + authenticate_fee
   end
 
 end

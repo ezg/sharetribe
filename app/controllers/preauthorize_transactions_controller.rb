@@ -47,10 +47,6 @@ class PreauthorizeTransactionsController < ApplicationController
         shipping_enabled: listing.require_shipping_address,
         pickup_enabled: listing.pickup_enabled)
 
-      logger.error "bbb"
-      logger.error tx_params[:delivery]
-
-
       TransactionService::Validation::Validator.validate_initiated_params(
         tx_params: tx_params,
         quantity_selector: listing.quantity_selector&.to_sym,
@@ -60,9 +56,6 @@ class PreauthorizeTransactionsController < ApplicationController
         transaction_agreement_in_use: @current_community.transaction_agreement_in_use?,
         stripe_in_use: StripeHelper.user_and_community_ready_for_payments?(listing.author_id, @current_community.id))
     }
-
-    logger.error "aaa"
-    logger.error validation_result.data[:authenticate]
 
     if validation_result.success
       initiated_success(validation_result.data)
@@ -85,6 +78,14 @@ class PreauthorizeTransactionsController < ApplicationController
     end
   end
 
+  def calculate_authentication_from_listing(tx_params:)
+    if tx_params[:authenticate]
+      TransactionService::Validation::AuthenticationTotal.new
+    else
+      TransactionService::Validation::NoAuthenticationFee.new
+    end
+  end
+
   def add_defaults(params:, shipping_enabled:, pickup_enabled:)
     default_shipping =
       case [shipping_enabled, pickup_enabled]
@@ -102,6 +103,8 @@ class PreauthorizeTransactionsController < ApplicationController
   end
 
   def handle_tx_response(tx_response, gateway)
+    Rails.logger.error("in handle_tx_response")
+    Rails.logger.error(tx_response)
     if !tx_response[:success]
       render_error_response(request.xhr?, t("error_messages.#{gateway}.generic_error"), action: :initiate)
     elsif (tx_response[:data][:gateway_fields][:redirect_url])
@@ -158,6 +161,10 @@ class PreauthorizeTransactionsController < ApplicationController
 
   def shipping_price_to_show(delivery_method, shipping_total)
     shipping_total.total if delivery_method == :shipping
+  end
+
+  def authentication_fee_to_show(authenticate, authenticate_total)
+    authenticate_total.total if authenticate
   end
 
   def is_booking?(listing)
@@ -249,10 +256,6 @@ class PreauthorizeTransactionsController < ApplicationController
         }
     end
 
-    #HERE
-    logger.error "xxx"
-    logger.error opts[:authenticate]
-
     transaction = {
           community_id: opts[:community].id,
           community_uuid: opts[:community].uuid_object,
@@ -280,6 +283,10 @@ class PreauthorizeTransactionsController < ApplicationController
     if(opts[:delivery_method] == :shipping)
       transaction[:shipping_price] = opts[:shipping_price]
     end
+    if(opts[:authenticate])
+      transaction[:authenticate_fee] = opts[:authenticate_fee]
+    end
+
     TransactionService::Transaction.create({
         transaction: transaction,
         gateway_fields: gateway_fields
@@ -310,9 +317,11 @@ class PreauthorizeTransactionsController < ApplicationController
       quantity: quantity)
 
     shipping_total = calculate_shipping_from_listing(tx_params: tx_params, listing: listing, quantity: quantity)
+    authenticate_total = calculate_authentication_from_listing(tx_params: tx_params)
     order_total = TransactionService::Validation::OrderTotal.new(
       item_total: item_total,
-      shipping_total: shipping_total
+      shipping_total: shipping_total,
+      authenticate_total: authenticate_total
     )
 
     TransactionViewUtils.price_break_down_locals(
@@ -326,6 +335,7 @@ class PreauthorizeTransactionsController < ApplicationController
                  localized_selector_label: translate_selector_label_from_listing(listing),
                  subtotal: subtotal_to_show(order_total),
                  shipping_price: shipping_price_to_show(tx_params[:delivery], shipping_total),
+                 authenticate_fee: authentication_fee_to_show(tx_params[:authenticate], authenticate_total),
                  total: order_total.total,
                  unit_type: listing.unit_type,
                  start_time: tx_params[:start_time],
@@ -339,7 +349,6 @@ class PreauthorizeTransactionsController < ApplicationController
   end
 
   def initiation_success(tx_params)
-    #HERE
     record_event(
       flash.now,
       "InitiatePreauthorizedTransaction",
@@ -400,6 +409,7 @@ class PreauthorizeTransactionsController < ApplicationController
 
     quantity = calculate_quantity(tx_params: tx_params, is_booking: is_booking, unit: listing.unit_type)
     shipping_total = calculate_shipping_from_listing(tx_params: tx_params, listing: listing, quantity: quantity)
+    authenticate_total = calculate_authentication_from_listing(tx_params: tx_params)
 
     tx_response = create_preauth_transaction(
       payment_type: params[:payment_type].to_sym,
@@ -412,6 +422,7 @@ class PreauthorizeTransactionsController < ApplicationController
       delivery_method: tx_params[:delivery],
       authenticate: tx_params[:authenticate],
       shipping_price: shipping_total.total,
+      authenticate_fee: authenticate_total.total,
       booking_fields: {
         start_on:   tx_params[:start_on],
         end_on:     tx_params[:end_on],

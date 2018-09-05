@@ -6,6 +6,7 @@ module StripeService::API
       TransactionStore = TransactionService::Store::Transaction
 
       def create_preauth_payment(tx, gateway_fields)
+        Rails.logger.error("hhh")
         seller_account = accounts_api.get(community_id: tx.community_id, person_id: tx.listing_author_id).data
         if !seller_account || !seller_account[:stripe_seller_id].present?
           return SyncCompletion.new(Result::Error.new("No Seller Account"))
@@ -17,7 +18,6 @@ module StripeService::API
         subtotal   = order_total(tx) # contains authentication fee
         total      = subtotal
         commission = order_commission(tx) 
-        authenticate_fee = calculate_authenticate_fee(tx);
 
         description = "Payment #{tx.id} for #{tx.listing_title} via #{gateway_fields[:service_name]} "
         metadata = {
@@ -31,7 +31,7 @@ module StripeService::API
           token: source_id,
           seller_account_id: seller_id,
           amount: total.cents,
-          fee: commission.cents + authenticate_fee.cents,
+          fee: commission.cents + tx.authenticate_fee.cents,
           currency: total.currency.iso_code,
           description: description,
           metadata: metadata)
@@ -42,8 +42,8 @@ module StripeService::API
           currency: tx.unit_price.currency.iso_code,
           sum_cents: total.cents,
           commission_cents: commission.cents,
-          authenticate_cents: authenticate_fee.cents,
-          fee_cents: fee.cents,
+          authenticate_cents: tx.authenticate_fee.cents,
+          fee_cents: commission.cents + tx.authenticate_fee.cents,
           subtotal_cents: subtotal.cents,
           stripe_charge_id: stripe_charge.id
         })
@@ -96,12 +96,13 @@ module StripeService::API
       end
 
       def payment_details(tx)
+        Rails.logger.error("YYYYYYY 222222")
         payment = PaymentStore.get(tx.community_id, tx.id)
         unless payment
-          total      = order_total(tx)
-          commission = order_commission(tx)
-          fee        = Money.new(0, total.currency)
-          authenticate       = calculate_authenticate_fee(tx)
+          total          = order_total(tx)
+          commission     = order_commission(tx)
+          fee            = Money.new(0, total.currency)
+          authenticate   = Money.new(0, total.currency)
           payment = {
             sum: total,
             commission: commission,
@@ -178,20 +179,16 @@ module StripeService::API
 
       def order_total(tx)
         shipping_total = Maybe(tx.shipping_price).or_else(0)
-        auth_fee = calculate_authenticate_fee(tx)
+        auth_fee = Maybe(tx.authenticate_fee).or_else(0)
         ret = tx.unit_price * tx.listing_quantity + shipping_total + auth_fee
         return ret
       end
 
-      def calculate_authenticate_fee(tx)
-        if tx.authenticate
-          return Money.new(20 * 100, tx.unit_price.currency)
-        end  
-        return Money.new(0, tx.unit_price.currency)
-      end
-
       def order_commission(tx)
-        TransactionService::Transaction.calculate_commission(tx.unit_price * tx.listing_quantity, tx.commission_from_seller, tx.minimum_commission)
+        Rails.logger.error("HhHHHHHEEEEEEE")
+        Rails.logger.error(tx.unit_price * tx.listing_quantity + tx.shipping_price)
+        TransactionService::Transaction.calculate_commission(tx.unit_price * tx.listing_quantity + tx.shipping_price, 
+          tx.commission_from_seller, tx.minimum_commission)
       end
 
     end

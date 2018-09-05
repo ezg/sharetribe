@@ -358,7 +358,6 @@ class TransactionsController < ApplicationController
   end
 
   def price_break_down_locals(tx, conversation)
-    # HERE
     if tx.payment_process == :none && tx.unit_price.cents == 0 || conversation.starting_page == Conversation::LISTING
       nil
     else
@@ -384,6 +383,7 @@ class TransactionsController < ApplicationController
         total: Maybe(tx.payment_total).or_else(payment[:total_price]),
         seller_gets: Maybe(tx.payment_total).or_else(payment[:total_price]) - tx.commission,
         fee: tx.commission,
+        authenticate_fee: tx.authenticate_fee,  
         shipping_price: tx.shipping_price,
         total_label: total_label,
         unit_type: tx.unit_type,

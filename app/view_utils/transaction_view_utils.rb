@@ -26,6 +26,7 @@ module TransactionViewUtils
     [:unit_type, :symbol],
     [:sum, :money],
     [:fee, :money],
+    [:authenticate_fee, :money],
     [:seller_gets, :money],
     [:start_time, :time],
     [:end_time, :time],

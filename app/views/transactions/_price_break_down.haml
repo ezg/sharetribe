@@ -60,6 +60,13 @@
       %span.initiate-transaction-sum-value
         = MoneyViewUtils.to_humanized(subtotal)
 
+  - if authenticate_fee.present?
+    .initiate-transaction-authentication-fee-wrapper
+      %span.initiate-transaction-authentication-fee-label
+        = t("transactions.initiate.authentication-fee")
+      %span.initiate-transaction-authentication-fee-value
+        = MoneyViewUtils.to_humanized(authenticate_fee)
+
   - if shipping_price.present?
     .initiate-transaction-shipping-price-wrapper
       %span.initiate-transaction-shipping-price-label

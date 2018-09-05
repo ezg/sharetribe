@@ -10,8 +10,6 @@ module TransactionService::Process
 
     def create(tx:, gateway_fields:, gateway_adapter:, force_sync:)
       
-      Rails.logger.error('t')
-      Rails.logger.error(force_sync)
       TransactionService::StateMachine.transition_to(tx.id, :initiated)
       tx.current_state = :initiated
 
@@ -37,7 +35,6 @@ module TransactionService::Process
         tx: tx,
         gateway_fields: gateway_fields,
         force_sync: true)
-
       if completion[:success] && completion[:sync]
         finalize_create(tx: tx, gateway_adapter: gateway_adapter, force_sync: true)
       elsif !completion[:success]
