@@ -6,7 +6,6 @@ module StripeService::API
       TransactionStore = TransactionService::Store::Transaction
 
       def create_preauth_payment(tx, gateway_fields)
-        Rails.logger.error("hhh")
         seller_account = accounts_api.get(community_id: tx.community_id, person_id: tx.listing_author_id).data
         if !seller_account || !seller_account[:stripe_seller_id].present?
           return SyncCompletion.new(Result::Error.new("No Seller Account"))
@@ -26,12 +25,19 @@ module StripeService::API
           sharetribe_payer_id: tx.starter_id,
           sharetribe_mode: stripe_api.charges_mode(tx.community_id)
         }
+
+        auth_fee = Money.new(0, "USD")
+        if tx.authenticate_fee
+          auth_fee = tx.authenticate_fee
+        end
+        Rails.logger.error("hhh")
+        Rails.logger.error(auth_fee)
         stripe_charge = stripe_api.charge(
           community: tx.community_id,
           token: source_id,
           seller_account_id: seller_id,
           amount: total.cents,
-          fee: commission.cents + tx.authenticate_fee.cents,
+          fee: commission.cents + auth_fee.cents,
           currency: total.currency.iso_code,
           description: description,
           metadata: metadata)
@@ -42,8 +48,8 @@ module StripeService::API
           currency: tx.unit_price.currency.iso_code,
           sum_cents: total.cents,
           commission_cents: commission.cents,
-          authenticate_cents: tx.authenticate_fee.cents,
-          fee_cents: commission.cents + tx.authenticate_fee.cents,
+          authenticate_cents: auth_fee.cents,
+          fee_cents: commission.cents + auth_fee.cents,
           subtotal_cents: subtotal.cents,
           stripe_charge_id: stripe_charge.id
         })
@@ -185,8 +191,6 @@ module StripeService::API
       end
 
       def order_commission(tx)
-        Rails.logger.error("HhHHHHHEEEEEEE")
-        Rails.logger.error(tx.unit_price * tx.listing_quantity + tx.shipping_price)
         TransactionService::Transaction.calculate_commission(tx.unit_price * tx.listing_quantity + tx.shipping_price, 
           tx.commission_from_seller, tx.minimum_commission)
       end

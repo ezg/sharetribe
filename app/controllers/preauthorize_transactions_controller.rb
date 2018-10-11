@@ -410,7 +410,6 @@ class PreauthorizeTransactionsController < ApplicationController
     quantity = calculate_quantity(tx_params: tx_params, is_booking: is_booking, unit: listing.unit_type)
     shipping_total = calculate_shipping_from_listing(tx_params: tx_params, listing: listing, quantity: quantity)
     authenticate_total = calculate_authentication_from_listing(tx_params: tx_params)
-
     tx_response = create_preauth_transaction(
       payment_type: params[:payment_type].to_sym,
       community: @current_community,
