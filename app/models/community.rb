@@ -90,6 +90,8 @@
 #  favicon_processing                         :boolean
 #  deleted                                    :boolean
 #  end_user_analytics                         :boolean          default(TRUE)
+#  show_slogan                                :boolean          default(TRUE)
+#  show_description                           :boolean          default(TRUE)
 #
 # Indexes
 #
@@ -106,8 +108,8 @@ class Community < ApplicationRecord
   include EmailHelper
 
   has_many :community_memberships, :dependent => :destroy
-  has_many :members, -> { where("community_memberships.status = 'accepted'") }, :through => :community_memberships, :source => :person
-  has_many :admins, -> { where("community_memberships.admin = true AND community_memberships.status <> 'banned'") }, :through => :community_memberships, :source => :person
+  has_many :members, -> { merge(CommunityMembership.accepted) }, :through => :community_memberships, :source => :person
+  has_many :admins, -> { merge(CommunityMembership.admin.not_banned) }, :through => :community_memberships, :source => :person
   has_many :invitations, :dependent => :destroy
   has_one :location, :dependent => :destroy
   has_many :community_customizations, :dependent => :destroy
@@ -128,12 +130,18 @@ class Community < ApplicationRecord
 
   has_one :paypal_account # Admin paypal account
 
-  has_many :custom_fields, :dependent => :destroy
-  has_many :custom_dropdown_fields, -> { where("type = 'DropdownField'") }, :class_name => "CustomField", :dependent => :destroy
-  has_many :custom_numeric_fields, -> { where("type = 'NumericField'") }, :class_name => "NumericField", :dependent => :destroy
+  has_many :custom_fields, -> { for_listing },  :dependent => :destroy
+  has_many :custom_dropdown_fields, -> { for_listing.dropdown }, :class_name => "CustomField", :dependent => :destroy
+  has_many :custom_numeric_fields, -> { for_listing.numeric }, :class_name => "NumericField", :dependent => :destroy
+  has_many :person_custom_fields, -> { for_person.sorted }, :class_name => "CustomField",  :dependent => :destroy
+  has_many :person_custom_dropdown_fields, -> { for_person.sorted.dropdown }, :class_name => "CustomField", :dependent => :destroy
+  has_many :person_custom_numeric_fields, -> { for_person.sorted.numeric }, :class_name => "NumericField", :dependent => :destroy
   has_many :marketplace_sender_emails
 
   has_one :configuration, class_name: 'MarketplaceConfigurations'
+  has_one :social_logo, :dependent => :destroy
+
+  accepts_nested_attributes_for :social_logo
 
   after_create :initialize_settings
 

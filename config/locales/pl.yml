@@ -77,9 +77,13 @@ pl:
         community_name: "Nazwa platformy"
         edit_community_name_description: "Nazwa Twojej platformy. To jest wyświetlane dla użytkowników w wiadomościach email i różnych, innych miejscach."
         community_slogan: "Slogan platformy"
+        community_slogan_display: ~
         edit_community_slogan_description: "Ta zawartość jest pokazywana na stronie głównej platformy tym użytkownikom, którzy nie są zalogowani. %{see_how_it_looks_like}."
+        edit_community_slogan_description_hideable: ~
         community_description: "Opis platformy"
+        community_description_display: ~
         edit_community_description_description: "Ta zawartość jest pokazywana na stronie głównej platformy tym użytkownikom, którzy nie są zalogowani. %{see_how_it_looks_like}."
+        edit_community_description_description_hideable: ~
         community_search_placeholder: "Przeszukaj treść pomocy"
         edit_community_search_placeholder_description: "Ta zawartość jest pokazywana na stronie głównej platformy jako tekst wypełniający w pasku wyszukiwania. %{see_how_it_looks_like}."
         private_community_homepage_content: "Treść prywatnej strony głównej platformy"
@@ -105,6 +109,7 @@ pl:
         edit_community_look_and_feel: "Edytuj wygląd platformy %{community_name}"
         community_logo: Logo
         community_logo_icon: "Logo dla sieci społecznościowych i urządzeń mobilnych"
+        community_logo_icon_mobile: "Logo dla strony głównej na urządzenia przenośne."
         community_cover_photo: "Zdjęcie w tle"
         small_community_cover_photo: "Małe zdjęcie w tle"
         favicon: "Ikona strony, tzw. favicon"
@@ -119,6 +124,7 @@ pl:
         logo_instructions_text_with_dimensions_no_placing: "Wielkość logotypu powinna mieścić się w przedziale %{width} na %{height} pikseli."
         logo_icon_instructions_text_with_dimensions: "Ten kwadratowy logotyp będzie pojawiał się, gdy ludzie udostępnią Twoją stronę na Facebooku, gdy przeglądają Twoją stronę na urządzeniu mobilnym lub, gdy zapiszą Twoją stronę na głównej witrynie ich urządzenia mobilnego. Rozmiary powinny mieścić się (przynajmniej) w %{width} na %{height} pikseli."
         logo_icon_instructions_text_with_dimensions_no_placing: "Ten kwadratowy logotyp będzie pojawiał się, gdy ludzie udostępnią Twoją stronę na Facebooku lub, gdy zapiszą Twoją stronę na głównej witrynie ich urządzenia mobilnego. Rozmiary powinny mieścić się (przynajmniej) w %{width} na %{height} pikseli."
+        logo_mobile_icon_instructions_text_with_dimensions: "Ten kwadratowy logotyp będzie pojawiał się, gdy ludzie  zapiszą Twoją stronę na głównej witrynie ich urządzenia mobilnego. Rekomendowane rozmiary to: %{width} na %{height} pikseli."
         cover_photo_visibility: "Zdjęcie w tle jest wyświetlane na stronie głównej dla użytkowników, którzy nie są zalogowani."
         cover_photo_instructions_text_with_dimensions: "Zdjęcie będzie zmniejszone do %{width} na %{height} pikseli i wyższe zdjęcia będą przycięte w środku. %{see_how_it_looks_like}"
         small_cover_photo_visibility: "Małe zdjęcie profilowe jest wyświetlane na wszystkich stronach poza stroną główną dla użytkowników, którzy nie są zalogowani."
@@ -139,6 +145,7 @@ pl:
         invalid_color_code: "Kod kolory powinien zawierać sześć cyfr lub liter od A do F, np. D96E21."
         custom_head_script: "Skrypt niestandardowy"
         custom_head_script_instructions_text: "Ten skrypt jest osadzony wewnątrz tagu <head>  dla każdej strony i może być użyty do wstawienia niestandardowego kodu CSS, JavaScript czy HTML. Zwróć proszę uwagę, że przyszłe zmiany w Sharetribe mogą spowodować, ze Twój skrypt stanie się niekompatybilny."
+        current_image: ~
       edit_text_instructions:
         edit_text_instructions: "Tekst instrukcji"
       edit_welcome_email:
@@ -280,6 +287,8 @@ pl:
         searchpage: "Nowa strona wyszukiwania (wymaga nowego górnego paska)"
       social_media:
         social_media: "Media społecznościowe"
+        logo: logo
+        logo_info: "To zdjęcie jest używane kiedy ktoś udostępnia Twoją strona w social media (Facebook, Twitter, Linkedin). Dla Lepszego rezultatu powinno mieć rozmiar : 2:1, a minimalny rozmiar %{width} x %{height} px"
         twitter_handle: "Obsługa Twitter"
         twitter_handle_info_text: "Nazwa konta Twitter Twojej platformy (jeśli takie masz). Będzie wspomniana gdy ludzie użyją przycisku \"Tweet\" na stronie oferty."
         twitter_handle_info_text_with_instructions: "Nazwa konta Twitter Twojej platformy (jeśli takie masz). Będzie wspomniana gdy ludzie użyją przycisku \"Tweet\" na stronie oferty. %{instructions_link}"
@@ -296,6 +305,7 @@ pl:
         invalid_facebook_connect_secret: "Tajny klucz klienta powinien zawierać wyłącznie liczby oraz litery od a do f"
         enable_facebook_login: ~
         save: "Zapisz ustawienia"
+        add_another_image: "dodaj kolejne zdjęcie"
       analytics:
         analytics: Analizy
         google_analytics_key: "ID śledzenia z usługi Google Analytics"
@@ -396,11 +406,35 @@ pl:
           receiver: ~
           status: ~
           grade: ~
-          note: ~
+          text: Tekst
         status:
           waiting: ~
           skipped: ~
           published: ~
+          blocked: zablokowany
+        form:
+          review_text: "treść opinii"
+          save: Zapisz
+          cancel: kasuj
+          delete_review: "Skasuj opinię"
+          block_review: "Blokuj opinię"
+          confirm_modify: "Czy jesteś pewny, że chcesz skasować/modyfikować tą recenzję? Jeśli zmodyfikujesz lub skasujesz recenzję nie będzie możliwe przywrócenie wcześniejszej treści."
+          deleting_info: "Skasowanie opini pozwala autorowi wystawić kolejną za tą samą transakcję"
+          blocking_info: ~
+      listings:
+        listings: ~
+        headers:
+          title: ~
+          author: ~
+          created: ~
+          updated: ~
+          category: ~
+          status: ~
+        open: ~
+        closed: ~
+        expired: ~
+      user_fields:
+        user_fields: ~
     custom_fields:
       edit:
         edit_listing_field: "Edytuje pole %{field_name} oferty"
@@ -454,20 +488,47 @@ pl:
         dropdown: "Pokazuj jako rozwijalne menu"
         checkbox_group: "Pole wybory grupy"
         date: Data
+        file: ~
+        location: ~
+    person_custom_fields:
+      saving_failed: ~
+      index:
+        user_fields: ~
+        field_title: ~
+        field_type: ~
+        signup: ~
+        public: ~
+        add_new_field: ~
+        save: ~
+        cancel: ~
+        minimum_value: ~
+        maximum_value: ~
+        allow_decimals: ~
+        add_option: ~
+      new:
+        new_user_field: ~
+      form:
+        field_required:
+          this_field_is_required: ~
+          this_field_is_required_checkbox: ~
+          this_field_is_public: ~
+      edit:
+        edit_user_field: ~
     emails:
       new:
         send_email_to_members: "Wyślij wiadomość do użytkowników"
         send_email_to_members_title: "Wyślij wiadomość do wszystkich swoich użytkowników"
         send_email: "Wyślij wiadomość email"
-        send_email_or: ~
+        send_email_or: lub
         send_test_email: ~
         test_sent: ~
-        send_email_article_title: ~
+        send_email_article_title: "ten artykuł"
         send_email_article_text: ~
         recipients:
           title: ~
           options:
             all_users: ~
+            posting_allowed: "użytkownicy, którzy mogą dodawać ogłoszenia"
             with_listing: ~
             with_listing_no_payment: ~
             with_payment_no_listing: ~
@@ -579,6 +640,7 @@ pl:
         night: "Za noc"
         week: Tygodniowo
         month: Miesięcznie
+        unit: "na jednostkę"
       can_not_find: "Nie można znaleźć rodzaju zamówienia o id: %{id}"
       add_custom_unit: "+ Dodaj dowolną jednostkę..."
       delete_custom_unit: usuń
@@ -1430,7 +1492,7 @@ pl:
       how_to_use: "Jak to działa"
       info_about_kassi: "Informacje o %{service_name}"
       news: Nowości
-      register_details: Prywatność
+      register_details: "Polityka Prywatności"
       terms: "Zasady użytkowania"
     logged_in:
       admin: Administrator
@@ -1582,6 +1644,8 @@ pl:
         other: "Strona stanie się niedostępna ze względów serwisowych za %{count} minut"
       automatically_logged_out_please_sign_in: "Zostałeś automatycznie wylogowany. Proszę zaloguj się ponownie."
       stripe_you_account_balance_is_not_0: ~
+      visit_admin: "czy chciałbyś %{link}?"
+      visit_admin_link: "zobacz w panelu administratora"
     settings:
       account: Konto
       notifications: Powiadomienia
@@ -1773,10 +1837,10 @@ pl:
       how_paypal_works: "Jak działa PayPal"
       payment_help: "Pomoc w sprawie płatności"
       unable_load_availability: "Nie można załadować informacji o dostępności. Proszę spróbować ponownie później."
-      booking_date: ~
+      booking_date: "Data rezerwacji"
       select_one: ~
-      start_time: ~
-      end_time: ~
+      start_time: Początek
+      end_time: Koniec
     new:
       listing: oferta
       selected_category: "Kategoria: %{category}"
@@ -1796,6 +1860,7 @@ pl:
       night: "Liczba nocy:"
       week: "Liczba tygodni:"
       month: "Liczba miesięcy:"
+      unit: "ilość jednostek"
       custom: "Ilość:"
     quantity_placeholder: "Ilość:"
     please_comment: Skomentuj
@@ -1847,6 +1912,7 @@ pl:
       night: Noc
       week: tydzień
       month: miesiąc
+      unit: jednostka
     verification_required:
       verification_required: "Wymagana weryfikacja"
   listing_conversations:
@@ -2020,6 +2086,7 @@ pl:
       create_account_with_facebook: "Zarejestruj się poprzez Facebooka"
       OR: LUB
       signup_with_email: "Zarejestruj się przez email"
+      this_field_will_be_publicly_visible: ~
     profile_feedback:
       grade: "stopień:"
       and_gave_following_feedback: "oraz daj następującą opinię"
@@ -2170,6 +2237,7 @@ pl:
       display_name: "Imię wyświetlane"
       display_name_description: "Jeśli reprezentujesz organizację lub firmę, możesz użyć jej nazwy jako imię wyświetlane. Imię wyświetlane jest pokazywane innym użytkownikom zamiast twojego imienia i nazwiska."
       location_description: "Możesz podać albo adres albo miasto lub kod pocztowy. Dobrze jest także dodać nazwę kraju podając lokalizację. Przykład: \"87-100 Toruń, Polska\" albo \"Marszałkowska 16, Warszawa, Polska\""
+      profile_picture_description: ~
       phone_number: "Numer telefonu"
       profile_picture: "Zdjęcie profilowe"
       postal_code: "Kod pocztowy"
@@ -2182,6 +2250,7 @@ pl:
       default_in_listing: "(używane wyłącznie jako domyślne przy tworzeniu nowej oferty)"
       invisible: "(nie widoczne dla innych użytkowników)"
       image_is_processing: "Trzymaj się mocno. Przetwarzamy właśnie Twoje zdjęcie profilowe. Będzie gotowe za minutę lub dwie."
+      shown_in_your_public_profile: ~
     save_information: "Zapisz informacje"
   shipping_address:
     shipping_address: "Adres dostawy"
@@ -2381,8 +2450,8 @@ pl:
       working_hours:
         default_schedule: ~
         i_am_available_on: ~
-        start_time: ~
-        end_time: ~
+        start_time: Początek
+        end_time: Koniec
         add_another_time_slot: ~
         save: ~
     no_listings:
@@ -2468,6 +2537,10 @@ pl:
       legal_name: ~
       first_name: ~
       last_name: ~
+      first_name_kana: ~
+      last_name_kana: ~
+      first_name_kanji: ~
+      last_name_kanji: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
@@ -2483,6 +2556,20 @@ pl:
       save_details: ~
       edit: ~
       cancel: ~
+      gender: płeć
+      phone_number: "numer telefonu"
+      address_kana_postal_code: "kod pocztowy"
+      address_kana_state: ~
+      address_kana_city: miasto
+      address_kana_town: miasto
+      address_kana_line1: ulica
+      address_kanji_postal_code: "kod pocztowy"
+      address_kanji_state: ~
+      address_kanji_city: miasto
+      address_kanji_town: miasto
+      address_kanji_line1: ulica
+      male: męski
+      female: damski
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~

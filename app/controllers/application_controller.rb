@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   include IconHelper
   include DefaultURLOptions
   include Analytics
+  include RefererHider
   protect_from_forgery
   layout 'application'
 
@@ -456,6 +457,7 @@ class ApplicationController < ActionController::Base
     if person
       sign_in(person)
       @current_user = person
+      force_hide_referer
 
       # Clean the URL from the used token
       path_without_auth_token = URLUtils.remove_query_param(request.fullpath, "auth")
@@ -539,7 +541,7 @@ class ApplicationController < ActionController::Base
     user = Maybe(@current_user).map { |u|
       {
         unread_count: InboxService.notification_count(u.id, @current_community.id),
-        avatar_url: u.image.present? ? u.image.url(:thumb) : view_context.image_path("profile_image/thumb/missing.png"),
+        avatar_url: u.image.present? && !u.image_processing ? u.image.url(:thumb) : view_context.image_path("profile_image/thumb/missing.png"),
         current_user_name: PersonViewUtils.person_display_name(u, @current_community),
         inbox_path: person_inbox_path(u),
         profile_path: person_path(u),

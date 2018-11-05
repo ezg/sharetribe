@@ -67,9 +67,13 @@ nb:
         community_name: "Navn markedsplass"
         edit_community_name_description: "Navnet på din markedsplass er vist til brukere i epost og forskjellige andre steder."
         community_slogan: "Slogan markedsplass"
+        community_slogan_display: ~
         edit_community_slogan_description: "Dette vises på din forside for brukere på din markedsplass som ikke er logget inn. %{see_how_it_looks_like}"
+        edit_community_slogan_description_hideable: ~
         community_description: "Beskrivelse markedsplass"
+        community_description_display: ~
         edit_community_description_description: "Dette vises på din forside for brukere på din markedsplass som ikke er logget inn. %{see_how_it_looks_like}"
+        edit_community_description_description_hideable: ~
         community_search_placeholder: "Søk hjelpe tekst"
         edit_community_search_placeholder_description: "Dette vises på forsiden som forklaringstekst i søkefeltet. %{see_how_it_looks_like}."
         private_community_homepage_content: "Privat markedsplassinhold"
@@ -95,6 +99,7 @@ nb:
         edit_community_look_and_feel: "Redigere markedsplass \"%{community_name}\" uttrykk og følelse"
         community_logo: Skrivebordslogo
         community_logo_icon: "Logo for sosiale nettverk og mindre skjermer."
+        community_logo_icon_mobile: ~
         community_cover_photo: Forsidebilde
         small_community_cover_photo: "Lite forsidebilde"
         favicon: Favicon
@@ -109,6 +114,7 @@ nb:
         logo_instructions_text_with_dimensions_no_placing: "Størrelsen på logoen burde være %{height} x %{width} piksler."
         logo_icon_instructions_text_with_dimensions: "Denne firkantede logoen blir vist når siden blir delt på Facebook, vist på moblie enheter og når de bokmerker siden på mobil. Dimensjonene bør (minst) være %{width}x%{height}px."
         logo_icon_instructions_text_with_dimensions_no_placing: "Denne kvadratiske logoen blir vist når siden blir delt på Facebook, vist på moblie enheter og når de bokmerker siden på mobil. Dimensjonene bør være (minst) %{width} x %{height} piskler."
+        logo_mobile_icon_instructions_text_with_dimensions: ~
         cover_photo_visibility: "Forsidebildet vises på forsiden for brukere som ikke er logget inn."
         cover_photo_instructions_text_with_dimensions: "Bildet vil bli endret i størrelse til %{width}x%{height} piksler og høyere bilder vil bli kuttet i midten. %{see_how_it_looks_like}"
         small_cover_photo_visibility: "Mindre forsidebilde vises på alle sider bortsett fra forsiden for brukere som ikke er logget inn."
@@ -129,6 +135,7 @@ nb:
         invalid_color_code: "Fargekode skal inneholde 6 tall eller bokstaver A-F, for eksempel D96E21"
         custom_head_script: "Custom script"
         custom_head_script_instructions_text: "This script is injected inside the <head> tag of every page and can be used to insert custom CSS, JavaScript or HTML. Please note that future changes to Sharetribe may render your script incompatible."
+        current_image: ~
       edit_text_instructions:
         edit_text_instructions: Instruksjonstekster
       edit_welcome_email:
@@ -270,6 +277,8 @@ nb:
         searchpage: "Ny søkeside (krever toppmeny)"
       social_media:
         social_media: "Sosiale medier"
+        logo: ~
+        logo_info: ~
         twitter_handle: Twitternavn
         twitter_handle_info_text: "Twitternavn til din markedsplass (hvis du har). Det vil bli mentioned når brukere bruker tweet-knappen på annonsesiden."
         twitter_handle_info_text_with_instructions: "Twitternavn til din markedsplass (hvis du har). Det vil bli mentioned når brukere bruker tweet-knappen på annonsesiden. %{instructions_link}."
@@ -286,6 +295,7 @@ nb:
         invalid_facebook_connect_secret: "Client secret kan kun inneholde tall og bokstaver fra a til f."
         enable_facebook_login: ~
         save: "Lagre innstillinger"
+        add_another_image: ~
       analytics:
         analytics: Analytics
         google_analytics_key: "Google Analytics tracking ID"
@@ -386,11 +396,35 @@ nb:
           receiver: ~
           status: ~
           grade: ~
-          note: ~
+          text: ~
         status:
           waiting: ~
           skipped: ~
           published: ~
+          blocked: ~
+        form:
+          review_text: ~
+          save: ~
+          cancel: ~
+          delete_review: ~
+          block_review: ~
+          confirm_modify: ~
+          deleting_info: ~
+          blocking_info: ~
+      listings:
+        listings: ~
+        headers:
+          title: ~
+          author: ~
+          created: ~
+          updated: ~
+          category: ~
+          status: ~
+        open: ~
+        closed: ~
+        expired: ~
+      user_fields:
+        user_fields: ~
     custom_fields:
       edit:
         edit_listing_field: "Rediger annonse felt'%{field_name}'"
@@ -444,6 +478,32 @@ nb:
         dropdown: Nedtrekksmeny
         checkbox_group: Avkrysningsgruppe
         date: Dato
+        file: ~
+        location: ~
+    person_custom_fields:
+      saving_failed: ~
+      index:
+        user_fields: ~
+        field_title: ~
+        field_type: ~
+        signup: ~
+        public: ~
+        add_new_field: ~
+        save: ~
+        cancel: ~
+        minimum_value: ~
+        maximum_value: ~
+        allow_decimals: ~
+        add_option: ~
+      new:
+        new_user_field: ~
+      form:
+        field_required:
+          this_field_is_required: ~
+          this_field_is_required_checkbox: ~
+          this_field_is_public: ~
+      edit:
+        edit_user_field: ~
     emails:
       new:
         send_email_to_members: "Send e-post til brukere"
@@ -458,6 +518,7 @@ nb:
           title: ~
           options:
             all_users: ~
+            posting_allowed: ~
             with_listing: ~
             with_listing_no_payment: ~
             with_payment_no_listing: ~
@@ -561,6 +622,7 @@ nb:
         night: "Per natt"
         week: "Per uke"
         month: "Per måned"
+        unit: ~
       can_not_find: "Kan ikke finne transaksjonstype med ID: %{id}"
       add_custom_unit: "+ Legg til en spesiell prisenhet…"
       delete_custom_unit: slette
@@ -1564,6 +1626,8 @@ nb:
         other: "Nettstedet vil være offline i %{count} minutter"
       automatically_logged_out_please_sign_in: "Du har blitt logget ut automatisk. Vennligst logg inn igjen."
       stripe_you_account_balance_is_not_0: ~
+      visit_admin: ~
+      visit_admin_link: ~
     settings:
       account: Brukerkonto
       notifications: Varslinger
@@ -1778,6 +1842,7 @@ nb:
       night: "Antall netter:"
       week: "Antall uker:"
       month: "Antall måneder:"
+      unit: ~
       custom: "Antall:"
     quantity_placeholder: Antall
     please_comment: Kommenter
@@ -1829,6 +1894,7 @@ nb:
       night: natt
       week: uke
       month: måned
+      unit: ~
     verification_required:
       verification_required: "Verifisering påkrevd"
   listing_conversations:
@@ -2000,6 +2066,7 @@ nb:
       create_account_with_facebook: "Logg inn med Facebook"
       OR: ELLER
       signup_with_email: "Registrer deg med e-post"
+      this_field_will_be_publicly_visible: ~
     profile_feedback:
       grade: "karakter:"
       and_gave_following_feedback: "og gav følgende tilbakemelding"
@@ -2150,6 +2217,7 @@ nb:
       display_name: Visningsnavn
       display_name_description: "Dersom du representerer en organisasjon, kan du bruke organisasjonens navn som visningsnavn. Visningsnavnet vises for andre brukere i stedet for ditt fornavn og etternavn."
       location_description: "Du kan legge til eksakt adresse eller kun postnummer. Du kan også velge din plassering på kartet under."
+      profile_picture_description: ~
       phone_number: Telefonnummer
       profile_picture: Profilbilde
       postal_code: Postnummer
@@ -2162,6 +2230,7 @@ nb:
       default_in_listing: "(brukes kun ved opprettelse av nye annonser)"
       invisible: "(vises ikke til andre brukere)"
       image_is_processing: "Ditt profilbilde er behandles nå. Vennligst last siden på nytt om et lite øyeblikk."
+      shown_in_your_public_profile: ~
     save_information: "Lagre innstillinger"
   shipping_address:
     shipping_address: Leveringsadresse
@@ -2428,6 +2497,10 @@ nb:
       legal_name: ~
       first_name: ~
       last_name: ~
+      first_name_kana: ~
+      last_name_kana: ~
+      first_name_kanji: ~
+      last_name_kanji: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
@@ -2443,6 +2516,20 @@ nb:
       save_details: ~
       edit: ~
       cancel: ~
+      gender: ~
+      phone_number: ~
+      address_kana_postal_code: ~
+      address_kana_state: ~
+      address_kana_city: ~
+      address_kana_town: ~
+      address_kana_line1: ~
+      address_kanji_postal_code: ~
+      address_kanji_state: ~
+      address_kanji_city: ~
+      address_kanji_town: ~
+      address_kanji_line1: ~
+      male: ~
+      female: ~
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~

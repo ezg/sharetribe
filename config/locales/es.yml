@@ -52,9 +52,13 @@ es:
         community_name: "Nombre de la tribu:"
         edit_community_name_description: ~
         community_slogan: "Eslogan de la tribu:"
+        community_slogan_display: ~
         edit_community_slogan_description: ~
+        edit_community_slogan_description_hideable: ~
         community_description: "Descripción:"
+        community_description_display: ~
         edit_community_description_description: ~
+        edit_community_description_description_hideable: ~
         community_search_placeholder: ~
         edit_community_search_placeholder_description: ~
         private_community_homepage_content: ~
@@ -80,6 +84,7 @@ es:
         edit_community_look_and_feel: "Editar apariencia de la comunidad %{community_name}"
         community_logo: Logo
         community_logo_icon: ~
+        community_logo_icon_mobile: ~
         community_cover_photo: "Foto de portada"
         small_community_cover_photo: ~
         favicon: ~
@@ -94,6 +99,7 @@ es:
         logo_instructions_text_with_dimensions_no_placing: ~
         logo_icon_instructions_text_with_dimensions: ~
         logo_icon_instructions_text_with_dimensions_no_placing: ~
+        logo_mobile_icon_instructions_text_with_dimensions: ~
         cover_photo_visibility: ~
         cover_photo_instructions_text_with_dimensions: ~
         small_cover_photo_visibility: ~
@@ -114,6 +120,7 @@ es:
         invalid_color_code: "El código de color debe contener 6 caracteres, números o letras de la A a la F, por ejemplo D96E21"
         custom_head_script: ~
         custom_head_script_instructions_text: ~
+        current_image: ~
       edit_text_instructions:
         edit_text_instructions: ~
       edit_welcome_email:
@@ -255,6 +262,8 @@ es:
         searchpage: ~
       social_media:
         social_media: ~
+        logo: ~
+        logo_info: ~
         twitter_handle: ~
         twitter_handle_info_text: ~
         twitter_handle_info_text_with_instructions: ~
@@ -271,6 +280,7 @@ es:
         invalid_facebook_connect_secret: ~
         enable_facebook_login: ~
         save: ~
+        add_another_image: ~
       analytics:
         analytics: ~
         google_analytics_key: ~
@@ -371,11 +381,35 @@ es:
           receiver: ~
           status: ~
           grade: ~
-          note: ~
+          text: ~
         status:
           waiting: ~
           skipped: ~
           published: ~
+          blocked: ~
+        form:
+          review_text: ~
+          save: ~
+          cancel: ~
+          delete_review: ~
+          block_review: ~
+          confirm_modify: ~
+          deleting_info: ~
+          blocking_info: ~
+      listings:
+        listings: ~
+        headers:
+          title: ~
+          author: ~
+          created: ~
+          updated: ~
+          category: ~
+          status: ~
+        open: ~
+        closed: ~
+        expired: ~
+      user_fields:
+        user_fields: ~
     custom_fields:
       edit:
         edit_listing_field: ~
@@ -429,6 +463,32 @@ es:
         dropdown: ~
         checkbox_group: ~
         date: ~
+        file: ~
+        location: ~
+    person_custom_fields:
+      saving_failed: ~
+      index:
+        user_fields: ~
+        field_title: ~
+        field_type: ~
+        signup: ~
+        public: ~
+        add_new_field: ~
+        save: ~
+        cancel: ~
+        minimum_value: ~
+        maximum_value: ~
+        allow_decimals: ~
+        add_option: ~
+      new:
+        new_user_field: ~
+      form:
+        field_required:
+          this_field_is_required: ~
+          this_field_is_required_checkbox: ~
+          this_field_is_public: ~
+      edit:
+        edit_user_field: ~
     emails:
       new:
         send_email_to_members: "Envia un mensaje a los miembros"
@@ -443,6 +503,7 @@ es:
           title: ~
           options:
             all_users: ~
+            posting_allowed: ~
             with_listing: ~
             with_listing_no_payment: ~
             with_payment_no_listing: ~
@@ -534,6 +595,7 @@ es:
         night: ~
         week: ~
         month: ~
+        unit: ~
       can_not_find: ~
       add_custom_unit: ~
       delete_custom_unit: ~
@@ -1536,6 +1598,8 @@ es:
       images_are_processing: ~
       automatically_logged_out_please_sign_in: ~
       stripe_you_account_balance_is_not_0: ~
+      visit_admin: ~
+      visit_admin_link: ~
     settings:
       account: Cuenta
       notifications: Notificaciones
@@ -1750,6 +1814,7 @@ es:
       night: ~
       week: ~
       month: ~
+      unit: ~
       custom: ~
     quantity_placeholder: ~
     please_comment: Comentario
@@ -1801,6 +1866,7 @@ es:
       night: ~
       week: ~
       month: ~
+      unit: ~
     verification_required:
       verification_required: ~
   listing_conversations:
@@ -1972,6 +2038,7 @@ es:
       create_account_with_facebook: "Crear una cuenta con Facebook"
       OR: ~
       signup_with_email: ~
+      this_field_will_be_publicly_visible: ~
     profile_feedback:
       grade: "puntaje:"
       and_gave_following_feedback: "Feedbacks dados"
@@ -2122,6 +2189,7 @@ es:
       display_name: ~
       display_name_description: ~
       location_description: "Puedes dar tu ubicación exacta o sólo tu código postal. Por favor añade al menos tu código postal. También puedes elegir una localización desde el mapa."
+      profile_picture_description: ~
       phone_number: "Número de teléfono:"
       profile_picture: "Foto de perfil"
       postal_code: "Código postal:"
@@ -2134,6 +2202,7 @@ es:
       default_in_listing: ~
       invisible: ~
       image_is_processing: ~
+      shown_in_your_public_profile: ~
     save_information: "Guardar Información"
   shipping_address:
     shipping_address: ~
@@ -2368,6 +2437,10 @@ es:
       legal_name: ~
       first_name: ~
       last_name: ~
+      first_name_kana: ~
+      last_name_kana: ~
+      first_name_kanji: ~
+      last_name_kanji: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
@@ -2383,6 +2456,20 @@ es:
       save_details: ~
       edit: ~
       cancel: ~
+      gender: ~
+      phone_number: ~
+      address_kana_postal_code: ~
+      address_kana_state: ~
+      address_kana_city: ~
+      address_kana_town: ~
+      address_kana_line1: ~
+      address_kanji_postal_code: ~
+      address_kanji_state: ~
+      address_kanji_city: ~
+      address_kanji_town: ~
+      address_kanji_line1: ~
+      male: ~
+      female: ~
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~

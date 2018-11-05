@@ -1,4 +1,5 @@
 module CustomLandingPage
+  # rubocop:disable Metrics/ModuleLength
   module ExampleData
 
     # TODO Document the expected JSON structure here
@@ -204,6 +205,50 @@ module CustomLandingPage
       ]
     },
     {
+      "id": "two_column_info_without_icons_and_buttons_with_sigle_button",
+      "kind": "info",
+      "variation": "multi_column",
+      "title": "Two column info section without icons and buttons",
+      "columns": [
+        {
+          "title": "Column 1",
+          "paragraph": "Paragraph. Curabitur blandit tempus porttitor. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel.\\n\\nParagraph. Curabitur blandit tempus porttitor. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel."
+        },
+        {
+          "title": "Column 2",
+          "paragraph": "Paragraph. Curabitur blandit tempus porttitor. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel."
+        }
+      ],
+      "button_color": {"type": "marketplace_data", "id": "primary_color"},
+      "button_color_hover": {"type": "marketplace_data", "id": "primary_color_darken"},
+      "button_title": "Contact us",
+      "button_path": {"type": "path", "id": "contact_us"}
+    },
+    {
+      "id": "three_column_info_without_icons_and_buttons_with_sigle_button",
+      "kind": "info",
+      "variation": "multi_column",
+      "title": "Three column info without icons and buttons",
+      "columns": [
+        {
+          "title": "Column 1",
+          "paragraph": "Paragraph. Curabitur blandit tempus porttitor. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel."
+        },
+        {
+          "title": "Column 2",
+          "paragraph": "Paragraph. Curabitur blandit tempus porttitor. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel."
+        },
+        {
+          "title": "Column 3",
+          "paragraph": "Paragraph. Curabitur blandit tempus porttitor. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel."
+        }
+      ],
+      "button_color": {"type": "marketplace_data", "id": "primary_color"},
+      "button_color_hover": {"type": "marketplace_data", "id": "primary_color_darken"},
+      "button_title": "Contact us",
+      "button_path": {"type": "path", "id": "contact_us"}
+    },
+    {
         "id": "categories",
         "kind": "categories",
         "title": "Categories section",
@@ -250,6 +295,33 @@ module CustomLandingPage
             },
             {
                 "listing": { "type": "listing", "id": 99999 }
+            }
+        ]
+    },
+    {
+        "id": "locations",
+        "kind": "locations",
+        "title": "Locations section",
+        "paragraph": "PLEASE NOTE: This section is NOT ENABLED by default. To enable this section add the section to the 'composition'. Locations section can contain 3 to 7 featured locations. Each location should have a background image.",
+        "location_color_hover": {"type": "marketplace_data", "id": "primary_color"},
+        "button_color": {"type": "marketplace_data", "id": "primary_color"},
+        "button_color_hover": {"type": "marketplace_data", "id": "primary_color_darken"},
+        "button_title": "Browse all listings",
+        "button_path": {"type": "path", "id": "search"},
+        "locations": [
+            {
+                "title": "About",
+                "location": { "type": "path", "id": "about" },
+                "background_image": {"type": "assets", "id": "default_hero_background"}
+            },
+            {
+                "title": "Contact Us",
+                "location": { "type": "path", "id": "contact_us" },
+                "background_image": {"type": "assets", "id": "default_hero_background"}
+            },
+            {
+                "location": "https://bagshare.wordpress.com/",
+                "background_image": {"type": "assets", "id": "default_hero_background"}
             }
         ]
     },
@@ -510,4 +582,5 @@ JSON
 JSON
 
   end
+  # rubocop:enable Metrics/ModuleLength
 end

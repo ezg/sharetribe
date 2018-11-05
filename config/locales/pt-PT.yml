@@ -58,9 +58,13 @@ pt-PT:
         community_name: "Nome do mercado virtual"
         edit_community_name_description: "O nome do seu mercado virtual. Será mostrado a utilizadores e em vários outros locais."
         community_slogan: "Slogan do mercado virtual"
+        community_slogan_display: ~
         edit_community_slogan_description: "Isso é mostrado na página inicial do mercado virtual para os utilizadores que não estejam cadastrados. %{see_how_it_looks_like}."
+        edit_community_slogan_description_hideable: ~
         community_description: "Descrição do mercado virtual"
+        community_description_display: ~
         edit_community_description_description: "Isso é mostrado na página inicial do mercado virtual para os utilizadores que não estejam cadastrados. %{see_how_it_looks_like}."
+        edit_community_description_description_hideable: ~
         community_search_placeholder: ~
         edit_community_search_placeholder_description: ~
         private_community_homepage_content: ~
@@ -86,6 +90,7 @@ pt-PT:
         edit_community_look_and_feel: "Editar o visual do mercado virtual %{community_name}."
         community_logo: Logo
         community_logo_icon: ~
+        community_logo_icon_mobile: ~
         community_cover_photo: "Foto de capa"
         small_community_cover_photo: ~
         favicon: ~
@@ -100,6 +105,7 @@ pt-PT:
         logo_instructions_text_with_dimensions_no_placing: ~
         logo_icon_instructions_text_with_dimensions: ~
         logo_icon_instructions_text_with_dimensions_no_placing: ~
+        logo_mobile_icon_instructions_text_with_dimensions: ~
         cover_photo_visibility: "Foto da capa apresentada na página inicial para utilizadores não conectados."
         cover_photo_instructions_text_with_dimensions: ~
         small_cover_photo_visibility: "Foto pequena da capa mostrado para utilizadores não conectados."
@@ -120,6 +126,7 @@ pt-PT:
         invalid_color_code: ~
         custom_head_script: ~
         custom_head_script_instructions_text: ~
+        current_image: ~
       edit_text_instructions:
         edit_text_instructions: ~
       edit_welcome_email:
@@ -261,6 +268,8 @@ pt-PT:
         searchpage: ~
       social_media:
         social_media: ~
+        logo: ~
+        logo_info: ~
         twitter_handle: ~
         twitter_handle_info_text: "Nome de utilizador da conta do Twitter do seu mercado virtual (se tiver uma). Será mencionado quando as pessoas usarem o botão tweet na página do anúncio."
         twitter_handle_info_text_with_instructions: "Nome de utilizador da conta de Twitter do seu mercado virtual (se tiver um). Será mencionado quando as pessoas clicarem o botão 'tweet' na página de anúncios. %{instructions_link}."
@@ -277,6 +286,7 @@ pt-PT:
         invalid_facebook_connect_secret: ~
         enable_facebook_login: ~
         save: ~
+        add_another_image: ~
       analytics:
         analytics: ~
         google_analytics_key: ~
@@ -377,11 +387,35 @@ pt-PT:
           receiver: ~
           status: ~
           grade: ~
-          note: ~
+          text: ~
         status:
           waiting: ~
           skipped: ~
           published: ~
+          blocked: ~
+        form:
+          review_text: ~
+          save: ~
+          cancel: ~
+          delete_review: ~
+          block_review: ~
+          confirm_modify: ~
+          deleting_info: ~
+          blocking_info: ~
+      listings:
+        listings: ~
+        headers:
+          title: ~
+          author: ~
+          created: ~
+          updated: ~
+          category: ~
+          status: ~
+        open: ~
+        closed: ~
+        expired: ~
+      user_fields:
+        user_fields: ~
     custom_fields:
       edit:
         edit_listing_field: "Alterar anúncio '%{field_name}'"
@@ -435,6 +469,32 @@ pt-PT:
         dropdown: ~
         checkbox_group: ~
         date: ~
+        file: ~
+        location: ~
+    person_custom_fields:
+      saving_failed: ~
+      index:
+        user_fields: ~
+        field_title: ~
+        field_type: ~
+        signup: ~
+        public: ~
+        add_new_field: ~
+        save: ~
+        cancel: ~
+        minimum_value: ~
+        maximum_value: ~
+        allow_decimals: ~
+        add_option: ~
+      new:
+        new_user_field: ~
+      form:
+        field_required:
+          this_field_is_required: ~
+          this_field_is_required_checkbox: ~
+          this_field_is_public: ~
+      edit:
+        edit_user_field: ~
     emails:
       new:
         send_email_to_members: "Envie e-mail aos utilizadores"
@@ -449,6 +509,7 @@ pt-PT:
           title: ~
           options:
             all_users: ~
+            posting_allowed: ~
             with_listing: ~
             with_listing_no_payment: ~
             with_payment_no_listing: ~
@@ -552,6 +613,7 @@ pt-PT:
         night: ~
         week: ~
         month: ~
+        unit: ~
       can_not_find: ~
       add_custom_unit: ~
       delete_custom_unit: ~
@@ -1547,6 +1609,8 @@ pt-PT:
       images_are_processing: "Estamos a processar as suas imagens. Estarão visíveis dentro de um ou dois minutos."
       automatically_logged_out_please_sign_in: ~
       stripe_you_account_balance_is_not_0: ~
+      visit_admin: ~
+      visit_admin_link: ~
     settings:
       account: Conta
       notifications: "Notificações "
@@ -1761,6 +1825,7 @@ pt-PT:
       night: ~
       week: ~
       month: ~
+      unit: ~
       custom: ~
     quantity_placeholder: ~
     please_comment: Comentar
@@ -1812,6 +1877,7 @@ pt-PT:
       night: ~
       week: ~
       month: ~
+      unit: ~
     verification_required:
       verification_required: ~
   listing_conversations:
@@ -1983,6 +2049,7 @@ pt-PT:
       create_account_with_facebook: "Registe-se com seu Facebook"
       OR: ~
       signup_with_email: "Registe-se com seu e-mail"
+      this_field_will_be_publicly_visible: ~
     profile_feedback:
       grade: "nota:"
       and_gave_following_feedback: "deu a seguinte opinião "
@@ -2133,6 +2200,7 @@ pt-PT:
       display_name: ~
       display_name_description: ~
       location_description: "Indique a sua localização exata ou o seu código postal. Também pode selecionar uma posição no mapa abaixo."
+      profile_picture_description: ~
       phone_number: "Número de telefone"
       profile_picture: ~
       postal_code: "Código postal"
@@ -2145,6 +2213,7 @@ pt-PT:
       default_in_listing: "(usado apenas por defeito ao criar um novo anúncio)"
       invisible: "(não será mostrado a outros utilizadores)"
       image_is_processing: ~
+      shown_in_your_public_profile: ~
     save_information: "Salvar informação"
   shipping_address:
     shipping_address: ~
@@ -2215,31 +2284,31 @@ pt-PT:
       friday: ~
       saturday: ~
     months:
-      january: ~
-      february: ~
-      march: ~
-      april: ~
-      may: ~
-      june: ~
-      july: ~
-      august: ~
-      september: ~
-      october: ~
-      november: ~
-      december: ~
+      january: Janeiro
+      february: Fevereiro
+      march: Março
+      april: Abril
+      may: Maio
+      june: Junho
+      july: Julho
+      august: Agosto
+      september: Setembro
+      october: Outubro
+      november: Novembro
+      december: Dezembro
     months_short:
-      january: ~
-      february: ~
-      march: ~
-      april: ~
-      may: ~
-      june: ~
-      july: ~
-      august: ~
-      september: ~
-      october: ~
-      november: ~
-      december: ~
+      january: Jan
+      february: Fev
+      march: Mar
+      april: Abr
+      may: Mai
+      june: Jun
+      july: Jul
+      august: Ago
+      september: Set
+      october: Out
+      november: Nov
+      december: Dez
     today: ~
     clear: ~
     format: dd/mm/yyyy
@@ -2384,6 +2453,10 @@ pt-PT:
       legal_name: ~
       first_name: ~
       last_name: ~
+      first_name_kana: ~
+      last_name_kana: ~
+      first_name_kanji: ~
+      last_name_kanji: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
@@ -2399,6 +2472,20 @@ pt-PT:
       save_details: ~
       edit: ~
       cancel: ~
+      gender: ~
+      phone_number: ~
+      address_kana_postal_code: ~
+      address_kana_state: ~
+      address_kana_city: ~
+      address_kana_town: ~
+      address_kana_line1: ~
+      address_kanji_postal_code: ~
+      address_kanji_state: ~
+      address_kanji_city: ~
+      address_kanji_town: ~
+      address_kanji_line1: ~
+      male: ~
+      female: ~
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~

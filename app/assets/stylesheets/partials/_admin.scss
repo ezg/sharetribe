@@ -43,3 +43,27 @@ select#locale-selection {
   visibility: hidden;
   height: em(50);
 }
+
+.info-text-container {
+  .info-thumbnail {
+    float: left;
+    margin-right: 1.5em;
+    .thumbnail {
+      float: left;
+      margin-left: 19px;
+    }
+    .description {
+      clear: both;
+      & > i {
+        margin-right: 3px;
+      }
+    }
+    .current-image {
+      color: gray;
+    }
+  }
+  &.filename-container {
+    margin-top: 0;
+  }
+}
+

@@ -170,6 +170,13 @@ function add_validator_methods() {
     addMethod("number_max", function(value, element, max) {
       return value.length === 0 ? true : toNumber(value) <= max;
     });
+
+  $.validator.
+    addMethod("email_remove_spaces", function(value, element) {
+      value = value.trim();
+      $(element).val(value);
+      return $.validator.methods.email.call(this, value, element)
+    });
 }
 
 // Initialize code that is needed for every view
@@ -340,18 +347,18 @@ function initialize_signup_form(locale, username_in_use_message, invalid_usernam
   var form_id = "#new_person";
   //name_required = (name_required == 1) ? true : false
   $(form_id).validate({
-    errorPlacement: function(error, element) {
-      if (element.attr("name") == "person[terms]") {
-        error.appendTo(element.parent().parent());
+    errorPlacement: function(errorLabel, element) {
+      if (( /radio|checkbox/i ).test( element[0].type )) {
+        element.closest('.checkbox-container').append(errorLabel);
       } else {
-        error.insertAfter(element);
+        errorLabel.insertAfter( element );
       }
     },
     rules: {
       "person[username]": {required: true, minlength: 3, maxlength: 20, valid_username: true, remote: "/people/check_username_availability"},
       "person[given_name]": {required: name_required, maxlength: 30},
       "person[family_name]": {required: name_required, maxlength: 30},
-      "person[email]": {required: true, email: true, remote: "/people/check_email_availability_and_validity"},
+      "person[email]": {required: true, email_remove_spaces: true, remote: "/people/check_email_availability_and_validity"},
       "person[terms]": "required",
       "person[password]": { required: true, minlength: 4 },
       "person[password2]": { required: true, minlength: 4, equalTo: "#person_password1" },
@@ -359,7 +366,7 @@ function initialize_signup_form(locale, username_in_use_message, invalid_usernam
     },
     messages: {
       "person[username]": { valid_username: invalid_username_message, remote: username_in_use_message },
-      "person[email]": { remote: email_in_use_message },
+      "person[email]": { remote: email_in_use_message, email_remove_spaces: $.validator.messages.email },
       "invitation_code": { remote: invalid_invitation_code_message }
     },
     onkeyup: false, //Only do validations when form focus changes to avoid exessive ASI calls
@@ -395,6 +402,13 @@ function initialize_update_profile_info_form(locale, person_id, name_required) {
     onsubmit: true,
     submitHandler: function(form) {
       disable_and_submit(form_id, form, "false", locale);
+    },
+    errorPlacement: function(errorLabel, element) {
+      if (( /radio|checkbox/i ).test( element[0].type )) {
+        element.closest('.checkbox-container').append(errorLabel);
+      } else {
+        errorLabel.insertAfter( element );
+      }
     }
   });
 }
@@ -641,82 +655,6 @@ function initialize_admin_social_media_form(locale, community_id, invalid_twitte
    });
 }
 
-function initialize_admin_listing_field_form_view(locale, form_id, option_count, min_count) {
-  translate_validation_messages(locale);
-
-  var $form = $(form_id);
-  var CATEGORY_CHECKBOX_NAME = "custom_field[category_attributes][][category_id]";
-  var MIN_NAME = "custom_field[min]";
-  var MAX_NAME = "custom_field[max]";
-  var DECIMAL_CHECKBOX = "custom_field[allow_decimals]";
-
-  var rules = {}
-  rules[CATEGORY_CHECKBOX_NAME] = {
-    required: true
-  };
-  rules[MIN_NAME] = {
-    min_bound: MAX_NAME,
-    number_conditional_decimals: DECIMAL_CHECKBOX
-  };
-  rules[MAX_NAME] = {
-    max_bound: MIN_NAME,
-    number_conditional_decimals: DECIMAL_CHECKBOX
-  };
-
-  $(form_id).validate({
-    rules: rules,
-    errorPlacement: function(error, element) {
-      // Custom placement for checkbox group
-      if (element.attr("name") === CATEGORY_CHECKBOX_NAME) {
-        var container = $("#custom-field-categories-container")
-        error.insertAfter(container);
-      } else {
-        error.insertAfter(element);
-      }
-    },
-    submitHandler: function(form) {
-      disable_and_submit(form_id, form, "false", locale);
-    }
-   });
-
-  // Create ST namespace if not exist
-  window.ST = window.ST || {}
-  ST.newOptionAdded = (function removeLinkEnabledState(initialCount, minCount, containerSelector, linkSelector) {
-    var enabled;
-    var count = initialCount;
-    update();
-
-    $(containerSelector).on("click", linkSelector, function(event) {
-      event.preventDefault();
-
-      if(enabled) {
-        var el = $(event.currentTarget);
-        var container = el.closest(".custom-field-option-container");
-        container.remove();
-        ST.customFieldOptionOrder.remove(container.data("field-id"));
-        count -= 1;
-        update();
-      }
-    });
-
-    function update() {
-      enabled = count > minCount;
-
-      $links = $(linkSelector);
-      $links.addClass(enabled ? "enabled" : "disabled");
-      $links.removeClass(!enabled ? "enabled" : "disabled");
-    }
-
-    return {
-      add: function() {
-        count += 1;
-        update();
-      }
-    };
-
-  })(option_count, min_count, "#options", ".custom-field-option-remove").add;
-}
-
 function initialize_admin_category_form_view(locale, form_id) {
   translate_validation_messages(locale);
 
@@ -760,7 +698,9 @@ function initialize_pending_consent_form(email_invalid_message, invitation_requi
   });
   $('#pending_consent_form').validate({
     errorPlacement: function(error, element) {
-      if (element.attr("name") == "form[consent]") {
+      if (( /radio|checkbox/i ).test( element[0].type )) {
+        element.closest('.checkbox-container').append(error);
+      } else if (element.attr("name") == "form[consent]") {
         error.appendTo(element.parent().parent());
       } else {
         error.insertAfter(element);

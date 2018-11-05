@@ -72,9 +72,13 @@ sk-SK:
         community_name: "Názov trhoviska"
         edit_community_name_description: "Názov Vašeho trhoviska. Tento názov sa zobrazí v e-mailových správach a na iných miestach."
         community_slogan: Slogan
+        community_slogan_display: ~
         edit_community_slogan_description: "Toto sa zobrazí na domovskej stránke všetkým neprihláseným užívateľom. %{see_how_it_looks_like}."
+        edit_community_slogan_description_hideable: ~
         community_description: "Popis Trhoviska"
+        community_description_display: ~
         edit_community_description_description: "Toto sa zobrazí na domovskej stránke všetkým neprihláseným užívateľom. %{see_how_it_looks_like}."
+        edit_community_description_description_hideable: ~
         community_search_placeholder: "Pomocný text vyhľadavánia"
         edit_community_search_placeholder_description: "Toto sa zobrazí na domovskej stránke trhoviska ako podporný text vo vyhľadávaní. %{see_how_it_looks_like}"
         private_community_homepage_content: "Obsah domovskej stránky súkromného trhoviska"
@@ -100,6 +104,7 @@ sk-SK:
         edit_community_look_and_feel: "Upraviť vzhľad trhoviska %{community_name}"
         community_logo: "Logo veľké"
         community_logo_icon: "Logo pre sociálne siete a mobilné zariadenia"
+        community_logo_icon_mobile: ~
         community_cover_photo: "Úvodná fotografia"
         small_community_cover_photo: "Malá úvodná fotografia"
         favicon: "Ikonka webovej stránky"
@@ -114,6 +119,7 @@ sk-SK:
         logo_instructions_text_with_dimensions_no_placing: "Velkosť loga by mala byť %{width}x%{height}pixelov."
         logo_icon_instructions_text_with_dimensions: "Toto štvorcové logo sa zobrazí v prípade zdieľania Vašej stránky na Facebooku, na mobilnom zariadení, alebo v prípade nastavenia Vašej stránky ako domovskej na mobilnom zariadení. Rozmery by mali byť (aspoň) %{width}x%{height} px."
         logo_icon_instructions_text_with_dimensions_no_placing: "Toto štvorcové logo sa zobrazí v prípade zdieľania Vašej stránky na Facebooku, alebo v prípade nastavenia Vašej stránky ako domovskej na mobilnom zariadení. Rozmery by mali byť (aspoň) %{width}x%{height} pixelov."
+        logo_mobile_icon_instructions_text_with_dimensions: ~
         cover_photo_visibility: "Úvodná fotografia sa zobrazí na domovskej stránke neprihláseným užívateľom."
         cover_photo_instructions_text_with_dimensions: "Fotografie budú prispôsobené veľkosti %{width}x%{height} pixelov a väčšie snímky budú orezané. %{see_how_it_looks_like}."
         small_cover_photo_visibility: "Malá úvodná fotografia sa zobrazí neprihláseným užívateľom na všetkých stránkach okrem domovskej stránky."
@@ -134,6 +140,7 @@ sk-SK:
         invalid_color_code: "Kód farby by mal obsahovať 6 čísiel alebo písmen A až F, napríklad D69E21"
         custom_head_script: "Vlastný skript"
         custom_head_script_instructions_text: "Tento skript je súčasťou <head> časti každej stránky a môže byť vložený do CSS, JavaScript alebo HTML. Vezmite na vedomie, že budúce zmeny v Sharetribe môžu spôsobiť, že Váš skript nebude kompatibilný."
+        current_image: ~
       edit_text_instructions:
         edit_text_instructions: Návody
       edit_welcome_email:
@@ -275,6 +282,8 @@ sk-SK:
         searchpage: ~
       social_media:
         social_media: "Sociálne médiá"
+        logo: ~
+        logo_info: ~
         twitter_handle: "Twitter účet"
         twitter_handle_info_text: "Užívateľské meno Twitter účtu Vašeho trhoviska (pokiaľ nejaké máte). To sa zobrazí ľuďom, ktorý používajú Twitter tlačítko stránke."
         twitter_handle_info_text_with_instructions: "Užívateľské meno Twitter účtu Vašeho trhoviska (pokiaľ nejaké máte). To sa zobrazí ľuďom, ktorí používajú Twitter tlačítko na stránke. %{instructions_link}."
@@ -291,6 +300,7 @@ sk-SK:
         invalid_facebook_connect_secret: "Heslo by malo obsahovať iba číslice a písmená od A do F."
         enable_facebook_login: ~
         save: "Uložiť nastavenia"
+        add_another_image: ~
       analytics:
         analytics: "Google Analytics"
         google_analytics_key: "Google Analytics sledovacie ID"
@@ -391,11 +401,35 @@ sk-SK:
           receiver: ~
           status: ~
           grade: ~
-          note: ~
+          text: ~
         status:
           waiting: ~
           skipped: ~
           published: ~
+          blocked: ~
+        form:
+          review_text: ~
+          save: ~
+          cancel: ~
+          delete_review: ~
+          block_review: ~
+          confirm_modify: ~
+          deleting_info: ~
+          blocking_info: ~
+      listings:
+        listings: ~
+        headers:
+          title: ~
+          author: ~
+          created: ~
+          updated: ~
+          category: ~
+          status: ~
+        open: ~
+        closed: ~
+        expired: ~
+      user_fields:
+        user_fields: ~
     custom_fields:
       edit:
         edit_listing_field: "Upraviť pole inzerátu '%{field_name}'"
@@ -449,6 +483,32 @@ sk-SK:
         dropdown: "Rozbaľovací výpis"
         checkbox_group: "Zaškrtávacie pole"
         date: Dátum
+        file: ~
+        location: ~
+    person_custom_fields:
+      saving_failed: ~
+      index:
+        user_fields: ~
+        field_title: ~
+        field_type: ~
+        signup: ~
+        public: ~
+        add_new_field: ~
+        save: ~
+        cancel: ~
+        minimum_value: ~
+        maximum_value: ~
+        allow_decimals: ~
+        add_option: ~
+      new:
+        new_user_field: ~
+      form:
+        field_required:
+          this_field_is_required: ~
+          this_field_is_required_checkbox: ~
+          this_field_is_public: ~
+      edit:
+        edit_user_field: ~
     emails:
       new:
         send_email_to_members: "Poslať e-mailovú správu užívateľom"
@@ -463,6 +523,7 @@ sk-SK:
           title: ~
           options:
             all_users: ~
+            posting_allowed: ~
             with_listing: ~
             with_listing_no_payment: ~
             with_payment_no_listing: ~
@@ -570,6 +631,7 @@ sk-SK:
         night: "Za noc"
         week: "Za týždeň"
         month: "Za mesiac"
+        unit: ~
       can_not_find: "Typ objednávky s id: %{id} nebol nájdený"
       add_custom_unit: "+ Pridať vlastnú cenovú jednotku…"
       delete_custom_unit: Vymazať
@@ -1574,6 +1636,8 @@ sk-SK:
         other: "Webová stánka bude pre údržbu v offline režime %{count} minút"
       automatically_logged_out_please_sign_in: "Boli ste automaticky odhlásený. Prosím prihláste sa znovu."
       stripe_you_account_balance_is_not_0: ~
+      visit_admin: ~
+      visit_admin_link: ~
     settings:
       account: Účet
       notifications: Oznámenia
@@ -1788,6 +1852,7 @@ sk-SK:
       night: "Počet nocí:"
       week: "Počet týždňov:"
       month: "Počet mesiacov:"
+      unit: ~
       custom: "Množstvo:"
     quantity_placeholder: Množstvo
     please_comment: Komentár
@@ -1839,6 +1904,7 @@ sk-SK:
       night: noc
       week: týždeň
       month: mesiac
+      unit: ~
     verification_required:
       verification_required: "Overenie požadované"
   listing_conversations:
@@ -2011,6 +2077,7 @@ sk-SK:
       create_account_with_facebook: "Prihlásiť sa cez Facebook"
       OR: ALEBO
       signup_with_email: "Zaregistrovať sa cez e-mail"
+      this_field_will_be_publicly_visible: ~
     profile_feedback:
       grade: "stupeň:"
       and_gave_following_feedback: "a poskytnite spätnú väzbu"
@@ -2161,6 +2228,7 @@ sk-SK:
       display_name: "Zobrazované Meno"
       display_name_description: ~
       location_description: "Môžete zadať Vašu presnú adresu, alebo napríklad iba PSČ. Je dobré tiež pridať krajinu. Príklady: \"10117 Berlin, Germany\" or \"2000 Sand Hill Road, CA, USA\"."
+      profile_picture_description: ~
       phone_number: "Telefónne číslo"
       profile_picture: "Profilová fotka"
       postal_code: PSČ
@@ -2173,6 +2241,7 @@ sk-SK:
       default_in_listing: "(použité ako východzie pri vytváraní nového inzerátu)"
       invisible: "(nezobrazuje sa ostatným užívateľom)"
       image_is_processing: "Váš profilový obrázok sa práve generuje, bude o chvíľu hotový."
+      shown_in_your_public_profile: ~
     save_information: "Ulož informácie"
   shipping_address:
     shipping_address: "Adresa doručenia"
@@ -2449,6 +2518,10 @@ sk-SK:
       legal_name: ~
       first_name: ~
       last_name: ~
+      first_name_kana: ~
+      last_name_kana: ~
+      first_name_kanji: ~
+      last_name_kanji: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
@@ -2464,6 +2537,20 @@ sk-SK:
       save_details: ~
       edit: ~
       cancel: ~
+      gender: ~
+      phone_number: ~
+      address_kana_postal_code: ~
+      address_kana_state: ~
+      address_kana_city: ~
+      address_kana_town: ~
+      address_kana_line1: ~
+      address_kanji_postal_code: ~
+      address_kanji_state: ~
+      address_kanji_city: ~
+      address_kanji_town: ~
+      address_kanji_line1: ~
+      male: ~
+      female: ~
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~

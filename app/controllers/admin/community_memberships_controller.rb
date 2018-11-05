@@ -112,26 +112,38 @@ class Admin::CommunityMembershipsController < Admin::AdminBaseController
       language
     }
     header_row.push("can_post_listings") if community.require_verification_to_post_listings
+    header_row += community.person_custom_fields.map{|f| f.name}
     yielder << header_row.to_csv(force_quotes: true)
     memberships.find_each do |membership|
       user = membership.person
       unless user.blank?
-        user_data = [
-          user.given_name,
-          user.family_name,
-          user.display_name,
-          user.username,
-          user.phone_number,
-          user.location ? user.location.address : "",
-          membership.created_at,
-          membership.status,
-          membership.admin,
-          user.locale
-        ]
-        user_data.push(membership.can_post_listings) if community.require_verification_to_post_listings
+        user_data = {
+          first_name: user.given_name,
+          last_name: user.family_name,
+          display_name: user.display_name,
+          username: user.username,
+          phone_number: user.phone_number,
+          address: user.location ? user.location.address : "",
+          email_address: nil,
+          email_address_confirmed: nil,
+          joined_at: membership.created_at,
+          status: membership.status,
+          is_admin: membership.admin,
+          accept_emails_from_admin: nil,
+          language: user.locale
+        }
+        user_data[:can_post_listings] = membership.can_post_listings if community.require_verification_to_post_listings
+        community.person_custom_fields.each do |field|
+          field_value = user.custom_field_values.by_question(field).first
+          user_data[field.name] = field_value.try(:display_value)
+        end
         user.emails.each do |email|
           accept_emails_from_admin = user.preferences["email_from_admins"] && email.send_notifications
-          yielder << user_data.clone.insert(6, email.address, !!email.confirmed_at).insert(11, !!accept_emails_from_admin).to_csv(force_quotes: true)
+          data = user_data.clone
+          data[:email_address] = email.address
+          data[:email_address_confirmed] = !!email.confirmed_at
+          data[:accept_emails_from_admin] = !!accept_emails_from_admin
+          yielder << data.values.to_csv(force_quotes: true)
         end
       end
     end
@@ -166,5 +178,4 @@ class Admin::CommunityMembershipsController < Admin::AdminBaseController
       "desc" #default
     end
   end
-
 end

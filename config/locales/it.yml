@@ -52,9 +52,13 @@ it:
         community_name: ~
         edit_community_name_description: ~
         community_slogan: ~
+        community_slogan_display: ~
         edit_community_slogan_description: ~
+        edit_community_slogan_description_hideable: ~
         community_description: ~
+        community_description_display: ~
         edit_community_description_description: ~
+        edit_community_description_description_hideable: ~
         community_search_placeholder: ~
         edit_community_search_placeholder_description: ~
         private_community_homepage_content: ~
@@ -80,6 +84,7 @@ it:
         edit_community_look_and_feel: ~
         community_logo: Logo
         community_logo_icon: ~
+        community_logo_icon_mobile: ~
         community_cover_photo: "Immagine di copertina"
         small_community_cover_photo: ~
         favicon: ~
@@ -94,6 +99,7 @@ it:
         logo_instructions_text_with_dimensions_no_placing: ~
         logo_icon_instructions_text_with_dimensions: ~
         logo_icon_instructions_text_with_dimensions_no_placing: ~
+        logo_mobile_icon_instructions_text_with_dimensions: ~
         cover_photo_visibility: ~
         cover_photo_instructions_text_with_dimensions: ~
         small_cover_photo_visibility: ~
@@ -114,6 +120,7 @@ it:
         invalid_color_code: "Il codice del colore deve contenere 6 numeri o lettere A-F, per esempio D96E21"
         custom_head_script: ~
         custom_head_script_instructions_text: ~
+        current_image: ~
       edit_text_instructions:
         edit_text_instructions: ~
       edit_welcome_email:
@@ -255,6 +262,8 @@ it:
         searchpage: ~
       social_media:
         social_media: ~
+        logo: ~
+        logo_info: ~
         twitter_handle: "Nome utente di Twitter"
         twitter_handle_info_text: "Il nominativo del profilo Twitter del tuo negozio online (se ne hai uno). Sarà menzionato quando le persone premeranno il bottone di Twitter nella pagina dell'annuncio."
         twitter_handle_info_text_with_instructions: ~
@@ -271,6 +280,7 @@ it:
         invalid_facebook_connect_secret: ~
         enable_facebook_login: ~
         save: "Salva impostazioni"
+        add_another_image: ~
       analytics:
         analytics: ~
         google_analytics_key: ~
@@ -371,11 +381,35 @@ it:
           receiver: ~
           status: ~
           grade: ~
-          note: ~
+          text: ~
         status:
           waiting: ~
           skipped: ~
           published: ~
+          blocked: ~
+        form:
+          review_text: ~
+          save: ~
+          cancel: ~
+          delete_review: ~
+          block_review: ~
+          confirm_modify: ~
+          deleting_info: ~
+          blocking_info: ~
+      listings:
+        listings: ~
+        headers:
+          title: ~
+          author: ~
+          created: ~
+          updated: ~
+          category: ~
+          status: ~
+        open: ~
+        closed: ~
+        expired: ~
+      user_fields:
+        user_fields: ~
     custom_fields:
       edit:
         edit_listing_field: ~
@@ -429,6 +463,32 @@ it:
         dropdown: ~
         checkbox_group: ~
         date: ~
+        file: ~
+        location: ~
+    person_custom_fields:
+      saving_failed: ~
+      index:
+        user_fields: ~
+        field_title: ~
+        field_type: ~
+        signup: ~
+        public: ~
+        add_new_field: ~
+        save: ~
+        cancel: ~
+        minimum_value: ~
+        maximum_value: ~
+        allow_decimals: ~
+        add_option: ~
+      new:
+        new_user_field: ~
+      form:
+        field_required:
+          this_field_is_required: ~
+          this_field_is_required_checkbox: ~
+          this_field_is_public: ~
+      edit:
+        edit_user_field: ~
     emails:
       new:
         send_email_to_members: ~
@@ -443,6 +503,7 @@ it:
           title: ~
           options:
             all_users: ~
+            posting_allowed: ~
             with_listing: ~
             with_listing_no_payment: ~
             with_payment_no_listing: ~
@@ -534,6 +595,7 @@ it:
         night: "Per notte"
         week: "Per settimana"
         month: "Per mese"
+        unit: ~
       can_not_find: ~
       add_custom_unit: ~
       delete_custom_unit: Elimina
@@ -1535,6 +1597,8 @@ it:
         other: "Il sito web sarà offline per %{count} minuti."
       automatically_logged_out_please_sign_in: "Log out automatico. Per favore effettua nuovamente il login."
       stripe_you_account_balance_is_not_0: ~
+      visit_admin: ~
+      visit_admin_link: ~
     settings:
       account: Account
       notifications: Notifiche
@@ -1749,6 +1813,7 @@ it:
       night: "Numero di notti:"
       week: "Numero di settimane:"
       month: "Numero di mesi:"
+      unit: ~
       custom: "Quantità:"
     quantity_placeholder: Quantità
     please_comment: Commenta
@@ -1800,6 +1865,7 @@ it:
       night: notte
       week: settimana
       month: mese
+      unit: ~
     verification_required:
       verification_required: "Richiesta verifica"
   listing_conversations:
@@ -1971,6 +2037,7 @@ it:
       create_account_with_facebook: "Crea un account tramite Facebook"
       OR: O
       signup_with_email: "Iscriviti con l'indirizzo e-mail"
+      this_field_will_be_publicly_visible: ~
     profile_feedback:
       grade: "grado:"
       and_gave_following_feedback: "e dare il successivo feedback"
@@ -2123,6 +2190,7 @@ it:
       display_name: "Nome da mostrare"
       display_name_description: "Se rappresenti un'organizzazione, puoi scegliere di visualizzarne il nome. Il nome dell'organizzazione è utilizzato e visualizzato dagli altri utenti al posto del tuo nome e cognome ."
       location_description: "Puoi specificare la tua posizione esatta o, per esempio, solo il codice di avviamento postale. Per favore, aggiungi almeno il tuo CAP. Puoi anche selezionare una posizione dalla mappa sotto."
+      profile_picture_description: ~
       phone_number: "Numero di telefono"
       profile_picture: "Immagine del profilo"
       postal_code: CAP
@@ -2135,6 +2203,7 @@ it:
       default_in_listing: "(usato solo come impostazione di base quando crei un nuovo annuncio)"
       invisible: "(non visibile ad altri utenti)"
       image_is_processing: "L'immagine di profilo è pronta. Per favore, ricarica tra un po' di tempo la pagina."
+      shown_in_your_public_profile: ~
     save_information: "Salva le informazioni"
   shipping_address:
     shipping_address: "Indirizzo di consegna"
@@ -2388,6 +2457,10 @@ it:
       legal_name: Nome
       first_name: ~
       last_name: ~
+      first_name_kana: ~
+      last_name_kana: ~
+      first_name_kanji: ~
+      last_name_kanji: ~
       country: Nazione
       birth_date: "Data di nascita"
       ssn_last_4: ~
@@ -2403,6 +2476,20 @@ it:
       save_details: "Salva dettagli"
       edit: "Modifica dettagli"
       cancel: Cancella
+      gender: ~
+      phone_number: ~
+      address_kana_postal_code: ~
+      address_kana_state: ~
+      address_kana_city: ~
+      address_kana_town: ~
+      address_kana_line1: ~
+      address_kanji_postal_code: ~
+      address_kanji_state: ~
+      address_kanji_city: ~
+      address_kanji_town: ~
+      address_kanji_line1: ~
+      male: ~
+      female: ~
     form_bank:
       bank_account_number: "Numero conto corrente"
       bank_routing_number: ~
@@ -2445,9 +2532,9 @@ it:
     paypal: ~
     bank_account_details: "Per ricevere denaro sul tuo conto corrente, devi fornire i tuoi dettagli bancari. I tuoi clienti potranno pagare con carta."
     add_bank_details: "Aggiungi dettagli bancari"
-    can_accept_stripe_and_paypal: ~
-    to_accept_paypal: ~
-    connect_paypal: ~
+    can_accept_stripe_and_paypal: "Puoi scegliere se ricevere il pagamento sul tuo conto corrente bancario o sul tuo profilo PayPal."
+    to_accept_paypal: "Per ricevere denaro sul tuo conto PayPal, devi fornire i dettagli del tuo profilo PayPal. I tuoi clienti potranno pagare con PayPal."
+    connect_paypal: "Aggiungi dettagli PayPal"
     wrong_setup: ~
     invalid_bank_account_number: "Ti preghiamo di controllare che il conto corrente sia stato inserito correttamente e coincida con la tua nazione"
     invalid_postal_code: "Codice postale non valido per %{country}"

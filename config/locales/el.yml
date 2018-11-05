@@ -52,9 +52,13 @@ el:
         community_name: Όνομα
         edit_community_name_description: ~
         community_slogan: Slogan
+        community_slogan_display: ~
         edit_community_slogan_description: ~
+        edit_community_slogan_description_hideable: ~
         community_description: Περιγραφή
+        community_description_display: ~
         edit_community_description_description: ~
+        edit_community_description_description_hideable: ~
         community_search_placeholder: ~
         edit_community_search_placeholder_description: ~
         private_community_homepage_content: ~
@@ -80,6 +84,7 @@ el:
         edit_community_look_and_feel: "Αλλαγή της εμφάνισης της κοινότητας \"%{community_name}\""
         community_logo: Λογότυπο
         community_logo_icon: Λογότυπο
+        community_logo_icon_mobile: ~
         community_cover_photo: Εξώφυλλο
         small_community_cover_photo: ~
         favicon: ~
@@ -94,6 +99,7 @@ el:
         logo_instructions_text_with_dimensions_no_placing: ~
         logo_icon_instructions_text_with_dimensions: "Το μέγεθος του λογότυπου πρέπει να είναι %{width}x%{height} px."
         logo_icon_instructions_text_with_dimensions_no_placing: ~
+        logo_mobile_icon_instructions_text_with_dimensions: ~
         cover_photo_visibility: ~
         cover_photo_instructions_text_with_dimensions: "Το μέγεθος της φωτογραφίας εξώφυλλου θα γίνει %{width}x%{height} pixels και ψηλότερες εικόνες θα περικοπούν στο κέντρο."
         small_cover_photo_visibility: ~
@@ -114,6 +120,7 @@ el:
         invalid_color_code: "Ο κωδικός του χρώματος πρέπει να αποτελείται από 6 χαρακτήρες, αριθμούς ή γράμματα από A-F, για παράδειγμα D96E21."
         custom_head_script: ~
         custom_head_script_instructions_text: ~
+        current_image: ~
       edit_text_instructions:
         edit_text_instructions: ~
       edit_welcome_email:
@@ -255,6 +262,8 @@ el:
         searchpage: ~
       social_media:
         social_media: ~
+        logo: ~
+        logo_info: ~
         twitter_handle: ~
         twitter_handle_info_text: ~
         twitter_handle_info_text_with_instructions: ~
@@ -271,6 +280,7 @@ el:
         invalid_facebook_connect_secret: ~
         enable_facebook_login: ~
         save: ~
+        add_another_image: ~
       analytics:
         analytics: ~
         google_analytics_key: ~
@@ -371,11 +381,35 @@ el:
           receiver: ~
           status: ~
           grade: ~
-          note: ~
+          text: ~
         status:
           waiting: ~
           skipped: ~
           published: ~
+          blocked: ~
+        form:
+          review_text: ~
+          save: ~
+          cancel: ~
+          delete_review: ~
+          block_review: ~
+          confirm_modify: ~
+          deleting_info: ~
+          blocking_info: ~
+      listings:
+        listings: ~
+        headers:
+          title: ~
+          author: ~
+          created: ~
+          updated: ~
+          category: ~
+          status: ~
+        open: ~
+        closed: ~
+        expired: ~
+      user_fields:
+        user_fields: ~
     custom_fields:
       edit:
         edit_listing_field: ~
@@ -429,6 +463,32 @@ el:
         dropdown: ~
         checkbox_group: ~
         date: ~
+        file: ~
+        location: ~
+    person_custom_fields:
+      saving_failed: ~
+      index:
+        user_fields: ~
+        field_title: ~
+        field_type: ~
+        signup: ~
+        public: ~
+        add_new_field: ~
+        save: ~
+        cancel: ~
+        minimum_value: ~
+        maximum_value: ~
+        allow_decimals: ~
+        add_option: ~
+      new:
+        new_user_field: ~
+      form:
+        field_required:
+          this_field_is_required: ~
+          this_field_is_required_checkbox: ~
+          this_field_is_public: ~
+      edit:
+        edit_user_field: ~
     emails:
       new:
         send_email_to_members: "Στείλτε ένα μήνυμα ηλεκτρονικού ταχυδρομείου στα μέλη"
@@ -443,6 +503,7 @@ el:
           title: ~
           options:
             all_users: ~
+            posting_allowed: ~
             with_listing: ~
             with_listing_no_payment: ~
             with_payment_no_listing: ~
@@ -534,6 +595,7 @@ el:
         night: ~
         week: ~
         month: ~
+        unit: ~
       can_not_find: ~
       add_custom_unit: ~
       delete_custom_unit: ~
@@ -1529,6 +1591,8 @@ el:
       images_are_processing: ~
       automatically_logged_out_please_sign_in: ~
       stripe_you_account_balance_is_not_0: ~
+      visit_admin: ~
+      visit_admin_link: ~
     settings:
       account: Λογαριασμός
       notifications: Ειδοποιήσεις
@@ -1743,6 +1807,7 @@ el:
       night: ~
       week: ~
       month: ~
+      unit: ~
       custom: ~
     quantity_placeholder: ~
     please_comment: Σχολίασε
@@ -1794,6 +1859,7 @@ el:
       night: ~
       week: ~
       month: ~
+      unit: ~
     verification_required:
       verification_required: ~
   listing_conversations:
@@ -1965,6 +2031,7 @@ el:
       create_account_with_facebook: "Συνδεθείτε μέσω Facebook"
       OR: ~
       signup_with_email: ~
+      this_field_will_be_publicly_visible: ~
     profile_feedback:
       grade: "βαθμός:"
       and_gave_following_feedback: "και έδωσε αυτή την κριτική"
@@ -2115,6 +2182,7 @@ el:
       display_name: ~
       display_name_description: ~
       location_description: "Μπορείτε να συμπληρώσετε είτε την ακριβή τοποθεσία σας είτε μόνο τον ταχυδρομικό σας κωδικό. Παρακαλούμε να συμπληρώσετε τουλάχιστον τον ταχυδρομικό σας κωδικό. Εναλλακτικά, μπορείτε να διαλέξετε την τοποθεσία σας από τον χάρτη."
+      profile_picture_description: ~
       phone_number: Τηλέφωνο
       profile_picture: "Εικόνα προφίλ"
       postal_code: "Ταχυδρομικός κώδικας"
@@ -2127,6 +2195,7 @@ el:
       default_in_listing: ~
       invisible: ~
       image_is_processing: ~
+      shown_in_your_public_profile: ~
     save_information: Αποθήκευση
   shipping_address:
     shipping_address: ~
@@ -2361,6 +2430,10 @@ el:
       legal_name: ~
       first_name: ~
       last_name: ~
+      first_name_kana: ~
+      last_name_kana: ~
+      first_name_kanji: ~
+      last_name_kanji: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
@@ -2376,6 +2449,20 @@ el:
       save_details: ~
       edit: ~
       cancel: ~
+      gender: ~
+      phone_number: ~
+      address_kana_postal_code: ~
+      address_kana_state: ~
+      address_kana_city: ~
+      address_kana_town: ~
+      address_kana_line1: ~
+      address_kanji_postal_code: ~
+      address_kanji_state: ~
+      address_kanji_city: ~
+      address_kanji_town: ~
+      address_kanji_line1: ~
+      male: ~
+      female: ~
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~

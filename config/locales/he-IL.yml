@@ -58,9 +58,13 @@ he-IL:
         community_name: "שם האתר"
         edit_community_name_description: "שם האתר שלך. זה מוצג למשתמשים בהודעות דוא\"ל ובמקומות אחרים."
         community_slogan: "סיסמת האתר"
+        community_slogan_display: ~
         edit_community_slogan_description: "זה מוצג בדף הבית של האתר עבור משתמשים שאינם מחוברים.‎%{see_how_it_looks_like}‎"
+        edit_community_slogan_description_hideable: ~
         community_description: "תיאור האתר"
+        community_description_display: ~
         edit_community_description_description: "זה מוצג בדף הבית של האתר עבור משתמשים שאינם מחוברים. ‎%{see_how_it_looks_like}‎"
+        edit_community_description_description_hideable: ~
         community_search_placeholder: "חפש טקסט עזרה"
         edit_community_search_placeholder_description: ~
         private_community_homepage_content: ~
@@ -86,6 +90,7 @@ he-IL:
         edit_community_look_and_feel: "ערוך את המראה והתחושה של האתר \"‎%{community_name}‎\""
         community_logo: לוגו
         community_logo_icon: "לוגו עבור רשתות חברתיות ומכשירים ניידים"
+        community_logo_icon_mobile: ~
         community_cover_photo: "תמונת רקע"
         small_community_cover_photo: "תמונת שער קטנה"
         favicon: ~
@@ -100,6 +105,7 @@ he-IL:
         logo_instructions_text_with_dimensions_no_placing: ~
         logo_icon_instructions_text_with_dimensions: "לוגו מרובע זה יוצג כאשר אנשים משתפים את האתר שלך ב- Facebook, כאשר הם מציגים את האתר שלך במכשיר נייד או כאשר הם מסמלים את האתר שלך למסך דף הבית של המכשיר הנייד. על המאפיינים להיות (לפחות)‎%{height}‎‎%{width}‎."
         logo_icon_instructions_text_with_dimensions_no_placing: ~
+        logo_mobile_icon_instructions_text_with_dimensions: ~
         cover_photo_visibility: "תמונת השער מוצגת בדף הבית עבור משתמשים שאינם מחוברים."
         cover_photo_instructions_text_with_dimensions: "התמונה תשנה את גודלה ל - ‎%{height}‎‎%{width}‎ פיקסל ותמונות גבוהות יותר ייחתכו באמצע. ‎%{see_how_it_looks_like}‎"
         small_cover_photo_visibility: "תמונת שער קטנה מוצגת בכל הדפים, למעט בדף הבית עבור משתמשים שאינם מחוברים."
@@ -120,6 +126,7 @@ he-IL:
         invalid_color_code: "קוד צבע צריך להכיל 6 מספרים או אותיות A-F, לדוגמה D96E21"
         custom_head_script: "סקריפט מותאם אישית"
         custom_head_script_instructions_text: "סקריפט זה מוזרק בתוך התג <head> של כל דף, וניתן להשתמש בו כדי להוסיף CSS, JavaScript או HTML מותאמים אישית. שים לב ששינויים עתידיים ב- Sharetribe עשויים להפוך את הסקריפט שלך לבלתי תואם."
+        current_image: ~
       edit_text_instructions:
         edit_text_instructions: "טקסטים להוראה"
       edit_welcome_email:
@@ -261,6 +268,8 @@ he-IL:
         searchpage: ~
       social_media:
         social_media: ~
+        logo: ~
+        logo_info: ~
         twitter_handle: ~
         twitter_handle_info_text: ~
         twitter_handle_info_text_with_instructions: ~
@@ -277,6 +286,7 @@ he-IL:
         invalid_facebook_connect_secret: ~
         enable_facebook_login: ~
         save: ~
+        add_another_image: ~
       analytics:
         analytics: ~
         google_analytics_key: ~
@@ -377,11 +387,35 @@ he-IL:
           receiver: ~
           status: ~
           grade: ~
-          note: ~
+          text: ~
         status:
           waiting: ~
           skipped: ~
           published: ~
+          blocked: ~
+        form:
+          review_text: ~
+          save: ~
+          cancel: ~
+          delete_review: ~
+          block_review: ~
+          confirm_modify: ~
+          deleting_info: ~
+          blocking_info: ~
+      listings:
+        listings: ~
+        headers:
+          title: ~
+          author: ~
+          created: ~
+          updated: ~
+          category: ~
+          status: ~
+        open: ~
+        closed: ~
+        expired: ~
+      user_fields:
+        user_fields: ~
     custom_fields:
       edit:
         edit_listing_field: "ערוך את ‎%{field_name}‎"
@@ -435,6 +469,32 @@ he-IL:
         dropdown: "התפריט הנפתח"
         checkbox_group: ~
         date: תאריך
+        file: ~
+        location: ~
+    person_custom_fields:
+      saving_failed: ~
+      index:
+        user_fields: ~
+        field_title: ~
+        field_type: ~
+        signup: ~
+        public: ~
+        add_new_field: ~
+        save: ~
+        cancel: ~
+        minimum_value: ~
+        maximum_value: ~
+        allow_decimals: ~
+        add_option: ~
+      new:
+        new_user_field: ~
+      form:
+        field_required:
+          this_field_is_required: ~
+          this_field_is_required_checkbox: ~
+          this_field_is_public: ~
+      edit:
+        edit_user_field: ~
     emails:
       new:
         send_email_to_members: "שלח אימייל למשתמשים"
@@ -449,6 +509,7 @@ he-IL:
           title: ~
           options:
             all_users: ~
+            posting_allowed: ~
             with_listing: ~
             with_listing_no_payment: ~
             with_payment_no_listing: ~
@@ -540,6 +601,7 @@ he-IL:
         night: ללילה
         week: לשבוע
         month: לחודש
+        unit: ~
       can_not_find: ~
       add_custom_unit: ~
       delete_custom_unit: ~
@@ -1537,6 +1599,8 @@ he-IL:
       images_are_processing: ~
       automatically_logged_out_please_sign_in: ~
       stripe_you_account_balance_is_not_0: ~
+      visit_admin: ~
+      visit_admin_link: ~
     settings:
       account: חשבון
       notifications: התראות
@@ -1751,6 +1815,7 @@ he-IL:
       night: ~
       week: "מספר שבועות:"
       month: "מספר חודשים:"
+      unit: ~
       custom: ~
     quantity_placeholder: ~
     please_comment: תגובה
@@ -1802,6 +1867,7 @@ he-IL:
       night: ~
       week: שבוע
       month: חודש
+      unit: ~
     verification_required:
       verification_required: "נדרש אימות"
   listing_conversations:
@@ -1973,6 +2039,7 @@ he-IL:
       create_account_with_facebook: "התחבר באמצעות פייסבוק"
       OR: או
       signup_with_email: "צור/י חשבון באמצעות כתובת הדואר האלקטרוני"
+      this_field_will_be_publicly_visible: ~
     profile_feedback:
       grade: "ציון:"
       and_gave_following_feedback: "ונתן את המשוב הבא"
@@ -2123,6 +2190,7 @@ he-IL:
       display_name: "שם לתצוגה"
       display_name_description: "אם אתה מייצג חברה, אתה יכול להשתמש בשם החברה כשם לתצוגה באתר. שם זה מוצג למשתמשים אחרים במקום השם הפרטי ושם המשפחה שלך."
       location_description: "לדוגמה תל אביב"
+      profile_picture_description: ~
       phone_number: "מספר טלפון"
       profile_picture: "תמונת פרופיל"
       postal_code: מיקוד
@@ -2135,6 +2203,7 @@ he-IL:
       default_in_listing: "משמש רק בתור ברירת מחדל בעת יצירת רשימה חדשה"
       invisible: "לא יוצג למשתמשים אחרים"
       image_is_processing: ~
+      shown_in_your_public_profile: ~
     save_information: "שמור פרטים"
   shipping_address:
     shipping_address: "כתובת למשלוח"
@@ -2376,6 +2445,10 @@ he-IL:
       legal_name: ~
       first_name: ~
       last_name: ~
+      first_name_kana: ~
+      last_name_kana: ~
+      first_name_kanji: ~
+      last_name_kanji: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
@@ -2391,6 +2464,20 @@ he-IL:
       save_details: ~
       edit: ~
       cancel: ~
+      gender: ~
+      phone_number: ~
+      address_kana_postal_code: ~
+      address_kana_state: ~
+      address_kana_city: ~
+      address_kana_town: ~
+      address_kana_line1: ~
+      address_kanji_postal_code: ~
+      address_kanji_state: ~
+      address_kanji_city: ~
+      address_kanji_town: ~
+      address_kanji_line1: ~
+      male: ~
+      female: ~
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~

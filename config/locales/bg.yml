@@ -52,9 +52,13 @@ bg:
         community_name: ~
         edit_community_name_description: ~
         community_slogan: ~
+        community_slogan_display: "Покажи слогана в своята начална страница"
         edit_community_slogan_description: ~
+        edit_community_slogan_description_hideable: "Това се показва в браузери, търсачки и социални мрежи. Можеш също да го покажеш в своята начална страница за онези потребители които не са логнати. %{see_how_it_looks_like}"
         community_description: ~
+        community_description_display: "Покажи описанието в своята начална страница"
         edit_community_description_description: ~
+        edit_community_description_description_hideable: "Това се показва в браузери, търсачки и социални мрежи. Можеш също да го покажеш в своята начална страница за онези потребители които не са логнати. %{see_how_it_looks_like}"
         community_search_placeholder: ~
         edit_community_search_placeholder_description: ~
         private_community_homepage_content: ~
@@ -80,6 +84,7 @@ bg:
         edit_community_look_and_feel: ~
         community_logo: ~
         community_logo_icon: ~
+        community_logo_icon_mobile: "Лого за началния екран при мобилни устройства"
         community_cover_photo: ~
         small_community_cover_photo: ~
         favicon: ~
@@ -94,6 +99,7 @@ bg:
         logo_instructions_text_with_dimensions_no_placing: ~
         logo_icon_instructions_text_with_dimensions: ~
         logo_icon_instructions_text_with_dimensions_no_placing: ~
+        logo_mobile_icon_instructions_text_with_dimensions: "Това квадратно лого ще бъде показано в мобилните устройства когато хората добавят Вашия сайт като любим \"bookmark\". Препоръчителните размери са %{width}x%{height}px."
         cover_photo_visibility: ~
         cover_photo_instructions_text_with_dimensions: ~
         small_cover_photo_visibility: ~
@@ -114,6 +120,7 @@ bg:
         invalid_color_code: ~
         custom_head_script: ~
         custom_head_script_instructions_text: ~
+        current_image: ~
       edit_text_instructions:
         edit_text_instructions: ~
       edit_welcome_email:
@@ -255,6 +262,8 @@ bg:
         searchpage: ~
       social_media:
         social_media: ~
+        logo: Лого
+        logo_info: "Тази снимка се използва когато някой споделя Вашия домейн в социалните мрежи (Facebook, Twitter, LinkedIn).За по-добри резултати е препоръчително да бъде в съотношение 2:1 и минимален размер от %{width} x %{height} px"
         twitter_handle: ~
         twitter_handle_info_text: "Потребителско име в Twitter на Вашият пазар(Ако имате такова). Ще бъде видимо, когато някой използва tweet бутона на страницата на Вашата обява."
         twitter_handle_info_text_with_instructions: ~
@@ -271,6 +280,7 @@ bg:
         invalid_facebook_connect_secret: ~
         enable_facebook_login: ~
         save: ~
+        add_another_image: "Добави снимка"
       analytics:
         analytics: ~
         google_analytics_key: ~
@@ -371,11 +381,35 @@ bg:
           receiver: ~
           status: ~
           grade: ~
-          note: ~
+          text: Текст
         status:
           waiting: ~
           skipped: ~
           published: ~
+          blocked: Блокирано
+        form:
+          review_text: "Прегледай текста"
+          save: Запази
+          cancel: Отмени
+          delete_review: "Изтрий коментара"
+          block_review: "Блокирай коментара"
+          confirm_modify: "Сигурен ли си че искаш да промениш/изтриеш този коментар? След промяната/истриването няма да имаш възможност да възстановиш тази информация"
+          deleting_info: "Изтриването на коментар позволява на неговия автор да остави нов коментар за дадената транзакция."
+          blocking_info: "Блокирането на коментара след неговото изтриване не позволява на неговия автор да остави нов коментар за същата транзакция."
+      listings:
+        listings: ~
+        headers:
+          title: ~
+          author: ~
+          created: ~
+          updated: ~
+          category: ~
+          status: ~
+        open: ~
+        closed: ~
+        expired: ~
+      user_fields:
+        user_fields: ~
     custom_fields:
       edit:
         edit_listing_field: ~
@@ -429,6 +463,32 @@ bg:
         dropdown: ~
         checkbox_group: ~
         date: ~
+        file: ~
+        location: ~
+    person_custom_fields:
+      saving_failed: ~
+      index:
+        user_fields: ~
+        field_title: ~
+        field_type: ~
+        signup: Регистация
+        public: Публично
+        add_new_field: ~
+        save: ~
+        cancel: ~
+        minimum_value: ~
+        maximum_value: ~
+        allow_decimals: ~
+        add_option: ~
+      new:
+        new_user_field: ~
+      form:
+        field_required:
+          this_field_is_required: ~
+          this_field_is_required_checkbox: ~
+          this_field_is_public: ~
+      edit:
+        edit_user_field: ~
     emails:
       new:
         send_email_to_members: ~
@@ -443,6 +503,7 @@ bg:
           title: ~
           options:
             all_users: ~
+            posting_allowed: "Потребители които имат позволение да публикуват обяви"
             with_listing: ~
             with_listing_no_payment: ~
             with_payment_no_listing: ~
@@ -534,6 +595,7 @@ bg:
         night: "За нощ"
         week: "За седмица"
         month: "За месец"
+        unit: "За единица"
       can_not_find: ~
       add_custom_unit: ~
       delete_custom_unit: ~
@@ -1529,6 +1591,8 @@ bg:
       images_are_processing: ~
       automatically_logged_out_please_sign_in: ~
       stripe_you_account_balance_is_not_0: ~
+      visit_admin: "Желаете ли да %{link}?"
+      visit_admin_link: "Посетете Вашия панел като Администратор"
     settings:
       account: Сметка
       notifications: Известия
@@ -1743,6 +1807,7 @@ bg:
       night: ~
       week: ~
       month: ~
+      unit: ~
       custom: ~
     quantity_placeholder: ~
     please_comment: Коментар
@@ -1794,6 +1859,7 @@ bg:
       night: ~
       week: ~
       month: ~
+      unit: Единица
     verification_required:
       verification_required: ~
   listing_conversations:
@@ -1962,6 +2028,7 @@ bg:
       create_account_with_facebook: "Регистрирай се чрез Facebook"
       OR: ~
       signup_with_email: "Регистрирай се с ел.поща."
+      this_field_will_be_publicly_visible: ~
     profile_feedback:
       grade: "оценка:"
       and_gave_following_feedback: ~
@@ -2112,6 +2179,7 @@ bg:
       display_name: ~
       display_name_description: ~
       location_description: ~
+      profile_picture_description: ~
       phone_number: ~
       profile_picture: ~
       postal_code: ~
@@ -2124,6 +2192,7 @@ bg:
       default_in_listing: ~
       invisible: ~
       image_is_processing: ~
+      shown_in_your_public_profile: ~
     save_information: ~
   shipping_address:
     shipping_address: ~
@@ -2355,6 +2424,10 @@ bg:
       legal_name: ~
       first_name: ~
       last_name: ~
+      first_name_kana: Име
+      last_name_kana: Фамилия
+      first_name_kanji: Име
+      last_name_kanji: Фамилия
       country: ~
       birth_date: ~
       ssn_last_4: ~
@@ -2370,6 +2443,20 @@ bg:
       save_details: ~
       edit: ~
       cancel: ~
+      gender: Пол
+      phone_number: "Телефонен номер"
+      address_kana_postal_code: "Пощенски код"
+      address_kana_state: Щат
+      address_kana_city: Град
+      address_kana_town: Град
+      address_kana_line1: Адрес
+      address_kanji_postal_code: "Пощенски код"
+      address_kanji_state: Щат
+      address_kanji_city: Град
+      address_kanji_town: Град
+      address_kanji_line1: Адрес
+      male: Мъж
+      female: Жена
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~

@@ -62,9 +62,13 @@ zh-HK:
         community_name: 市集名稱
         edit_community_name_description: 你的集市名稱。它將在郵件和其他不同地方顯示給用戶。
         community_slogan: 市集標語
+        community_slogan_display: ~
         edit_community_slogan_description: "這將顯示在未登錄用戶的集市主頁。%{see_how_it_looks_like}"
+        edit_community_slogan_description_hideable: ~
         community_description: 市集描述
+        community_description_display: ~
         edit_community_description_description: "這將顯示在未登錄用戶的集市主頁。%{see_how_it_looks_like}"
+        edit_community_description_description_hideable: ~
         community_search_placeholder: ~
         edit_community_search_placeholder_description: "這將在集市的主頁以佔位符文本顯示在搜索欄。%{see_how_it_looks_like}"
         private_community_homepage_content: 不公開市集主頁的內容
@@ -90,6 +94,7 @@ zh-HK:
         edit_community_look_and_feel: "修改市集%{community_name}的外觀"
         community_logo: 卓面標示
         community_logo_icon: ~
+        community_logo_icon_mobile: ~
         community_cover_photo: 封面照片
         small_community_cover_photo: ~
         favicon: ~
@@ -104,6 +109,7 @@ zh-HK:
         logo_instructions_text_with_dimensions_no_placing: ~
         logo_icon_instructions_text_with_dimensions: "當人們在Facebook分享你的網站時，或者當他們在行動裝置上查看你的網站，又或者他們把你的網站收藏在他們的行動裝置首頁中，皆將會顯示這個方形的圖示。它的尺寸必須（至少）是%{width}x%{height}像素。"
         logo_icon_instructions_text_with_dimensions_no_placing: ~
+        logo_mobile_icon_instructions_text_with_dimensions: ~
         cover_photo_visibility: 封面照片將顯示在未登錄用戶的首頁
         cover_photo_instructions_text_with_dimensions: ~
         small_cover_photo_visibility: 小的封面照片將顯示在未登錄用戶的首頁之外的所有頁面。
@@ -124,6 +130,7 @@ zh-HK:
         invalid_color_code: 颜色代码需要包含6个数字或者字符A-F，比如D96E21
         custom_head_script: ~
         custom_head_script_instructions_text: ~
+        current_image: ~
       edit_text_instructions:
         edit_text_instructions: ~
       edit_welcome_email:
@@ -265,6 +272,8 @@ zh-HK:
         searchpage: ~
       social_media:
         social_media: ~
+        logo: ~
+        logo_info: ~
         twitter_handle: ~
         twitter_handle_info_text: 當人們使用信息頁面上的tweet按鈕時，你的集市Twitter帳號的用戶名（如果你有的話）將被提及。
         twitter_handle_info_text_with_instructions: "當人們使用信息頁面上的Tweet按鈕時，你的集市Twitter帳號的用戶名（如果你有的話）將被提及。%{instructions_link}"
@@ -281,6 +290,7 @@ zh-HK:
         invalid_facebook_connect_secret: ~
         enable_facebook_login: ~
         save: 保存設定
+        add_another_image: ~
       analytics:
         analytics: ~
         google_analytics_key: ~
@@ -381,11 +391,35 @@ zh-HK:
           receiver: ~
           status: ~
           grade: ~
-          note: ~
+          text: ~
         status:
           waiting: ~
           skipped: ~
           published: ~
+          blocked: ~
+        form:
+          review_text: ~
+          save: ~
+          cancel: ~
+          delete_review: ~
+          block_review: ~
+          confirm_modify: ~
+          deleting_info: ~
+          blocking_info: ~
+      listings:
+        listings: ~
+        headers:
+          title: ~
+          author: ~
+          created: ~
+          updated: ~
+          category: ~
+          status: ~
+        open: ~
+        closed: ~
+        expired: ~
+      user_fields:
+        user_fields: ~
     custom_fields:
       edit:
         edit_listing_field: ~
@@ -439,6 +473,32 @@ zh-HK:
         dropdown: ~
         checkbox_group: ~
         date: ~
+        file: ~
+        location: ~
+    person_custom_fields:
+      saving_failed: ~
+      index:
+        user_fields: ~
+        field_title: ~
+        field_type: ~
+        signup: ~
+        public: ~
+        add_new_field: ~
+        save: ~
+        cancel: ~
+        minimum_value: ~
+        maximum_value: ~
+        allow_decimals: ~
+        add_option: ~
+      new:
+        new_user_field: ~
+      form:
+        field_required:
+          this_field_is_required: ~
+          this_field_is_required_checkbox: ~
+          this_field_is_public: ~
+      edit:
+        edit_user_field: ~
     emails:
       new:
         send_email_to_members: 發送通知郵件給用戶
@@ -453,6 +513,7 @@ zh-HK:
           title: ~
           options:
             all_users: ~
+            posting_allowed: ~
             with_listing: ~
             with_listing_no_payment: ~
             with_payment_no_listing: ~
@@ -552,6 +613,7 @@ zh-HK:
         night: ~
         week: ~
         month: ~
+        unit: ~
       can_not_find: "找不到id是%{id}的交易類型"
       add_custom_unit: "+ 增加一個自定義的價錢單位"
       delete_custom_unit: ~
@@ -1550,6 +1612,8 @@ zh-HK:
         other: "網站即將在%{count}內關閉以進行維護"
       automatically_logged_out_please_sign_in: 你已自動登出，請再次登入。
       stripe_you_account_balance_is_not_0: ~
+      visit_admin: ~
+      visit_admin_link: ~
     settings:
       account: 帳戶
       notifications: 通知
@@ -1764,6 +1828,7 @@ zh-HK:
       night: 晚：
       week: 星期：
       month: 月：
+      unit: ~
       custom: 數量：
     quantity_placeholder: 數量
     please_comment: 評論
@@ -1815,6 +1880,7 @@ zh-HK:
       night: 晚
       week: 星期
       month: 月
+      unit: ~
     verification_required:
       verification_required: 需要驗証
   listing_conversations:
@@ -1985,6 +2051,7 @@ zh-HK:
       create_account_with_facebook: 以Facebook進行登記
       OR: 或者
       signup_with_email: 以電郵來註冊
+      this_field_will_be_publicly_visible: ~
     profile_feedback:
       grade: 評分：
       and_gave_following_feedback: 並且給予以下回應
@@ -2135,6 +2202,7 @@ zh-HK:
       display_name: ~
       display_name_description: ~
       location_description: 您可以選擇提供你的確實地址，或只提供您的郵政編號。請至少提供您的郵政編號。您也可以通過以下地圖選擇一個地點。
+      profile_picture_description: ~
       phone_number: 電話號碼
       profile_picture: 個人頭像
       postal_code: 郵遞區號
@@ -2147,6 +2215,7 @@ zh-HK:
       default_in_listing: （只有在發布新訊息時作默認使用）
       invisible: （不顯示给其他用户）
       image_is_processing: "我們正在處理你的個人頭像, 請於稍後時間重新整理頁面  "
+      shown_in_your_public_profile: ~
     save_information: 保存訊息
   shipping_address:
     shipping_address: ~
@@ -2384,6 +2453,10 @@ zh-HK:
       legal_name: ~
       first_name: ~
       last_name: ~
+      first_name_kana: ~
+      last_name_kana: ~
+      first_name_kanji: ~
+      last_name_kanji: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
@@ -2399,6 +2472,20 @@ zh-HK:
       save_details: ~
       edit: ~
       cancel: ~
+      gender: ~
+      phone_number: ~
+      address_kana_postal_code: ~
+      address_kana_state: ~
+      address_kana_city: ~
+      address_kana_town: ~
+      address_kana_line1: ~
+      address_kanji_postal_code: ~
+      address_kanji_state: ~
+      address_kanji_city: ~
+      address_kanji_town: ~
+      address_kanji_line1: ~
+      male: ~
+      female: ~
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~

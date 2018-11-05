@@ -52,9 +52,13 @@ ar:
         community_name: "اسم السوق الإلكتروني"
         edit_community_name_description: ~
         community_slogan: "شعار السوق الإلكتروني"
+        community_slogan_display: ~
         edit_community_slogan_description: ~
+        edit_community_slogan_description_hideable: ~
         community_description: "وصف السوق الإلكتروني"
+        community_description_display: ~
         edit_community_description_description: ~
+        edit_community_description_description_hideable: ~
         community_search_placeholder: "ابحث في نص المساعدة"
         edit_community_search_placeholder_description: ~
         private_community_homepage_content: ~
@@ -80,6 +84,7 @@ ar:
         edit_community_look_and_feel: "‎%{community_name}‎ تحرير مظهر السوق الإلكتروني"
         community_logo: الشعار
         community_logo_icon: "شعار لوسائل التواصل الاجتماعي وأجهزة المحمول"
+        community_logo_icon_mobile: ~
         community_cover_photo: "صورة الواجهة"
         small_community_cover_photo: "صورة غطاء صغيرة"
         favicon: "شعار المتصفح"
@@ -94,6 +99,7 @@ ar:
         logo_instructions_text_with_dimensions_no_placing: ~
         logo_icon_instructions_text_with_dimensions: ~
         logo_icon_instructions_text_with_dimensions_no_placing: ~
+        logo_mobile_icon_instructions_text_with_dimensions: ~
         cover_photo_visibility: "صورة الغطاء تظهر في الصفحة الرئيسية للمستخدمين الغير مسجلين."
         cover_photo_instructions_text_with_dimensions: ~
         small_cover_photo_visibility: "صورة الغطاء المصغرة تظهر في كل الصفحات ما عدا الصفحة الرئيسية للمستخدمين المسجلين"
@@ -114,6 +120,7 @@ ar:
         invalid_color_code: "رمز اللون يجب أن يحتوي على ٦ أرقام أو أحرف A-F، مثال: D96E21"
         custom_head_script: "كود مخصص"
         custom_head_script_instructions_text: ~
+        current_image: ~
       edit_text_instructions:
         edit_text_instructions: تعليمات
       edit_welcome_email:
@@ -255,6 +262,8 @@ ar:
         searchpage: "صفحة بحث جديدة تحتاج إلى شريط علوي جديد"
       social_media:
         social_media: "وسائل التواصل الاجتماعي"
+        logo: ~
+        logo_info: ~
         twitter_handle: ~
         twitter_handle_info_text: ~
         twitter_handle_info_text_with_instructions: ~
@@ -271,6 +280,7 @@ ar:
         invalid_facebook_connect_secret: ~
         enable_facebook_login: ~
         save: "حفظ الإعدادات"
+        add_another_image: ~
       analytics:
         analytics: تحليلات
         google_analytics_key: ~
@@ -371,11 +381,35 @@ ar:
           receiver: ~
           status: ~
           grade: ~
-          note: ~
+          text: ~
         status:
           waiting: ~
           skipped: ~
           published: ~
+          blocked: ~
+        form:
+          review_text: ~
+          save: ~
+          cancel: ~
+          delete_review: ~
+          block_review: ~
+          confirm_modify: ~
+          deleting_info: ~
+          blocking_info: ~
+      listings:
+        listings: ~
+        headers:
+          title: ~
+          author: ~
+          created: ~
+          updated: ~
+          category: ~
+          status: ~
+        open: ~
+        closed: ~
+        expired: ~
+      user_fields:
+        user_fields: ~
     custom_fields:
       edit:
         edit_listing_field: "‎%{field_name}‎ تعديل حقل الإعلان"
@@ -429,6 +463,32 @@ ar:
         dropdown: "قائمة عرض"
         checkbox_group: "اختيار متعدد"
         date: تاريخ
+        file: ~
+        location: ~
+    person_custom_fields:
+      saving_failed: ~
+      index:
+        user_fields: ~
+        field_title: ~
+        field_type: ~
+        signup: ~
+        public: ~
+        add_new_field: ~
+        save: ~
+        cancel: ~
+        minimum_value: ~
+        maximum_value: ~
+        allow_decimals: ~
+        add_option: ~
+      new:
+        new_user_field: ~
+      form:
+        field_required:
+          this_field_is_required: ~
+          this_field_is_required_checkbox: ~
+          this_field_is_public: ~
+      edit:
+        edit_user_field: ~
     emails:
       new:
         send_email_to_members: "أرسل رسالة إلى مستخدمين"
@@ -443,6 +503,7 @@ ar:
           title: "لمن تريد أن ترسل الرسالة؟"
           options:
             all_users: "كل المستخدمين"
+            posting_allowed: ~
             with_listing: "االمستخدمون الذين وضعو إعلان واحد على الأقل"
             with_listing_no_payment: "المستخدمون الذين وضعو إعلان واحد على الأقل ولكن دون تفاصيل طريقة الدفع"
             with_payment_no_listing: "المستخدمون الذين وضعو تفاصيل طريقة الدفع ولكن دون الإعلان"
@@ -548,6 +609,7 @@ ar:
         night: بالليلة
         week: بالأسبوع
         month: بالشهر
+        unit: ~
       can_not_find: ~
       add_custom_unit: "+أضف وحدة سعر خاصة..."
       delete_custom_unit: حذف
@@ -1552,6 +1614,8 @@ ar:
       images_are_processing: "نقوم حاليا بمعالجة الصور. ستكون جاهزة في دقائق."
       automatically_logged_out_please_sign_in: "لقدم تم تسجيل خروجك تلقائيا. يرجى تسجيل الدخول مرة أخرى."
       stripe_you_account_balance_is_not_0: ~
+      visit_admin: ~
+      visit_admin_link: ~
     settings:
       account: الحساب
       notifications: إشعارات
@@ -1766,6 +1830,7 @@ ar:
       night: "عدد الليالي:"
       week: "عدد الأسابيع"
       month: "عدد الأشهر"
+      unit: ~
       custom: "الكمية:"
     quantity_placeholder: الكمية
     please_comment: تعليق
@@ -1817,6 +1882,7 @@ ar:
       night: ليلة
       week: أسبوع
       month: شهر
+      unit: ~
     verification_required:
       verification_required: "يحتاج إلى تأكيد"
   listing_conversations:
@@ -1987,6 +2053,7 @@ ar:
       create_account_with_facebook: "سجل باستخدام حساب فيسبوك"
       OR: أو
       signup_with_email: "تسجيل الدخول بالبريد الإلكتروني"
+      this_field_will_be_publicly_visible: ~
     profile_feedback:
       grade: "الدرجة:"
       and_gave_following_feedback: "وقام بإعطاء الرأي التالي"
@@ -2137,6 +2204,7 @@ ar:
       display_name: "الأسم المعروض"
       display_name_description: "إذا كنت تمثل شركة أو مؤسسة، يمكنك استعمال اسم المنشأة كالاسم المعروض في إعلانك. الإسم المعروض هو ما يراه المستخدمين الآخرين وزوار الموقع عوضا عن اسمك الأول والثاني"
       location_description: "يمكنك إضافة عنوان الشارع أو المدينة أو الرمز البريدي. من الجيد إضافة بلدك عندما تضيف موقعك. مثلا: \"٢١٢١٢ جدة، المملكة العربية السعودية\" أو \"٢٠٠٠ شارع التحلية، جدة، المملكة العربية السعودية\""
+      profile_picture_description: ~
       phone_number: "رقم الهاتف"
       profile_picture: "صورة الملف الشخصي"
       postal_code: "الرمز البريدي"
@@ -2149,6 +2217,7 @@ ar:
       default_in_listing: "يستخدم غالبا عند إنشاء إعلان جديد"
       invisible: "غير مرئي للمشتركين الآخرين"
       image_is_processing: ~
+      shown_in_your_public_profile: ~
     save_information: "حفظ المعلومات"
   shipping_address:
     shipping_address: "عنوان الشحن"
@@ -2424,6 +2493,10 @@ ar:
       legal_name: ~
       first_name: ~
       last_name: ~
+      first_name_kana: ~
+      last_name_kana: ~
+      first_name_kanji: ~
+      last_name_kanji: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
@@ -2439,6 +2512,20 @@ ar:
       save_details: ~
       edit: ~
       cancel: ~
+      gender: ~
+      phone_number: ~
+      address_kana_postal_code: ~
+      address_kana_state: ~
+      address_kana_city: ~
+      address_kana_town: ~
+      address_kana_line1: ~
+      address_kanji_postal_code: ~
+      address_kanji_state: ~
+      address_kanji_city: ~
+      address_kanji_town: ~
+      address_kanji_line1: ~
+      male: ~
+      female: ~
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~

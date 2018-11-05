@@ -67,9 +67,13 @@ sv:
         community_name: Marknadsplatsnamn
         edit_community_name_description: "Namnet på din marknadsplats. Detta ser användarna i e-postmeddelanden och på många andra ställen."
         community_slogan: "Marknadsplats slogan"
+        community_slogan_display: ~
         edit_community_slogan_description: "Detta visas på startsidan av marknadsplatsen för användare som inte är inloggade. %{see_how_it_looks_like}."
+        edit_community_slogan_description_hideable: ~
         community_description: "Marknadsplats beskrivning"
+        community_description_display: ~
         edit_community_description_description: "Detta visas på startsidan av marknadsplatsen och för användarna som inte är inloggade. %{see_how_it_looks_like}."
+        edit_community_description_description_hideable: ~
         community_search_placeholder: "Sök hjälp text"
         edit_community_search_placeholder_description: "Detta visas på startsidan av marknadsplatsen som en text i sökfältet. %{see_how_it_looks_like}"
         private_community_homepage_content: "Privat marknadsplats startsidans innehåll"
@@ -95,6 +99,7 @@ sv:
         edit_community_look_and_feel: "Redigera marknadsplatsen \"%{community_name}\""
         community_logo: Logotyp
         community_logo_icon: "Logotyp för sociala nätverk och mobila enheter"
+        community_logo_icon_mobile: ~
         community_cover_photo: Omslagsbild
         small_community_cover_photo: "Liten omslagsbild"
         favicon: Favicon
@@ -109,6 +114,7 @@ sv:
         logo_instructions_text_with_dimensions_no_placing: "Logotypens storlek skall vara %{height}x%{width} pixlar"
         logo_icon_instructions_text_with_dimensions: "Denna fyrkantiga logotyp kommer att visas när folk delar din sida på Facebook, när de ser din sida på en mobil enhet eller när de lägger ett bokmärke av din sida till hemmaskärmen på mobila enheter. Dimensionerna måste vara (minst) %{width}x%{height}px."
         logo_icon_instructions_text_with_dimensions_no_placing: "Denna fyrkantiga logotyp kommer att visas när folk delar din sida på Facebook, när de ser din sida på en mobil enhet eller när de lägger ett bokmärke av din sida till hemmaskärmen på mobila enheter. Dimensionerna måste vara (minst) %{width}x%{height}px."
+        logo_mobile_icon_instructions_text_with_dimensions: ~
         cover_photo_visibility: "Omslagsbilden visas på startsidan för personer som inte är inloggade."
         cover_photo_instructions_text_with_dimensions: "Bilden kommer att skalas ner till %{width}x%{height} pixlar och större bilder kommer att beskäras i mitten. %{see_how_it_looks_like}."
         small_cover_photo_visibility: "Den lilla omslagsbilden visas på alla sidor förutom på startsidan för de som inte är inloggade."
@@ -129,6 +135,7 @@ sv:
         invalid_color_code: "Färgkod bör innehålla 6 siffror eller bokstäver A-F t ex D96E21"
         custom_head_script: "Anpassat script"
         custom_head_script_instructions_text: "Detta script finns under <head> taggen för varje sida och kan användas för att lägga in anpassad CSS, Javascript eller HTML. Vänligen notera att framtida ändringar av Sharetribe kan göra ditt script inkomplett."
+        current_image: ~
       edit_text_instructions:
         edit_text_instructions: Instruktionstext
       edit_welcome_email:
@@ -270,6 +277,8 @@ sv:
         searchpage: "Ny sök sida (kräver den nya menyn)"
       social_media:
         social_media: "Social media"
+        logo: ~
+        logo_info: ~
         twitter_handle: "Twitter användarnamn"
         twitter_handle_info_text: "Användarnamn på ditt Twitterkonto på din marknadsplats (om du har någon). Detta kommer nämnas när folk använder tweetknappen på annonssidan."
         twitter_handle_info_text_with_instructions: "Användarnamnet på Twitterkontot på din marknadsplats (om du har ett). Det kommer att nämnas när folk använder tweetknappen på annonssidan. %{instructions_link}."
@@ -286,6 +295,7 @@ sv:
         invalid_facebook_connect_secret: "Klientsäkerhet ska bara innehålla nummer och bokstäver från a till f."
         enable_facebook_login: "Tillåt användare att logga in med sina Facebook konton"
         save: "Spara inställningar"
+        add_another_image: ~
       analytics:
         analytics: Analytics
         google_analytics_key: "Google Analytics tracking ID"
@@ -386,11 +396,35 @@ sv:
           receiver: Mottagare
           status: Status
           grade: Betyg
-          note: Recension
+          text: ~
         status:
           waiting: "Väntar på recension"
           skipped: "Hoppade över"
           published: Publicerad
+          blocked: ~
+        form:
+          review_text: ~
+          save: ~
+          cancel: ~
+          delete_review: ~
+          block_review: ~
+          confirm_modify: ~
+          deleting_info: ~
+          blocking_info: ~
+      listings:
+        listings: ~
+        headers:
+          title: ~
+          author: ~
+          created: ~
+          updated: ~
+          category: ~
+          status: ~
+        open: ~
+        closed: ~
+        expired: ~
+      user_fields:
+        user_fields: ~
     custom_fields:
       edit:
         edit_listing_field: "Redigera annonsfält %{field_name}"
@@ -444,6 +478,32 @@ sv:
         dropdown: Rullgardin
         checkbox_group: Kryssrutor
         date: Datum
+        file: ~
+        location: ~
+    person_custom_fields:
+      saving_failed: ~
+      index:
+        user_fields: ~
+        field_title: ~
+        field_type: ~
+        signup: ~
+        public: ~
+        add_new_field: ~
+        save: ~
+        cancel: ~
+        minimum_value: ~
+        maximum_value: ~
+        allow_decimals: ~
+        add_option: ~
+      new:
+        new_user_field: ~
+      form:
+        field_required:
+          this_field_is_required: ~
+          this_field_is_required_checkbox: ~
+          this_field_is_public: ~
+      edit:
+        edit_user_field: ~
     emails:
       new:
         send_email_to_members: "Skicka e-post till användare"
@@ -458,6 +518,7 @@ sv:
           title: "Vem vill du skicka e-post till?"
           options:
             all_users: "Alla användare"
+            posting_allowed: ~
             with_listing: "Användare som har skapat åtminstone en annons"
             with_listing_no_payment: "Användare som har skapat åtminstone en annons men inte satt till sin betalinformation"
             with_payment_no_listing: "Användare som har satt till sin betalinformation men inte skapat en annons"
@@ -561,6 +622,7 @@ sv:
         night: "Per natt"
         week: "Per vecka"
         month: "Per månad"
+        unit: ~
       can_not_find: "Det går inte att hitta ordertyp med id: %{id}"
       add_custom_unit: "+ Lägg till en anpassningsbar prisenhet..."
       delete_custom_unit: "ta bort"
@@ -1570,6 +1632,8 @@ sv:
         other: "Hemsidan kommer gå offline for underhåll om %{count} minuter"
       automatically_logged_out_please_sign_in: "Du har blivit utloggad. Vänligen logga in igen."
       stripe_you_account_balance_is_not_0: ~
+      visit_admin: ~
+      visit_admin_link: ~
     settings:
       account: Konto
       notifications: Aviseringar
@@ -1784,6 +1848,7 @@ sv:
       night: "Antal nätter:"
       week: "Antal veckor:"
       month: "Antal månader:"
+      unit: ~
       custom: "Antal:"
     quantity_placeholder: Antal
     please_comment: Kommentar
@@ -1835,6 +1900,7 @@ sv:
       night: natt
       week: vecka
       month: månad
+      unit: ~
     verification_required:
       verification_required: "Verifiering krävs"
   listing_conversations:
@@ -2006,6 +2072,7 @@ sv:
       create_account_with_facebook: "Registrera dig med Facebook"
       OR: ELLER
       signup_with_email: "Registrering med e-post"
+      this_field_will_be_publicly_visible: ~
     profile_feedback:
       grade: "betyg:"
       and_gave_following_feedback: "och gav följande feedback"
@@ -2156,6 +2223,7 @@ sv:
       display_name: "Synligt namn"
       display_name_description: "Om du representerar en organisation kan du använda organisationens namn som synligt namn. Det synliga namnet visas åt andra användare istället för ditt för och efternamn."
       location_description: "Du kan antingen ange hela din address eller t ex bara ditt postnummer eller stad. Det är också bra att lägga till ditt land då du väljer en plats. Till exempel: 753 20 Uppsala Sverige\" Eller \"Gustav Adolfsgatan 34,Malmö, Sverige\"."
+      profile_picture_description: ~
       phone_number: Telefonnummer
       profile_picture: Profilbild
       postal_code: Postnummer
@@ -2168,6 +2236,7 @@ sv:
       default_in_listing: "(används endast som standard när man skapar en ny annons)"
       invisible: "(visas inte för andra användare)"
       image_is_processing: "Din profilbild förbereds. Den kommer vara klar om några minuter."
+      shown_in_your_public_profile: ~
     save_information: "Spara information"
   shipping_address:
     shipping_address: Leveransadress
@@ -2374,7 +2443,7 @@ sv:
       page_of_pages: "av %{total_number_of_pages}"
     topbar:
       menu: Meny
-      more: Mera
+      more: Mer
       search_placeholder: Sök...
       search_location_placeholder: Plats
       user: Användare
@@ -2452,6 +2521,10 @@ sv:
       legal_name: Namn
       first_name: ~
       last_name: ~
+      first_name_kana: ~
+      last_name_kana: ~
+      first_name_kanji: ~
+      last_name_kanji: ~
       country: Land
       birth_date: Födelsedatum
       ssn_last_4: "Personnumrets fyra sista tecken"
@@ -2467,6 +2540,20 @@ sv:
       save_details: Spara
       edit: Redigera
       cancel: Avbryt
+      gender: ~
+      phone_number: ~
+      address_kana_postal_code: ~
+      address_kana_state: ~
+      address_kana_city: ~
+      address_kana_town: ~
+      address_kana_line1: ~
+      address_kanji_postal_code: ~
+      address_kanji_state: ~
+      address_kanji_city: ~
+      address_kanji_town: ~
+      address_kanji_line1: ~
+      male: ~
+      female: ~
     form_bank:
       bank_account_number: Bankkontonummer
       bank_routing_number: Clearingnummer
