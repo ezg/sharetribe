@@ -253,7 +253,14 @@ class Transaction < ApplicationRecord
   end
 
   def commission
-    [((item_total + shipping_price) * (commission_from_seller / 100.0) unless commission_from_seller.nil?),
+    tot = Money.new(0, item_total.currency)
+    if shipping_price.nil?
+      tot = (item_total) * (commission_from_seller / 100.0)
+    else
+      tot = (item_total + shipping_price) * (commission_from_seller / 100.0)
+    end
+
+    [(tot unless commission_from_seller.nil?),
      (minimum_commission unless minimum_commission.nil? || minimum_commission.zero?),
      Money.new(0, item_total.currency)]
       .compact
