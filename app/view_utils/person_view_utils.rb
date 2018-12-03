@@ -89,13 +89,13 @@ module PersonViewUtils
     when matches([__, __, true])
       [display_name]
     when matches([__, true, __, "first_name_with_initial"])
-      first_name_with_initial(first_name, last_name, username)
+      [username] #first_name_with_initial(first_name, last_name, username)
     when matches([__, true, __, "first_name_only"])
-      [first_name]
+      [username] #[first_name]
     when matches([__, true, __, "full_name"])
-      full_name(first_name, last_name)
+      [username] #full_name(first_name, last_name)
     when matches([__, true])
-      first_name_with_initial(first_name, last_name, username)
+      [username] # first_name_with_initial(first_name, last_name, username)
     else
       [username]
     end
@@ -123,16 +123,12 @@ module PersonViewUtils
     [first_name.to_s, last_name.to_s]
   end
 
-  #def first_name_with_initial(first_name, last_name)
-  #  if last_name.present?
-  #    [first_name.to_s, last_name[0, 1].to_s]
-  #  else
-  #    [first_name]
-  #  end
-  #end
-
-  def first_name_with_initial(first_name, last_name, username)
-    [username]
+  def first_name_with_initial(first_name, last_name)
+    if last_name.present?
+      [first_name.to_s, last_name[0, 1].to_s]
+    else
+      [first_name]
+    end
   end
   
 end
