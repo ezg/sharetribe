@@ -26,6 +26,7 @@ module StripeService::API
           sharetribe_mode: stripe_api.charges_mode(tx.community_id)
         }
 
+
         auth_fee = Money.new(0, "USD")
         if tx.authenticate_fee
           auth_fee = tx.authenticate_fee
@@ -102,7 +103,6 @@ module StripeService::API
       end
 
       def payment_details(tx)
-        Rails.logger.error("YYYYYYY 222222")
         payment = PaymentStore.get(tx.community_id, tx.id)
         unless payment
           total          = order_total(tx)
@@ -117,7 +117,6 @@ module StripeService::API
             subtotal: total - fee,
           }
         end
-
         # in case of :destination payments, gateway fee is always charged from admin account, we cannot know it upfront, as transfer to seller = total - commission, is immediate
         # in case of :separate payments, gateway fee is charged from admin account, but then deducted from seller on delayed transfer
         gateway_fee = if stripe_api.charges_mode(tx.community_id) == :destination
@@ -191,7 +190,11 @@ module StripeService::API
       end
 
       def order_commission(tx)
-        TransactionService::Transaction.calculate_commission(tx.unit_price * tx.listing_quantity + tx.shipping_price, 
+        tot = tx.unit_price * tx.listing_quantity
+        if tx.shipping_price
+          tot = tx.shipping_price
+        end
+        TransactionService::Transaction.calculate_commission(tot, 
           tx.commission_from_seller, tx.minimum_commission)
       end
 
