@@ -48,7 +48,8 @@ common: &default_settings
   # The newrelic agent generates its own log file to keep its logging
   # information separate from that of your application.  Specify its
   # log level here.
-  log_level: info
+  log_level: error
+  log_limit_in_kbytes: 200000
 
   # The newrelic agent communicates with the RPM service via http by
   # default.  If you want to communicate via https to increase
