@@ -1,5 +1,5 @@
 - fields = [:name, :phone, :street1, :street2, :postal_code, :city, :state_or_province, :country]
-- authenticate_address = {country: "USA", country_code: "US", name: "Reswings", street1: "123 Our Street", postal_code: "12345", city: "San Francisco", state_or_province: "California"}
+- authenticate_address = {country: "USA", country_code: "US", name: "Reswings", street1: "88 S Broadway", street2: "Unit 1403", postal_code: "94030", city: "Millbrae", state_or_province: "CA"}
 
 - if authenticate_address && authenticate_address.slice(*fields).values.any?
   - authenticate_address[:country] ||= CountryI18nHelper.translate_country(authenticate_address[:country_code])
