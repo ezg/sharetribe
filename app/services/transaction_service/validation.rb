@@ -77,7 +77,7 @@ module TransactionService
 
     class AuthenticationTotal
       def total
-        Money.new(2000, "USD")
+        Money.new(100, "USD") #AUTH FEE
       end
     end
 
