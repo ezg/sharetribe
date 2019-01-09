@@ -192,7 +192,7 @@ module StripeService::API
       def order_commission(tx)
         tot = tx.unit_price * tx.listing_quantity
         if tx.shipping_price
-          tot = tx.shipping_price
+          tot = tot + tx.shipping_price
         end
         TransactionService::Transaction.calculate_commission(tot, 
           tx.commission_from_seller, tx.minimum_commission)

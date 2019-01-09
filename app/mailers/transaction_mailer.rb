@@ -74,6 +74,11 @@ class TransactionMailer < ActionMailer::Base
     community ||= Community.find(transaction.community_id)
 
     payment = TransactionService::Transaction.payment_details(transaction)
+    auth_fee = nil
+    if transaction.authenticate
+      auth_fee = TransactionService::Validation::AuthenticationTotal.new.total 
+    end
+    
     payment_total = payment[:payment_total]
     service_fee = Maybe(payment[:charged_commission]).or_else(Money.new(0, payment_total.currency))
     gateway_fee = payment[:payment_gateway_fee]
@@ -106,6 +111,7 @@ class TransactionMailer < ActionMailer::Base
                    subtotal: MoneyViewUtils.to_humanized(transaction.item_total),
                    payment_total: MoneyViewUtils.to_humanized(payment_total),
                    shipping_total: MoneyViewUtils.to_humanized(transaction.shipping_price),
+                   authenticate_fee: MoneyViewUtils.to_humanized(auth_fee),
                    payment_service_fee: MoneyViewUtils.to_humanized(-service_fee),
                    payment_gateway_fee: MoneyViewUtils.to_humanized(-gateway_fee),
                    payment_seller_gets: MoneyViewUtils.to_humanized(you_get),
@@ -125,6 +131,11 @@ class TransactionMailer < ActionMailer::Base
     buyer_model ||= Person.find(transaction.starter_id)
     community ||= Community.find(transaction.community_id)
     payment = TransactionService::Transaction.payment_details(transaction)
+
+    auth_fee = nil
+    if transaction.authenticate
+      auth_fee = TransactionService::Validation::AuthenticationTotal.new.total 
+    end
 
     prepare_template(community, buyer_model, "email_about_new_payments")
     with_locale(buyer_model.locale, community.locales.map(&:to_sym), community.id) do
@@ -151,6 +162,7 @@ class TransactionMailer < ActionMailer::Base
                    duration: transaction.booking.present? ? transaction.listing_quantity : nil,
                    subtotal: MoneyViewUtils.to_humanized(transaction.item_total),
                    shipping_total: MoneyViewUtils.to_humanized(transaction.shipping_price),
+                   authenticate_fee: MoneyViewUtils.to_humanized(auth_fee),
                    payment_total: MoneyViewUtils.to_humanized(payment[:payment_total]),
                    recipient_full_name: seller_model.name(community),
                    recipient_given_name: PersonViewUtils.person_display_name_for_type(seller_model, "first_name_only"),

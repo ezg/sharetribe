@@ -1116,6 +1116,7 @@ en:
       duration: Duration
       quantity: Quantity
       subtotal: Subtotal
+      authentication_fee: "Authentication:"
       total: Total
       price: Price
       service_fee: "Service fee"

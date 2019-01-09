@@ -155,7 +155,8 @@ class AcceptPreauthorizedConversationsController < ApplicationController
   def render_payment_form(preselected_action, payment_type)
     community_country_code = LocalizationUtils.valid_country_code(@current_community.country)
     payment_details = TransactionService::Transaction.payment_details(@transaction)
-
+    is_actual_author = @transaction.listing_author_id == @current_user.id
+    
     render "accept", locals: {
       listing: @listing,
       sum: @transaction.item_total + (payment_details[:payment_gateway_fee] || 0),
@@ -167,6 +168,8 @@ class AcceptPreauthorizedConversationsController < ApplicationController
         person_id: @current_user.id,
         id: @transaction.id
       ),
+      is_actual_author: is_actual_author,
+      authenticate: @transaction.authenticate,
       preselected_action: preselected_action,
       paypal_fees_url: PaypalCountryHelper.fee_link(community_country_code),
       stripe_fees_url: "https://stripe.com/#{community_country_code.downcase}/pricing",

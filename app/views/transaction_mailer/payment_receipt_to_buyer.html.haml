@@ -44,6 +44,12 @@
             %td
               = t("emails.paypal_new_payment.shipping_total")
             %td= shipping_total
+                  
+        - if authenticate_fee.present?
+          %tr
+            %td
+              = t("emails.payment_receipt_to_payer.authentication_fee")
+            %td= authenticate_fee
 
         %tr{:style => "border-top: 1px solid black"}
           %td
