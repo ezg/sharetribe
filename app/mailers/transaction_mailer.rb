@@ -87,6 +87,9 @@ class TransactionMailer < ActionMailer::Base
     with_locale(seller_model.locale, community.locales.map(&:to_sym), community.id) do
 
       you_get = payment_total - service_fee - gateway_fee
+      if transaction.authenticate
+        you_get = you_get - auth_fee
+      end
 
       unit_type = Maybe(transaction).select { |t| t[:unit_type].present? }.map { |t| ListingViewUtils.translate_unit(t[:unit_type], t[:unit_tr_key]) }.or_else(nil)
       quantity_selector_label = Maybe(transaction).select { |t| t[:unit_type].present? }.map { |t| ListingViewUtils.translate_quantity(t[:unit_type], t[:unit_selector_tr_key]) }.or_else(nil)

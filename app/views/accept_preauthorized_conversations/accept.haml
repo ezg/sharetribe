@@ -30,6 +30,7 @@
     %p= t("conversations.accept.order_by",
           orderer_link: link_to_unless(@transaction.starter.deleted?, PersonViewUtils.person_display_name(@transaction.starter, @current_community), @transaction.starter)).html_safe
 
+  %h3 asfasf
   .conversation-price-info
     .conversation-totals
       - if @transaction.booking
@@ -96,11 +97,6 @@
           = t("conversations.accept.sum_label")
         %span.conversation-sum-value
           = MoneyViewUtils.to_humanized(sum)
-      .conversation-service-fee-wrapper
-        %span.conversation-service-fee-label
-          = t("conversations.accept.service_fee_label")
-        %span.conversation-service-fee-value
-          = "-#{MoneyViewUtils.to_humanized(fee)}"
 
       - if @transaction.shipping_price
         .conversation-shipping-price-wrapper
@@ -108,6 +104,12 @@
             = t("conversations.accept.shipping_price_label")
           %span.conversation-shipping-price-value
             = MoneyViewUtils.to_humanized(@transaction.shipping_price)
+
+      .conversation-service-fee-wrapper
+        %span.conversation-service-fee-label
+          = t("conversations.accept.service_fee_label")
+        %span.conversation-service-fee-value
+          = "-#{MoneyViewUtils.to_humanized(fee)}"
 
       - if @transaction.payment_gateway == :paypal || @transaction.payment_gateway == :stripe
         - if gateway_fee.present? && gateway_fee > 0

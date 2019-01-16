@@ -156,13 +156,19 @@ class AcceptPreauthorizedConversationsController < ApplicationController
     community_country_code = LocalizationUtils.valid_country_code(@current_community.country)
     payment_details = TransactionService::Transaction.payment_details(@transaction)
     is_actual_author = @transaction.listing_author_id == @current_user.id
-    
+    Rails.logger.error(payment_details)
+
+    seller_gets = payment_details[:total_price] - @transaction.commission
+    if @transaction.authenticate_fee
+      seller_gets -= @transaction.authenticate_fee
+    end
+
     render "accept", locals: {
       listing: @listing,
       sum: @transaction.item_total + (payment_details[:payment_gateway_fee] || 0),
       fee: @transaction.commission,
       gateway_fee: payment_details[:payment_gateway_fee],
-      seller_gets: payment_details[:total_price]- @transaction.commission,
+      seller_gets: seller_gets,
       form: @transaction,
       form_action: acceptance_preauthorized_person_message_path(
         person_id: @current_user.id,

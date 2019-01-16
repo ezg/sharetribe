@@ -369,6 +369,17 @@ class TransactionsController < ApplicationController
       show_subtotal = !!tx.booking || quantity.present? && quantity > 1 || tx.shipping_price.present?
       total_label = (tx.payment_process != :preauthorize) ? t("transactions.price") : t("transactions.total")
       payment = TransactionService::Transaction.payment_details(tx)
+      #Rails.logger.error(tx.authenticate_fee)
+
+      seller_gets = Maybe(tx.payment_total).or_else(payment[:total_price]) - tx.commission
+      if tx.authenticate_fee
+        seller_gets -= tx.authenticate_fee
+      end
+
+      total = Maybe(tx.payment_total).or_else(payment[:total_price])
+      #if (@transaction.listing_author_id == @current_user.id) && tx.authenticate_fee
+      #  total -= tx.authenticate_fee
+      #end
 
       TransactionViewUtils.price_break_down_locals({
         listing_price: tx.unit_price,
@@ -380,8 +391,8 @@ class TransactionsController < ApplicationController
         duration: booking ? tx.listing_quantity : nil,
         quantity: quantity,
         subtotal: show_subtotal ? tx.item_total : nil,
-        total: Maybe(tx.payment_total).or_else(payment[:total_price]),
-        seller_gets: Maybe(tx.payment_total).or_else(payment[:total_price]) - tx.commission,
+        total: total,
+        seller_gets: seller_gets,
         fee: tx.commission,
         authenticate_fee: tx.authenticate_fee,  
         shipping_price: tx.shipping_price,

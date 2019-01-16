@@ -60,7 +60,7 @@
       %span.initiate-transaction-sum-value
         = MoneyViewUtils.to_humanized(subtotal)
 
-  - if authenticate_fee.present?
+  - if !is_author && authenticate_fee.present?
     .initiate-transaction-authentication-fee-wrapper
       %span.initiate-transaction-authentication-fee-label
         = t("transactions.initiate.authentication-fee")
@@ -81,6 +81,13 @@
       %span.initiate-transaction-sum-value
         = MoneyViewUtils.to_humanized(total)
 
+    - if authenticate_fee.present? && authenticate_fee > 0
+      .initiate-transaction-authentication-fee-wrapper
+        %span.initiate-transaction-authentication-fee-label
+          = t("transactions.initiate.authentication-fee")
+        %span.initiate-transaction-authentication-fee-value
+          = "-#{MoneyViewUtils.to_humanized(authenticate_fee)}"
+
     - if fee.present? && fee > 0
       .initiate-transaction-sum-wrapper
         %span.initiate-transaction-sum-label
@@ -88,6 +95,7 @@
         %span.initiate-transaction-sum-value
           = "-#{MoneyViewUtils.to_humanized(fee)}"
 
+  -# %h3 buyer and seller sees this
   - if total.present?
     .initiate-transaction-total-wrapper
       %span.initiate-transaction-total-label
