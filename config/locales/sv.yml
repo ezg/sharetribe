@@ -183,27 +183,33 @@ sv:
       getting_started:
         getting_started: "Kom igång"
       available_languages:
+        cs: ~
+        da-DK: Danska
+        de: Tyska
         en: Engelska
         en-AU: "Engelska (Australien)"
         en-GB: "Engelska (Storbritannien)"
+        es: ~
+        es-ES: ~
+        fi: Finska
         fr: Franska
         fr-CA: "Franska (Kanada)"
-        es: "Spanska (Chile)"
-        es-ES: Spanska
-        pt-PT: Portugisiska
-        pt-BR: "Brasiliansk portugisiska"
-        nb: Norska
-        sv: Svenska
-        da-DK: Danska
-        fi: Finska
-        ru: Ryska
-        de: Tyska
         el: Grekiska
-        nl: Holländska
-        tr-TR: Turkiska
-        zh: Kinesiska
-        ja: Japanska
         it: Italienska
+        ja: Japanska
+        ko: ~
+        nb: Norska
+        nl: Holländska
+        pl: ~
+        pt-BR: "Brasiliansk portugisiska"
+        pt-PT: Portugisiska
+        ru: Ryska
+        sv: Svenska
+        th-TH: ~
+        tr-TR: Turkiska
+        vi: ~
+        zh: Kinesiska
+        zh-TW: ~
       settings:
         settings: Inställningar
         general: Allmänt
@@ -268,6 +274,22 @@ sv:
         reset_search: "Visa alla"
         for_search_terms: "för: %{terms}"
         this_makes_the_user_an_admin: ~
+        status_filter:
+          all: ~
+          selected: ~
+          selected_js: ~
+          admin: ~
+          banned: ~
+          posting_allowed: ~
+          accepted: ~
+          unconfirmed: ~
+          pending: ~
+        this_user_hasnt_confirmed_their_email_address: ~
+        unconfirmed_user: ~
+        resend: ~
+        cancel: ~
+        user_didnt_complete_the_signup_process: ~
+        pending_user: ~
       new_layout:
         new_layout: "Ny layout"
         description_roadmap_new: "När nya layout komponenter blir tillgängliga för din marknadsplats kan du välja om du vill börja använda den nya komponenten eller fortsätta använda den gamla. Du kan ändra detta när som helst från denna sida. Det rekommenderas att alltid använda den nya versionen, för den gamla kan tas bort i något skede. Om en komponent tas bort som du använder kommer du bli meddelad i förhand."
@@ -279,6 +301,12 @@ sv:
         social_media: "Social media"
         logo: ~
         logo_info: ~
+        social_media_title: ~
+        social_media_title_info: ~
+        link_for_facebook: ~
+        link_for_linkedin: ~
+        link_for_twitter: ~
+        social_media_description: ~
         twitter_handle: "Twitter användarnamn"
         twitter_handle_info_text: "Användarnamn på ditt Twitterkonto på din marknadsplats (om du har någon). Detta kommer nämnas när folk använder tweetknappen på annonssidan."
         twitter_handle_info_text_with_instructions: "Användarnamnet på Twitterkontot på din marknadsplats (om du har ett). Det kommer att nämnas när folk använder tweetknappen på annonssidan. %{instructions_link}."
@@ -307,8 +335,14 @@ sv:
         sharetribe_analytics_instructions_link_text: ~
         end_user_analytics: ~
         save: "Spara inställningar"
+      logo_link:
+        title: ~
+        info: ~
+        url: ~
+        placeholder: ~
       menu_links:
         menu_links: Menylänkar
+        menu_links_display: ~
         save: "Spara inställningar"
         add_menu_link: "Lägg till en ny länk till menyn"
         title_placeholder: Länktitel
@@ -321,6 +355,15 @@ sv:
         all: Alla
         max_number_of_links_info: "Link till %{about_page} visas alltid först i menyn"
         about_page: "\"om\" sidan"
+      default_menu_links:
+        title: ~
+        about_link_title: ~
+        contact_link_title: ~
+        invite_link_title: ~
+        info: ~
+        display_about: ~
+        display_contact: ~
+        display_invite: ~
       topbar:
         topbar: Menyn
         new_listing_button_label: "Skapa en ny annons knapptext"
@@ -329,6 +372,19 @@ sv:
         export_all_as_csv: "Exportera alla som CSV"
         processing_export: "Bearbetar export till CSV"
         transactions: "Visa transaktioner"
+        search_by_title_parties: ~
+        search: ~
+        reset_search: ~
+        status_filter:
+          all: ~
+          selected: ~
+          selected_js: ~
+          free: ~
+          confirmed: ~
+          paid: ~
+          canceled: ~
+          preauthorized: ~
+          rejected: ~
         headers:
           conversation: Konversationstråd
           listing: Annons
@@ -386,10 +442,18 @@ sv:
           other_party: Motpart
         participants: "Konversation: %{starter} med %{author}"
         profile: "%{author}s profil"
+        search_by_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
       testimonials:
         testimonials: "Visa recensioner"
         no_testimonials_found: ~
         displaying_xx_reviews: ~
+        search_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
         headers:
           transaction: Transaktion
           author: Författare
@@ -402,6 +466,16 @@ sv:
           skipped: "Hoppade över"
           published: Publicerad
           blocked: ~
+        status_filter:
+          selected: ~
+          all: ~
+          published: ~
+          positive: ~
+          negative: ~
+          skipped: ~
+          waiting: ~
+          blocked: ~
+          selected_js: ~
         form:
           review_text: ~
           save: ~
@@ -411,8 +485,28 @@ sv:
           confirm_modify: ~
           deleting_info: ~
           blocking_info: ~
+      invitations:
+        invitations: ~
+        used:
+          "yes": ~
+          "no": ~
+        headers:
+          sent_by: ~
+          message: ~
+          sent_to: ~
+          used: ~
+          date_sent: ~
       listings:
         listings: ~
+        search_by_title_author_category: ~
+        search: ~
+        reset_search: ~
+        status:
+          all: ~
+          selected_js: ~
+          open: ~
+          closed: ~
+          expired: ~
         headers:
           title: ~
           author: ~
@@ -425,6 +519,30 @@ sv:
         expired: ~
       user_fields:
         user_fields: ~
+      footer:
+        footer: ~
+        offer_pro: ~
+        upgrade_plan_link: ~
+        menu_links: ~
+        language: ~
+        title: ~
+        url: ~
+        add: ~
+        save: ~
+        footer_style: ~
+        footer_copyright: ~
+        footer_enabled: ~
+        social_links: ~
+        title_placeholder: ~
+        url_placeholder: ~
+        style:
+          dark: ~
+          light: ~
+          marketplace_color: ~
+          logo: ~
+        social:
+          title: ~
+          url: ~
     custom_fields:
       edit:
         edit_listing_field: "Redigera annonsfält %{field_name}"
@@ -1275,6 +1393,7 @@ sv:
       after: "måste vara efter %{restriction}"
       on_or_after: "måste vara exakt på eller efter %{restriction}"
       positive_number: "Lägg in ett nummer."
+      from_must_be_less_than_till: ~
   event_feed_events:
     accept:
       has_accepted_lend_item: "%{offerer_name} gick med på att låna ut %{listing_title} till %{requester_name} %{time_ago}."
@@ -1540,7 +1659,7 @@ sv:
       invitation_successfully_unsubscribed: "Avslutade prenumerationen av inbjudningsemail framgångsrikt"
       inviting_new_users_is_not_allowed_in_this_community: "Bjuda in nya användare är inte tillåtet."
       login_again: "Var vänlig logga in igen."
-      login_failed: "Inloggning misslyckades. Vänligen använd rätt upgifter."
+      login_failed: "Inloggning misslyckades. Vänligen använd rätt uppgifter."
       account_creation_successful: "Välkommen till %{service_name}, %{person_name}!"
       account_deleted: "Ditt konto är nu borttaget."
       login_successful: "Välkommen, %{person_name}!"
@@ -1559,7 +1678,7 @@ sv:
       listing_updated_successfully: "Annons uppdaterades"
       listing_updated_availability_management_enabled: "Annonsen uppdaterades framgångsrikt. Tillgänglighetshantering har blivit aktiverat."
       listing_updated_availability_management_disabled: "Annonsen uppdaterades framgångsrikt. Tillgänglighetshantering har blivit inaktiverad."
-      only_kassi_administrators_can_access_this_area: "Bara %{service_name} admin har åtkomst till denna sida"
+      only_kassi_administrators_can_access_this_area: ~
       only_listing_author_can_close_a_listing: "Bara ägaren av annonsen kan stänga annonsen"
       only_listing_author_can_edit_a_listing: "Bara ägaren av annonsen kan redigera annonsen"
       payment_successful: "Betalningen lyckades"
@@ -1642,6 +1761,8 @@ sv:
       paypal_payments: "PayPal betalningar"
       stripe_payments: Stripebetalningar
       payments: Betalningar
+      listings: ~
+      listings_search_placeholder: ~
   listings:
     bubble_listing_not_visible:
       listing_not_visible: "Du har inte behörighet att se denna annons."
@@ -1842,6 +1963,7 @@ sv:
       community_not_configured_for_payments: "%{service_name} har inte konfigurerats för betalningar, så du kan inte skapa nya annonser än. Vänligen %{contact_admin_link} för mer information."
       payment_settings_link: betalningsinställningar
       community_not_configured_for_payments_admin: "%{service_name} har inte konfigurerats för betalningar, så du kan inte lägga ut nya annonser än. Gå till %{payment_settings_link} för att fylla i betalningsdetaljer."
+      you_are_now_posting_a_listing_on_behalf_of: ~
     quantity:
       hour: "Antal timmar:"
       day: "Antal dagar:"
@@ -2112,6 +2234,8 @@ sv:
       show_all_listings: "Visa alla annonser"
       show_all_open_listings: "Visa alla öppna annonser"
       show_all_reviews: "Visa alla recensioner"
+      admin_actions: ~
+      post_listing_as: ~
     followed_people:
       you_follow_plural: "Du följer %{count} person"
       you_follow_singular: "Du följer %{count} personer"
@@ -2237,6 +2361,7 @@ sv:
       invisible: "(visas inte för andra användare)"
       image_is_processing: "Din profilbild förbereds. Den kommer vara klar om några minuter."
       shown_in_your_public_profile: ~
+      editing_profile_of: ~
     save_information: "Spara information"
   shipping_address:
     shipping_address: Leveransadress
@@ -2489,16 +2614,8 @@ sv:
       multi_page_html: "Visar %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> av <b>%{count}</b> totalt"
     person:
       community_members_entries_info:
-        single_page:
-          zero: "Ingen %{model} hittad"
-          one: "Visar %{accepted_count} accepterad %{accepted_model} och %{banned_count} avspärrad %{banned_model}"
-          other: "Visar %{accepted_count} accepterade %{accepted_model} och %{banned_count} avspärrade %{banned_model}\n"
-        single_page_html:
-          zero: "Ingen %{model} hittad"
-          one: "Visar <b> %{accepted_count} </b> accepterad %{accepted_model} och %{banned_count} avspärrad %{banned_model}"
-          other: "Visar <b>%{accepted_count}</b> accepterade %{accepted_model} och %{banned_count} avspärrade %{banned_model}\n"
-        multi_page: "Visar %{model} %{from} till %{to} av %{accepted_count} accepterade %{accepted_model} och %{banned_count}} avspärrade %{banned_model}"
-        multi_page_html: "Visar %{model} <b>%{from} till %{to} </b> av <b>%{accepted_count}</b> accepterade %{accepted_model} och %{banned_count}} avspärrade %{banned_model}"
+        multi_page: ~
+        multi_page_html: ~
   stripe_accounts:
     admin_account_not_connected: "Att använda %{service_name} betalningssystem för att ta emot betalningar är inte möjligt på grund av att online betalningar har inte blivit aktivetar för marknadsplatsen. Vänligen kontakta %{contact_admin_link} för information."
     contact_admin_link_text: "kontakta %{service_name} administratör"

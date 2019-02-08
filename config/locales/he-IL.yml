@@ -174,27 +174,33 @@ he-IL:
       getting_started:
         getting_started: ~
       available_languages:
+        cs: ~
+        da-DK: ~
+        de: ~
         en: ~
         en-AU: ~
         en-GB: ~
-        fr: ~
-        fr-CA: ~
         es: ~
         es-ES: ~
-        pt-PT: ~
-        pt-BR: ~
-        nb: ~
-        sv: ~
-        da-DK: ~
         fi: ~
-        ru: ~
-        de: ~
+        fr: ~
+        fr-CA: ~
         el: ~
-        nl: ~
-        tr-TR: ~
-        zh: ~
-        ja: ~
         it: ~
+        ja: ~
+        ko: ~
+        nb: ~
+        nl: ~
+        pl: ~
+        pt-BR: ~
+        pt-PT: ~
+        ru: ~
+        sv: ~
+        th-TH: ~
+        tr-TR: ~
+        vi: ~
+        zh: ~
+        zh-TW: ~
       settings:
         settings: הגדרות
         general: כללי
@@ -259,6 +265,22 @@ he-IL:
         reset_search: ~
         for_search_terms: ~
         this_makes_the_user_an_admin: ~
+        status_filter:
+          all: ~
+          selected: ~
+          selected_js: ~
+          admin: ~
+          banned: ~
+          posting_allowed: ~
+          accepted: ~
+          unconfirmed: ~
+          pending: ~
+        this_user_hasnt_confirmed_their_email_address: ~
+        unconfirmed_user: ~
+        resend: ~
+        cancel: ~
+        user_didnt_complete_the_signup_process: ~
+        pending_user: ~
       new_layout:
         new_layout: ~
         description_roadmap_new: ~
@@ -270,6 +292,12 @@ he-IL:
         social_media: ~
         logo: ~
         logo_info: ~
+        social_media_title: ~
+        social_media_title_info: ~
+        link_for_facebook: ~
+        link_for_linkedin: ~
+        link_for_twitter: ~
+        social_media_description: ~
         twitter_handle: ~
         twitter_handle_info_text: ~
         twitter_handle_info_text_with_instructions: ~
@@ -298,8 +326,14 @@ he-IL:
         sharetribe_analytics_instructions_link_text: ~
         end_user_analytics: ~
         save: ~
+      logo_link:
+        title: ~
+        info: ~
+        url: ~
+        placeholder: ~
       menu_links:
         menu_links: "תפריט קישורים"
+        menu_links_display: ~
         save: "שמור הגדרות"
         add_menu_link: "הוסף לינק חדש לתפריט"
         title_placeholder: "כותרת הלינק"
@@ -312,6 +346,15 @@ he-IL:
         all: ~
         max_number_of_links_info: ~
         about_page: ~
+      default_menu_links:
+        title: ~
+        about_link_title: ~
+        contact_link_title: ~
+        invite_link_title: ~
+        info: ~
+        display_about: ~
+        display_contact: ~
+        display_invite: ~
       topbar:
         topbar: "סרגל עליון"
         new_listing_button_label: "טקסט ל\"צור שירות חדש\""
@@ -320,6 +363,19 @@ he-IL:
         export_all_as_csv: ~
         processing_export: ~
         transactions: "הצג עסקאות"
+        search_by_title_parties: ~
+        search: ~
+        reset_search: ~
+        status_filter:
+          all: ~
+          selected: ~
+          selected_js: ~
+          free: ~
+          confirmed: ~
+          paid: ~
+          canceled: ~
+          preauthorized: ~
+          rejected: ~
         headers:
           conversation: ~
           listing: שירות
@@ -377,10 +433,18 @@ he-IL:
           other_party: "צד אחר"
         participants: שיחה
         profile: "‎%{author}‎ פרופיל"
+        search_by_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
       testimonials:
         testimonials: ~
         no_testimonials_found: ~
         displaying_xx_reviews: ~
+        search_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
         headers:
           transaction: ~
           author: ~
@@ -393,6 +457,16 @@ he-IL:
           skipped: ~
           published: ~
           blocked: ~
+        status_filter:
+          selected: ~
+          all: ~
+          published: ~
+          positive: ~
+          negative: ~
+          skipped: ~
+          waiting: ~
+          blocked: ~
+          selected_js: ~
         form:
           review_text: ~
           save: ~
@@ -402,8 +476,28 @@ he-IL:
           confirm_modify: ~
           deleting_info: ~
           blocking_info: ~
+      invitations:
+        invitations: ~
+        used:
+          "yes": ~
+          "no": ~
+        headers:
+          sent_by: ~
+          message: ~
+          sent_to: ~
+          used: ~
+          date_sent: ~
       listings:
         listings: ~
+        search_by_title_author_category: ~
+        search: ~
+        reset_search: ~
+        status:
+          all: ~
+          selected_js: ~
+          open: ~
+          closed: ~
+          expired: ~
         headers:
           title: ~
           author: ~
@@ -416,6 +510,30 @@ he-IL:
         expired: ~
       user_fields:
         user_fields: ~
+      footer:
+        footer: ~
+        offer_pro: ~
+        upgrade_plan_link: ~
+        menu_links: ~
+        language: ~
+        title: ~
+        url: ~
+        add: ~
+        save: ~
+        footer_style: ~
+        footer_copyright: ~
+        footer_enabled: ~
+        social_links: ~
+        title_placeholder: ~
+        url_placeholder: ~
+        style:
+          dark: ~
+          light: ~
+          marketplace_color: ~
+          logo: ~
+        social:
+          title: ~
+          url: ~
     custom_fields:
       edit:
         edit_listing_field: "ערוך את ‎%{field_name}‎"
@@ -1246,6 +1364,7 @@ he-IL:
       after: "חייב להיות אחרי ‎%{restriction}‎"
       on_or_after: "חייב להיות על או אחרי ‎%{restriction}‎"
       positive_number: ~
+      from_must_be_less_than_till: ~
   event_feed_events:
     accept:
       has_accepted_lend_item: "‎%{offerer_name}‎ הסכים להשאיל ‎%{listing_title}‎ ל‎%{requester_name}‎ ‎%{time_ago}‎"
@@ -1530,7 +1649,7 @@ he-IL:
       listing_updated_successfully: "המודעה עודכנה בהצלחה"
       listing_updated_availability_management_enabled: ~
       listing_updated_availability_management_disabled: ~
-      only_kassi_administrators_can_access_this_area: "הגישה ניתנת רק למנהלי ‎%{service_name}‎"
+      only_kassi_administrators_can_access_this_area: ~
       only_listing_author_can_close_a_listing: "רק מפרסם המודעה יכול לסגור את המודעה"
       only_listing_author_can_edit_a_listing: "רק מפרסם המודעה יכול לערוך את המודעה"
       payment_successful: "התשלום הצליח"
@@ -1609,6 +1728,8 @@ he-IL:
       paypal_payments: ~
       stripe_payments: ~
       payments: תשלומים
+      listings: ~
+      listings_search_placeholder: ~
   listings:
     bubble_listing_not_visible:
       listing_not_visible: "אין לך הרשאה לראות את המודעה."
@@ -1809,6 +1930,7 @@ he-IL:
       community_not_configured_for_payments: ~
       payment_settings_link: "הגדרות תשלום"
       community_not_configured_for_payments_admin: ~
+      you_are_now_posting_a_listing_on_behalf_of: ~
     quantity:
       hour: "מספר שעות:"
       day: ":מספר ימים"
@@ -2079,6 +2201,8 @@ he-IL:
       show_all_listings: הכל
       show_all_open_listings: "הצג את כל המודעות הפתוחות"
       show_all_reviews: "הצג את כל הביקורות"
+      admin_actions: ~
+      post_listing_as: ~
     followed_people:
       you_follow_plural: "‎%{count}‎ אתה עוקב אחר"
       you_follow_singular: "‎%{count}‎ אתה עוקב אחר"
@@ -2204,6 +2328,7 @@ he-IL:
       invisible: "לא יוצג למשתמשים אחרים"
       image_is_processing: ~
       shown_in_your_public_profile: ~
+      editing_profile_of: ~
     save_information: "שמור פרטים"
   shipping_address:
     shipping_address: "כתובת למשלוח"

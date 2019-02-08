@@ -400,10 +400,10 @@ module ApplicationHelper
       },
       {
         :topic => :manage,
-        :text => t("admin.communities.edit_details.invite_people"),
-        :icon_class => icon_class("invite"),
-        :path => new_invitation_path,
-        :name => "invite_people"
+        :text => t("admin.communities.invitations.invitations"),
+        :icon_class => icon_class("invitations"),
+        :path => admin_community_invitations_path(@current_community),
+        :name => "invitations"
       },
       {
         :topic => :configure,
@@ -435,6 +435,16 @@ module ApplicationHelper
         :icon_class => icon_class("topbar_menu"),
         :path => admin_topbar_edit_path,
         :name => "topbar"
+      }
+    ]
+
+    links += [
+      {
+        :topic => :configure,
+        :text => t("admin.communities.footer.footer"),
+        :icon_class => icon_class("footer_menu"),
+        :path => admin_footer_edit_path,
+        :name => "footer"
       }
     ]
 
@@ -536,7 +546,7 @@ module ApplicationHelper
   # rubocop:enable Metrics/MethodLength
 
   # Settings view left hand navigation content
-  def settings_links_for(person, community=nil)
+  def settings_links_for(person, community=nil, restrict_for_admin=false)
     links = [
       {
         :id => "settings-tab-profile",
@@ -546,25 +556,37 @@ module ApplicationHelper
         :name => "profile"
       },
       {
-        :id => "settings-tab-account",
-        :text => t("layouts.settings.account"),
-        :icon_class => icon_class("account_settings"),
-        :path => account_person_settings_path(person) ,
-        :name => "account"
-      },
-      {
-        :id => "settings-tab-notifications",
-        :text => t("layouts.settings.notifications"),
-        :icon_class => icon_class("notification_settings"),
-        :path => notifications_person_settings_path(person),
-        :name => "notifications"
+        :id => "settings-tab-listings",
+        :text => t("layouts.settings.listings"),
+        :icon_class => icon_class("thumbnails"),
+        :path => listings_person_settings_path(person, sort: "updated"),
+        :name => "listings"
       }
     ]
+    unless restrict_for_admin
+      links +=
+        [
+          {
+            :id => "settings-tab-account",
+            :text => t("layouts.settings.account"),
+            :icon_class => icon_class("account_settings"),
+            :path => account_person_settings_path(person) ,
+            :name => "account"
+          },
+          {
+            :id => "settings-tab-notifications",
+            :text => t("layouts.settings.notifications"),
+            :icon_class => icon_class("notification_settings"),
+            :path => notifications_person_settings_path(person),
+            :name => "notifications"
+          }
+        ]
+    end
 
     paypal_ready = PaypalHelper.community_ready_for_payments?(@current_community.id)
     stripe_ready = StripeHelper.community_ready_for_payments?(@current_community.id)
 
-    if paypal_ready || stripe_ready
+    if !restrict_for_admin && (paypal_ready || stripe_ready)
       links << {
         :id => "settings-tab-payments",
         :text => t("layouts.settings.payments"),
@@ -765,6 +787,49 @@ module ApplicationHelper
 
   def regex_definition_to_js(string)
     string.gsub('\A', '^').gsub('\z', '$').gsub('\\', '\\\\')
+  end
+
+  SOCIAL_LINKS = {
+    facebook: {
+      name: "Facebook",
+      placeholder: "https://www.facebook.com/CHANGEME",
+    },
+    twitter: {
+      name: "Twitter",
+      placeholder: "https://www.twitter.com/CHANGEME",
+    },
+    instagram: {
+      name: "Instagram",
+      placeholder: "https://www.instagram.com/CHANGEME",
+    },
+    youtube: {
+      name: "YouTube",
+      placeholder: "https://www.youtube.com/channel/CHANGEME",
+    },
+    googleplus: {
+      name: "Google+",
+      placeholder: "https://plus.google.com/CHANGEME",
+    },
+    linkedin: {
+      name: "LinkedIn",
+      placeholder: "https://www.linkedin.com/company/CHANGEME",
+    },
+    pinterest: {
+      name: "Pinterest",
+      placeholder: "https://www.pinterest.com/CHANGEME",
+    },
+    soundcloud: {
+      name: "SoundCloud",
+      placeholder: "https://soundcloud.com/CHANGEME",
+    }
+  }.freeze
+
+  def social_link_name(provider)
+    SOCIAL_LINKS[provider.to_sym][:name]
+  end
+
+  def social_link_placeholder(provider)
+    SOCIAL_LINKS[provider.to_sym][:placeholder]
   end
 end
 # rubocop:enable Metrics/ModuleLength

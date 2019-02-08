@@ -183,27 +183,33 @@ nb:
       getting_started:
         getting_started: "Kom i gang"
       available_languages:
+        cs: ~
+        da-DK: Dansk
+        de: Tysk
         en: Engelsk
         en-AU: "Engelsk (Australia)"
         en-GB: "Engelsk (Storbritannia)"
+        es: ~
+        es-ES: ~
+        fi: Finsk
         fr: Fransk
         fr-CA: "Fransk (Canada)"
-        es: "Spansk (Chile)"
-        es-ES: Spansk
-        pt-PT: Portugisisk
-        pt-BR: Portugisisk
-        nb: Norsk
-        sv: Svensk
-        da-DK: Dansk
-        fi: Finsk
-        ru: Russisk
-        de: Tysk
         el: Gresk
-        nl: Nederlandsk
-        tr-TR: Tyrkisk
-        zh: Kinesisk
-        ja: Japansk
         it: Italiensk
+        ja: Japansk
+        ko: ~
+        nb: Norsk
+        nl: Nederlandsk
+        pl: ~
+        pt-BR: Portugisisk
+        pt-PT: Portugisisk
+        ru: Russisk
+        sv: Svensk
+        th-TH: ~
+        tr-TR: Tyrkisk
+        vi: ~
+        zh: Kinesisk
+        zh-TW: ~
       settings:
         settings: Innstillinger
         general: Generelt
@@ -268,6 +274,22 @@ nb:
         reset_search: ~
         for_search_terms: ~
         this_makes_the_user_an_admin: ~
+        status_filter:
+          all: ~
+          selected: ~
+          selected_js: ~
+          admin: ~
+          banned: ~
+          posting_allowed: ~
+          accepted: ~
+          unconfirmed: ~
+          pending: ~
+        this_user_hasnt_confirmed_their_email_address: ~
+        unconfirmed_user: ~
+        resend: ~
+        cancel: ~
+        user_didnt_complete_the_signup_process: ~
+        pending_user: ~
       new_layout:
         new_layout: "Ny layout"
         description_roadmap_new: "Når nye layout-komponenter er tilgjengelige for markedsplassen din, kan du velge om du vil begynne å bruke de nye komponentene eller fortsette å bruke de gamle. Du kan aktivere valgene dine når som helst på denne siden. Det er anbefalt å alltid bruke nyeste versjon, siden de gamle komponentene kan bli faset ut etter hvert. Hvis en komponent som du bruker vil bli faset ut, vil du bli kontaktet i forkant."
@@ -279,6 +301,12 @@ nb:
         social_media: "Sosiale medier"
         logo: ~
         logo_info: ~
+        social_media_title: ~
+        social_media_title_info: ~
+        link_for_facebook: ~
+        link_for_linkedin: ~
+        link_for_twitter: ~
+        social_media_description: ~
         twitter_handle: Twitternavn
         twitter_handle_info_text: "Twitternavn til din markedsplass (hvis du har). Det vil bli mentioned når brukere bruker tweet-knappen på annonsesiden."
         twitter_handle_info_text_with_instructions: "Twitternavn til din markedsplass (hvis du har). Det vil bli mentioned når brukere bruker tweet-knappen på annonsesiden. %{instructions_link}."
@@ -307,8 +335,14 @@ nb:
         sharetribe_analytics_instructions_link_text: ~
         end_user_analytics: ~
         save: "Lagre innstillinger"
+      logo_link:
+        title: ~
+        info: ~
+        url: ~
+        placeholder: ~
       menu_links:
         menu_links: "Meny linker"
+        menu_links_display: ~
         save: "Lagre innstillinger"
         add_menu_link: "Legg til ny lenke i menyen"
         title_placeholder: Lenketittel
@@ -321,6 +355,15 @@ nb:
         all: Alle
         max_number_of_links_info: "Link til %{about_page} er alltid først i menyen"
         about_page: om-side
+      default_menu_links:
+        title: ~
+        about_link_title: ~
+        contact_link_title: ~
+        invite_link_title: ~
+        info: ~
+        display_about: ~
+        display_contact: ~
+        display_invite: ~
       topbar:
         topbar: Toppmeny
         new_listing_button_label: "Tekst på knappen for å opprette ny annonse"
@@ -329,6 +372,19 @@ nb:
         export_all_as_csv: "Eksportér alle i CSV-fil"
         processing_export: ~
         transactions: "Vis transaksjoner"
+        search_by_title_parties: ~
+        search: ~
+        reset_search: ~
+        status_filter:
+          all: ~
+          selected: ~
+          selected_js: ~
+          free: ~
+          confirmed: ~
+          paid: ~
+          canceled: ~
+          preauthorized: ~
+          rejected: ~
         headers:
           conversation: "Samtale tråd"
           listing: Annonse
@@ -386,10 +442,18 @@ nb:
           other_party: ~
         participants: ~
         profile: ~
+        search_by_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
       testimonials:
         testimonials: ~
         no_testimonials_found: ~
         displaying_xx_reviews: ~
+        search_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
         headers:
           transaction: ~
           author: ~
@@ -402,6 +466,16 @@ nb:
           skipped: ~
           published: ~
           blocked: ~
+        status_filter:
+          selected: ~
+          all: ~
+          published: ~
+          positive: ~
+          negative: ~
+          skipped: ~
+          waiting: ~
+          blocked: ~
+          selected_js: ~
         form:
           review_text: ~
           save: ~
@@ -411,8 +485,28 @@ nb:
           confirm_modify: ~
           deleting_info: ~
           blocking_info: ~
+      invitations:
+        invitations: ~
+        used:
+          "yes": ~
+          "no": ~
+        headers:
+          sent_by: ~
+          message: ~
+          sent_to: ~
+          used: ~
+          date_sent: ~
       listings:
         listings: ~
+        search_by_title_author_category: ~
+        search: ~
+        reset_search: ~
+        status:
+          all: ~
+          selected_js: ~
+          open: ~
+          closed: ~
+          expired: ~
         headers:
           title: ~
           author: ~
@@ -425,6 +519,30 @@ nb:
         expired: ~
       user_fields:
         user_fields: ~
+      footer:
+        footer: ~
+        offer_pro: ~
+        upgrade_plan_link: ~
+        menu_links: ~
+        language: ~
+        title: ~
+        url: ~
+        add: ~
+        save: ~
+        footer_style: ~
+        footer_copyright: ~
+        footer_enabled: ~
+        social_links: ~
+        title_placeholder: ~
+        url_placeholder: ~
+        style:
+          dark: ~
+          light: ~
+          marketplace_color: ~
+          logo: ~
+        social:
+          title: ~
+          url: ~
     custom_fields:
       edit:
         edit_listing_field: "Rediger annonse felt'%{field_name}'"
@@ -1269,6 +1387,7 @@ nb:
       after: "må være etter %{restriction}"
       on_or_after: "må være på eller etter %{restriction}"
       positive_number: "Skriv inn et tall."
+      from_must_be_less_than_till: ~
   event_feed_events:
     accept:
       has_accepted_lend_item: "%{offerer_name} aksepterte å låne ut %{listing_title} til %{requester_name} %{time_ago}."
@@ -1553,7 +1672,7 @@ nb:
       listing_updated_successfully: "Annonse oppdatert"
       listing_updated_availability_management_enabled: "Annonse oppdatert. Tilgjengelighets-håndtering er aktivert."
       listing_updated_availability_management_disabled: "Annonse oppdatert. Tilgjengelighets-håndtering er deaktivert."
-      only_kassi_administrators_can_access_this_area: "Kun %{service_name} administratorer kan besøke dette området"
+      only_kassi_administrators_can_access_this_area: ~
       only_listing_author_can_close_a_listing: "Kun annonsør kan stoppe en annonse"
       only_listing_author_can_edit_a_listing: "Kun annonsør kan endre en annonse"
       payment_successful: "Betaling vellykket"
@@ -1636,6 +1755,8 @@ nb:
       paypal_payments: ~
       stripe_payments: ~
       payments: Betalinger
+      listings: ~
+      listings_search_placeholder: ~
   listings:
     bubble_listing_not_visible:
       listing_not_visible: "Du har ikke tillatelse til å se denne annonsen."
@@ -1836,6 +1957,7 @@ nb:
       community_not_configured_for_payments: "%{service_name} har ikke blitt konfigurert for betalinger så du kan ikke opprette annonser enda. Vennligst %{contact_admin_link} for mer detaljer."
       payment_settings_link: "Innstillinger betaling"
       community_not_configured_for_payments_admin: "%{service_name} har ikke blitt konfigurert for betalinger, så du kan ikke opprette annonser enda. Gå til %{payment_settings_link} for å fylle inn utbetalingsdetaljer."
+      you_are_now_posting_a_listing_on_behalf_of: ~
     quantity:
       hour: "Antall timer:"
       day: "Antall dager:"
@@ -2106,6 +2228,8 @@ nb:
       show_all_listings: "Vis alle annonser"
       show_all_open_listings: "Vis alle åpne annonser"
       show_all_reviews: "Vis alle vurderinger"
+      admin_actions: ~
+      post_listing_as: ~
     followed_people:
       you_follow_plural: "Du følger %{count} brukere"
       you_follow_singular: "Du følger %{count} bruker"
@@ -2231,6 +2355,7 @@ nb:
       invisible: "(vises ikke til andre brukere)"
       image_is_processing: "Ditt profilbilde er behandles nå. Vennligst last siden på nytt om et lite øyeblikk."
       shown_in_your_public_profile: ~
+      editing_profile_of: ~
     save_information: "Lagre innstillinger"
   shipping_address:
     shipping_address: Leveringsadresse

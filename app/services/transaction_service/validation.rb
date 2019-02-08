@@ -112,14 +112,13 @@ module TransactionService
       module_function
 
       def validate_initiate_params(marketplace_uuid:,
-                                   listing_uuid:,
+                                   listing:,
                                    tx_params:,
                                    quantity_selector:,
                                    shipping_enabled:,
                                    pickup_enabled:,
                                    authenticate:,
                                    availability_enabled:,
-                                   listing:,
                                    stripe_in_use:)
 
         validate_delivery_method(tx_params: tx_params, shipping_enabled: shipping_enabled, pickup_enabled: pickup_enabled, authenticate: authenticate)
@@ -130,7 +129,7 @@ module TransactionService
             elsif availability_enabled
               validate_booking_timeslots(tx_params: tx_params,
                                          marketplace_uuid: marketplace_uuid,
-                                         listing_uuid: listing_uuid,
+                                         listing_uuid: listing.uuid_object,
                                          quantity_selector: quantity_selector)
             else
               Result::Success.new(result)
@@ -138,16 +137,38 @@ module TransactionService
         }
       end
 
-      def validate_initiated_params(tx_params:,
+      def validate_initiated_params(marketplace_uuid:,
+                                    tx_params:,
+                                    listing:,
                                     quantity_selector:,
                                     shipping_enabled:,
                                     pickup_enabled:,
+<<<<<<< HEAD
                                     authenticate:,
+=======
+                                    availability_enabled:,
+>>>>>>> upstream/master
                                     transaction_agreement_in_use:,
                                     stripe_in_use:)
 
         validate_delivery_method(tx_params: tx_params, shipping_enabled: shipping_enabled, pickup_enabled: pickup_enabled, authenticate: authenticate)
           .and_then { validate_booking(tx_params: tx_params, quantity_selector: quantity_selector, stripe_in_use: stripe_in_use) }
+          .and_then { |result|
+            # Dublication of initiate validation becouse of bug when use click
+            # 'back' in browser after successfull payment and redirection to
+            # dialog page, browser just render previous initiate page and if
+            # user pay agian he create second transaction with same params & make payment
+            if tx_params[:per_hour]
+              validate_booking_per_hour_timeslots(listing: listing, tx_params: tx_params)
+            elsif availability_enabled
+              validate_booking_timeslots(tx_params: tx_params,
+                                         marketplace_uuid: marketplace_uuid,
+                                         listing_uuid: listing.uuid_object,
+                                         quantity_selector: quantity_selector)
+            else
+              Result::Success.new(result)
+            end
+          }
           .and_then {
             validate_transaction_agreement(tx_params: tx_params,
                                            transaction_agreement_in_use: transaction_agreement_in_use)

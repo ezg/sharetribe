@@ -50,7 +50,8 @@ CREATE TABLE `auth_tokens` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `index_auth_tokens_on_token` (`token`) USING BTREE
+  UNIQUE KEY `index_auth_tokens_on_token` (`token`) USING BTREE,
+  KEY `index_on_person_id` (`person_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `billing_agreements`;
@@ -269,6 +270,11 @@ CREATE TABLE `communities` (
   `end_user_analytics` tinyint(1) DEFAULT '1',
   `show_slogan` tinyint(1) DEFAULT '1',
   `show_description` tinyint(1) DEFAULT '1',
+  `hsts_max_age` int(11) DEFAULT NULL,
+  `footer_theme` int(11) DEFAULT '0',
+  `footer_copyright` text,
+  `footer_enabled` tinyint(1) DEFAULT '0',
+  `logo_link` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_communities_on_uuid` (`uuid`),
   KEY `index_communities_on_domain` (`domain`) USING BTREE,
@@ -299,6 +305,8 @@ CREATE TABLE `community_customizations` (
   `search_placeholder` varchar(255) DEFAULT NULL,
   `transaction_agreement_label` varchar(255) DEFAULT NULL,
   `transaction_agreement_content` mediumtext,
+  `social_media_title` varchar(255) DEFAULT NULL,
+  `social_media_description` text,
   PRIMARY KEY (`id`),
   KEY `index_community_customizations_on_community_id` (`community_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -320,7 +328,8 @@ CREATE TABLE `community_memberships` (
   `can_post_listings` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_community_memberships_on_person_id` (`person_id`) USING BTREE,
-  KEY `index_community_memberships_on_community_id` (`community_id`) USING BTREE
+  KEY `index_community_memberships_on_community_id` (`community_id`) USING BTREE,
+  KEY `community_person_status` (`community_id`,`person_id`,`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `community_social_logos`;
@@ -806,7 +815,9 @@ CREATE TABLE `listings` (
   KEY `index_listings_on_community_id` (`community_id`) USING BTREE,
   KEY `index_listings_on_listing_shape_id` (`listing_shape_id`) USING BTREE,
   KEY `index_listings_on_category_id` (`old_category_id`) USING BTREE,
-  KEY `index_listings_on_open` (`open`) USING BTREE
+  KEY `index_listings_on_open` (`open`) USING BTREE,
+  KEY `index_on_author_id_and_deleted` (`author_id`,`deleted`),
+  KEY `community_author_deleted` (`community_id`,`author_id`,`deleted`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `locations`;
@@ -842,6 +853,9 @@ CREATE TABLE `marketplace_configurations` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `limit_search_distance` tinyint(1) NOT NULL DEFAULT '1',
+  `display_about_menu` tinyint(1) NOT NULL DEFAULT '1',
+  `display_contact_menu` tinyint(1) NOT NULL DEFAULT '1',
+  `display_invite_menu` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `index_marketplace_configurations_on_community_id` (`community_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -935,6 +949,7 @@ CREATE TABLE `menu_links` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `sort_priority` int(11) DEFAULT '0',
+  `entity_type` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `index_menu_links_on_community_and_sort` (`community_id`,`sort_priority`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1215,17 +1230,6 @@ CREATE TABLE `people` (
   KEY `index_people_on_username` (`username`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `prospect_emails`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `prospect_emails` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `schema_migrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1270,6 +1274,22 @@ CREATE TABLE `shipping_addresses` (
   KEY `index_shipping_addresses_on_transaction_id` (`transaction_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `social_links`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `social_links` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `community_id` int(11) DEFAULT NULL,
+  `provider` int(11) DEFAULT NULL,
+  `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sort_priority` int(11) DEFAULT '0',
+  `enabled` tinyint(1) DEFAULT '0',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_social_links_on_community_id` (`community_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `stripe_accounts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1282,7 +1302,9 @@ CREATE TABLE `stripe_accounts` (
   `stripe_customer_id` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `index_stripe_accounts_on_community_id` (`community_id`),
+  KEY `index_stripe_accounts_on_person_id` (`person_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `stripe_payments`;
@@ -1429,7 +1451,8 @@ CREATE TABLE `transactions` (
   KEY `transactions_on_cid_and_deleted` (`community_id`,`deleted`) USING BTREE,
   KEY `index_transactions_on_deleted` (`deleted`) USING BTREE,
   KEY `index_transactions_on_starter_id` (`starter_id`) USING BTREE,
-  KEY `index_transactions_on_listing_author_id` (`listing_author_id`) USING BTREE
+  KEY `index_transactions_on_listing_author_id` (`listing_author_id`) USING BTREE,
+  KEY `community_starter_state` (`community_id`,`starter_id`,`current_state`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -2301,6 +2324,19 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20180904075653'),
 ('20181012065625'),
 ('20181024094615'),
-('20181105134300');
-
-
+('20181105134300'),
+('20180717122957'),
+('20180720044534'),
+('20180720065907'),
+('20180723115548'),
+('20180904075653'),
+('20181012065625'),
+('20181024094615'),
+('20181106212306'),
+('20181211125306'),
+('20190104083132'),
+('20181219090801'),
+('20181211094456'),
+('20181221120927'),
+('20190108075512'),
+('20190208032229');

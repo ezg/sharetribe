@@ -183,27 +183,33 @@ en-NZ:
       getting_started:
         getting_started: "Get started"
       available_languages:
+        cs: ~
+        da-DK: Danish
+        de: German
         en: English
         en-AU: "English (Australia)"
         en-GB: "English (United Kingdom)"
+        es: ~
+        es-ES: ~
+        fi: Finnish
         fr: French
         fr-CA: "French (Canada)"
-        es: "Spanish (Chile)"
-        es-ES: Spanish
-        pt-PT: Portuguese
-        pt-BR: "Portuguese (Brazil)"
-        nb: "Norwegian Bokmål"
-        sv: Swedish
-        da-DK: Danish
-        fi: Finnish
-        ru: Russian
-        de: German
         el: Greek
-        nl: Dutch
-        tr-TR: Turkish
-        zh: Chinese
-        ja: Japanese
         it: Italian
+        ja: Japanese
+        ko: ~
+        nb: "Norwegian Bokmål"
+        nl: Dutch
+        pl: ~
+        pt-BR: "Portuguese (Brazil)"
+        pt-PT: Portuguese
+        ru: Russian
+        sv: Swedish
+        th-TH: ~
+        tr-TR: Turkish
+        vi: ~
+        zh: Chinese
+        zh-TW: ~
       settings:
         settings: Settings
         general: General
@@ -268,6 +274,22 @@ en-NZ:
         reset_search: "Show all"
         for_search_terms: "for: %{terms}"
         this_makes_the_user_an_admin: ~
+        status_filter:
+          all: ~
+          selected: ~
+          selected_js: ~
+          admin: ~
+          banned: ~
+          posting_allowed: ~
+          accepted: ~
+          unconfirmed: ~
+          pending: ~
+        this_user_hasnt_confirmed_their_email_address: ~
+        unconfirmed_user: ~
+        resend: ~
+        cancel: ~
+        user_didnt_complete_the_signup_process: ~
+        pending_user: ~
       new_layout:
         new_layout: "New layout"
         description_roadmap_new: "When new layout components are made available for your marketplace, you can choose whether you want to start using the new component or continue using the old one. You can toggle the selection at any point from this page. It's recommended to always be using the new version, as the old components might be phased out at some point. In case a component you're currently using is going to be phased out, you will be contacted in advance."
@@ -279,6 +301,12 @@ en-NZ:
         social_media: "Social media"
         logo: ~
         logo_info: ~
+        social_media_title: ~
+        social_media_title_info: ~
+        link_for_facebook: ~
+        link_for_linkedin: ~
+        link_for_twitter: ~
+        social_media_description: ~
         twitter_handle: "Twitter handle"
         twitter_handle_info_text: "Username of the Twitter account of your marketplace (if you have one). It will be mentioned when people use the tweet button on the listing page."
         twitter_handle_info_text_with_instructions: "Username of the Twitter account of your marketplace (if you have one). It will be mentioned when people use the tweet button on the listing page. %{instructions_link}."
@@ -307,8 +335,14 @@ en-NZ:
         sharetribe_analytics_instructions_link_text: ~
         end_user_analytics: ~
         save: "Save settings"
+      logo_link:
+        title: ~
+        info: ~
+        url: ~
+        placeholder: ~
       menu_links:
         menu_links: "Menu links"
+        menu_links_display: ~
         save: "Save settings"
         add_menu_link: "Add a new link to menu"
         title_placeholder: "Link title"
@@ -321,6 +355,15 @@ en-NZ:
         all: All
         max_number_of_links_info: "Link to %{about_page} is always displayed as the first menu link"
         about_page: "about page"
+      default_menu_links:
+        title: ~
+        about_link_title: ~
+        contact_link_title: ~
+        invite_link_title: ~
+        info: ~
+        display_about: ~
+        display_contact: ~
+        display_invite: ~
       topbar:
         topbar: "Top bar"
         new_listing_button_label: "Post a new listing button text"
@@ -329,6 +372,19 @@ en-NZ:
         export_all_as_csv: "Export all as CSV"
         processing_export: ~
         transactions: "View transactions"
+        search_by_title_parties: ~
+        search: ~
+        reset_search: ~
+        status_filter:
+          all: ~
+          selected: ~
+          selected_js: ~
+          free: ~
+          confirmed: ~
+          paid: ~
+          canceled: ~
+          preauthorized: ~
+          rejected: ~
         headers:
           conversation: "Conversation thread"
           listing: Listing
@@ -386,10 +442,18 @@ en-NZ:
           other_party: "Other party"
         participants: "Conversation: %{starter} with %{author}"
         profile: "%{author}'s Profile"
+        search_by_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
       testimonials:
         testimonials: ~
         no_testimonials_found: ~
         displaying_xx_reviews: ~
+        search_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
         headers:
           transaction: ~
           author: ~
@@ -402,6 +466,16 @@ en-NZ:
           skipped: ~
           published: ~
           blocked: ~
+        status_filter:
+          selected: ~
+          all: ~
+          published: ~
+          positive: ~
+          negative: ~
+          skipped: ~
+          waiting: ~
+          blocked: ~
+          selected_js: ~
         form:
           review_text: ~
           save: ~
@@ -411,8 +485,28 @@ en-NZ:
           confirm_modify: ~
           deleting_info: ~
           blocking_info: ~
+      invitations:
+        invitations: ~
+        used:
+          "yes": ~
+          "no": ~
+        headers:
+          sent_by: ~
+          message: ~
+          sent_to: ~
+          used: ~
+          date_sent: ~
       listings:
         listings: ~
+        search_by_title_author_category: ~
+        search: ~
+        reset_search: ~
+        status:
+          all: ~
+          selected_js: ~
+          open: ~
+          closed: ~
+          expired: ~
         headers:
           title: ~
           author: ~
@@ -425,6 +519,30 @@ en-NZ:
         expired: ~
       user_fields:
         user_fields: ~
+      footer:
+        footer: ~
+        offer_pro: ~
+        upgrade_plan_link: ~
+        menu_links: ~
+        language: ~
+        title: ~
+        url: ~
+        add: ~
+        save: ~
+        footer_style: ~
+        footer_copyright: ~
+        footer_enabled: ~
+        social_links: ~
+        title_placeholder: ~
+        url_placeholder: ~
+        style:
+          dark: ~
+          light: ~
+          marketplace_color: ~
+          logo: ~
+        social:
+          title: ~
+          url: ~
     custom_fields:
       edit:
         edit_listing_field: "Edit listing field '%{field_name}'"
@@ -1273,6 +1391,7 @@ en-NZ:
       after: "must be after %{restriction}"
       on_or_after: "must be on or after %{restriction}"
       positive_number: "Insert a number."
+      from_must_be_less_than_till: ~
   event_feed_events:
     accept:
       has_accepted_lend_item: "%{offerer_name} agreed to lend %{listing_title} to %{requester_name} %{time_ago}."
@@ -1557,7 +1676,7 @@ en-NZ:
       listing_updated_successfully: "Listing updated successfully"
       listing_updated_availability_management_enabled: "Listing updated successfully. Availability management enabled."
       listing_updated_availability_management_disabled: "Listing updated successfully. Availability management disabled."
-      only_kassi_administrators_can_access_this_area: "Only the %{service_name} team can access this area"
+      only_kassi_administrators_can_access_this_area: ~
       only_listing_author_can_close_a_listing: "Only listing author can close a listing"
       only_listing_author_can_edit_a_listing: "Only listing author can edit a listing"
       payment_successful: "Payment successful"
@@ -1640,6 +1759,8 @@ en-NZ:
       paypal_payments: "PayPal Payments"
       stripe_payments: "Stripe Payments"
       payments: Payments
+      listings: ~
+      listings_search_placeholder: ~
   listings:
     bubble_listing_not_visible:
       listing_not_visible: "You do not have permission to view this listing."
@@ -1840,6 +1961,7 @@ en-NZ:
       community_not_configured_for_payments: "%{service_name} hasn't been configured for payments, so you cannot post new listings yet. Please %{contact_admin_link} for details."
       payment_settings_link: "payment settings"
       community_not_configured_for_payments_admin: "%{service_name} hasn't been configured for payments, so you cannot post new listings yet. Go to %{payment_settings_link} to fill in the payment details."
+      you_are_now_posting_a_listing_on_behalf_of: ~
     quantity:
       hour: "Number of hours:"
       day: "Number of days:"
@@ -2110,6 +2232,8 @@ en-NZ:
       show_all_listings: "Show all listings"
       show_all_open_listings: "Show all open listings"
       show_all_reviews: "Show all reviews"
+      admin_actions: ~
+      post_listing_as: ~
     followed_people:
       you_follow_plural: "You follow %{count} people"
       you_follow_singular: "You follow %{count} person"
@@ -2235,6 +2359,7 @@ en-NZ:
       invisible: "(not shown to other users)"
       image_is_processing: "Hang on tight. We are processing your profile picture. It will be ready in a minute or two."
       shown_in_your_public_profile: ~
+      editing_profile_of: ~
     save_information: "Save information"
   shipping_address:
     shipping_address: "Shipping address"
@@ -2483,16 +2608,8 @@ en-NZ:
       multi_page_html: "Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{count}</b> in total"
     person:
       community_members_entries_info:
-        single_page:
-          zero: "No %{model} found"
-          one: "Displaying %{accepted_count} accepted %{accepted_model} and %{banned_count} banned %{banned_model}"
-          other: "Displaying %{accepted_count} accepted %{accepted_model} and %{banned_count} banned %{banned_model}"
-        single_page_html:
-          zero: "No %{model} found"
-          one: "Displaying <b>%{accepted_count}</b> accepted %{accepted_model} and %{banned_count} banned %{banned_model}"
-          other: "Displaying <b>%{accepted_count}</b> accepted %{accepted_model} and %{banned_count} banned %{banned_model}"
-        multi_page: "Displaying %{model} %{from} - %{to} of %{accepted_count} accepted %{accepted_model} and %{banned_count} banned %{banned_model}"
-        multi_page_html: "Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{accepted_count}</b> accepted %{accepted_model} and %{banned_count} banned %{banned_model}"
+        multi_page: ~
+        multi_page_html: ~
   stripe_accounts:
     admin_account_not_connected: "Using %{service_name}'s payment system in order to receive payments is not possible since payments have not been set up. Please %{contact_admin_link} for details."
     contact_admin_link_text: "contact the %{service_name} team"

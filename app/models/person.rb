@@ -63,6 +63,7 @@ require "open-uri"
 
 # This class represents a person (a user of Sharetribe).
 
+# rubocop: disable Metrics/ClassLength
 class Person < ApplicationRecord
 
   include ErrorsHelper
@@ -86,7 +87,7 @@ class Person < ApplicationRecord
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login
 
-  has_many :listings, -> { where(deleted: 0) }, :dependent => :destroy, :foreign_key => "author_id"
+  has_many :listings, -> { exist }, :dependent => :destroy, :foreign_key => "author_id"
   has_many :emails, :dependent => :destroy, :inverse_of => :person
 
   has_one :location, -> { where(location_type: :person) }, :dependent => :destroy
@@ -115,10 +116,44 @@ class Person < ApplicationRecord
   has_many :custom_field_values, :dependent => :destroy
   has_many :custom_dropdown_field_values, :class_name => "DropdownFieldValue"
   has_many :custom_checkbox_field_values, :class_name => "CheckboxFieldValue"
+  has_one :stripe_account
+  has_one :paypal_account
+  has_many :starter_transactions, :class_name => "Transaction", :foreign_key => "starter_id"
 
   deprecate communities: "Use accepted_community instead.",
             community_memberships: "Use community_membership instead.",
             deprecator: MethodDeprecator.new
+
+  scope :by_community, ->(community_id) { where(community_id: community_id) }
+  scope :search_name_or_email, ->(community_id, pattern) {
+    by_community(community_id)
+      .joins(:emails)
+      .where("#{Person.search_by_pattern_sql('people')}
+        OR emails.address like :pattern", pattern: pattern)
+  }
+  scope :has_listings, ->(community) do
+    joins("INNER JOIN `listings` ON `listings`.`author_id` = `people`.`id` AND `listings`.`community_id` = #{community.id} AND `listings`.`deleted` = 0").distinct
+  end
+  scope :has_no_listings, ->(community) do
+    joins("LEFT OUTER JOIN `listings` ON `listings`.`author_id` = `people`.`id` AND `listings`.`community_id` = #{community.id} AND `listings`.`deleted` = 0")
+    .where(listings: {author_id: nil}).distinct
+  end
+  scope :has_stripe_account, ->(community) do
+    where(id: StripeAccount.active_users.by_community(community).select(:person_id))
+  end
+  scope :has_no_stripe_account, ->(community) do
+    where.not(id: StripeAccount.active_users.by_community(community).select(:person_id))
+  end
+  scope :has_paypal_account, ->(community) do
+    where(id: PaypalAccount.active_users.by_community(community).select(:person_id))
+  end
+  scope :has_no_paypal_account, ->(community) do
+    where.not(id: PaypalAccount.active_users.by_community(community).select(:person_id))
+  end
+  scope :has_payment_account, ->(community) { has_stripe_account(community).or(has_paypal_account(community)) }
+  scope :has_started_transactions, ->(community) do
+    joins("INNER JOIN `transactions` ON `transactions`.`starter_id` = `people`.`id` AND `transactions`.`community_id` = #{community.id} AND `transactions`.`current_state` IN ('paid', 'confirmed')").distinct
+  end
 
   accepts_nested_attributes_for :custom_field_values
 
@@ -352,22 +387,18 @@ class Person < ApplicationRecord
     listings.requests
   end
 
-  # The percentage of received testimonials with positive grades
-  # (grades between 3 and 5 are positive, 1 and 2 are negative)
   def feedback_positive_percentage_in_community(community)
-    # NOTE the filtering with communinity can be removed when
-    # user accounts are no more shared among communities
-    received_testimonials = TestimonialViewUtils.received_testimonials_in_community(self, community)
-    positive_testimonials = TestimonialViewUtils.received_positive_testimonials_in_community(self, community)
-    negative_testimonials = TestimonialViewUtils.received_negative_testimonials_in_community(self, community)
+    received = received_testimonials.by_community(community)
+    positive = received_positive_testimonials.by_community(community)
+    negative = received_negative_testimonials.by_community(community)
 
-    if positive_testimonials.size > 0
-      if negative_testimonials.size > 0
-        (positive_testimonials.size.to_f/received_testimonials.size.to_f*100).round
+    if positive.size > 0
+      if negative.size > 0
+        (positive.size.to_f/received.size.to_f*100).round
       else
         return 100
       end
-    elsif negative_testimonials.size > 0
+    elsif negative.size > 0
       return 0
     end
   end
@@ -465,9 +496,7 @@ class Person < ApplicationRecord
   end
 
   def confirmed_notification_emails
-    emails.select do |email|
-      email.send_notifications && email.confirmed_at.present?
-    end
+    emails.send_notifications.confirmed
   end
 
   def confirmed_notification_email_addresses
@@ -653,4 +682,11 @@ class Person < ApplicationRecord
   def logger_metadata
     { person_uuid: uuid }
   end
+
+  class << self
+    def search_by_pattern_sql(table, pattern=':pattern')
+      "(#{table}.given_name LIKE #{pattern} OR #{table}.family_name LIKE #{pattern} OR #{table}.display_name LIKE #{pattern})"
+    end
+  end
 end
+# rubocop: enable Metrics/ClassLength

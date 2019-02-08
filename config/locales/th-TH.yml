@@ -80,7 +80,7 @@ th-TH:
         edit_info: แก้ไขข้อมูล
         see_how_it_looks_like: แสดงให้เห็นว่ามีลักษณะอย่างไร
         verification_to_post_listings_info_content: ข้อความข้อมูลแก่ผู้ใช้ที่ไม่ได้รับการตรวจสอบ
-        verification_to_post_listings_info_content_description: "คุณกำลังร้องขอผู้ใช้ของคุณให้ได้รับการยืนยันด้วยตนเองจากคุณ ก่อนที่ผู้ใช้จะสามารถ โพสต์รายการ ที่นี่คุณสามารถตั้งค่าข้อความเริ่มต้นที่จะแสดงให้ผู้ใช้ที่ไม่ได้รับการยืนยันได้เห็น ในขณะที่พวกเขากำลังพยายามที่จะโพสต์รายการใหม่"
+        verification_to_post_listings_info_content_description: "คุณกำลังร้องขอผู้ใช้ของคุณให้ได้รับการยืนยันด้วยตนเองจากคุณ ก่อนที่ผู้ใช้จะสามารถ โพสต์รายการ ที่นี่คุณสามารถตั้งค่าข้อความเริ่มต้นที่จะแสดงให้ผู้ใช้ที่ไม่ได้รับการยืนยันได้เห็น ในขณะที่พวกเขากำลังพยายามที่จะโพสต์รายการใหม่."
         verification_to_post_listings_info_content_default: "%{service_name} ร้องขอให้ต้องมีคนได้รับการยืนยันด้วยตนเองโดยผู้ดูแลระบบก่อน จึงจะสามารถโพสต์รายการได้ คุณยังไม่ได้รับการยืนยัน กรุณา%{contact_admin_link}เพื่อขอรับการยืนยัน"
         contact_admin_link_text: "ติดต่อผู้ดูแลระบบ %{service_name}"
         save: บันทึกการตั้งค่า
@@ -178,27 +178,33 @@ th-TH:
       getting_started:
         getting_started: เริ่มต้นการใช้งาน
       available_languages:
+        cs: ~
+        da-DK: เดนมาร์ก
+        de: เยอรมัน
         en: อังกฤษ
         en-AU: "อังกฤษ (ออสเตรเลีย)"
         en-GB: "อังกฤษ (สหราชอาณาจักร)"
+        es: ~
+        es-ES: ~
+        fi: ฟินแลนด์
         fr: ฝรั่งเศส
         fr-CA: "ฝรั่งเศส (แคนาดา)"
-        es: "สเปน (ชิลี)"
-        es-ES: สเปน
-        pt-PT: ~
-        pt-BR: "โปรตุเกส (บราซิล)"
-        nb: นอร์เวย์บุคมอล
-        sv: สวีเดน
-        da-DK: เดนมาร์ก
-        fi: ฟินแลนด์
-        ru: รัสเซีย
-        de: เยอรมัน
         el: กรีก
-        nl: ดัตช์
-        tr-TR: ตุรกี
-        zh: จีน
-        ja: ญี่ปุ่น
         it: อิตาลี
+        ja: ญี่ปุ่น
+        ko: ~
+        nb: นอร์เวย์บุคมอล
+        nl: ดัตช์
+        pl: ~
+        pt-BR: "โปรตุเกส (บราซิล)"
+        pt-PT: ~
+        ru: รัสเซีย
+        sv: สวีเดน
+        th-TH: ~
+        tr-TR: ตุรกี
+        vi: ~
+        zh: จีน
+        zh-TW: ~
       settings:
         settings: ตั้งค่า
         general: ทั่วไป
@@ -263,6 +269,22 @@ th-TH:
         reset_search: ~
         for_search_terms: ~
         this_makes_the_user_an_admin: "ทำให้ผู้ใช้เป็นผู้ดูแลระบบ คุณควรแจ้งให้ผู้ใช้ทราบถึงความรับผิดชอบของตนและควรทบทวนข้อกำหนดในการให้บริการของ Sharetribe คุณแน่ใจหรือไม่ว่าต้องการดำเนินการต่อ?"
+        status_filter:
+          all: ~
+          selected: ~
+          selected_js: ~
+          admin: ~
+          banned: ~
+          posting_allowed: ~
+          accepted: ~
+          unconfirmed: ~
+          pending: ~
+        this_user_hasnt_confirmed_their_email_address: ~
+        unconfirmed_user: ~
+        resend: ~
+        cancel: ~
+        user_didnt_complete_the_signup_process: ~
+        pending_user: ~
       new_layout:
         new_layout: ~
         description_roadmap_new: ~
@@ -274,6 +296,12 @@ th-TH:
         social_media: โซเชียลมีเดีย
         logo: ~
         logo_info: ~
+        social_media_title: ~
+        social_media_title_info: ~
+        link_for_facebook: ~
+        link_for_linkedin: ~
+        link_for_twitter: ~
+        social_media_description: ~
         twitter_handle: "การจัดการ Twitter"
         twitter_handle_info_text: "ชื่อผู้ใช้บัญชี Twitter ในตลาดของคุณ (ถ้ามี) ซึ่งจะได้รับการกล่าวถึงเมื่อมีคนใช้ปุ่มทวีตบนหน้ารายการ"
         twitter_handle_info_text_with_instructions: "ชื่อผู้ใช้ของบัญชี Twitter ของตลาดของคุณ (ถ้าคุณมี) จะมีการกล่าวถึงเมื่อผู้คนใช้ปุ่ม tweet บนหน้ารายการ %{instructions_link}"
@@ -302,8 +330,14 @@ th-TH:
         sharetribe_analytics_instructions_link_text: "อ่านข้อมูลเพิ่มเติมเกี่ยวกับการวิเคราะห์ของ Sharetribe"
         end_user_analytics: ~
         save: บันทึกการตั้งค่า
+      logo_link:
+        title: ~
+        info: ~
+        url: ~
+        placeholder: ~
       menu_links:
         menu_links: ลิงค์เมนู
+        menu_links_display: ~
         save: บันทึกการตั้งค่า
         add_menu_link: เพิ่มลิงค์ใหม่ในเมนู
         title_placeholder: ชื่อลิงค์
@@ -316,6 +350,15 @@ th-TH:
         all: ~
         max_number_of_links_info: "ลิ้งเชื่อมโยงไปยัง %{about_page} จะปรากฏเป็นลิงก์เมนูแรกเสมอ"
         about_page: หน้าเกี่ยวกับเรา
+      default_menu_links:
+        title: ~
+        about_link_title: ~
+        contact_link_title: ~
+        invite_link_title: ~
+        info: ~
+        display_about: ~
+        display_contact: ~
+        display_invite: ~
       topbar:
         topbar: ~
         new_listing_button_label: ~
@@ -324,6 +367,19 @@ th-TH:
         export_all_as_csv: ~
         processing_export: ~
         transactions: แสดงรายการธุรกรรม
+        search_by_title_parties: ~
+        search: ~
+        reset_search: ~
+        status_filter:
+          all: ~
+          selected: ~
+          selected_js: ~
+          free: ~
+          confirmed: ~
+          paid: ~
+          canceled: ~
+          preauthorized: ~
+          rejected: ~
         headers:
           conversation: บทสนทนา
           listing: รายการ
@@ -381,10 +437,18 @@ th-TH:
           other_party: ~
         participants: ~
         profile: ~
+        search_by_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
       testimonials:
         testimonials: ~
         no_testimonials_found: ~
         displaying_xx_reviews: ~
+        search_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
         headers:
           transaction: ~
           author: ~
@@ -397,6 +461,16 @@ th-TH:
           skipped: ~
           published: ~
           blocked: ~
+        status_filter:
+          selected: ~
+          all: ~
+          published: ~
+          positive: ~
+          negative: ~
+          skipped: ~
+          waiting: ~
+          blocked: ~
+          selected_js: ~
         form:
           review_text: ~
           save: ~
@@ -406,8 +480,28 @@ th-TH:
           confirm_modify: ~
           deleting_info: ~
           blocking_info: ~
+      invitations:
+        invitations: ~
+        used:
+          "yes": ~
+          "no": ~
+        headers:
+          sent_by: ~
+          message: ~
+          sent_to: ~
+          used: ~
+          date_sent: ~
       listings:
         listings: ~
+        search_by_title_author_category: ~
+        search: ~
+        reset_search: ~
+        status:
+          all: ~
+          selected_js: ~
+          open: ~
+          closed: ~
+          expired: ~
         headers:
           title: ~
           author: ~
@@ -420,6 +514,30 @@ th-TH:
         expired: ~
       user_fields:
         user_fields: ~
+      footer:
+        footer: ~
+        offer_pro: ~
+        upgrade_plan_link: ~
+        menu_links: ~
+        language: ~
+        title: ~
+        url: ~
+        add: ~
+        save: ~
+        footer_style: ~
+        footer_copyright: ~
+        footer_enabled: ~
+        social_links: ~
+        title_placeholder: ~
+        url_placeholder: ~
+        style:
+          dark: ~
+          light: ~
+          marketplace_color: ~
+          logo: ~
+        social:
+          title: ~
+          url: ~
     custom_fields:
       edit:
         edit_listing_field: "แก้ไขข้อมูลรายการ '%{field_name}'"
@@ -1258,6 +1376,7 @@ th-TH:
       after: "ต้องเป็นหลัง %{restriction}"
       on_or_after: "ต้องเป็นเท่ากับหรือหลัง %{restriction}"
       positive_number: ใส่หมายเลข
+      from_must_be_less_than_till: ~
   event_feed_events:
     accept:
       has_accepted_lend_item: "%{offerer_name} ได้ตกลงที่จะให้ %{requester_name} ยืม เมื่อ%{time_ago}"
@@ -1542,7 +1661,7 @@ th-TH:
       listing_updated_successfully: การอัพเดทรายการเสร็จสมบูรณ์แล้ว
       listing_updated_availability_management_enabled: ~
       listing_updated_availability_management_disabled: ~
-      only_kassi_administrators_can_access_this_area: "ผู้ดูแล %{service_name} เท่านั้นที่จะสามารถเข้าถึงพื้นที่นี้ได้"
+      only_kassi_administrators_can_access_this_area: ~
       only_listing_author_can_close_a_listing: ผู้ประกาศเท่านั้นจึงจะมีสิทธิ์ลบประกาศได้
       only_listing_author_can_edit_a_listing: คนเขียนรายการเท่านั้นที่จะสามารถแก้ไขรายการได้
       payment_successful: ชำระเงินสำเร็จ
@@ -1621,6 +1740,8 @@ th-TH:
       paypal_payments: ~
       stripe_payments: ~
       payments: การชำระเงิน
+      listings: ~
+      listings_search_placeholder: ~
   listings:
     bubble_listing_not_visible:
       listing_not_visible: คุณไม่มีสิทธิที่จะดูรายการนี้
@@ -1821,6 +1942,7 @@ th-TH:
       community_not_configured_for_payments: "%{service_name} ไม่ได้ตั้งค่าสำหรับการชำระเงินดังนั้นคุณจึงไม่สามารถโพสต์รายการใหม่ได้ โปรดติด่ตอ %{contact_admin_link} สำหรับรายละเอียดเพิ่มเติม"
       payment_settings_link: การตั้งค่าการชำระเงิน
       community_not_configured_for_payments_admin: "%{service_name} ไม่ได้ตั้งค่าสำหรับการชำระเงินดังนั้นคุณจึงไม่สามารถโพสต์รายการใหม่ได้ โปรดไปที่ %{payment_settings_link} เพื่อกรอกรายละเอียดการชำระเงิน"
+      you_are_now_posting_a_listing_on_behalf_of: ~
     quantity:
       hour: "จำนวนชั่วโมง:"
       day: "จำนวนวัน:"
@@ -2090,6 +2212,8 @@ th-TH:
       show_all_listings: แสดงรายการทั้งหมด
       show_all_open_listings: แสดงประกาศที่ใช้งานอยู่ทั้งหมด
       show_all_reviews: แสดงคำติชมทั้งหมด
+      admin_actions: ~
+      post_listing_as: ~
     followed_people:
       you_follow_plural: "คุณได้ติดตามคน %{count} คน "
       you_follow_singular: "คุณได้ติดตามคน %{count} คน "
@@ -2215,6 +2339,7 @@ th-TH:
       invisible: "(ไม่แสดงต่อผู้ใช้อื่น ๆ)"
       image_is_processing: "โปรดรอซักครู เรากำลังประมวลผลรูปโปรไฟล์ของคุณ จะพร้อมภายใน 1-2 นาที"
       shown_in_your_public_profile: ~
+      editing_profile_of: ~
     save_information: บันทึกข้อมูล
   shipping_address:
     shipping_address: ที่อยู่ในการจัดส่ง
@@ -2233,7 +2358,7 @@ th-TH:
       you_can_view_the_new_terms: คุณสามารถดูเงื่อนไขใหม่
       you_need_to_accept: "ยินดีต้อนรับสู่ %{service_name}! น่าจะเป็นครั้งแรกที่คุณใช้บริการของเรา ก่อนที่จะเริ่ม คุณจะต้องยอมรับ"
       you_need_to_accept_new_terms: |-
-          เงื่อนไขในการใช้งานใน %{service_name} ได้ถูกเปลี่ยนแปลง 
+          เงื่อนไขในการใช้งานใน %{service_name} ได้ถูกเปลี่ยนแปลง
           คุณต้องยอมรับเงื่อนไขใหม่เพื่อที่จะใช้ %{service_name} ต่อไป เงื่อนไขใหม่มีวัตถุประสงค์เพื่อช่วยให้มีการดำเนินการให้บริการ หลังการโครงการวิจัยได้สิ้นสุดลง
   testimonials:
     index:
@@ -2314,7 +2439,7 @@ th-TH:
       december: ธ.ค.
     today: วันนี้
     clear: ล้าง
-    format: (วว/ดด/ปปปป)
+    format: dd/mm/yyyy
   time:
     formats:
       short: "%b %e, %Y เวลา %H:%M"
@@ -2429,8 +2554,8 @@ th-TH:
   will_paginate:
     models:
       person:
-        zero: ผู้ใช้
-        other: ผู้ใช้
+        zero: ~
+        other: ~
     previous_label: "&#8592; ก่อนหน้านี้"
     next_label: "ถัดไป &#8594;"
     page_gap: "&hellip;"

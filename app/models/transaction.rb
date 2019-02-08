@@ -41,6 +41,7 @@
 #
 # Indexes
 #
+#  community_starter_state                   (community_id,starter_id,current_state)
 #  index_transactions_on_community_id        (community_id)
 #  index_transactions_on_conversation_id     (conversation_id)
 #  index_transactions_on_deleted             (deleted)
@@ -64,6 +65,7 @@ class Transaction < ApplicationRecord
   belongs_to :starter, class_name: "Person", foreign_key: :starter_id
   belongs_to :conversation
   has_many :testimonials
+  belongs_to :listing_author, class_name: 'Person'
 
   delegate :author, to: :listing
   delegate :title, to: :listing, prefix: true
@@ -111,6 +113,36 @@ class Transaction < ApplicationRecord
   scope :for_testimonials, -> {
     includes(:testimonials, testimonials: [:author, :receiver], listing: :author)
     .where(current_state: ['confirmed', 'canceled'])
+  }
+  scope :search_by_party_or_listing_title, ->(pattern) {
+    joins(:starter, :listing_author)
+    .where("listing_title like :pattern
+        OR (#{Person.search_by_pattern_sql('people')})
+        OR (#{Person.search_by_pattern_sql('listing_authors_transactions')})", pattern: pattern)
+  }
+  scope :search_for_testimonials, ->(community, pattern) do
+    with_testimonial_ids = by_community(community.id)
+    .left_outer_joins(testimonials: [:author, :receiver])
+    .where("
+      testimonials.text like :pattern
+      OR #{Person.search_by_pattern_sql('people')}
+      OR #{Person.search_by_pattern_sql('receivers_testimonials')}
+    ", pattern: pattern).select("`transactions`.`id`")
+
+    for_testimonials.joins(:listing, :starter, :listing_author)
+    .where("
+      `listings`.`title` like :pattern
+      OR #{Person.search_by_pattern_sql('people')}
+      OR #{Person.search_by_pattern_sql('listing_authors_transactions')}
+      OR `transactions`.`id` IN (#{with_testimonial_ids.to_sql})
+      ", pattern: pattern).distinct
+  end
+  scope :paid_or_confirmed, -> { where(current_state: ['paid', 'confirmed']) }
+  scope :skipped_feedback, -> { where('starter_skipped_feedback OR author_skipped_feedback') }
+
+  scope :waiting_feedback, -> {
+    where("NOT starter_skipped_feedback AND NOT #{Testimonial.with_tx_starter.select('1').exists.to_sql}
+           OR NOT author_skipped_feedback AND NOT #{Testimonial.with_tx_author.select('1').exists.to_sql}")
   }
 
   def booking_uuid_object

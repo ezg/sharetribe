@@ -193,27 +193,33 @@ ru:
       getting_started:
         getting_started: "Гид для начала работы"
       available_languages:
+        cs: ~
+        da-DK: Датский
+        de: Немецкий
         en: Английский
         en-AU: "Английский (Австралия)"
         en-GB: "Английский (Великобритания)"
+        es: ~
+        es-ES: ~
+        fi: Финский
         fr: Французский
         fr-CA: "Французский (Канадский)"
-        es: "Испанский (Чили)"
-        es-ES: Испанский
-        pt-PT: Португальский
-        pt-BR: ~
-        nb: "Норвежский букмол"
-        sv: Шведский
-        da-DK: Датский
-        fi: Финский
-        ru: Русский
-        de: Немецкий
         el: Греческий
-        nl: Датский
-        tr-TR: Турецкий
-        zh: Китайский
-        ja: Японский
         it: Итальянский
+        ja: Японский
+        ko: ~
+        nb: "Норвежский букмол"
+        nl: Датский
+        pl: ~
+        pt-BR: ~
+        pt-PT: Португальский
+        ru: Русский
+        sv: Шведский
+        th-TH: ~
+        tr-TR: Турецкий
+        vi: ~
+        zh: Китайский
+        zh-TW: ~
       settings:
         settings: Настройки
         general: Основные
@@ -278,6 +284,22 @@ ru:
         reset_search: ~
         for_search_terms: ~
         this_makes_the_user_an_admin: ~
+        status_filter:
+          all: ~
+          selected: ~
+          selected_js: ~
+          admin: ~
+          banned: ~
+          posting_allowed: ~
+          accepted: ~
+          unconfirmed: ~
+          pending: ~
+        this_user_hasnt_confirmed_their_email_address: ~
+        unconfirmed_user: ~
+        resend: ~
+        cancel: ~
+        user_didnt_complete_the_signup_process: ~
+        pending_user: ~
       new_layout:
         new_layout: "Новй макет"
         description_roadmap_new: "Когда для вашего маркетплейса будут доступны новые компоненты макета, вы сможите выбрать, использовать новые или старые компоненты. Вы сможете переключать свои настройки в любое время с этой страницы. Рекомендуется всегда использовать новую версию, поскольку старые компоненты со временем могут быть отключены. В случае, если компонент, который вы используете в настоящее время, будет планироваться отключить, вам сообщат заранее."
@@ -289,6 +311,12 @@ ru:
         social_media: "Социальные медиа"
         logo: ~
         logo_info: ~
+        social_media_title: ~
+        social_media_title_info: ~
+        link_for_facebook: ~
+        link_for_linkedin: ~
+        link_for_twitter: ~
+        social_media_description: ~
         twitter_handle: "Twitter аккаунт"
         twitter_handle_info_text: "Twitter аккаунт вашего проекта (если есть). Будет упоминаться когда люди используют кнопку tweet на странице публикации."
         twitter_handle_info_text_with_instructions: "Login Twitter аккаунта вашего маркетплейс (если сть). Он будет упоминаться когда люди используют кнопку tweet на странице публикации. %{instructions_link}."
@@ -317,8 +345,14 @@ ru:
         sharetribe_analytics_instructions_link_text: ~
         end_user_analytics: ~
         save: "Сохранить настройки"
+      logo_link:
+        title: ~
+        info: ~
+        url: ~
+        placeholder: ~
       menu_links:
         menu_links: "Ссылки меню"
+        menu_links_display: ~
         save: "Сохранить настройки"
         add_menu_link: "Добавить новую ссылку к меню"
         title_placeholder: "Название ссылки"
@@ -331,6 +365,15 @@ ru:
         all: Все
         max_number_of_links_info: "Ссылка на %{about_page} всегда отображается как первая ссылка меню"
         about_page: "о странице"
+      default_menu_links:
+        title: ~
+        about_link_title: ~
+        contact_link_title: ~
+        invite_link_title: ~
+        info: ~
+        display_about: ~
+        display_contact: ~
+        display_invite: ~
       topbar:
         topbar: "Верхняя панель"
         new_listing_button_label: "Изменить текст новой кнопки вывода каталога"
@@ -339,6 +382,19 @@ ru:
         export_all_as_csv: "Экспортировать все как CSV"
         processing_export: ~
         transactions: "Посмотреть транзакции"
+        search_by_title_parties: ~
+        search: ~
+        reset_search: ~
+        status_filter:
+          all: ~
+          selected: ~
+          selected_js: ~
+          free: ~
+          confirmed: ~
+          paid: ~
+          canceled: ~
+          preauthorized: ~
+          rejected: ~
         headers:
           conversation: Обсуждение
           listing: Публикация
@@ -396,10 +452,18 @@ ru:
           other_party: ~
         participants: ~
         profile: ~
+        search_by_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
       testimonials:
         testimonials: ~
         no_testimonials_found: ~
         displaying_xx_reviews: ~
+        search_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
         headers:
           transaction: ~
           author: ~
@@ -412,6 +476,16 @@ ru:
           skipped: ~
           published: ~
           blocked: ~
+        status_filter:
+          selected: ~
+          all: ~
+          published: ~
+          positive: ~
+          negative: ~
+          skipped: ~
+          waiting: ~
+          blocked: ~
+          selected_js: ~
         form:
           review_text: ~
           save: ~
@@ -421,8 +495,28 @@ ru:
           confirm_modify: ~
           deleting_info: ~
           blocking_info: ~
+      invitations:
+        invitations: ~
+        used:
+          "yes": ~
+          "no": ~
+        headers:
+          sent_by: ~
+          message: ~
+          sent_to: ~
+          used: ~
+          date_sent: ~
       listings:
         listings: ~
+        search_by_title_author_category: ~
+        search: ~
+        reset_search: ~
+        status:
+          all: ~
+          selected_js: ~
+          open: ~
+          closed: ~
+          expired: ~
         headers:
           title: ~
           author: ~
@@ -435,6 +529,30 @@ ru:
         expired: ~
       user_fields:
         user_fields: ~
+      footer:
+        footer: ~
+        offer_pro: ~
+        upgrade_plan_link: ~
+        menu_links: ~
+        language: ~
+        title: ~
+        url: ~
+        add: ~
+        save: ~
+        footer_style: ~
+        footer_copyright: ~
+        footer_enabled: ~
+        social_links: ~
+        title_placeholder: ~
+        url_placeholder: ~
+        style:
+          dark: ~
+          light: ~
+          marketplace_color: ~
+          logo: ~
+        social:
+          title: ~
+          url: ~
     custom_fields:
       edit:
         edit_listing_field: "Редактировать поле публикации \"%{field_name}\""
@@ -1283,6 +1401,7 @@ ru:
       after: "Должно быть после %{restriction}"
       on_or_after: "Должно быть в или после %{restriction}"
       positive_number: "Укажите цифру"
+      from_must_be_less_than_till: ~
   event_feed_events:
     accept:
       has_accepted_lend_item: "%{offerer_name} согласился дать %{listing_title} %{requester_name} %{time_ago}."
@@ -1567,7 +1686,7 @@ ru:
       listing_updated_successfully: "Публикация обновлена успешно"
       listing_updated_availability_management_enabled: "Каталог успешно обновлен. Управление доступностью включено."
       listing_updated_availability_management_disabled: "Каталог успешно обновлен. Управление доступностью отключено."
-      only_kassi_administrators_can_access_this_area: "Только администраторы %{service_name} имеют доступ к этому разделу"
+      only_kassi_administrators_can_access_this_area: ~
       only_listing_author_can_close_a_listing: "Листинг может закрыть только автор"
       only_listing_author_can_edit_a_listing: "Листинг может редактировать только автор"
       payment_successful: "Оплата выполнена успешно"
@@ -1652,6 +1771,8 @@ ru:
       paypal_payments: ~
       stripe_payments: ~
       payments: Платежи
+      listings: ~
+      listings_search_placeholder: ~
   listings:
     bubble_listing_not_visible:
       listing_not_visible: "У вас нет прав для просмотра этой записи."
@@ -1852,6 +1973,7 @@ ru:
       community_not_configured_for_payments: "Сайт %{service_name} не был настроен для платежей, поэтому вы пока не можете размещать новые объявления. Пожалуйста, %{contact_admin_link} для уточнения деталей."
       payment_settings_link: "настройки оплаты"
       community_not_configured_for_payments_admin: "%{service_name} не был настроен для принятия платежей, поэтому вы не можете размещать новые публикации сейчас. Перейдите на %{payment_settings_link} чтобы настроить платежные реквизиты."
+      you_are_now_posting_a_listing_on_behalf_of: ~
     quantity:
       hour: "Количество часов:"
       day: "Количество дней:"
@@ -2124,6 +2246,8 @@ ru:
       show_all_listings: "Показать все предложения"
       show_all_open_listings: "Показать все открытые публикации"
       show_all_reviews: "Показать все обзоры"
+      admin_actions: ~
+      post_listing_as: ~
     followed_people:
       you_follow_plural: "Вы подписаны на %{count} участников"
       you_follow_singular: "Вы подписаны на %{count} участников"
@@ -2249,6 +2373,7 @@ ru:
       invisible: "(не видно другим участникам)"
       image_is_processing: "Подождите. Изображение вашего профиля обрабатывается. Будет готово через минуту или две."
       shown_in_your_public_profile: ~
+      editing_profile_of: ~
     save_information: Сохранить
   shipping_address:
     shipping_address: "Адрес доставки"

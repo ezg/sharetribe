@@ -12,7 +12,7 @@ fr:
       index:
         listing_categories: "Catégories d'annonces"
         create_a_new_category: "+ Créer une nouvelle catégorie"
-        remove_category_confirmation: "Voulez-vous vraiment supprimer la catégorie '%{category_name}' ?"
+        remove_category_confirmation: "Voulez-vous vraiment supprimer la catégorie '%{category_name}' ? Cela ne peut pas être annulé."
         saving_order: "Sauvegarde de l'ordre des catégories"
         save_order_successful: "Ordre des catégories sauvegardé avec succès"
         save_order_error: "Une erreur s'est produite lors de la sauvegarde de l'ordre des catégories. Veuillez actualiser la page et essayer de nouveau."
@@ -67,13 +67,13 @@ fr:
         community_name: "Nom de la place de marché"
         edit_community_name_description: "Le nom de votre place de marché. Ceci est visible par les utilisateurs dans les emails et plusieurs autres endroits."
         community_slogan: "Slogan de la place de marché"
-        community_slogan_display: ~
+        community_slogan_display: "Afficher le slogan sur la page d'accueil"
         edit_community_slogan_description: "Ceci est affiché sur la page d'accueil de votre place de marché aux utilisateurs qui ne sont pas connectés. %{see_how_it_looks_like}."
-        edit_community_slogan_description_hideable: ~
+        edit_community_slogan_description_hideable: "Ceci est visible lors de la navigation, pour les moteurs de recherche et les réseaux sociaux. Vous pouvez également l'afficher, sur la page d'accueil de votre place de marché, aux utilisateurs non connectés. %{see_how_it_looks_like}."
         community_description: "Description de la place de marché"
-        community_description_display: ~
+        community_description_display: "Afficher la description sur la page d'accueil"
         edit_community_description_description: "Ceci est affiché sur la page d'accueil de votre place de marché aux utilisateurs qui ne sont pas connectés. %{see_how_it_looks_like}."
-        edit_community_description_description_hideable: ~
+        edit_community_description_description_hideable: "Ceci est visible lors de la navigation, pour les moteurs de recherche et les réseaux sociaux. Vous pouvez également l'afficher, sur la page d'accueil de votre place de marché, aux utilisateurs non connectés. %{see_how_it_looks_like}."
         community_search_placeholder: "Texte d'aide à la recherche"
         edit_community_search_placeholder_description: "Ceci est affiché sur la page d'accueil de la place de marché dans la barre de recherche. %{see_how_it_looks_like}."
         private_community_homepage_content: "Page d'accueil de la place de marché privée"
@@ -104,7 +104,7 @@ fr:
         small_community_cover_photo: "Photo de couverture réduite"
         favicon: Favicon
         favicon_info_text: "Le favicon remplacera celui par défaut dans Sharetribe. Les dimensions doivent être de 32x32 pixels et l'image téléchargée sera redimensionnée à ces dimensions."
-        community_custom_color1: "Couleur principale"
+        community_custom_color1: "Couleur principale de la place de marché"
         community_slogan_color: "Couleur du slogan de la place de marché"
         community_slogan_color_instructions_text: "Vous pouvez changer la couleur du slogan sur la page d'accueil en entrant une valeur hexadécimale. %{colorpicker} peut vous être utile pour choisir une couleur et obtenir sa valeur hexadécimale. Vous pourrez alors copier cette valeur ici. %{see_how_it_looks_like}."
         community_description_color: "Couleur de la description de la place de marché"
@@ -120,7 +120,7 @@ fr:
         small_cover_photo_visibility: "La photo de couverture réduite est affichée sur toute les pages excepté sur la page d'accueil pour les visiteurs non connectés."
         small_cover_photo_instructions_text_with_dimensions: "La photo sera redimensionnée en %{width}x%{height} pixels et les images trop grandes seront coupées au centre."
         main_content_width: "Lorsque vous choisissez les photos de couverture, gardez à l'esprit que la page principale a une largeur maximale de %{main_width} pixels. N'oubliez pas non plus de vérifier comment s'affiche votre photo de couverture sur des petits écrans (par exemple en réduisant la taille de la fenêtre de votre navigateur)."
-        custom_color1_instructions_text: "Vous pouvez changer la couleur principale de l'interface en entrant une valeur hexadécimale. <a href=\"http://www.colorpicker.com/?colorcode=D96E21\" target=\"_blank\" rel=\"noreferrer\">ColorPicker.com</a> peut vous être utile pour choisir une couleur et obtenir sa valeur hexadécimale. Vous pourrez alors copier cette valeur ici."
+        custom_color1_instructions_text: "Vous pouvez changer la couleur principale de l'interface en entrant une valeur hexadécimale. <a href=\"https://www.webfx.com/web-design/color-picker/d96e21\" target=\"_blank\" rel=\"noreferrer\">WebFX.com</a> peut vous être utile pour choisir une couleur et obtenir sa valeur hexadécimale. Vous pourrez alors copier cette valeur ici."
         new_listing_button_instructions_text: "Vous pouvez changer la couleur du bouton Déposer une nouvelle annonce en entrant une valeur hexadécimale. %{link_to_colorpicker} peut vous être utile pour choisir une couleur et obtenir sa valeur hexadécimale. Vous pourrez alors copier cette valeur ici."
         default_browse_view: "Vue par défaut"
         default_browse_view_instructions_text: "La vue par défaut est utilisée sur la page d'accueil pour définir comment sont affichées les annonces par défaut."
@@ -183,33 +183,39 @@ fr:
       getting_started:
         getting_started: "Pour bien commencer"
       available_languages:
+        cs: Tchèque
+        da-DK: Danois
+        de: Allemand
         en: Anglais
         en-AU: "Anglais (Australie)"
         en-GB: "Anglais (Royaume-Uni)"
+        es: Espagnol
+        es-ES: "Espagnol (Espagne)"
+        fi: Finnois
         fr: Français
         fr-CA: "Français (Canada)"
-        es: "Espagnol (Chili)"
-        es-ES: Espagnol
-        pt-PT: Portugais
-        pt-BR: "Portuguais (Brésil)"
-        nb: "Norvégien Bokmål"
-        sv: Suédois
-        da-DK: Danois
-        fi: Finnois
-        ru: Russe
-        de: Allemand
         el: Grec
-        nl: Néerlandais
-        tr-TR: Turc
-        zh: Chinois
-        ja: Japonais
         it: Italien
+        ja: Japonais
+        ko: Coréen
+        nb: "Norvégien Bokmål"
+        nl: Néerlandais
+        pl: Polonais
+        pt-BR: "Portuguais (Brésil)"
+        pt-PT: Portugais
+        ru: Russe
+        sv: Suédois
+        th-TH: "Thaïlandais (Thaïlande)"
+        tr-TR: Turc
+        vi: Vietnamien
+        zh: Chinois
+        zh-TW: "Chinois (Taïwan)"
       settings:
         settings: Paramètres
         general: Général
         access: "Paramètres d'accès"
-        join_with_invite_only: "Autoriser un utilisateur à s'inscrire uniquement s'il est invité par un autre utilisateur"
-        users_can_invite_new_users: "Autoriser tous les utilisateurs à inviter d'autres utilisateurs"
+        join_with_invite_only: "Autoriser un utilisateur à s'inscrire uniquement s'il est invité par un autre utilisateur déjà inscrit"
+        users_can_invite_new_users: "Autoriser tous les utilisateurs déjà inscrits, et pas uniquement les administrateur, à inviter d'autres utilisateurs"
         private: "Autoriser uniquement les utilisateurs connectés à voir les annonces et profils (rendre la place de marché privée)"
         require_verification_to_post_listings: "Autoriser uniquement les utilisateurs validés par un administrateur à poster de nouvelles annonces"
         search_preferences: "Paramètres de recherche"
@@ -268,6 +274,22 @@ fr:
         reset_search: "Voir tous"
         for_search_terms: "pour : %{terms}"
         this_makes_the_user_an_admin: "Ce membre va devenir un administrateur. Vous devriez l'en informer, lui rappeler ses responsabilités et leur demander de lire les conditions d'utilisations de Sharetribe. Voulez-vous vraiment continuer ?"
+        status_filter:
+          all: "Tous les statuts"
+          selected: "Statuts sélectionnés : %{count}"
+          selected_js: "Statuts sélectionnés : "
+          admin: Admin
+          banned: Banni
+          posting_allowed: "Dépôt d'annonce autorisé"
+          accepted: Confirmé
+          unconfirmed: "Non confirmé"
+          pending: "En attente"
+        this_user_hasnt_confirmed_their_email_address: "Cet utilisateur n'a pas confirmé son adresse email. Il se peut que l'utilisateur n'ai pas reçu l'email de confirmation. Cliquez sur le bouton \"Renvoyer\" si vous souhaiter l'envoyer de nouveau."
+        unconfirmed_user: "Utilisateur non confirmé : %{name}"
+        resend: Renvoyer
+        cancel: Annuler
+        user_didnt_complete_the_signup_process: "Cet utilisateur s'est inscrit via Facebook mais n'a pas terminé le processus d'inscription. Après avoir connecté un compte Facebook, les utilisateurs doivent encore accepter vos conditions d'utilisation et compléter les éventuels champs obligatoires."
+        pending_user: "En attente : %{name}"
       new_layout:
         new_layout: "Nouveau design"
         description_roadmap_new: "Lorsque de nouveaux éléments de design sont disponibles pour votre place de marché, vous pouvez choisir de les utiliser sans attendre ou bien de continuer à utiliser les anciens. Vous pouvez modifier votre choix à tout moment depuis cette page. Il est préférable de toujours utiliser les versions les plus récentes, puisque les anciens éléments seront rendus obsolètes à un moment. Si un élément que vous utilisez devenait obsolète, vous serez contacté au préalable."
@@ -277,15 +299,21 @@ fr:
         searchpage: "Nouvelle page de recherche (nouvelle barre des menus requise)"
       social_media:
         social_media: "Réseaux sociaux"
-        logo: Logo
-        logo_info: "Cette image est utilisée lorsque quelqu'un partage votre place de marché sur un réseau social (Facebook, Twitter, LinkedIn). Idéalement, elle devrait avoir un ratio de 2:1 et des dimensions minimum de %{width}x%{height} pixels."
+        logo: "Image sur les réseaux sociaux"
+        logo_info: "Cette image est affichée lorsque quelqu'un partage votre site sur Facebook, Twitter et LinkedIn. Idéalement, elle devrait avoir un ratio de 2:1 et des dimensions minimum de %{width}x%{height} pixels."
+        social_media_title: "Titre sur les réseaux sociaux"
+        social_media_title_info: "Ce texte est affiché lorsqu'un utilisateur partage votre site sur Facebook, Twitter ou LinkedIn. Vous pouvez prévisualiser le rendu %{facebook_preview_link}, %{twitter_preview_link} et %{linkedin_preview_link}."
+        link_for_facebook: "pour Facebook"
+        link_for_linkedin: "pour LinkedIn"
+        link_for_twitter: "pour Twitter"
+        social_media_description: "Description sur les réseaux sociaux"
         twitter_handle: "Nom Twitter"
         twitter_handle_info_text: "Nom Twitter du compte de votre place de marché (si vous en avez un). Il sera mentionné lorsque des utilisateurs utiliseront le bouton de partage Twitter sur les pages d'annonces."
         twitter_handle_info_text_with_instructions: "Nom Twitter du compte de votre place de marché (si vous en avez un). Il sera mentionné lorsque des utilisateurs utiliseront le bouton de partage Twitter sur les pages d'annonces. %{instructions_link}."
         twitter_instructions_link_text: "En savoir plus"
         twitter_handle_placeholder: nomtwitter
         invalid_twitter_handle: "Le nom Twitter ne peut contenir qu'au maximum 15 caractères alpha-numériques (lettres A-Z et chiffre 0-9)."
-        facebook_connect: Facebook
+        facebook_connect: "Facebook Login"
         facebook_connect_info_text: "Pour activer la connexion avec Facebook, créez une application pour votre place de marché sur <a href='https://developers.facebook.com/'>Facebook developers</a>. Ajoutez l'id et la clé secrète de l'application ici."
         facebook_connect_info_text_with_instructions: "Pour activer la connexion avec Facebook, créez une application pour votre place de marché sur <a href='https://developers.facebook.com/'>Facebook developers</a>. Ajoutez l'id et la clé secrète de l'application ici. %{instructions_link}"
         facebook_instructions_link_text: "Lire les instructions pour configurer Facebook Connect."
@@ -307,12 +335,18 @@ fr:
         sharetribe_analytics_instructions_link_text: "En apprendre plus sur les analyses Sharetribe."
         end_user_analytics: "Autoriser Sharetribe à suivre l'activité des membres pour améliorer le service Sharetribe"
         save: "Sauvegarder les paramètres"
+      logo_link:
+        title: "Lien du logo"
+        info: "Vous pouvez personnaliser le lien du logo (et du lien \"Accueil\" dans le menu). Par défaut le logo redirige vers la page d'accueil."
+        url: URL
+        placeholder: "https://www.example.com"
       menu_links:
-        menu_links: "Liens du menu"
+        menu_links: "Liens personnalisés du menu"
+        menu_links_display: "Affichage des liens du menu"
         save: "Sauvegarder les paramètres"
         add_menu_link: "Ajouter un nouveau lien au menu"
         title_placeholder: "Titre du lien"
-        url_placeholder: "http://example.fr/fr"
+        url_placeholder: "https://example.com/fr"
         title: Titre
         language: Langue
         url: URL
@@ -321,6 +355,15 @@ fr:
         all: Tous
         max_number_of_links_info: "Le lien vers %{about_page} sera toujours affiché en premier"
         about_page: "la page A propos"
+      default_menu_links:
+        title: "Liens par défaut du menu"
+        about_link_title: "A propos"
+        contact_link_title: "Nous contacter"
+        invite_link_title: "Inviter des nouveaux membres"
+        info: "Par défaut, les liens des pages suivantes ne sont pas affichés ailleurs dans votre place de marché : %{about_link}, %{contact_link}, %{invite_link}."
+        display_about: "Afficher le lien vers la page <i>A propos</i> et les autres pages statiques"
+        display_contact: "Afficher le lien vers la page <i>Nous contacter</i>"
+        display_invite: "Afficher le lien vers la page <i>Inviter des nouveaux membres</i>"
       topbar:
         topbar: "Barre des menus"
         new_listing_button_label: "Texte du bouton Déposer une annonce"
@@ -329,6 +372,19 @@ fr:
         export_all_as_csv: "Exporter au format CSV"
         processing_export: "Export au format CSV en cours..."
         transactions: Transactions
+        search_by_title_parties: "Rechercher une annonce ou un participant"
+        search: Rechercher
+        reset_search: "Voir tous"
+        status_filter:
+          all: "Tous les statuts"
+          selected: "Statuts sélectionnés : %{count}"
+          selected_js: "Statuts sélectionnés : "
+          free: "Transaction gratuite"
+          confirmed: Réalisée
+          paid: Payée
+          canceled: Annulée
+          preauthorized: Pré-autorisée
+          rejected: Rejetée
         headers:
           conversation: "Fil de conversation"
           listing: Annonce
@@ -386,10 +442,18 @@ fr:
           other_party: "Autre participant"
         participants: "Conversation : %{starter} avec %{author}"
         profile: "Profil de %{author}"
+        search_by_keyword: "Rechercher un nom, un email ou un mot-clé"
+        search: Rechercher
+        reset_search: "Voir tous"
+        for_keyword: "pour : <b>%{keyword}</b>"
       testimonials:
         testimonials: Avis
         no_testimonials_found: "Aucun avis trouvé"
         displaying_xx_reviews: "Affichage de <b>%{count}</b> avis pour les transactions %{tx_from} - %{tx_to} sur un total de <b>%{all_count}</b> avis."
+        search_keyword: "Rechercher un nom, un email ou un mot-clé"
+        search: Rechercher
+        reset_search: "Voir tous"
+        for_keyword: "pour : <b>%{keyword}</b>"
         headers:
           transaction: Transaction
           author: Auteur
@@ -402,6 +466,16 @@ fr:
           skipped: Ignorée
           published: Publiée
           blocked: Bloquée
+        status_filter:
+          selected: "Filtres sélectionnés :%{count}"
+          all: Filtres
+          published: Publiées
+          positive: Positive
+          negative: Négative
+          skipped: Ignorées
+          waiting: "En attente"
+          blocked: Bloquées
+          selected_js: "Filtres sélectionnés : "
         form:
           review_text: "Texte de l'avis"
           save: Sauvegarder
@@ -411,8 +485,28 @@ fr:
           confirm_modify: "Voulez-vous vraiment modifier/supprimer cet avis ? Une fois modifiée ou supprimée, il n'est plus possible d'en récupérer la version précédente."
           deleting_info: "Supprimer un avis permet à son auteur d''en laisser un nouveau pour la même transaction."
           blocking_info: "Bloquer un avis lors de sa suppression empêche son auteur d'en laisser un nouveau pour la même transaction."
+      invitations:
+        invitations: Invitations
+        used:
+          "yes": Oui
+          "no": Non
+        headers:
+          sent_by: "Envoyée par"
+          message: Message
+          sent_to: "Envoyée à"
+          used: Utilisée
+          date_sent: "Date d'envoi"
       listings:
         listings: Annonces
+        search_by_title_author_category: "Rechercher une annonce, un auteur ou une catégorie"
+        search: Rechercher
+        reset_search: "Voir tous"
+        status:
+          all: "Tous les statuts"
+          selected_js: "Statuts sélectionnés : "
+          open: Ouverte
+          closed: Close
+          expired: Expirée
         headers:
           title: Titre
           author: Auteur
@@ -425,6 +519,30 @@ fr:
         expired: Expirée
       user_fields:
         user_fields: "Champs d'utilisateurs"
+      footer:
+        footer: "Pied de page"
+        offer_pro: "Paramétrez et supprimez toute mention de Sharetribe dans le pied de page en %{upgrade_pro_plan_link}."
+        upgrade_plan_link: "vous abonnant à l'offre Pro ou supérieure"
+        menu_links: "Liens du pied de page"
+        language: Langue
+        title: Titre
+        url: URL
+        add: "Ajouter un nouveau lien au pied de page"
+        save: "Sauvegarder les paramètres"
+        footer_style: "Style du pied de page"
+        footer_copyright: "Texte copyright dans le pied de page"
+        footer_enabled: "Footer activé"
+        social_links: "Liens de réseaux sociaux"
+        title_placeholder: "Titre du lien"
+        url_placeholder: "https://example.com/nomdutilisateur"
+        style:
+          dark: Sombre
+          light: Clair
+          marketplace_color: "Couleur principale de la place de marché"
+          logo: Logo
+        social:
+          title: Titre
+          url: URL
     custom_fields:
       edit:
         edit_listing_field: "Modifier le champ d'annonce '%{field_name}'"
@@ -452,7 +570,7 @@ fr:
         listing_fields: "Champs et filtres d'annonces"
         listing_fields_help: "Vous pouvez ici modifier les champs qu'un utilisateur doit compléter lors de la création d'une annonce. Notez que certains champs sont prédéfinis et ne peuvent être modifiés."
         add_new_field: "Ajouter un nouveau champ : "
-        remove_field_confirmation: "Voulez-vous vraiment supprimer le champ '%{field_name}' ?"
+        remove_field_confirmation: "Voulez-vous vraiment supprimer le champ '%{field_name}' et toutes les données associées ? Cela ne peut pas être annulé."
         cancel: Annuler
         save: Sauvegarder
         field_title: "Nom du champ"
@@ -1273,6 +1391,7 @@ fr:
       after: "doit être après %{restriction}"
       on_or_after: "doit être au ou après %{restriction}"
       positive_number: "Vous devez saisir un nombre entier."
+      from_must_be_less_than_till: "\"Heure de début\" doit être antérieure à \"Heure de fin\""
   event_feed_events:
     accept:
       has_accepted_lend_item: "%{offerer_name} a accepté de prêter %{listing_title} à %{requester_name} %{time_ago}."
@@ -1310,7 +1429,7 @@ fr:
     create_new_marketplace: "Créer une nouvelle place de marché"
     contact_us: "Nous contacter"
     profile: Profil
-    manage_listings: "Gérer les annonces"
+    manage_listings: "Mes annonces"
     invite: "Inviter des nouveaux membres"
     login: "Se connecter"
     signup: S'inscrire
@@ -1323,8 +1442,8 @@ fr:
       additionally_some_private_requests_exist: "Il y a aussi <b>%{number_of_listings} autres demandes</b>,"
     blank_slate:
       add_first: "Ajouter !"
-      but_that_is_visible_only_to_registered_members: "mais elle est visible uniquement aux membres enregistrés."
-      but_those_are_visible_only_to_registered_members: "mais elles sont visibles uniquement aux membres enregistrés."
+      but_that_is_visible_only_to_registered_members: "mais elle est visible uniquement aux membres inscrits."
+      but_those_are_visible_only_to_registered_members: "mais elles sont visibles uniquement aux membres inscrits."
       create_new_account_for_yourself: "Créez un nouveau compte"
       examples_of_what_you_could_offer_to_others: "Que pourriez-vous proposer aux autres"
       examples_of_what_you_could_request_to_others: "Que pourriez-vous demander aux autres"
@@ -1557,7 +1676,7 @@ fr:
       listing_updated_successfully: "Annonce mise à jour avec succès"
       listing_updated_availability_management_enabled: "Annonce mise à jour avec succès. Gestion des disponibilités activée."
       listing_updated_availability_management_disabled: "Annonce mise à jour avec succès. Gestion des disponibilités désactivée."
-      only_kassi_administrators_can_access_this_area: "Seule l'équipe %{service_name} peuvent accéder à ces pages"
+      only_kassi_administrators_can_access_this_area: "Veuillez vous connecter avec un compte administrateur pour accéder à cette page"
       only_listing_author_can_close_a_listing: "Seul l'auteur de l'annonce peut la clore"
       only_listing_author_can_edit_a_listing: "Seul l'annonce de liste peut la modifier"
       payment_successful: "Paiement réussi"
@@ -1640,6 +1759,8 @@ fr:
       paypal_payments: "Paiements PayPal"
       stripe_payments: "Paiement Stripe"
       payments: Paiements
+      listings: Annonces
+      listings_search_placeholder: "Rechercher le titre d'une annonce"
   listings:
     bubble_listing_not_visible:
       listing_not_visible: "Vous n'avez pas la permission de consulter cette annonce."
@@ -1840,6 +1961,7 @@ fr:
       community_not_configured_for_payments: "%{service_name} n'a pas encore été configuré pour les paiements, vous ne pouvez donc pas déposer d'annonce pour le moment. Veuillez %{contact_admin_link} pour en savoir plus."
       payment_settings_link: "paramètres de paiement"
       community_not_configured_for_payments_admin: "%{service_name} n'a pas encore été configuré pour les paiements, vous ne pouvez donc pas déposer d'annonce pour le moment. Rendez-vous dans les %{payment_settings_link} pour y compléter les informations de paiements."
+      you_are_now_posting_a_listing_on_behalf_of: "Vous êtes en train de publier une annonce en tant que %{name}"
     quantity:
       hour: "Nombre d'heures : "
       day: "Nombre de jours : "
@@ -2086,7 +2208,7 @@ fr:
       add_phone_number: "Ajoutez un numéro de téléphone"
       address: "Adresse : "
       as_expected: "Correspondait à mes attentes"
-      edit_profile_info: "Modifier votre profil"
+      edit_profile_info: "Modifier le profil"
       exceeded_expectations: "Dépassait mes attentes"
       positive: positif
       hide_description: Réduire
@@ -2110,6 +2232,8 @@ fr:
       show_all_listings: "Voir toutes les annonces"
       show_all_open_listings: "Voir toutes les annonces en ligne"
       show_all_reviews: "Voir tous les avis"
+      admin_actions: Administration
+      post_listing_as: "Publier une annonce en tant que"
     followed_people:
       you_follow_plural: "Vous suivez %{count} personnes"
       you_follow_singular: "Vous suivez %{count} personne"
@@ -2235,6 +2359,7 @@ fr:
       invisible: "(non visible par les autres utilisateurs)"
       image_is_processing: "C'est presque prêt ! Nous sommes en train de traiter votre photo de profil. Elle sera visible dans une ou deux minutes."
       shown_in_your_public_profile: "(Visible dans votre profile public)"
+      editing_profile_of: "Vous êtes en train d'éditer le profil de %{name}"
     save_information: "Sauvegarder les informations"
   shipping_address:
     shipping_address: "Adresse de livraison"
@@ -2447,7 +2572,7 @@ fr:
       user: Utilisateur
       inbox: Messagerie
       profile: Profil
-      manage_listings: "Gérer les annonces"
+      manage_listings: "Mes annonces"
       settings: Paramètres
       logout: Déconnexion
       login: "Se connecter"
@@ -2489,14 +2614,14 @@ fr:
       community_members_entries_info:
         single_page:
           zero: "Aucun %{model} trouvé"
-          one: "Affichage de %{accepted_count} %{accepted_model} confirmé et de %{banned_count} %{banned_model} banni"
-          other: "Affichage de %{accepted_count} %{accepted_model} confirmés et de %{banned_count} %{banned_model} bannis"
+          one: "Affichage de %{accepted_count} %{accepted_model} confirmé et de %{other_count} autres %{other_model}"
+          other: "Affichage de %{accepted_count} %{accepted_model} confirmés et de %{other_count} autres %{other_model}"
         single_page_html:
           zero: "Aucun %{model} trouvé"
-          one: "Affichage de <b>%{accepted_count}</b> %{accepted_model} confirmé et de %{banned_count} %{banned_model} banni"
-          other: "Affichage de <b>%{accepted_count}</b> %{accepted_model} confirmés et de %{banned_count} %{banned_model} bannis"
-        multi_page: "Affichage des %{model} %{from} - %{to} des %{accepted_count} %{accepted_model} et %{banned_count} %{banned_model} banni"
-        multi_page_html: "Affichage des %{model} <b>%{from} - %{to}</b> des <b>%{accepted_count}</b> %{accepted_model} et %{banned_count} %{banned_model} banni"
+          one: "Affichage de <b>%{accepted_count}</b> %{accepted_model} confirmé et de %{other_count} autres %{other_model}"
+          other: "Affichage de <b>%{accepted_count}</b> %{accepted_model} confirmés et de %{other_count} autres %{other_model}"
+        multi_page: "Affichage des %{model} %{from} - %{to} de %{accepted_count} %{accepted_model} et %{other_count} autres %{other_model}"
+        multi_page_html: "Affichage des %{model} <b>%{from} - %{to}</b> de <b>%{accepted_count}</b> %{accepted_model} et %{other_count} autres %{other_model}"
   stripe_accounts:
     admin_account_not_connected: "Utiliser le système de paiement de %{service_name} pour recevoir des paiements est impossible tant que celui-ci n'a pas été activé. Veuillez %{contact_admin_link} pour en savoir plus."
     contact_admin_link_text: "contacter l'équipe %{service_name}"

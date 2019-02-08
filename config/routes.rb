@@ -52,7 +52,6 @@ Rails.application.routes.draw do
   # Internal API
   namespace :int_api do
     post "/create_trial_marketplace" => "marketplaces#create"
-    post "/prospect_emails" => "marketplaces#create_prospect_email"
     resources :listings, only: [], defaults: { format: :json } do
       member do
         post :update_working_time_slots
@@ -106,6 +105,7 @@ Rails.application.routes.draw do
   get '/406' => 'errors#not_acceptable', :as => :error_not_acceptable
   get '/410' => 'errors#gone', as: :error_gone
   get '/community_not_found' => 'errors#community_not_found', as: :community_not_found
+  get '/not_available' => 'application#not_available', as: :community_not_available
 
   resources :communities, only: [:new, :create]
 
@@ -213,8 +213,12 @@ Rails.application.routes.draw do
       patch "/new_layout"         => "communities#update_new_layout",           as: :update_new_layout
 
       # Topbar menu
-      get   "/topbar/edit"        => "communities#topbar",                      as: :topbar_edit
-      patch "/topbar"             => "communities#update_topbar",               as: :topbar
+      get   "/topbar/edit"        => "communities/topbar#edit",                 as: :topbar_edit
+      patch "/topbar"             => "communities/topbar#update",               as: :topbar
+
+      # Footer menu
+      get   "/footer/edit"        => "communities/footer#edit",                 as: :footer_edit
+      patch "/footer"             => "communities/footer#update",               as: :footer
 
       # Landing page menu
       get   "/landing_page"         => "communities#landing_page",                  as: :landing_page
@@ -278,11 +282,13 @@ Rails.application.routes.draw do
         end
         resources :conversations, controller: :community_conversations, only: [:index, :show]
         resources :testimonials, controller: :community_testimonials, only: [:index, :edit, :update, :new, :create]
+        resources :invitations, controller: :community_invitations, only: [:index]
         resources :emails
         resources :community_memberships do
           member do
             put :ban
             put :unban
+            put :resend_confirmation
           end
           collection do
             post :promote_admin
@@ -440,6 +446,9 @@ Rails.application.routes.draw do
             put :move_to_top
             put :show_in_updates_email
           end
+          collection do
+            get :new_form_content
+          end
         end
         resources :person_messages
 
@@ -487,6 +496,7 @@ Rails.application.routes.draw do
             get :account
             get :notifications
             get :unsubscribe
+            get :listings
           end
         end
         resources :testimonials

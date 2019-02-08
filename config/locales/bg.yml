@@ -168,27 +168,33 @@ bg:
       getting_started:
         getting_started: ~
       available_languages:
+        cs: ~
+        da-DK: ~
+        de: ~
         en: ~
         en-AU: ~
         en-GB: ~
-        fr: ~
-        fr-CA: ~
         es: ~
         es-ES: ~
-        pt-PT: ~
-        pt-BR: ~
-        nb: ~
-        sv: ~
-        da-DK: ~
         fi: ~
-        ru: ~
-        de: ~
+        fr: ~
+        fr-CA: ~
         el: ~
-        nl: ~
-        tr-TR: ~
-        zh: ~
-        ja: ~
         it: ~
+        ja: ~
+        ko: ~
+        nb: ~
+        nl: ~
+        pl: ~
+        pt-BR: ~
+        pt-PT: ~
+        ru: ~
+        sv: ~
+        th-TH: ~
+        tr-TR: ~
+        vi: ~
+        zh: ~
+        zh-TW: ~
       settings:
         settings: ~
         general: ~
@@ -253,6 +259,22 @@ bg:
         reset_search: ~
         for_search_terms: ~
         this_makes_the_user_an_admin: ~
+        status_filter:
+          all: "Всички статуси"
+          selected: "Избрани статуси: %{count}"
+          selected_js: "Избрани статуси: "
+          admin: Администратор
+          banned: Забранено
+          posting_allowed: "Публикуването позволено"
+          accepted: Прието
+          unconfirmed: Непотвърден
+          pending: Изчакване
+        this_user_hasnt_confirmed_their_email_address: "Този потребител не е потвърдил своя имейл адрес. Възможно е да не е получил имейл за потвърждение. Натисни ботона препрати за да го изпратиш отново."
+        unconfirmed_user: "Непотвърден потребител: %{name}"
+        resend: Препрати
+        cancel: Откажи
+        user_didnt_complete_the_signup_process: "Този потребител се регистрира чрез Фейсбук но не довърши регистрационния процес. След свързването към своя Фейсбук профил, потребителите трябва също да приемат условията на ползване на сайта, както и да попълнят задължителните полета."
+        pending_user: "Изчакване: %{name}"
       new_layout:
         new_layout: ~
         description_roadmap_new: ~
@@ -264,6 +286,12 @@ bg:
         social_media: ~
         logo: Лого
         logo_info: "Тази снимка се използва когато някой споделя Вашия домейн в социалните мрежи (Facebook, Twitter, LinkedIn).За по-добри резултати е препоръчително да бъде в съотношение 2:1 и минимален размер от %{width} x %{height} px"
+        social_media_title: ~
+        social_media_title_info: ~
+        link_for_facebook: ~
+        link_for_linkedin: ~
+        link_for_twitter: ~
+        social_media_description: ~
         twitter_handle: ~
         twitter_handle_info_text: "Потребителско име в Twitter на Вашият пазар(Ако имате такова). Ще бъде видимо, когато някой използва tweet бутона на страницата на Вашата обява."
         twitter_handle_info_text_with_instructions: ~
@@ -292,8 +320,14 @@ bg:
         sharetribe_analytics_instructions_link_text: ~
         end_user_analytics: ~
         save: ~
+      logo_link:
+        title: "Линк от логото"
+        info: "Можете да персонализирате линка от логото (както и на бутона на началната страница на горното меню). По подразбиране логото води потребителите до началната страница или персонализираната целева страница."
+        url: URL
+        placeholder: "https://www.example.com"
       menu_links:
         menu_links: ~
+        menu_links_display: ~
         save: ~
         add_menu_link: ~
         title_placeholder: ~
@@ -306,6 +340,15 @@ bg:
         all: ~
         max_number_of_links_info: ~
         about_page: ~
+      default_menu_links:
+        title: "Линкове на менюто по подразбиране"
+        about_link_title: Относно
+        contact_link_title: "Свържете се с нас"
+        invite_link_title: "Покани нови потребители"
+        info: "По подразбиране линковете към следните страници не се показват никъде другаде в страницата: %{about_link}, %{contact_link}, %{invite_link}"
+        display_about: "Покажи линк към <i> About </i> и други статични страници"
+        display_contact: "Покажи линк към страницата <i> Contact us </i>"
+        display_invite: "Покажи линк към страницата <i> Invite new members </i>"
       topbar:
         topbar: ~
         new_listing_button_label: ~
@@ -314,6 +357,19 @@ bg:
         export_all_as_csv: ~
         processing_export: ~
         transactions: ~
+        search_by_title_parties: ~
+        search: ~
+        reset_search: ~
+        status_filter:
+          all: ~
+          selected: ~
+          selected_js: ~
+          free: ~
+          confirmed: ~
+          paid: ~
+          canceled: ~
+          preauthorized: ~
+          rejected: ~
         headers:
           conversation: ~
           listing: ~
@@ -371,10 +427,18 @@ bg:
           other_party: ~
         participants: ~
         profile: ~
+        search_by_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
       testimonials:
         testimonials: ~
         no_testimonials_found: ~
         displaying_xx_reviews: ~
+        search_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
         headers:
           transaction: ~
           author: ~
@@ -387,6 +451,16 @@ bg:
           skipped: ~
           published: ~
           blocked: Блокирано
+        status_filter:
+          selected: "Избрани филтри: %{count}"
+          all: Филтри
+          published: Публикувано
+          positive: Положително
+          negative: Отрицателно
+          skipped: Подминато
+          waiting: Изчакване
+          blocked: Блокирано
+          selected_js: "Избрани филтри: "
         form:
           review_text: "Прегледай текста"
           save: Запази
@@ -396,8 +470,28 @@ bg:
           confirm_modify: "Сигурен ли си че искаш да промениш/изтриеш този коментар? След промяната/истриването няма да имаш възможност да възстановиш тази информация"
           deleting_info: "Изтриването на коментар позволява на неговия автор да остави нов коментар за дадената транзакция."
           blocking_info: "Блокирането на коментара след неговото изтриване не позволява на неговия автор да остави нов коментар за същата транзакция."
+      invitations:
+        invitations: Покани
+        used:
+          "yes": Да
+          "no": Не
+        headers:
+          sent_by: "Изпратено от"
+          message: Съобщение
+          sent_to: "Изпратено до"
+          used: Използвано
+          date_sent: "Дата на изпращане"
       listings:
         listings: ~
+        search_by_title_author_category: ~
+        search: ~
+        reset_search: ~
+        status:
+          all: ~
+          selected_js: ~
+          open: ~
+          closed: ~
+          expired: ~
         headers:
           title: ~
           author: ~
@@ -410,6 +504,30 @@ bg:
         expired: ~
       user_fields:
         user_fields: ~
+      footer:
+        footer: ~
+        offer_pro: ~
+        upgrade_plan_link: ~
+        menu_links: ~
+        language: ~
+        title: ~
+        url: ~
+        add: ~
+        save: ~
+        footer_style: ~
+        footer_copyright: ~
+        footer_enabled: ~
+        social_links: ~
+        title_placeholder: "Заглавие на линк"
+        url_placeholder: "http://example.com/username"
+        style:
+          dark: ~
+          light: ~
+          marketplace_color: "Цвят на твоята страница"
+          logo: Лого
+        social:
+          title: ~
+          url: ~
     custom_fields:
       edit:
         edit_listing_field: ~
@@ -1238,6 +1356,7 @@ bg:
       after: ~
       on_or_after: ~
       positive_number: ~
+      from_must_be_less_than_till: ~
   event_feed_events:
     accept:
       has_accepted_lend_item: ~
@@ -1522,7 +1641,7 @@ bg:
       listing_updated_successfully: ~
       listing_updated_availability_management_enabled: ~
       listing_updated_availability_management_disabled: ~
-      only_kassi_administrators_can_access_this_area: "Само екипът %{service_name} има достъп до тази област"
+      only_kassi_administrators_can_access_this_area: ~
       only_listing_author_can_close_a_listing: "Само авторът на обява може да я закрие"
       only_listing_author_can_edit_a_listing: "Само авторът на обява може да я редактира"
       payment_successful: ~
@@ -1601,6 +1720,8 @@ bg:
       paypal_payments: ~
       stripe_payments: ~
       payments: ~
+      listings: ~
+      listings_search_placeholder: ~
   listings:
     bubble_listing_not_visible:
       listing_not_visible: ~
@@ -1801,6 +1922,7 @@ bg:
       community_not_configured_for_payments: ~
       payment_settings_link: ~
       community_not_configured_for_payments_admin: ~
+      you_are_now_posting_a_listing_on_behalf_of: ~
     quantity:
       hour: ~
       day: ~
@@ -2068,6 +2190,8 @@ bg:
       show_all_listings: ~
       show_all_open_listings: ~
       show_all_reviews: ~
+      admin_actions: ~
+      post_listing_as: ~
     followed_people:
       you_follow_plural: ~
       you_follow_singular: ~
@@ -2193,6 +2317,7 @@ bg:
       invisible: ~
       image_is_processing: ~
       shown_in_your_public_profile: ~
+      editing_profile_of: ~
     save_information: ~
   shipping_address:
     shipping_address: ~

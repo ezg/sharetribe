@@ -12,7 +12,7 @@ pl:
       index:
         listing_categories: "Kategorie ofert"
         create_a_new_category: "+ Dodaj nową kategorię"
-        remove_category_confirmation: "Czy jesteś pewien, że chcesz usunąć kategorię '%{category_name}'?"
+        remove_category_confirmation: "Czy jesteś pewien, że chcesz usunąć kategorię '%{category_name}'? Tej akcji nie można cofnąć."
         saving_order: "Zapisywanie kolejności kategorii"
         save_order_successful: "Zapisywanie kategorii zakończyło się pomyślnie"
         save_order_error: "Wystąpił błąd w zapisywaniu porządku kategorii. Proszę odśwież stronę i spróbuj ponownie."
@@ -114,7 +114,7 @@ pl:
         small_community_cover_photo: "Małe zdjęcie w tle"
         favicon: "Ikona strony, tzw. favicon"
         favicon_info_text: "Favicon zastąpi domyślne logo Sharetribe. Wymiary powinny wynosić 32x32 piksele więc załadowany obrazek będzie przycięty do tych wymiarów."
-        community_custom_color1: "Główny kolor"
+        community_custom_color1: "Główny kolor strony"
         community_slogan_color: "Kolor sloganu platformy"
         community_slogan_color_instructions_text: "Możesz zmienić kolor sloganu na stronie głównej poprzez wpisanie kodu koloru. Slogan jest pokazywany użytkownikom niezalogowanym. %{colorpicker} może ci pomóc wybrać kolor i poda ci kod koloru. Możesz następnie skopiować ten kod tutaj. %{see_how_it_looks_like}."
         community_description_color: "Kolor opisu platformy"
@@ -193,27 +193,33 @@ pl:
       getting_started:
         getting_started: "Poradnik początkujących"
       available_languages:
+        cs: ~
+        da-DK: Duński
+        de: Niemiecki
         en: Angielski
         en-AU: "Angielski (Australia)"
         en-GB: "Angielski (Wielka Brytania)"
+        es: ~
+        es-ES: ~
+        fi: Fiński
         fr: Francuski
         fr-CA: "Francuski (Kanada)"
-        es: "Hiszpański (Chile)"
-        es-ES: Hiszpański
-        pt-PT: Portugalski
-        pt-BR: "Portugalski (Brazylijski)"
-        nb: "Norweski Bokmål"
-        sv: Szwedzki
-        da-DK: Duński
-        fi: Fiński
-        ru: Rosyjski
-        de: Niemiecki
         el: Grecki
-        nl: Holenderski
-        tr-TR: Turecki
-        zh: Chiński
-        ja: Japoński
         it: Włoski
+        ja: Japoński
+        ko: ~
+        nb: "Norweski Bokmål"
+        nl: Holenderski
+        pl: ~
+        pt-BR: "Portugalski (Brazylijski)"
+        pt-PT: Portugalski
+        ru: Rosyjski
+        sv: Szwedzki
+        th-TH: ~
+        tr-TR: Turecki
+        vi: ~
+        zh: Chiński
+        zh-TW: ~
       settings:
         settings: Ustawienia
         general: Główne
@@ -278,6 +284,22 @@ pl:
         reset_search: ~
         for_search_terms: ~
         this_makes_the_user_an_admin: ~
+        status_filter:
+          all: ~
+          selected: ~
+          selected_js: ~
+          admin: ~
+          banned: ~
+          posting_allowed: ~
+          accepted: ~
+          unconfirmed: ~
+          pending: ~
+        this_user_hasnt_confirmed_their_email_address: ~
+        unconfirmed_user: ~
+        resend: ~
+        cancel: ~
+        user_didnt_complete_the_signup_process: ~
+        pending_user: ~
       new_layout:
         new_layout: "Nowy układ"
         description_roadmap_new: "Kiedy nowy elementy układu graficznego będą dostępne dla Twojej platformy, możesz wybrać czy chcesz zacząć używać nowego elementu, czy pozostać przy starym. Możesz zmienić ten wybór zawsze na tej stronie. Rekomenduje się zawsze używanie nowych wersji, gdyż stare mogą stać się niepasujące w pewnym momencie. W przypadku gdy element, którego używasz stanie się niepasujący zostaniesz powiadomiony z wyprzedzeniem."
@@ -289,6 +311,12 @@ pl:
         social_media: "Media społecznościowe"
         logo: logo
         logo_info: "To zdjęcie jest używane kiedy ktoś udostępnia Twoją strona w social media (Facebook, Twitter, Linkedin). Dla Lepszego rezultatu powinno mieć rozmiar : 2:1, a minimalny rozmiar %{width} x %{height} px"
+        social_media_title: ~
+        social_media_title_info: ~
+        link_for_facebook: ~
+        link_for_linkedin: ~
+        link_for_twitter: ~
+        social_media_description: ~
         twitter_handle: "Obsługa Twitter"
         twitter_handle_info_text: "Nazwa konta Twitter Twojej platformy (jeśli takie masz). Będzie wspomniana gdy ludzie użyją przycisku \"Tweet\" na stronie oferty."
         twitter_handle_info_text_with_instructions: "Nazwa konta Twitter Twojej platformy (jeśli takie masz). Będzie wspomniana gdy ludzie użyją przycisku \"Tweet\" na stronie oferty. %{instructions_link}"
@@ -317,8 +345,14 @@ pl:
         sharetribe_analytics_instructions_link_text: ~
         end_user_analytics: ~
         save: "Zapisz ustawienia"
+      logo_link:
+        title: ~
+        info: ~
+        url: ~
+        placeholder: ~
       menu_links:
         menu_links: "Linki menu"
+        menu_links_display: ~
         save: "Zapisz ustawienia"
         add_menu_link: "Dodaj nowy link do menu"
         title_placeholder: "Nazwa linku"
@@ -331,6 +365,15 @@ pl:
         all: Wszystkie
         max_number_of_links_info: "Link do %{about_page} jest zawsze wyświetlany jako pierwszy w menu"
         about_page: "o stronie"
+      default_menu_links:
+        title: ~
+        about_link_title: ~
+        contact_link_title: ~
+        invite_link_title: ~
+        info: ~
+        display_about: ~
+        display_contact: ~
+        display_invite: ~
       topbar:
         topbar: "Górny pasek"
         new_listing_button_label: "Opublikuj nowy tekst na guziku oferty"
@@ -339,6 +382,19 @@ pl:
         export_all_as_csv: "Wyeksportuj wszystko do CSV"
         processing_export: ~
         transactions: "Zobacz transakcje"
+        search_by_title_parties: ~
+        search: ~
+        reset_search: ~
+        status_filter:
+          all: ~
+          selected: ~
+          selected_js: ~
+          free: ~
+          confirmed: ~
+          paid: ~
+          canceled: ~
+          preauthorized: ~
+          rejected: ~
         headers:
           conversation: "Wątek konwersacji"
           listing: Oferta
@@ -396,10 +452,18 @@ pl:
           other_party: ~
         participants: ~
         profile: ~
+        search_by_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
       testimonials:
         testimonials: ~
         no_testimonials_found: ~
         displaying_xx_reviews: ~
+        search_keyword: ~
+        search: ~
+        reset_search: ~
+        for_keyword: ~
         headers:
           transaction: ~
           author: ~
@@ -412,6 +476,16 @@ pl:
           skipped: ~
           published: ~
           blocked: zablokowany
+        status_filter:
+          selected: ~
+          all: ~
+          published: ~
+          positive: ~
+          negative: ~
+          skipped: ~
+          waiting: ~
+          blocked: ~
+          selected_js: ~
         form:
           review_text: "treść opinii"
           save: Zapisz
@@ -421,8 +495,28 @@ pl:
           confirm_modify: "Czy jesteś pewny, że chcesz skasować/modyfikować tą recenzję? Jeśli zmodyfikujesz lub skasujesz recenzję nie będzie możliwe przywrócenie wcześniejszej treści."
           deleting_info: "Skasowanie opini pozwala autorowi wystawić kolejną za tą samą transakcję"
           blocking_info: ~
+      invitations:
+        invitations: ~
+        used:
+          "yes": ~
+          "no": ~
+        headers:
+          sent_by: ~
+          message: ~
+          sent_to: ~
+          used: ~
+          date_sent: ~
       listings:
         listings: ~
+        search_by_title_author_category: ~
+        search: ~
+        reset_search: ~
+        status:
+          all: ~
+          selected_js: ~
+          open: ~
+          closed: ~
+          expired: ~
         headers:
           title: ~
           author: ~
@@ -435,6 +529,30 @@ pl:
         expired: ~
       user_fields:
         user_fields: ~
+      footer:
+        footer: ~
+        offer_pro: ~
+        upgrade_plan_link: ~
+        menu_links: ~
+        language: ~
+        title: ~
+        url: ~
+        add: ~
+        save: ~
+        footer_style: ~
+        footer_copyright: ~
+        footer_enabled: ~
+        social_links: ~
+        title_placeholder: ~
+        url_placeholder: ~
+        style:
+          dark: ~
+          light: ~
+          marketplace_color: ~
+          logo: ~
+        social:
+          title: ~
+          url: ~
     custom_fields:
       edit:
         edit_listing_field: "Edytuje pole %{field_name} oferty"
@@ -462,7 +580,7 @@ pl:
         listing_fields: "Pola oferty i filtry"
         listing_fields_help: "W tym miejscu możesz edytować pola, które użytkownicy muszą wypełnić, kiedy tworzą nową ofertę. Zwróć uwagę, że niektóre pola są predefiniowane i nie mogą być edytowane."
         add_new_field: "Dodaj nowe pole:"
-        remove_field_confirmation: "Na pewno chcesz usunąć pole '%{field_name}'?"
+        remove_field_confirmation: "Na pewno chcesz usunąć pole '%{field_name} i wszystkie informacje z nim związane? Tej akcji nie można cofnąć."
         cancel: Anuluj
         save: Zapisz
         field_title: "Tytuł pola"
@@ -776,7 +894,7 @@ pl:
       buy: kupować
       give_away: rozdawać
       lend: pożyczyć
-      receive: "wziąść za darmo"
+      receive: "wziąć za darmo"
       rent: wynajmować
       rent_out: wynająć
       sell: sprzedawać
@@ -1013,8 +1131,8 @@ pl:
     accept_reminder:
       remember_to_accept_offer: "Pamiętaj, aby zaakceptować bądź odrzucić ofertę od %{sender_name}"
       remember_to_accept_request: "Pamiętaj, aby zaakceptować bądź odrzucić zapytanie od %{sender_name}"
-      you_can_accept_or_reject_offer_at: "Możesz zaakceptować bądź odrzucić ofertę na"
-      you_can_accept_or_reject_request_at: "Możesz zaakceptować bądź odrzucić ofertę na"
+      you_can_accept_or_reject_offer_at: "Możesz zaakceptować lub odrzucić ofertę na"
+      you_can_accept_or_reject_request_at: "Możesz zaakceptować lub odrzucić ofertę na"
       you_have_not_yet_accepted_or_rejected_offer: "Jeszcze nie zaakceptowałeś, ani nie odrzuciłeś oferty %{title}, którą otrzymałeś %{date}"
       you_have_not_yet_accepted_or_rejected_request: "Jeszcze nie zaakceptowałeś, ani nie odrzuciłeś oferty %{title}, którą otrzymałeś %{date}"
       show_thread: "Pokaż konwersację"
@@ -1059,7 +1177,7 @@ pl:
       confirmation_link_text: "Potwierdź mój adres"
       or_paste_link: "Ewentualnie możesz skopiować poniższy link do paska adresowego Twojej przeglądarki:"
     common:
-      hey: "Witaj %{name}"
+      hey: "Cześć %{name}"
       kassi_team: "Zespół %{service_name}"
       thanks: "Dziękuję,"
       dont_want_to_receive_these_emails: "Nie chcesz otrzymywać takich wiadomości email?"
@@ -1186,7 +1304,7 @@ pl:
       change_my_password: "Zmień moje hasło"
       reset_password_instructions: "<p>Wskazałeś/aś, że zapomniałeś/aś albo hasła albo nazwy użytkownika w platformie %{service_name}.</p><p>Twoja nazwa użytkownika to: %{username}</p><p>Jeśli potrzebujesz zresetować swoje hasło, naciśnij następujący link: %{password_reset_link}</p><br/><p>Jeśli nie chciałeś tej informacji zignoruj ją proszę. Twoje hasło nie ulegnie zmianie dopóki nie naciśniesz powyższego linka i nie stworzysz nowego.</p>"
     testimonial_reminder:
-      remember_to_give_feedback_to: "Przypomnienie: pamiętaj, aby przekazać opinię do %{name}"
+      remember_to_give_feedback_to: "Przypomnienie: pamiętaj, aby przesłać opinię do %{name}"
       you_have_not_given_feedback_yet: "Jeszcze nie przekazałeś opinii do %{name} o wydarzeniu %{event}. Pamiętaj, aby przekazać opinię jak %{given_name} spisał się podczas wydarzenia."
     transaction_preauthorized:
       subject: "%{requester} zażądał i autoryzował płatność dla %{listing_title}"
@@ -1225,7 +1343,7 @@ pl:
       server_rendering: "Poradnik początkujących się nie załadował. Zostaliśmy powiadomieni o sytuacji i naprawiamy ją."
     listings:
       departure_time: "Czas rozpoczęcia musi być pomiędzy aktualny czasem, a datą za rok od dziś."
-      share_type: "Musisz wybrać przynajmniej jedną."
+      share_type: "Musisz wybrać jedną"
       valid_until: "Data musi być pomiędzy aktualnym czasem, a sześć miesięcy od dziś."
       price: "Cena musi być liczbą całkowitą."
       minimum_price: "Cena minimum to %{minimum_price} %{currency}"
@@ -1265,7 +1383,7 @@ pl:
       we_hate_this: "Nie cierpimy gdy tak się dzieje! Zostaliśmy powiadomieni o sytuacji i naprawiamy ją."
       refer_to_error_id: "Jeśli chcesz skontaktować się z pomocą w tej kwestii, proszę dodaj ID błędu \"%{error_id}\" w swojej wiadomości."
     error_500_title: "załadowanie strony nie powiodło się"
-    error_description: "Opis problemu"
+    error_description: "Opis błędu"
     no_javascript:
       javascript_is_disabled_in_your_browser: "Javascript jest wyłączony w Twojej przeglądarce"
       kassi_does_not_currently_work_without_javascript: "%{service_name} nie działa poprawnie bez javascript. Spróbuj włączyć javascript w ustawieniach preferencji Twojej przeglądarki i później odśwież stronę."
@@ -1285,6 +1403,7 @@ pl:
       after: "musi być po %{restriction}"
       on_or_after: "musi być na lub po %{restriction}"
       positive_number: "Wprowadź liczbę."
+      from_must_be_less_than_till: ~
   event_feed_events:
     accept:
       has_accepted_lend_item: "%{offerer_name} zgodził się, aby pożyczyć %{listing_title} do %{requester_name} %{time_ago}"
@@ -1322,7 +1441,7 @@ pl:
     create_new_marketplace: "Stwórz nową platformę"
     contact_us: "Skontaktuj się z nami"
     profile: Profil
-    manage_listings: "Zarządzaj ofertami"
+    manage_listings: "Moje oferty"
     invite: "Zaproś nowych członków"
     login: "Zaloguj się"
     signup: "Zarejestruj się"
@@ -1569,7 +1688,7 @@ pl:
       listing_updated_successfully: "Oferta zaktualizowana pomyślnie"
       listing_updated_availability_management_enabled: "Oferta zaktualizowana pomyślnie. Zarządzanie dostępnością włączone."
       listing_updated_availability_management_disabled: "Oferta zaktualizowana pomyślnie. Zarządzanie dostępnością wyłączone."
-      only_kassi_administrators_can_access_this_area: "Tylko adminstratorzy %{service_name} mogą przejść do tej sekcji"
+      only_kassi_administrators_can_access_this_area: ~
       only_listing_author_can_close_a_listing: "Tylko autor oferty może zamknąć ofertę"
       only_listing_author_can_edit_a_listing: "Tylko autor oferty może edytować ofertę"
       payment_successful: "Płatność dokonana"
@@ -1654,6 +1773,8 @@ pl:
       paypal_payments: ~
       stripe_payments: ~
       payments: Płatności
+      listings: ~
+      listings_search_placeholder: ~
   listings:
     bubble_listing_not_visible:
       listing_not_visible: "Nie masz uprawnień, aby zobaczyć tę ofertę."
@@ -1854,6 +1975,7 @@ pl:
       community_not_configured_for_payments: "%{service_name} nie został jeszcze skonfigurowany dla płatności, więc nie możesz jeszcze umieszczać nowych ofert. Proszę %{contact_admin_link} aby uzyskać więcej informacji."
       payment_settings_link: "ustawienia płatności"
       community_not_configured_for_payments_admin: "%{service_name} nie został jeszcze skonfigurowany dla płatności, więc nie możesz jeszcze umieszczać nowych ofert. Idź do %{payment_settings_link} aby wypełnić szczegóły dotyczące płatności."
+      you_are_now_posting_a_listing_on_behalf_of: ~
     quantity:
       hour: "Liczba godzin:"
       day: "Liczba dni:"
@@ -2126,6 +2248,8 @@ pl:
       show_all_listings: "Pokaż wszystkie oferty"
       show_all_open_listings: "Pokaż wszystkie otwarte oferty"
       show_all_reviews: "Pokaż wszystkie recenzje"
+      admin_actions: ~
+      post_listing_as: ~
     followed_people:
       you_follow_plural: "Śledzisz %{count} ludzi"
       you_follow_singular: "Śledzisz %{count} osób"
@@ -2251,6 +2375,7 @@ pl:
       invisible: "(nie widoczne dla innych użytkowników)"
       image_is_processing: "Trzymaj się mocno. Przetwarzamy właśnie Twoje zdjęcie profilowe. Będzie gotowe za minutę lub dwie."
       shown_in_your_public_profile: ~
+      editing_profile_of: ~
     save_information: "Zapisz informacje"
   shipping_address:
     shipping_address: "Adres dostawy"
@@ -2471,7 +2596,7 @@ pl:
       user: Użytkownik
       inbox: "Skrzynka odbiorcza"
       profile: Profil
-      manage_listings: "Zarządzaj ofertami"
+      manage_listings: "Moje oferty"
       settings: Ustawienia
       logout: Wyloguj
       login: Zaloguj
