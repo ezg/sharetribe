@@ -2,8 +2,8 @@
 #
 # Table name: community_social_logos
 #
-#  id                 :bigint(8)        not null, primary key
-#  community_id       :bigint(8)
+#  id                 :integer          not null, primary key
+#  community_id       :integer
 #  image_file_name    :string(255)
 #  image_content_type :string(255)
 #  image_file_size    :integer

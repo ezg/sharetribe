@@ -2,7 +2,7 @@
 #
 # Table name: stripe_payments
 #
-#  id                 :bigint(8)        not null, primary key
+#  id                 :integer          not null, primary key
 #  community_id       :integer
 #  transaction_id     :integer
 #  payer_id           :string(255)

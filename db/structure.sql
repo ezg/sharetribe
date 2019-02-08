@@ -270,10 +270,10 @@ CREATE TABLE `communities` (
   `end_user_analytics` tinyint(1) DEFAULT '1',
   `show_slogan` tinyint(1) DEFAULT '1',
   `show_description` tinyint(1) DEFAULT '1',
-  `hsts_max_age` int(11) DEFAULT NULL,
   `footer_theme` int(11) DEFAULT '0',
   `footer_copyright` text,
   `footer_enabled` tinyint(1) DEFAULT '0',
+  `hsts_max_age` int(11) DEFAULT NULL,
   `logo_link` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_communities_on_uuid` (`uuid`),
@@ -853,9 +853,9 @@ CREATE TABLE `marketplace_configurations` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `limit_search_distance` tinyint(1) NOT NULL DEFAULT '1',
-  `display_about_menu` tinyint(1) NOT NULL DEFAULT '1',
-  `display_contact_menu` tinyint(1) NOT NULL DEFAULT '1',
-  `display_invite_menu` tinyint(1) NOT NULL DEFAULT '1',
+  `display_about_menu` tinyint(1) DEFAULT '1',
+  `display_contact_menu` tinyint(1) DEFAULT '1',
+  `display_invite_menu` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `index_marketplace_configurations_on_community_id` (`community_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1281,14 +1281,14 @@ CREATE TABLE `social_links` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `community_id` int(11) DEFAULT NULL,
   `provider` int(11) DEFAULT NULL,
-  `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
   `sort_priority` int(11) DEFAULT '0',
   `enabled` tinyint(1) DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_social_links_on_community_id` (`community_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `stripe_accounts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -2318,25 +2318,23 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20180523121344'),
 ('20180524075239'),
 ('20180524081429'),
+('20180717122957'),
+('20180720044534'),
+('20180720065907'),
 ('20180723083133'),
+('20180723115548'),
 ('20180820083133'),
 ('20180829083133'),
 ('20180904075653'),
 ('20181012065625'),
 ('20181024094615'),
 ('20181105134300'),
-('20180717122957'),
-('20180720044534'),
-('20180720065907'),
-('20180723115548'),
-('20180904075653'),
-('20181012065625'),
-('20181024094615'),
 ('20181106212306'),
 ('20181211125306'),
-('20190104083132'),
 ('20181219090801'),
-('20181211094456'),
 ('20181221120927'),
+('20190104083132'),
 ('20190108075512'),
 ('20190208032229');
+
+
