@@ -143,11 +143,8 @@ module TransactionService
                                     quantity_selector:,
                                     shipping_enabled:,
                                     pickup_enabled:,
-<<<<<<< HEAD
                                     authenticate:,
-=======
                                     availability_enabled:,
->>>>>>> upstream/master
                                     transaction_agreement_in_use:,
                                     stripe_in_use:)
 
