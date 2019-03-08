@@ -83,9 +83,9 @@ module TransactionService
       end
 
       def total
-        Rails.logger.error("in AuthenticationTotal")
+        Rails.logger.error("AAAAAA")
         Rails.logger.error(tx_params)
-        Money.new(2000, "USD") #AUTH FEE
+        Money.new(100, "USD") #AUTH FEE
       end
     end
 

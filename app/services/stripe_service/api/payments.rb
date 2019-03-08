@@ -31,8 +31,7 @@ module StripeService::API
         if tx.authenticate_fee
           auth_fee = tx.authenticate_fee
         end
-        Rails.logger.error("hhh")
-        Rails.logger.error(auth_fee)
+        
         stripe_charge = stripe_api.charge(
           community: tx.community_id,
           token: source_id,
