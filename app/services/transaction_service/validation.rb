@@ -76,16 +76,21 @@ module TransactionService
     end
 
     class AuthenticationTotal
-      attr_reader :tx_params
+      attr_reader :listing
 
-      def initialize(tx_params)
-        @tx_params = tx_params
+      def initialize(listing)
+        @listing = listing
       end
 
       def total
         Rails.logger.error("AAAAAA")
-        Rails.logger.error(tx_params)
-        Money.new(100, "USD") #AUTH FEE
+        if listing.category.translations.where(locale: 'en').first().name == "Complete Sets"
+          Rails.logger.error("--BBBBB")
+          Money.new(200, "USD") #AUTH FEE
+        else
+          Rails.logger.error("--CCCCC")
+          Money.new(100, "USD") #AUTH FEE
+        end
       end
     end
 

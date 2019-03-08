@@ -80,10 +80,10 @@ class PreauthorizeTransactionsController < ApplicationController
     end
   end
 
-  def calculate_authentication_from_listing(tx_params:)
+  def calculate_authentication_from_listing(tx_params:, listing:)
     if tx_params[:authenticate]
       Rails.logger.error("A1")
-      TransactionService::Validation::AuthenticationTotal.new(tx_params)
+      TransactionService::Validation::AuthenticationTotal.new(listing)
     else
       TransactionService::Validation::NoAuthenticationFee.new
     end
@@ -106,8 +106,6 @@ class PreauthorizeTransactionsController < ApplicationController
   end
 
   def handle_tx_response(tx_response, gateway)
-    Rails.logger.error("in handle_tx_response")
-    Rails.logger.error(tx_response)
     if !tx_response[:success]
       render_error_response(request.xhr?, t("error_messages.#{gateway}.generic_error"), action: :initiate)
     elsif (tx_response[:data][:gateway_fields][:redirect_url])
@@ -312,6 +310,7 @@ class PreauthorizeTransactionsController < ApplicationController
 
   def price_break_down_locals(tx_params, listing)
     is_booking = is_booking?(listing)
+    Rails.logger.error(listing.category.translations.where(locale: 'en').first().name)
 
     quantity = calculate_quantity(tx_params: tx_params, is_booking: is_booking, unit: listing.unit_type)
 
@@ -320,7 +319,7 @@ class PreauthorizeTransactionsController < ApplicationController
       quantity: quantity)
 
     shipping_total = calculate_shipping_from_listing(tx_params: tx_params, listing: listing, quantity: quantity)
-    authenticate_total = calculate_authentication_from_listing(tx_params: tx_params)
+    authenticate_total = calculate_authentication_from_listing(tx_params: tx_params, listing: listing)
     order_total = TransactionService::Validation::OrderTotal.new(
       item_total: item_total,
       shipping_total: shipping_total,
@@ -412,7 +411,7 @@ class PreauthorizeTransactionsController < ApplicationController
 
     quantity = calculate_quantity(tx_params: tx_params, is_booking: is_booking, unit: listing.unit_type)
     shipping_total = calculate_shipping_from_listing(tx_params: tx_params, listing: listing, quantity: quantity)
-    authenticate_total = calculate_authentication_from_listing(tx_params: tx_params)
+    authenticate_total = calculate_authentication_from_listing(tx_params: tx_params, listing: listing)
     tx_response = create_preauth_transaction(
       payment_type: params[:payment_type].to_sym,
       community: @current_community,

@@ -77,7 +77,7 @@ class TransactionMailer < ActionMailer::Base
     auth_fee = nil
     if transaction.authenticate
       Rails.logger.error("A2")
-      auth_fee = TransactionService::Validation::AuthenticationTotal.new(transaction).total 
+      auth_fee = TransactionService::Validation::AuthenticationTotal.new(transaction.listing).total 
     end
     
     payment_total = payment[:payment_total]
@@ -139,7 +139,7 @@ class TransactionMailer < ActionMailer::Base
     auth_fee = nil
     if transaction.authenticate
       Rails.logger.error("A3")
-      auth_fee = TransactionService::Validation::AuthenticationTotal.new(transaction).total 
+      auth_fee = TransactionService::Validation::AuthenticationTotal.new(transaction.listing).total 
     end
 
     prepare_template(community, buyer_model, "email_about_new_payments")
