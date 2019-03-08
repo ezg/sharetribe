@@ -67,6 +67,12 @@
                       - else
                         = t(".no_description")
 
+    - @listing.custom_field_values.each do |custom_field_value|
+      .row
+        .col-12
+          - custom_field_value.with_type do |question_type|
+            = render :partial => "listings/custom_field_partials/#{question_type}", :locals => { :custom_field_value => custom_field_value }
+
     .row
       .col-12
         - if @listing.description && !@listing.description.blank?
@@ -75,12 +81,6 @@
             - @listing_presenter.youtube_link_ids.each do |youtube_id|
               .listing-description-youtube-wrapper
                 %iframe.listing-description-youtube-iframe{ title: t("listings.show.youtube_video_player"), width: 640, height:390, src: "//www.youtube.com/embed/#{ youtube_id }", frameborder: 0, allowfullscreen: true}
-
-    - @listing.custom_field_values.each do |custom_field_value|
-      .row
-        .col-12
-          - custom_field_value.with_type do |question_type|
-            = render :partial => "listings/custom_field_partials/#{question_type}", :locals => { :custom_field_value => custom_field_value }
 
     - if @current_community.show_listing_publishing_date?
       .row

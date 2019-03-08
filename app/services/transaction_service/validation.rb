@@ -76,8 +76,16 @@ module TransactionService
     end
 
     class AuthenticationTotal
+      attr_reader :tx_params
+
+      def initialize(tx_params)
+        @tx_params = tx_params
+      end
+
       def total
-        Money.new(100, "USD") #AUTH FEE
+        Rails.logger.error("in AuthenticationTotal")
+        Rails.logger.error(tx_params)
+        Money.new(2000, "USD") #AUTH FEE
       end
     end
 

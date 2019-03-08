@@ -82,7 +82,7 @@ class PreauthorizeTransactionsController < ApplicationController
 
   def calculate_authentication_from_listing(tx_params:)
     if tx_params[:authenticate]
-      TransactionService::Validation::AuthenticationTotal.new
+      TransactionService::Validation::AuthenticationTotal.new(tx_params)
     else
       TransactionService::Validation::NoAuthenticationFee.new
     end
