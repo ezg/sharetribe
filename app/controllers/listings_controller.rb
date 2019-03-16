@@ -463,6 +463,7 @@ class ListingsController < ApplicationController
   end
 
   def make_listing_presenter
+    Rails.logger.error("TESTBB")
     @listing_presenter = ListingPresenter.new(@listing, @current_community, params, @current_user)
   end
 

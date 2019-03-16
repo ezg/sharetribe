@@ -20,6 +20,10 @@ class ListingPresenter < MemoisticPresenter
     @current_user == @listing.author
   end
 
+  def auth_fee
+    TransactionService::Validation::AuthenticationTotal.new(@listing).total 
+  end
+
   def is_marketplace_admin
     Maybe(@current_user).has_admin_rights?(@current_community).or_else(false)
   end

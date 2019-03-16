@@ -13,7 +13,7 @@
 - else
 
   - if @listing_presenter.is_author
-    = render partial: "delivery_opts", locals: { delivery_opts: @listing_presenter.delivery_opts, is_author: @listing_presenter.is_author }
+    = render partial: "delivery_opts", locals: { delivery_opts: @listing_presenter.delivery_opts, is_author: @listing_presenter.is_author, auth_fee: @listing_presenter.auth_fee }
   - else
 
     = form_tag @listing_presenter.form_path, :method => :get, :id => "booking-dates" do
@@ -82,7 +82,7 @@
           .quantity-input.input-sm.required
             %input#quantity{type: 'number', placeholder: t("listings.quantity_placeholder"), name: 'quantity', value: 1, min: 1, step: 1}
 
-      = render partial: "delivery_opts", locals: { delivery_opts: @listing_presenter.delivery_opts, is_author: @listing_presenter.is_author }
+      = render partial: "delivery_opts", locals: { delivery_opts: @listing_presenter.delivery_opts, is_author: @listing_presenter.is_author, auth_fee: @listing_presenter.auth_fee  }
 
       = hidden_field_tag(:listing_id, @listing.id)
 

@@ -83,12 +83,9 @@ module TransactionService
       end
 
       def total
-        Rails.logger.error("AAAAAA")
         if listing.category.translations.where(locale: 'en').first().name == "Complete Sets"
-          Rails.logger.error("--BBBBB")
           Money.new(200, "USD") #AUTH FEE
         else
-          Rails.logger.error("--CCCCC")
           Money.new(100, "USD") #AUTH FEE
         end
       end

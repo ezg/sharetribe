@@ -75,13 +75,14 @@
         = MoneyViewUtils.to_humanized(shipping_price)
 
   - if is_author
-    .initiate-transaction-sum-wrapper
-      %span.initiate-transaction-sum-label
-        = t("transactions.total_to_pay")
-      %span.initiate-transaction-sum-value
-        = MoneyViewUtils.to_humanized(total)
+    - if !is_author
+      .initiate-transaction-sum-wrapper
+        %span.initiate-transaction-sum-label
+          = t("transactions.total_to_pay")
+        %span.initiate-transaction-sum-value
+          = MoneyViewUtils.to_humanized(total)
 
-    - if authenticate_fee.present? && authenticate_fee > 0
+    - if !is_author && authenticate_fee.present? && authenticate_fee > 0
       .initiate-transaction-authentication-fee-wrapper
         %span.initiate-transaction-authentication-fee-label
           = t("transactions.initiate.authentication-fee")
@@ -94,6 +95,10 @@
           = t("conversations.accept.service_fee_label")
         %span.initiate-transaction-sum-value
           = "-#{MoneyViewUtils.to_humanized(fee)}"
+      .initiate-transaction-sum-wrapper
+        %p 
+          %em Some stuff about fees here
+
 
   -# %h3 buyer and seller sees this
   - if total.present?
