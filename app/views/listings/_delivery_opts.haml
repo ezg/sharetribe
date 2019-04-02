@@ -43,11 +43,8 @@
     $(document).ready(function() {
       $('input[type=radio]').on("change", function() {
         if ($(this).val() == "shipping") {
-          console.log('1');
-          console.log($('#authenticate_checkbox'))
           $('#authenticate_checkbox')[0].disabled = false;
         } else {
-          console.log('2');
           $('#authenticate_checkbox')[0].checked = false;
           $('#authenticate_checkbox')[0].disabled = true;
         }
