@@ -2,6 +2,7 @@
 
 - if @listing_presenter.acts_as_person
   = form_for [@listing_presenter.acts_as_person, @listing], :html => {:multipart => true} do |form|
+    = render :partial => "listings/form/images", :locals => { :form => form, :run_js_immediately => run_js_immediately }
     = render :partial => "listings/form/title", :locals => { :form => form }
     = render :partial => "listings/form/price", :locals => { :form => form, :run_js_immediately => run_js_immediately }
     = render :partial => "listings/form/shipping", :locals => { :form => form }
@@ -10,11 +11,11 @@
     = render :partial => "listings/form/valid_until", :locals => { :form => form }
     = render :partial => "listings/form/origin", :locals => { :form => form }
     = render :partial => "listings/form/googlemap", :locals => { :form => form, :run_js_immediately => run_js_immediately}
-    = render :partial => "listings/form/images", :locals => { :form => form, :run_js_immediately => run_js_immediately }
     = render :partial => "listings/form/send_button", :locals => { :form => form }
     = hidden_field_tag 'listing_ordered_images'
 - else
   = form_for @listing, :html => {:multipart => true} do |form|
+    = render :partial => "listings/form/images", :locals => { :form => form, :run_js_immediately => run_js_immediately }
     = render :partial => "listings/form/title", :locals => { :form => form }
     = render :partial => "listings/form/price", :locals => { :form => form, :run_js_immediately => run_js_immediately }
     = render :partial => "listings/form/shipping", :locals => { :form => form }
@@ -23,7 +24,6 @@
     = render :partial => "listings/form/valid_until", :locals => { :form => form }
     = render :partial => "listings/form/origin", :locals => { :form => form }
     = render :partial => "listings/form/googlemap", :locals => { :form => form, :run_js_immediately => run_js_immediately}
-    = render :partial => "listings/form/images", :locals => { :form => form, :run_js_immediately => run_js_immediately }
     = render :partial => "listings/form/send_button", :locals => { :form => form }
     = hidden_field_tag 'listing_ordered_images'
 
