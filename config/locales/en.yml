@@ -991,7 +991,7 @@ en:
       message_content_not_available: "Message content not available"
     message:
       accepted_request: "accepted the request"
-      received_payment: "accepted the request, received payment for %{sum}"
+      received_payment: "accepted the request, received payment"
       accepted_offer: "accepted the offer"
       rejected_request: "rejected the request, canceled the payment"
       rejected_offer: "rejected the offer"
@@ -1000,7 +1000,7 @@ en:
       canceled_request: "canceled the order"
       canceled_offer: "canceled the offer"
       paid: "paid %{sum}"
-      payment_preauthorized: "Payment authorized: %{sum}"
+      payment_preauthorized: "payment authorized"
       stripe:
         held_payment: "Accepted the request. Payment for %{sum} is being held by %{service_name} until the order is marked as completed."
         confirmed_request: "Marked the order as completed. The payment has now been transferred to %{author_name} bank account or will be transferred soon."
@@ -1145,10 +1145,10 @@ en:
       request_marked_as_canceled: "Order canceled"
       has_marked_request_as_confirmed: "%{other_party_full_name} has marked the order about '%{request}' completed. You can now give feedback to %{other_party_given_name}."
       has_marked_request_as_canceled: "%{other_party_full_name} has canceled the order about '%{request}'. You can still give feedback to %{other_party_given_name}."
-      giving_feedback_is_good_idea: "Giving feedback is always a good idea. If everything went well, you should let others know that %{other_party_given_name} can be trusted. If there were any problems, it's good to mention those as well."
+      giving_feedback_is_good_idea: " You can now give feedback to %{other_party_given_name}. Giving feedback is always a good idea. If everything went well, you should let others know that %{other_party_given_name} can be trusted. If there were any problems, it's good to mention those as well."
       give_feedback_to: "Give feedback to %{other_party_given_name}"
       stripe:
-        has_marked_request_as_confirmed: "%{other_party_full_name} has marked the order about '%{request}' completed. The payment for this transaction has now been released to your bank account. You can now give feedback to %{other_party_given_name}."
+        has_marked_request_as_confirmed: "%{other_party_full_name} has marked the order about '%{request}' completed. The payment for this transaction has now been released to your bank account, and should arrive within 3 business days."
     transaction_automatically_confirmed:
       subject: "Order automatically completed - remember to give feedback"
       we_have_marked_request_as_confirmed: "We have marked the order about '%{request}' completed. The order was automatically completed because %{days_passed} days have passed since the request was accepted."

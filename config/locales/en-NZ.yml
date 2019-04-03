@@ -991,7 +991,7 @@ en-NZ:
       message_content_not_available: "Message content not available"
     message:
       accepted_request: "accepted the request"
-      received_payment: "accepted the request, received payment for %{sum}"
+      received_payment: "accepted the request, received payment"
       accepted_offer: "accepted the offer"
       rejected_request: "rejected the request, cancelled the payment"
       rejected_offer: "rejected the offer"
@@ -1000,7 +1000,7 @@ en-NZ:
       canceled_request: "cancelled the order"
       canceled_offer: "cancelled the offer"
       paid: "paid %{sum}"
-      payment_preauthorized: "Payment authorized: %{sum}"
+      payment_preauthorized: "payment authorized"
       stripe:
         held_payment: ~
         confirmed_request: ~

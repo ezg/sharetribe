@@ -20,5 +20,8 @@
         - if authenticate
           %h3 This order uses our "authenticate" feature and will ship to you as soon as our team signed off on it. 
 
+      - if is_author
+        %h3 Please provide the shipment tracking number to your buyer immediately upon shipping. 
+
       %div{:id => "transaction_status"}
         = render :partial => "transactions/status/status", :locals => { :__transaction_model => @transaction, role: role, is_author: is_author }

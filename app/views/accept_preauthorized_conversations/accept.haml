@@ -30,7 +30,6 @@
     %p= t("conversations.accept.order_by",
           orderer_link: link_to_unless(@transaction.starter.deleted?, PersonViewUtils.person_display_name(@transaction.starter, @current_community), @transaction.starter)).html_safe
 
-  %h3 asfasf
   .conversation-price-info
     .conversation-totals
       - if @transaction.booking
