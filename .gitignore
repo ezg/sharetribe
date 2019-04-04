@@ -1,3 +1,4 @@
+log/production.searchd.log.*
 .DS_Store
 db/*.sqlite3
 db/sphinx
