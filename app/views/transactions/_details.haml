@@ -10,7 +10,6 @@
 
       - if is_actual_author
         - if authenticate
-          %h3 This order uses our "authenticate" feature. Please ship the item to us and we will forward it to the buyer. 
           = render partial: "transactions/authenticate_address", locals: { shipping_address: @transaction.shipping_address }
         -else 
           = render partial: "transactions/shipping_address", locals: { shipping_address: @transaction.shipping_address }
@@ -21,7 +20,12 @@
           %h3 This order uses our "authenticate" feature and will ship to you as soon as our team signed off on it. 
 
       - if is_author
-        %h3 Please provide the shipment tracking number to your buyer immediately upon shipping. 
+        - if authenticate
+          %h3 
+            Please ship the item to us and we will forward it to the buyer. Provide the tracking number to us by messaging
+            %a{:href => "mailto:info@reswings.com?subject=Tracking Number for #{@transaction.listing.title} (Ref Nr: #{@transaction.id})"} info@reswings.com.
+        - else  
+          %h3 Please provide the shipment tracking number to your buyer immediately upon shipping. 
 
       %div{:id => "transaction_status"}
         = render :partial => "transactions/status/status", :locals => { :__transaction_model => @transaction, role: role, is_author: is_author }
