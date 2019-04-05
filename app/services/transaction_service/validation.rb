@@ -84,9 +84,9 @@ module TransactionService
 
       def total
         if listing.category.translations.where(locale: 'en').first().name == "Complete Sets"
-          Money.new(200, "USD") #AUTH FEE
+          Money.new(3500, "USD") #AUTH FEE
         else
-          Money.new(100, "USD") #AUTH FEE
+          Money.new(2000, "USD") #AUTH FEE
         end
       end
     end

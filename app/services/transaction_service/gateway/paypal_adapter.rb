@@ -77,7 +77,7 @@ module TransactionService::Gateway
 
     def calculate_authenticate_fee(tx)
       if tx.authenticate
-        return 1 * 100 #AUTH FEE
+        return 1 * 2000 #AUTH FEE
       end  
       return 0
     end
