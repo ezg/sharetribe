@@ -254,11 +254,11 @@ class PersonMailer < ActionMailer::Base
   end
 
   def mail_feedback_to(community, platform_admin_email)
-    #if community.admin_emails.any?
-    #  community.admin_emails.join(",")
-    #else
-    platform_admin_email
-    #end
+    if community.admin_emails.any?
+      community.admin_emails.join(",")
+    else
+      platform_admin_email
+    end
   end
 
   # Old layout
