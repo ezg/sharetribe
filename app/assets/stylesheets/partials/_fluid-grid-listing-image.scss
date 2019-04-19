@@ -21,7 +21,7 @@
 
 .fluid-thumbnail-grid-image-image-container-2 {
   position: relative;
-  color: $body;
+  color: #000000;
 
   &:hover {
     color: $highlight;
@@ -40,7 +40,6 @@
   font-size: 12px; // Quantity placeholder font-size, so that the ellipsis looks nice
   max-width: 75%;
   @include ellipsis;
-  margin: 1px;
 }
 
 .fluid-thumbnail-grid-image-title {
@@ -48,7 +47,7 @@
   bottom: 0;
   padding: lines(0.5);
   line-height: 1.2em;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .fluid-thumbnail-grid-image-overlay {
