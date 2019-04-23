@@ -225,6 +225,7 @@ az-AZ:
         update_settings: ~
         automatically_confirmed_no_escrow: ~
         automatically_confirmed_no_escrow_stripe_info: ~
+        buyer_transaction_fees_are_only_supported_with_stripe: ~
         automatic_newsletter_frequency: ~
         newsletter_daily: ~
         newsletter_weekly: ~
@@ -238,6 +239,7 @@ az-AZ:
         you_will_be_redirected_to: ~
         delete_this_marketplace: ~
         payment_preferences: ~
+        pre_approved_listings: ~
       manage_members:
         manage_members: ~
         email: ~
@@ -309,6 +311,67 @@ az-AZ:
         enable_facebook_login: ~
         save: ~
         add_another_image: ~
+        google_connect: ~
+        google_instructions_link_text: ~
+        google_connect_info_text_with_instructions: ~
+        google_connect_info_text: ~
+        enable_google_login: ~
+        google_connect_id: ~
+        google_connect_secret: ~
+        linkedin_connect: ~
+        linkedin_instructions_link_text: ~
+        linkedin_connect_info_text_with_instructions: ~
+        linkedin_connect_info_text: ~
+        enable_linkedin_login: ~
+        linkedin_connect_id: ~
+        linkedin_connect_secret: ~
+      seo_settings:
+        seo: ~
+        title: ~
+        meta_title_label: ~
+        meta_title_info: ~
+        meta_title_link_text: ~
+        meta_description_label: ~
+        meta_description_info: ~
+        meta_description_link_text: ~
+        search_title: ~
+        search_meta_title_label: ~
+        search_meta_title_info: ~
+        search_meta_title_link_text: ~
+        search_meta_description_label: ~
+        search_meta_description_info: ~
+        search_meta_description_link_text: ~
+        listing_title: ~
+        listing_meta_title_label: ~
+        listing_meta_title_info: ~
+        listing_meta_title_link_text: ~
+        listing_meta_description_label: ~
+        listing_meta_description_info: ~
+        listing_meta_description_link_text: ~
+        category_title: ~
+        category_meta_title_label: ~
+        category_meta_title_info: ~
+        category_meta_title_link_text: ~
+        category_meta_description_label: ~
+        category_meta_description_info: ~
+        category_meta_description_link_text: ~
+        profile_title: ~
+        profile_meta_title_label: ~
+        profile_meta_title_info: ~
+        profile_meta_title_link_text: ~
+        profile_meta_description_label: ~
+        profile_meta_description_info: ~
+        profile_meta_description_link_text: ~
+        sitemap_label: ~
+        sitemap_info: ~
+        sitemap_info_link_text: ~
+        sitemap_info_public: ~
+        sitemap_info_private: ~
+        robots_label: ~
+        robots_info: ~
+        robots_info_link_text: ~
+        robots_info_2: ~
+        save: ~
       analytics:
         analytics: ~
         google_analytics_key: ~
@@ -492,6 +555,8 @@ az-AZ:
           open: ~
           closed: ~
           expired: ~
+          approval_pending: ~
+          approval_rejected: ~
         headers:
           title: ~
           author: ~
@@ -502,6 +567,14 @@ az-AZ:
         open: ~
         closed: ~
         expired: ~
+        approved: ~
+        approval_pending: ~
+        approval_rejected: ~
+        form:
+          this_listing_has_not_not_been_approved_yet: ~
+          approve: ~
+          reject: ~
+          cancel: ~
       user_fields:
         user_fields: ~
       footer:
@@ -528,6 +601,16 @@ az-AZ:
         social:
           title: ~
           url: ~
+      domain:
+        domain: ~
+        marketplace_domain: ~
+        offer_pro: ~
+        upgrade_pro_plan_link: ~
+        your_marketplace_address_is: ~
+        would_you_like_to_change_address: ~
+        contact_us: ~
+        you_can_now_use_a_custom_domain: ~
+        would_you_like_to_change_domain: ~
     custom_fields:
       edit:
         edit_listing_field: ~
@@ -779,6 +862,8 @@ az-AZ:
       stripe_fee_notice: ~
       fee_should_be_less_than_minimum_price: ~
       confirm_disable: ~
+      commission_from_buyer_label: ~
+      minimum_buyer_transaction_fee_label: ~
       stripe_connected:
         title: ~
         disable: ~
@@ -791,6 +876,7 @@ az-AZ:
         enable: ~
       cannot_enable_gateway: ~
       cannot_disable_gateway: ~
+      cannot_enable_gateway_because_of_buyer_commission: ~
       stripe_form:
         add_your_api_keys: ~
         how_to_get_these: ~
@@ -912,6 +998,7 @@ az-AZ:
       quantity_label: ~
       sum_label: ~
       service_fee_label: ~
+      buyer_service_fee_label: ~
       you_will_get_label: ~
       total_label: "Cəmi:"
       total_value: ~
@@ -957,6 +1044,7 @@ az-AZ:
     message:
       accepted_request: "İstəyi qəbul etdi"
       received_payment: ~
+      received_payment_wo_sum: ~
       accepted_offer: "Təklifi qəbul etdi"
       rejected_request: "İstəyi rədd etdi və ödənişi ləğv etdi"
       rejected_offer: "Təklifi rədd etdi"
@@ -966,8 +1054,10 @@ az-AZ:
       canceled_offer: "Təklifi ləğv etdi"
       paid: "%{sum} ödənilmişdir"
       payment_preauthorized: ~
+      payment_preauthorized_wo_sum: ~
       stripe:
         held_payment: ~
+        held_payment_wo_sum: ~
         confirmed_request: ~
     new:
       message: Mesaj
@@ -1182,7 +1272,9 @@ az-AZ:
       shipping_total: ~
       product: ~
       price_payer_paid: ~
+      subtotal: ~
       service_fee: ~
+      buyer_service_fee: ~
       you_will_get: ~
       new_payment: ~
       price_per_unit_type: "%{unit_type} üçün qiymət"
@@ -1198,6 +1290,7 @@ az-AZ:
       duration: ~
       quantity: ~
       subtotal: ~
+      buyer_service_fee: ~
       total: ~
       price: ~
       service_fee: ~
@@ -1222,7 +1315,7 @@ az-AZ:
       subtotal: "Ara yekun"
       total: Cəmi
       price: Qiymət
-      service_fee: "Xidmət haqqı"
+      buyer_service_fee: ~
       stripe_gateway_fee: ~
       paypal_gateway_fee: ~
       money_will_be_transferred: ~
@@ -1288,6 +1381,24 @@ az-AZ:
       this_is_automatic_message: ~
       person_name: "Ad:"
       person_email: "E-poçt:"
+    listing_submited_for_review:
+      subject: ~
+      there_is_a_new_listing_to_review: ~
+      review_the_listing: ~
+      this_is_automatic_message: ~
+    listing_approved:
+      subject: ~
+      listing_has_been_approved: ~
+      view_the_listing: ~
+    listing_rejected:
+      subject: ~
+      listing_has_been_rejected: ~
+      contact_link: ~
+      edit_the_listing: ~
+    edited_listing_submited_for_review:
+      subject: ~
+      there_is_a_edited_listing_to_review: ~
+      review_the_listing: ~
   error_messages:
     booking:
       booking_failed_payment_voided: ~
@@ -1603,8 +1714,8 @@ az-AZ:
       comment_sent: "Şərh verildi"
       confirmation_link_is_wrong_or_used: "Təsdiq linki artıq istifadə edilmiş və ya başqa şəkildə deaktivləşmişdir. Xahiş edirik təkrar daxil edin. Səhv davam edərsə bizə müraciət etməyinizi xahiş edirik."
       additional_email_confirmed: "Daxil etdiyiniz e-poçt təsdiqlənmişdir."
-      could_not_get_email_from_facebook: "Facebook-dan e-poçt ünvanını əldə edilmədi və buna görə də e-poçt olmadan hesab yaradılmamışdır"
-      facebook_email_unconfirmed: "Facebook hesabınızla əlaqəli '%{email}' e-poçt ünvanı artıq istifadə olunur, lakin hələ təsdiqlənilməyib. Facebookla giriş etmədən əvvəl e-poçt ünvanınızı təsdiqləyin."
+      could_not_get_email_from_social_network: ~
+      social_network_email_unconfirmed: ~
       create_new_listing: "Daha bir elan ver"
       create_one_here: "burada yeni birini yaradın"
       email_confirmation_sent_to_new_address: "Təsdiqləmə məktubu yeni ünvanınıza göndırildi."
@@ -1753,6 +1864,10 @@ az-AZ:
       show_in_updates_email_loading: Yüklənir...
       show_in_updates_email_error: "Server cavab vermir. Zəhmət olmasa, səhifəni yeniləyin və yenidən cəhd edin."
       show_in_updates_email_success: ~
+      listing_is_pending: ~
+      listing_is_rejected: ~
+      approve_listing: ~
+      reject_listing: ~
     map:
       open_in_google_maps: "Google Maps-da aç"
     error:
@@ -1833,6 +1948,9 @@ az-AZ:
         origin: ~
       send_button:
         save_listing: "Elanı yerləşdir"
+        submit_for_review: ~
+        will_be_reviewed: ~
+        we_noticed_youre_an_admin: ~
       share_type:
         select: ~
         borrow: "Borc götürmək"
@@ -1912,6 +2030,7 @@ az-AZ:
       select_one: ~
       start_time: ~
       end_time: ~
+      marketplace_fees_may_apply: ~
     new:
       listing: ~
       selected_category: ~
@@ -2152,7 +2271,7 @@ az-AZ:
       username_is_invalid: "İstifadəçi adı etibarsızdır. İzin verilən simvollar məktublar, nömrələr və altçizdirlər. Yalnız hərflər, rəqəmlər və \"_\" işarəsi istifadə edilə bilər."
       visible_only_to_you: "yalnız sizə və %{service_name} komandasına görünür"
       visible_to_everybody: "hər kəsə görünür"
-      create_account_with_facebook: "Facebook ilə qeydiyyatdan keç"
+      create_account_with_provider: ~
       OR: "VƏ YA"
       signup_with_email: "E-poçt vasitəsilə qeydiyyatdan keç"
       this_field_will_be_publicly_visible: ~
@@ -2160,9 +2279,8 @@ az-AZ:
       grade: "qiymətləndirmə:"
       and_gave_following_feedback: "və aşağıdakı geribildirim verdi."
     profile_listings:
-      show_also_closed: "Bağlı elanları də göstər"
-      show_only_open: "Yalnız açıq elanları göstər"
       no_image: "Şəkil yoxdur"
+      manage_listings: ~
     show:
       contact: "%{person} ilə əlaqə saxla"
       about_me: "Mənim haqqımda:"
@@ -2221,7 +2339,7 @@ az-AZ:
       account_creation_link_text: "bura klikləyin"
       cancle_facebook_connect: "Bu hesabı qoşmaq istəmirsinizsə,%{cancel_link} klik edə bilərsiniz."
       facebook_cancel_link_text: imtina
-      log_in_with_your_facebook_account: "Facebook ilə daxil et"
+      log_in_with_your_provider_account: ~
       or_sign_up_with_your_username: "... və ya istifadəçi adınız və ya e-poçtunuzla:"
       we_will_not_post_without_asking_you: "Biz sizdən soruşmadan Facebook-da heç vaxt yazmayacağıq."
     password_forgotten:
@@ -2533,6 +2651,7 @@ az-AZ:
       signup: "Qeydiyyatdan keç"
       admin_dashboard: "Admin paneli"
       language: Dil
+      listings: ~
     utils:
       km: km
       mi: mi
@@ -2619,6 +2738,7 @@ az-AZ:
       address_kanji_line1: ~
       male: ~
       female: ~
+      mcc: ~
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~
@@ -2667,3 +2787,12 @@ az-AZ:
     wrong_setup: ~
     invalid_bank_account_number: ~
     invalid_postal_code: ~
+  seo_sections:
+    you_can_use_variables: ~
+    placeholder:
+      search_results: ~
+      search_results_for: ~
+      listing_description: ~
+      category_description: ~
+      profile_title: ~
+      profile_description: ~

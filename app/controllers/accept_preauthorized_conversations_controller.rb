@@ -158,15 +158,21 @@ class AcceptPreauthorizedConversationsController < ApplicationController
     is_actual_author = @transaction.listing_author_id == @current_user.id
     Rails.logger.error(payment_details)
 
-    seller_gets = payment_details[:total_price] - @transaction.commission
+    seller_gets = payment_details[:total_price] - (payment_details[:charged_commission] || 0) - (payment_details[:buyer_commission] || 0)
     if @transaction.authenticate_fee
       seller_gets -= @transaction.authenticate_fee
+      
+    total_price = if payment_details[:buyer_commission] && payment_details[:buyer_commission] > 0
+      payment_details[:total_price] - payment_details[:buyer_commission]
+    else
+      payment_details[:total_price]
     end
 
     render "accept", locals: {
       listing: @listing,
-      sum: @transaction.item_total + (payment_details[:payment_gateway_fee] || 0),
+      sum: total_price + (payment_details[:payment_gateway_fee] || 0),
       fee: @transaction.commission,
+      buyer_commission: payment_details[:buyer_commission],
       gateway_fee: payment_details[:payment_gateway_fee],
       seller_gets: seller_gets,
       form: @transaction,

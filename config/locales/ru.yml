@@ -250,6 +250,7 @@ ru:
         update_settings: "Сохранить настройки"
         automatically_confirmed_no_escrow: "Транзакция будет автоматически отмечена как завешенная через %{days_dropdown} дней после осуществления платежа"
         automatically_confirmed_no_escrow_stripe_info: ~
+        buyer_transaction_fees_are_only_supported_with_stripe: ~
         automatic_newsletter_frequency: "Отправлять автоматически новости: %{frequency_dropdown}"
         newsletter_daily: Ежедневно
         newsletter_weekly: Еженедельно
@@ -263,6 +264,7 @@ ru:
         you_will_be_redirected_to: "После того, как вы удалите проект, вы будете перенаправлены на %{destination}. После этого вы не сможете получить доступ к проекту."
         delete_this_marketplace: "Удалить этот проект"
         payment_preferences: "Платежная система"
+        pre_approved_listings: ~
       manage_members:
         manage_members: "Управление участниками"
         email: E-mail
@@ -334,6 +336,67 @@ ru:
         enable_facebook_login: ~
         save: "Сохранить настройки"
         add_another_image: ~
+        google_connect: ~
+        google_instructions_link_text: ~
+        google_connect_info_text_with_instructions: ~
+        google_connect_info_text: ~
+        enable_google_login: ~
+        google_connect_id: ~
+        google_connect_secret: ~
+        linkedin_connect: ~
+        linkedin_instructions_link_text: ~
+        linkedin_connect_info_text_with_instructions: ~
+        linkedin_connect_info_text: ~
+        enable_linkedin_login: ~
+        linkedin_connect_id: ~
+        linkedin_connect_secret: ~
+      seo_settings:
+        seo: ~
+        title: ~
+        meta_title_label: ~
+        meta_title_info: ~
+        meta_title_link_text: ~
+        meta_description_label: ~
+        meta_description_info: ~
+        meta_description_link_text: ~
+        search_title: ~
+        search_meta_title_label: ~
+        search_meta_title_info: ~
+        search_meta_title_link_text: ~
+        search_meta_description_label: ~
+        search_meta_description_info: ~
+        search_meta_description_link_text: ~
+        listing_title: ~
+        listing_meta_title_label: ~
+        listing_meta_title_info: ~
+        listing_meta_title_link_text: ~
+        listing_meta_description_label: ~
+        listing_meta_description_info: ~
+        listing_meta_description_link_text: ~
+        category_title: ~
+        category_meta_title_label: ~
+        category_meta_title_info: ~
+        category_meta_title_link_text: ~
+        category_meta_description_label: ~
+        category_meta_description_info: ~
+        category_meta_description_link_text: ~
+        profile_title: ~
+        profile_meta_title_label: ~
+        profile_meta_title_info: ~
+        profile_meta_title_link_text: ~
+        profile_meta_description_label: ~
+        profile_meta_description_info: ~
+        profile_meta_description_link_text: ~
+        sitemap_label: ~
+        sitemap_info: ~
+        sitemap_info_link_text: ~
+        sitemap_info_public: ~
+        sitemap_info_private: ~
+        robots_label: ~
+        robots_info: ~
+        robots_info_link_text: ~
+        robots_info_2: ~
+        save: ~
       analytics:
         analytics: Аналитика
         google_analytics_key: "Google Analytics tracking ID"
@@ -517,6 +580,8 @@ ru:
           open: ~
           closed: ~
           expired: ~
+          approval_pending: ~
+          approval_rejected: ~
         headers:
           title: ~
           author: ~
@@ -527,6 +592,14 @@ ru:
         open: ~
         closed: ~
         expired: ~
+        approved: ~
+        approval_pending: ~
+        approval_rejected: ~
+        form:
+          this_listing_has_not_not_been_approved_yet: ~
+          approve: ~
+          reject: ~
+          cancel: ~
       user_fields:
         user_fields: ~
       footer:
@@ -553,6 +626,16 @@ ru:
         social:
           title: ~
           url: ~
+      domain:
+        domain: ~
+        marketplace_domain: ~
+        offer_pro: ~
+        upgrade_pro_plan_link: ~
+        your_marketplace_address_is: ~
+        would_you_like_to_change_address: ~
+        contact_us: ~
+        you_can_now_use_a_custom_domain: ~
+        would_you_like_to_change_domain: ~
     custom_fields:
       edit:
         edit_listing_field: "Редактировать поле публикации \"%{field_name}\""
@@ -824,6 +907,8 @@ ru:
       stripe_fee_notice: ~
       fee_should_be_less_than_minimum_price: ~
       confirm_disable: ~
+      commission_from_buyer_label: ~
+      minimum_buyer_transaction_fee_label: ~
       stripe_connected:
         title: ~
         disable: ~
@@ -836,6 +921,7 @@ ru:
         enable: ~
       cannot_enable_gateway: ~
       cannot_disable_gateway: ~
+      cannot_enable_gateway_because_of_buyer_commission: ~
       stripe_form:
         add_your_api_keys: ~
         how_to_get_these: ~
@@ -957,6 +1043,7 @@ ru:
       quantity_label: "Количество:"
       sum_label: "Промежуточный итог:"
       service_fee_label: "%{service_name} комиссия:"
+      buyer_service_fee_label: ~
       you_will_get_label: "Вы получите:"
       total_label: "Итог:"
       total_value: "%{seller_gets}*"
@@ -1002,6 +1089,7 @@ ru:
     message:
       accepted_request: "запрос принят"
       received_payment: "запрос принял, получил платеж на сумму %{sum}"
+      received_payment_wo_sum: ~
       accepted_offer: "предложение принято"
       rejected_request: "запрос отклонен"
       rejected_offer: "предложение отклонено"
@@ -1011,8 +1099,10 @@ ru:
       canceled_offer: "отмененное предложение"
       paid: "оплачено %{sum}"
       payment_preauthorized: "Оплата авторизована: %{sum}"
+      payment_preauthorized_wo_sum: ~
       stripe:
         held_payment: ~
+        held_payment_wo_sum: ~
         confirmed_request: ~
     new:
       message: Сообщение
@@ -1227,7 +1317,9 @@ ru:
       shipping_total: ~
       product: ~
       price_payer_paid: ~
+      subtotal: ~
       service_fee: ~
+      buyer_service_fee: ~
       you_will_get: ~
       new_payment: ~
       price_per_unit_type: ~
@@ -1243,6 +1335,7 @@ ru:
       duration: ~
       quantity: ~
       subtotal: ~
+      buyer_service_fee: ~
       total: ~
       price: ~
       service_fee: ~
@@ -1267,7 +1360,7 @@ ru:
       subtotal: "Сумма:"
       total: Всего
       price: Цена
-      service_fee: "Комиссия сервиса"
+      buyer_service_fee: ~
       stripe_gateway_fee: ~
       paypal_gateway_fee: ~
       money_will_be_transferred: "Деньги будут переведены к %{recipient_name} когда а) вы отметите этот запрос завершенным или б) %{automatic_confirmation_days} дней пройдет после вашей оплаты."
@@ -1333,6 +1426,24 @@ ru:
       this_is_automatic_message: "Это автоматическое сообщение, направленное администраторам %{community}."
       person_name: "Имя:"
       person_email: "Эл. почта:"
+    listing_submited_for_review:
+      subject: ~
+      there_is_a_new_listing_to_review: ~
+      review_the_listing: ~
+      this_is_automatic_message: ~
+    listing_approved:
+      subject: ~
+      listing_has_been_approved: ~
+      view_the_listing: ~
+    listing_rejected:
+      subject: ~
+      listing_has_been_rejected: ~
+      contact_link: ~
+      edit_the_listing: ~
+    edited_listing_submited_for_review:
+      subject: ~
+      there_is_a_edited_listing_to_review: ~
+      review_the_listing: ~
   error_messages:
     booking:
       booking_failed_payment_voided: "Бронирование не было осуществлено из-за неизвестной ошибки. Пожалуйста, попробуйте еще раз позже. Списание средств не было осуществлено."
@@ -1648,8 +1759,8 @@ ru:
       comment_sent: "Комментарий отправлен"
       confirmation_link_is_wrong_or_used: "Ссылка для подтверждения уже была использована, либо неправильна. Попробуйте войти в систему, или отправьте отзыв, если проблема повторяется."
       additional_email_confirmed: "Адрес электронной почты, указанный вами теперь подтвержден."
-      could_not_get_email_from_facebook: "Не смогли получить email адрес от Facebook и не можем создать аккаунт без email."
-      facebook_email_unconfirmed: ~
+      could_not_get_email_from_social_network: ~
+      social_network_email_unconfirmed: ~
       create_new_listing: "Создать другую публикацию"
       create_one_here: "создать её"
       email_confirmation_sent_to_new_address: "Письмо с ссылкой подтверждения отправлено на новый адрес."
@@ -1801,6 +1912,10 @@ ru:
       show_in_updates_email_loading: загрузка...
       show_in_updates_email_error: "Не удалось установить связь с сервером. Попробуйте еще раз после перезагрузки страницы."
       show_in_updates_email_success: "Эта публикация будет показана в следующей автоматической рассылке отправляемой участникам"
+      listing_is_pending: ~
+      listing_is_rejected: ~
+      approve_listing: ~
+      reject_listing: ~
     map:
       open_in_google_maps: "Открыть карту Google"
     error:
@@ -1881,6 +1996,9 @@ ru:
         origin: "Исходный пункт"
       send_button:
         save_listing: "Сохранить публикацию"
+        submit_for_review: ~
+        will_be_reviewed: ~
+        we_noticed_youre_an_admin: ~
       share_type:
         select: Выбрать
         borrow: "На время"
@@ -1960,6 +2078,7 @@ ru:
       select_one: ~
       start_time: ~
       end_time: ~
+      marketplace_fees_may_apply: ~
     new:
       listing: список
       selected_category: "Категория: %{category}"
@@ -2203,7 +2322,7 @@ ru:
       username_is_invalid: "Можно использовать только латинские буквы, цифры и знак подчёркивания."
       visible_only_to_you: "видимо только вам"
       visible_to_everybody: "видимо для всех"
-      create_account_with_facebook: "Создать учётную запись с помощью Facebook"
+      create_account_with_provider: ~
       OR: или
       signup_with_email: "Зарегистрируйте используя адрес электронной почты"
       this_field_will_be_publicly_visible: ~
@@ -2211,9 +2330,8 @@ ru:
       grade: "Оценка:"
       and_gave_following_feedback: "и оставил отзыв"
     profile_listings:
-      show_also_closed: "Показывать закрытые"
-      show_only_open: "Показывать только открытые"
       no_image: "Нет изображения"
+      manage_listings: ~
     show:
       contact: "Связаться с %{person}"
       about_me: "Обо мне:"
@@ -2272,7 +2390,7 @@ ru:
       account_creation_link_text: "нажмите здесь"
       cancle_facebook_connect: "Если вы не хотите привязывать эту учётную запись, вы можете %{cancel_link}."
       facebook_cancel_link_text: "отменить это действие"
-      log_in_with_your_facebook_account: "Войти через Facebook:"
+      log_in_with_your_provider_account: ~
       or_sign_up_with_your_username: "…или с помощью логина и пароля:"
       we_will_not_post_without_asking_you: "Мы никогда не будем размещать сообщения в Facebook без вашего разрешения."
     password_forgotten:
@@ -2601,6 +2719,7 @@ ru:
       signup: Регистрация
       admin_dashboard: "Панель администратора"
       language: Язык
+      listings: ~
     utils:
       km: км
       mi: миль
@@ -2693,6 +2812,7 @@ ru:
       address_kanji_line1: ~
       male: ~
       female: ~
+      mcc: ~
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~
@@ -2741,3 +2861,12 @@ ru:
     wrong_setup: ~
     invalid_bank_account_number: ~
     invalid_postal_code: ~
+  seo_sections:
+    you_can_use_variables: ~
+    placeholder:
+      search_results: ~
+      search_results_for: ~
+      listing_description: ~
+      category_description: ~
+      profile_title: ~
+      profile_description: ~

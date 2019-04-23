@@ -245,6 +245,7 @@ sk-SK:
         update_settings: "Uložiť nastavenia"
         automatically_confirmed_no_escrow: "Transakcia bude automaticky označená ako vybavená za %{days_dropdown} dní od doby, kedy bola platba prevedená."
         automatically_confirmed_no_escrow_stripe_info: ~
+        buyer_transaction_fees_are_only_supported_with_stripe: ~
         automatic_newsletter_frequency: "Automaticky posielať novinky: %{frequency_dropdown}"
         newsletter_daily: Denne
         newsletter_weekly: Týždenne
@@ -258,6 +259,7 @@ sk-SK:
         you_will_be_redirected_to: "Potom, čo zmažete Vaše trhovisko budete presmerovaný do %{destination}. Už nikdy nebudete mať prístup do Vašeho trhoviska."
         delete_this_marketplace: "Zmazať trhovisko"
         payment_preferences: ~
+        pre_approved_listings: ~
       manage_members:
         manage_members: "Spravovať užívateľov"
         email: E-mail
@@ -329,6 +331,67 @@ sk-SK:
         enable_facebook_login: ~
         save: "Uložiť nastavenia"
         add_another_image: ~
+        google_connect: ~
+        google_instructions_link_text: ~
+        google_connect_info_text_with_instructions: ~
+        google_connect_info_text: ~
+        enable_google_login: ~
+        google_connect_id: ~
+        google_connect_secret: ~
+        linkedin_connect: ~
+        linkedin_instructions_link_text: ~
+        linkedin_connect_info_text_with_instructions: ~
+        linkedin_connect_info_text: ~
+        enable_linkedin_login: ~
+        linkedin_connect_id: ~
+        linkedin_connect_secret: ~
+      seo_settings:
+        seo: ~
+        title: ~
+        meta_title_label: ~
+        meta_title_info: ~
+        meta_title_link_text: ~
+        meta_description_label: ~
+        meta_description_info: ~
+        meta_description_link_text: ~
+        search_title: ~
+        search_meta_title_label: ~
+        search_meta_title_info: ~
+        search_meta_title_link_text: ~
+        search_meta_description_label: ~
+        search_meta_description_info: ~
+        search_meta_description_link_text: ~
+        listing_title: ~
+        listing_meta_title_label: ~
+        listing_meta_title_info: ~
+        listing_meta_title_link_text: ~
+        listing_meta_description_label: ~
+        listing_meta_description_info: ~
+        listing_meta_description_link_text: ~
+        category_title: ~
+        category_meta_title_label: ~
+        category_meta_title_info: ~
+        category_meta_title_link_text: ~
+        category_meta_description_label: ~
+        category_meta_description_info: ~
+        category_meta_description_link_text: ~
+        profile_title: ~
+        profile_meta_title_label: ~
+        profile_meta_title_info: ~
+        profile_meta_title_link_text: ~
+        profile_meta_description_label: ~
+        profile_meta_description_info: ~
+        profile_meta_description_link_text: ~
+        sitemap_label: ~
+        sitemap_info: ~
+        sitemap_info_link_text: ~
+        sitemap_info_public: ~
+        sitemap_info_private: ~
+        robots_label: ~
+        robots_info: ~
+        robots_info_link_text: ~
+        robots_info_2: ~
+        save: ~
       analytics:
         analytics: "Google Analytics"
         google_analytics_key: "Google Analytics sledovacie ID"
@@ -512,6 +575,8 @@ sk-SK:
           open: ~
           closed: ~
           expired: ~
+          approval_pending: ~
+          approval_rejected: ~
         headers:
           title: ~
           author: ~
@@ -522,6 +587,14 @@ sk-SK:
         open: ~
         closed: ~
         expired: ~
+        approved: ~
+        approval_pending: ~
+        approval_rejected: ~
+        form:
+          this_listing_has_not_not_been_approved_yet: ~
+          approve: ~
+          reject: ~
+          cancel: ~
       user_fields:
         user_fields: ~
       footer:
@@ -548,6 +621,16 @@ sk-SK:
         social:
           title: ~
           url: ~
+      domain:
+        domain: ~
+        marketplace_domain: ~
+        offer_pro: ~
+        upgrade_pro_plan_link: ~
+        your_marketplace_address_is: ~
+        would_you_like_to_change_address: ~
+        contact_us: ~
+        you_can_now_use_a_custom_domain: ~
+        would_you_like_to_change_domain: ~
     custom_fields:
       edit:
         edit_listing_field: "Upraviť pole inzerátu '%{field_name}'"
@@ -815,6 +898,8 @@ sk-SK:
       stripe_fee_notice: ~
       fee_should_be_less_than_minimum_price: ~
       confirm_disable: ~
+      commission_from_buyer_label: ~
+      minimum_buyer_transaction_fee_label: ~
       stripe_connected:
         title: ~
         disable: ~
@@ -827,6 +912,7 @@ sk-SK:
         enable: ~
       cannot_enable_gateway: ~
       cannot_disable_gateway: ~
+      cannot_enable_gateway_because_of_buyer_commission: ~
       stripe_form:
         add_your_api_keys: ~
         how_to_get_these: ~
@@ -950,6 +1036,7 @@ sk-SK:
       quantity_label: "Množstvo:"
       sum_label: "Medzisúčet:"
       service_fee_label: "%{service_name} poplatok:"
+      buyer_service_fee_label: ~
       you_will_get_label: "Obdržíte:"
       total_label: "Celkovo:"
       total_value: "%{seller_gets}*"
@@ -995,6 +1082,7 @@ sk-SK:
     message:
       accepted_request: "prijal žiadosť"
       received_payment: "prijal žiadosť, dostal platbu celkovo %{sum}"
+      received_payment_wo_sum: ~
       accepted_offer: "prijal ponuku"
       rejected_request: "zamietol žiadosť, zrušil platbu"
       rejected_offer: "zamietol ponuku"
@@ -1004,8 +1092,10 @@ sk-SK:
       canceled_offer: "zrušil ponuku"
       paid: "zaplatil %{sum}"
       payment_preauthorized: "Platba schválená: %{sum}"
+      payment_preauthorized_wo_sum: ~
       stripe:
         held_payment: ~
+        held_payment_wo_sum: ~
         confirmed_request: ~
     new:
       message: Správa
@@ -1220,7 +1310,9 @@ sk-SK:
       shipping_total: ~
       product: ~
       price_payer_paid: ~
+      subtotal: ~
       service_fee: ~
+      buyer_service_fee: ~
       you_will_get: ~
       new_payment: ~
       price_per_unit_type: ~
@@ -1236,6 +1328,7 @@ sk-SK:
       duration: ~
       quantity: ~
       subtotal: ~
+      buyer_service_fee: ~
       total: ~
       price: ~
       service_fee: ~
@@ -1260,7 +1353,7 @@ sk-SK:
       subtotal: Medzisúčet
       total: Celkovo
       price: Cena
-      service_fee: "Poplatok sa službu"
+      buyer_service_fee: ~
       stripe_gateway_fee: ~
       paypal_gateway_fee: ~
       money_will_be_transferred: "Peniaze budú prevedené užívateľovi %{recipient_name}, a) pokiaľ označíte žiadosť ako vybavenú nebo b) pokiaľ uplynulo %{automatic_confirmation_days} dní od dňa, kedy ste zaplatili."
@@ -1326,6 +1419,24 @@ sk-SK:
       this_is_automatic_message: "Toto je automatická správa odoslaná administrátorom %{community}."
       person_name: "Meno:"
       person_email: "E-mail:"
+    listing_submited_for_review:
+      subject: ~
+      there_is_a_new_listing_to_review: ~
+      review_the_listing: ~
+      this_is_automatic_message: ~
+    listing_approved:
+      subject: ~
+      listing_has_been_approved: ~
+      view_the_listing: ~
+    listing_rejected:
+      subject: ~
+      listing_has_been_rejected: ~
+      contact_link: ~
+      edit_the_listing: ~
+    edited_listing_submited_for_review:
+      subject: ~
+      there_is_a_edited_listing_to_review: ~
+      review_the_listing: ~
   error_messages:
     booking:
       booking_failed_payment_voided: "Rezervácia zlyhala z dôvodu neočakávanej chyby. Skúste to neskôr prosím. Platba neprebehla."
@@ -1643,8 +1754,8 @@ sk-SK:
       comment_sent: "Komentár odoslaný"
       confirmation_link_is_wrong_or_used: "Potvrdzujúci odkaz sa už používa alebo je neplatný. Skúste sa prihlásiť, alebo v prípade problémov nám zanechajte odkaz."
       additional_email_confirmed: "Zadaný e-mail nebol potvrdený."
-      could_not_get_email_from_facebook: "Nepodarilo sa nám získať Vašu e-mailovú adresu z účtu na Facebooku a teda nemôžeme vytvoriť účet bez e-mailu."
-      facebook_email_unconfirmed: "E-mailová adresa %{email} združená s Vašim Facebook účtom sa už používa, ale ešte nebola potvrdená. Prosím potvrďte e-mailovú adresu pred prihlásením do Facebook účtu."
+      could_not_get_email_from_social_network: ~
+      social_network_email_unconfirmed: ~
       create_new_listing: "Vytvoriť ďalší inzerát"
       create_one_here: "vytvoriť tu"
       email_confirmation_sent_to_new_address: "Potvrdzujúci e-mail bol odoslaný na novú adresu."
@@ -1795,6 +1906,10 @@ sk-SK:
       show_in_updates_email_loading: Načítavam...
       show_in_updates_email_error: "Nepodarilo sa pripojiť k serveru. Skúste obnoviť stránky."
       show_in_updates_email_success: "Tento inzerát bude uvedený v ďalších automaticky zasielaných novinkách pre užívateľov"
+      listing_is_pending: ~
+      listing_is_rejected: ~
+      approve_listing: ~
+      reject_listing: ~
     map:
       open_in_google_maps: "Otvoriť v Google Maps"
     error:
@@ -1875,6 +1990,9 @@ sk-SK:
         origin: Pôvod
       send_button:
         save_listing: "Uložiť inzerát"
+        submit_for_review: ~
+        will_be_reviewed: ~
+        we_noticed_youre_an_admin: ~
       share_type:
         select: Vyber
         borrow: vypožičať
@@ -1954,6 +2072,7 @@ sk-SK:
       select_one: ~
       start_time: ~
       end_time: ~
+      marketplace_fees_may_apply: ~
     new:
       listing: inzerát
       selected_category: "Kategória: %{category}"
@@ -2196,7 +2315,7 @@ sk-SK:
       username_is_invalid: "Používateľské meno je neplatné. Povolené sú len písmená, číslice a podčiarkovníky."
       visible_only_to_you: "viditeľné iba pre Vás a pre admin použivateľa"
       visible_to_everybody: "videiteľné pre každích"
-      create_account_with_facebook: "Prihlásiť sa cez Facebook"
+      create_account_with_provider: ~
       OR: ALEBO
       signup_with_email: "Zaregistrovať sa cez e-mail"
       this_field_will_be_publicly_visible: ~
@@ -2204,9 +2323,8 @@ sk-SK:
       grade: "stupeň:"
       and_gave_following_feedback: "a poskytnite spätnú väzbu"
     profile_listings:
-      show_also_closed: "Zobraz aj uzavreté"
-      show_only_open: "Zobraz iba otvorené"
       no_image: "Žiadny obrázok"
+      manage_listings: ~
     show:
       contact: "Kontaktovať užívateľa %{person}"
       about_me: "O mne:"
@@ -2265,7 +2383,7 @@ sk-SK:
       account_creation_link_text: "Kliknite sem"
       cancle_facebook_connect: "Pokiaľ nechcete prepojiť tento účet, kliknite na nasledujúci odkaz pre zrušenie %{cancel_link}."
       facebook_cancel_link_text: zrušit
-      log_in_with_your_facebook_account: "Prihlásiť sa s Facebook účtom"
+      log_in_with_your_provider_account: ~
       or_sign_up_with_your_username: "...alebo pomocou Vašeho užívateľského mena a hesla:"
       we_will_not_post_without_asking_you: "Nikdy nebudeme prispievať na Facebook, bez toho aby sme sa Vás spýtali."
     password_forgotten:
@@ -2587,6 +2705,7 @@ sk-SK:
       signup: "Zaregistrovať sa"
       admin_dashboard: "Konzola správcu"
       language: Jazyk
+      listings: ~
     utils:
       km: km
       mi: míl
@@ -2676,6 +2795,7 @@ sk-SK:
       address_kanji_line1: ~
       male: ~
       female: ~
+      mcc: ~
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~
@@ -2724,3 +2844,12 @@ sk-SK:
     wrong_setup: ~
     invalid_bank_account_number: ~
     invalid_postal_code: ~
+  seo_sections:
+    you_can_use_variables: ~
+    placeholder:
+      search_results: ~
+      search_results_for: ~
+      listing_description: ~
+      category_description: ~
+      profile_title: ~
+      profile_description: ~

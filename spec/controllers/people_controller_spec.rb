@@ -42,19 +42,25 @@
 #  min_days_between_community_updates :integer          default(1)
 #  deleted                            :boolean          default(FALSE)
 #  cloned_from                        :string(22)
+#  google_oauth2_id                   :string(255)
+#  linkedin_id                        :string(255)
 #
 # Indexes
 #
-#  index_people_on_authentication_token          (authentication_token)
-#  index_people_on_community_id                  (community_id)
-#  index_people_on_email                         (email) UNIQUE
-#  index_people_on_facebook_id                   (facebook_id)
-#  index_people_on_facebook_id_and_community_id  (facebook_id,community_id) UNIQUE
-#  index_people_on_id                            (id)
-#  index_people_on_reset_password_token          (reset_password_token) UNIQUE
-#  index_people_on_username                      (username)
-#  index_people_on_username_and_community_id     (username,community_id) UNIQUE
-#  index_people_on_uuid                          (uuid) UNIQUE
+#  index_people_on_authentication_token               (authentication_token)
+#  index_people_on_community_id                       (community_id)
+#  index_people_on_community_id_and_google_oauth2_id  (community_id,google_oauth2_id)
+#  index_people_on_community_id_and_linkedin_id       (community_id,linkedin_id)
+#  index_people_on_email                              (email) UNIQUE
+#  index_people_on_facebook_id                        (facebook_id)
+#  index_people_on_facebook_id_and_community_id       (facebook_id,community_id) UNIQUE
+#  index_people_on_google_oauth2_id                   (google_oauth2_id)
+#  index_people_on_id                                 (id)
+#  index_people_on_linkedin_id                        (linkedin_id)
+#  index_people_on_reset_password_token               (reset_password_token) UNIQUE
+#  index_people_on_username                           (username)
+#  index_people_on_username_and_community_id          (username,community_id) UNIQUE
+#  index_people_on_uuid                               (uuid) UNIQUE
 #
 
 require 'spec_helper'
@@ -381,6 +387,25 @@ describe PeopleController, type: :controller do
   end
 
   describe "#show" do
+    render_views
+
+    let(:plan) do
+      {
+        expired: false,
+        features: {
+          whitelabel: true,
+          admin_email: true,
+          footer: false
+        },
+        created_at: Time.zone.now,
+        updated_at: Time.zone.now
+      }
+    end
+
+    before(:each) do
+      @request.env[:current_plan] = plan
+    end
+
     let(:community) do
       community = FactoryGirl.create(:community)
       FactoryGirl.create(:custom_text_field, community: community,
@@ -429,6 +454,15 @@ describe PeopleController, type: :controller do
       community_host(community)
       get :show, params: {username: person_deleted.username}
       expect(response).to redirect_to('/')
+    end
+
+    it "shows specific meta title and description" do
+      community_host(community)
+      community.community_customizations.first.update(profile_meta_title: "Profile for {{user_display_name}}", profile_meta_description: "Want to know more about {{user_display_name}}")
+      get :show, params: {username: person1.username}
+      user_name = person1.name_or_username(community)
+      expect(response.body).to match("<title>Profile for #{user_name}</title>")
+      expect(response.body).to match("<meta content='Want to know more about #{user_name}' name='description'>")
     end
   end
 

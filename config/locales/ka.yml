@@ -235,6 +235,7 @@ ka:
         update_settings: "პარამეტრების დამახსოვრება"
         automatically_confirmed_no_escrow: "შეკვეთა ავტომატურად მოინიშნება შესრულებულად გადახდის შესრულებიდან %{days_dropdown} დღის მერე"
         automatically_confirmed_no_escrow_stripe_info: ~
+        buyer_transaction_fees_are_only_supported_with_stripe: ~
         automatic_newsletter_frequency: "გააგზავნე ავტომატური სიახლეები: %{frequency_dropdown}"
         newsletter_daily: დღიური
         newsletter_weekly: კვირეული
@@ -248,6 +249,7 @@ ka:
         you_will_be_redirected_to: "თქვენი ბაზრის წაშლის შემდეგ თქვენ გადამისამართდებით %{destination}-ზე. თქვენ აღარ გექნებათ წვდომა ბაზარზე."
         delete_this_marketplace: "წაშალეთ ეს ბაზარი"
         payment_preferences: ~
+        pre_approved_listings: ~
       manage_members:
         manage_members: "მართე მომხმარელები"
         email: "ელ. ფოსტა"
@@ -319,6 +321,67 @@ ka:
         enable_facebook_login: ~
         save: "დაიმახსოვრე პარამეტრები"
         add_another_image: ~
+        google_connect: ~
+        google_instructions_link_text: ~
+        google_connect_info_text_with_instructions: ~
+        google_connect_info_text: ~
+        enable_google_login: ~
+        google_connect_id: ~
+        google_connect_secret: ~
+        linkedin_connect: ~
+        linkedin_instructions_link_text: ~
+        linkedin_connect_info_text_with_instructions: ~
+        linkedin_connect_info_text: ~
+        enable_linkedin_login: ~
+        linkedin_connect_id: ~
+        linkedin_connect_secret: ~
+      seo_settings:
+        seo: ~
+        title: ~
+        meta_title_label: ~
+        meta_title_info: ~
+        meta_title_link_text: ~
+        meta_description_label: ~
+        meta_description_info: ~
+        meta_description_link_text: ~
+        search_title: ~
+        search_meta_title_label: ~
+        search_meta_title_info: ~
+        search_meta_title_link_text: ~
+        search_meta_description_label: ~
+        search_meta_description_info: ~
+        search_meta_description_link_text: ~
+        listing_title: ~
+        listing_meta_title_label: ~
+        listing_meta_title_info: ~
+        listing_meta_title_link_text: ~
+        listing_meta_description_label: ~
+        listing_meta_description_info: ~
+        listing_meta_description_link_text: ~
+        category_title: ~
+        category_meta_title_label: ~
+        category_meta_title_info: ~
+        category_meta_title_link_text: ~
+        category_meta_description_label: ~
+        category_meta_description_info: ~
+        category_meta_description_link_text: ~
+        profile_title: ~
+        profile_meta_title_label: ~
+        profile_meta_title_info: ~
+        profile_meta_title_link_text: ~
+        profile_meta_description_label: ~
+        profile_meta_description_info: ~
+        profile_meta_description_link_text: ~
+        sitemap_label: ~
+        sitemap_info: ~
+        sitemap_info_link_text: ~
+        sitemap_info_public: ~
+        sitemap_info_private: ~
+        robots_label: ~
+        robots_info: ~
+        robots_info_link_text: ~
+        robots_info_2: ~
+        save: ~
       analytics:
         analytics: ანალიტიკა
         google_analytics_key: "Google Analytics ტრეკინგის  ID"
@@ -502,6 +565,8 @@ ka:
           open: ~
           closed: ~
           expired: ~
+          approval_pending: ~
+          approval_rejected: ~
         headers:
           title: ~
           author: ~
@@ -512,6 +577,14 @@ ka:
         open: ~
         closed: ~
         expired: ~
+        approved: ~
+        approval_pending: ~
+        approval_rejected: ~
+        form:
+          this_listing_has_not_not_been_approved_yet: ~
+          approve: ~
+          reject: ~
+          cancel: ~
       user_fields:
         user_fields: ~
       footer:
@@ -538,6 +611,16 @@ ka:
         social:
           title: ~
           url: ~
+      domain:
+        domain: ~
+        marketplace_domain: ~
+        offer_pro: ~
+        upgrade_pro_plan_link: ~
+        your_marketplace_address_is: ~
+        would_you_like_to_change_address: ~
+        contact_us: ~
+        you_can_now_use_a_custom_domain: ~
+        would_you_like_to_change_domain: ~
     custom_fields:
       edit:
         edit_listing_field: "დაარედაქტირე ჩამონათვალის დარგი %{field_name}"
@@ -797,6 +880,8 @@ ka:
       stripe_fee_notice: ~
       fee_should_be_less_than_minimum_price: ~
       confirm_disable: ~
+      commission_from_buyer_label: ~
+      minimum_buyer_transaction_fee_label: ~
       stripe_connected:
         title: ~
         disable: ~
@@ -809,6 +894,7 @@ ka:
         enable: ~
       cannot_enable_gateway: ~
       cannot_disable_gateway: ~
+      cannot_enable_gateway_because_of_buyer_commission: ~
       stripe_form:
         add_your_api_keys: ~
         how_to_get_these: ~
@@ -930,6 +1016,7 @@ ka:
       quantity_label: რაოდენობა
       sum_label: ჯამი
       service_fee_label: "%{service_name} გადასახადი:"
+      buyer_service_fee_label: ~
       you_will_get_label: "თქვენ მიიღებთ:"
       total_label: ჯამი
       total_value: "%{seller_gets}"
@@ -975,6 +1062,7 @@ ka:
     message:
       accepted_request: "მოთხოვნა დადასტურდა"
       received_payment: "მოთხოვნის დადასტურება, გადახდის მიღება %{sum}-სთვის"
+      received_payment_wo_sum: ~
       accepted_offer: "დაადასტურა შეთავაზება"
       rejected_request: "მოთხოვნა გაუქმდა, გადახდა გაუქმებულია"
       rejected_offer: "გააუქმა მოთხოვნა"
@@ -984,8 +1072,10 @@ ka:
       canceled_offer: "გააუქმა შეთავაზება"
       paid: "გადახდილია %{sum}"
       payment_preauthorized: "ავტორიზებული გადახდა: %{sum}"
+      payment_preauthorized_wo_sum: ~
       stripe:
         held_payment: ~
+        held_payment_wo_sum: ~
         confirmed_request: ~
     new:
       message: შეტყობინება
@@ -1202,7 +1292,9 @@ ka:
       shipping_total: ~
       product: ~
       price_payer_paid: ~
+      subtotal: ~
       service_fee: ~
+      buyer_service_fee: ~
       you_will_get: ~
       new_payment: ~
       price_per_unit_type: ~
@@ -1218,6 +1310,7 @@ ka:
       duration: ~
       quantity: ~
       subtotal: ~
+      buyer_service_fee: ~
       total: ~
       price: ~
       service_fee: ~
@@ -1242,7 +1335,7 @@ ka:
       subtotal: "ჯამი:"
       total: ჯამი
       price: ფასი
-      service_fee: "სერვისის ღირებულება"
+      buyer_service_fee: ~
       stripe_gateway_fee: ~
       paypal_gateway_fee: ~
       money_will_be_transferred: "თანხა გადაირიცხება %{recipient_name}-ის ანგარიშზე, როცა ა) მონიშნავ მოთხოვნას დასრულებულად ან ბ) %{automatic_confirmation_days} დღე გავა გადახდიდან."
@@ -1308,6 +1401,24 @@ ka:
       this_is_automatic_message: "ეს არის ავტომატური წერილი რომელიც გაეგზავნა %{community}ის ადმინისტრატორებს"
       person_name: "სახელი:"
       person_email: "ელ.ფოსტა:"
+    listing_submited_for_review:
+      subject: ~
+      there_is_a_new_listing_to_review: ~
+      review_the_listing: ~
+      this_is_automatic_message: ~
+    listing_approved:
+      subject: ~
+      listing_has_been_approved: ~
+      view_the_listing: ~
+    listing_rejected:
+      subject: ~
+      listing_has_been_rejected: ~
+      contact_link: ~
+      edit_the_listing: ~
+    edited_listing_submited_for_review:
+      subject: ~
+      there_is_a_edited_listing_to_review: ~
+      review_the_listing: ~
   error_messages:
     booking:
       booking_failed_payment_voided: ""
@@ -1623,8 +1734,8 @@ ka:
       comment_sent: "კომენტარი გაგზავნილია"
       confirmation_link_is_wrong_or_used: "დადასტურების ლინკი უკვე გამოყენებულია ან გატეხილია. ცადეთ შესვლა, ან გამოაგზავნეთ შეფასება თუ პრობლემა გამეორდება. "
       additional_email_confirmed: "თქვენ მიერ მითითებული ელ. ფოსტა ეხლა დადასტურებულია"
-      could_not_get_email_from_facebook: "ვერ ვიღებ ელ. ფოსტან Facebook-დან და ვერ ვქმნი ანგარის ელ. ფოსტის გარეშე. "
-      facebook_email_unconfirmed: "ელ ფოსტა %{email} ასოცირებული თქვენ Facebook ანგარიშთან უკვე გამოყენებულია მაგრამ არ არის დადასტურებული. გთხოვ დაადასტურე ელ ფოსტა სანამ Facebook-ში შეხვალ."
+      could_not_get_email_from_social_network: ~
+      social_network_email_unconfirmed: ~
       create_new_listing: "შექმენი სხვა ჩამონათვალი"
       create_one_here: "შექმენით აქ"
       email_confirmation_sent_to_new_address: "ელ. ფოსტით დასტური უკვე გამოიგზავნა თქვენ ახალ მისამართზე"
@@ -1773,6 +1884,10 @@ ka:
       show_in_updates_email_loading: იტვირთება
       show_in_updates_email_error: "ვერ დავუკავშირდით სერვერს. გვერდის გადატვირთის შემდეგ ცადეთ კიდევ ერთხელ"
       show_in_updates_email_success: "ჩამონათვალი გამოჩნდება შემდეგ განახლებულ წერილში, რომელიც დაეგზავნება ყველა მომხმარებელს"
+      listing_is_pending: ~
+      listing_is_rejected: ~
+      approve_listing: ~
+      reject_listing: ~
     map:
       open_in_google_maps: "გახსენი Google Maps-ში"
     error:
@@ -1853,6 +1968,9 @@ ka:
         origin: თავდაპირველი
       send_button:
         save_listing: "დაიმახსოვრე ჩამონათვალი"
+        submit_for_review: ~
+        will_be_reviewed: ~
+        we_noticed_youre_an_admin: ~
       share_type:
         select: მონიშვნა
         borrow: სესხება
@@ -1932,6 +2050,7 @@ ka:
       select_one: ~
       start_time: ~
       end_time: ~
+      marketplace_fees_may_apply: ~
     new:
       listing: სია
       selected_category: "კატეგორია: %{category}"
@@ -2172,7 +2291,7 @@ ka:
       username_is_invalid: "მომხმარებლის სახელი არასწორია. დაშვებული სასვენი ნიშნებია ასოები, ციფრები და ქვედა ტირე."
       visible_only_to_you: "ხილული მხოლოდ შენთვის და ბაზრის ადმინისტრაციისთვის"
       visible_to_everybody: "ყველასთვის ხილული"
-      create_account_with_facebook: "დარეგისტრირდი Facebook-ის დახმარებით"
+      create_account_with_provider: ~
       OR: ან
       signup_with_email: "დარეგისტრირდი ელ. ფოსტით"
       this_field_will_be_publicly_visible: ~
@@ -2180,9 +2299,8 @@ ka:
       grade: "შეფასება:"
       and_gave_following_feedback: "და მისცა შემდეგი შეფასება"
     profile_listings:
-      show_also_closed: "აჩვენე ასევე დახურულები"
-      show_only_open: "აჩვენე მხოლოდ ღია"
       no_image: "არ არის სურათი"
+      manage_listings: ~
     show:
       contact: "დაეკონტაქტე %{person}ს"
       about_me: "ჩემ შესახებ:"
@@ -2241,7 +2359,7 @@ ka:
       account_creation_link_text: "დააჭირეთ აქ"
       cancle_facebook_connect: "თუ თქვენ არ გსურთ ამ ანგარიშის მიბმა, თქვენ შეგიძლიათ %{cancel_link}."
       facebook_cancel_link_text: გაუქმება
-      log_in_with_your_facebook_account: "შედით Facebook-ის დახმარებით"
+      log_in_with_your_provider_account: ~
       or_sign_up_with_your_username: "ან თქვენი მომხმარებლის სახელით, ან ელ. ფოსტით:"
       we_will_not_post_without_asking_you: "ჩვენ არასდროს დავპოსტავთ Facebookზე კითხვის გარეშე"
     password_forgotten:
@@ -2549,6 +2667,7 @@ ka:
       signup: დარეგისტრირება
       admin_dashboard: "ადმინისტრატორის პანელი"
       language: ენა
+      listings: ~
     utils:
       km: კილომეტრი
       mi: მილი
@@ -2632,6 +2751,7 @@ ka:
       address_kanji_line1: ~
       male: ~
       female: ~
+      mcc: ~
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~
@@ -2680,3 +2800,12 @@ ka:
     wrong_setup: ~
     invalid_bank_account_number: ~
     invalid_postal_code: ~
+  seo_sections:
+    you_can_use_variables: ~
+    placeholder:
+      search_results: ~
+      search_results_for: ~
+      listing_description: ~
+      category_description: ~
+      profile_title: ~
+      profile_description: ~

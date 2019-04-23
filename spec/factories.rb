@@ -516,10 +516,23 @@ FactoryGirl.define do
     fee_cents         0
     real_fee_cents    31
     subtotal_cents    200
+    buyer_commission  111
   end
 
   factory :stripe_account do
     community_id      123
     person_id         "ABC"
+  end
+
+  factory :landing_page, class: 'CustomLandingPage::LandingPageStoreDB::LandingPage' do
+    community_id      123
+    enabled           true
+    released_version  '1'
+  end
+
+  factory :landing_page_version, class: 'CustomLandingPage::LandingPageStoreDB::LandingPageVersion' do
+    community_id      123
+    version           '1'
+    content           CustomLandingPage::ExampleData::DATA_STR
   end
 end

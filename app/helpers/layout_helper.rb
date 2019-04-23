@@ -30,4 +30,12 @@ module LayoutHelper
       "#{community_description(false)} - #{community_slogan}"
     end
   end
+
+  def custom_meta_title(default, extra_mode = nil)
+    @seo_service.title(default, extra_mode)
+  end
+
+  def custom_meta_description(default, extra_mode = nil)
+    @seo_service.description(default, extra_mode)
+  end
 end

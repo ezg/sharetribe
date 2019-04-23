@@ -84,6 +84,7 @@ class ListingPresenter < MemoisticPresenter
 
   def process
     return nil unless @listing.transaction_process_id
+
     get_transaction_process(community_id: @current_community.id, transaction_process_id: @listing.transaction_process_id)
   end
 
@@ -197,15 +198,10 @@ class ListingPresenter < MemoisticPresenter
         paypal_minimum_transaction_fee: 0,
         seller_commission_in_use: false,
         stripe_commission: 0,
-        stripe_minimum_transaction_fee: 0,
+        stripe_minimum_transaction_fee: 0
       }
-    when matches([:paypal]), matches([:stripe]), matches([ [:paypal, :stripe] ])
+    when matches([:paypal]), matches([:stripe]), matches([[:paypal, :stripe]])
       p_set = Maybe(payment_settings_api.get_active_by_gateway(community_id: @current_community.id, payment_gateway: payment_type))
-        .select {|res| res[:success]}
-        .map {|res| res[:data]}
-        .or_else({})
-
-      stripe_settings = Maybe(payment_settings_api.get_active_by_gateway(community_id: @current_community.id, payment_gateway: :stripe))
         .select {|res| res[:success]}
         .map {|res| res[:data]}
         .or_else({})
@@ -224,11 +220,18 @@ class ListingPresenter < MemoisticPresenter
         paypal_minimum_transaction_fee: Money.new(paypal_settings[:minimum_transaction_fee_cents], currency),
         seller_commission_in_use: p_set[:commission_type] != :none,
         stripe_commission: stripe_settings[:commission_from_seller],
-        stripe_minimum_transaction_fee: Money.new(stripe_settings[:minimum_transaction_fee_cents], currency),
+        stripe_minimum_transaction_fee: Money.new(stripe_settings[:minimum_transaction_fee_cents], currency)
       }
     else
       raise ArgumentError.new("Unknown payment_type, process combination: [#{payment_type}, #{process}]")
     end
+  end
+
+  def stripe_settings
+    Maybe(payment_settings_api.get_active_by_gateway(community_id: @current_community.id, payment_gateway: :stripe))
+      .select {|res| res[:success]}
+      .map {|res| res[:data]}
+      .or_else({})
   end
 
   def payment_settings_api
@@ -320,6 +323,32 @@ class ListingPresenter < MemoisticPresenter
       menu_titles: listing_form_menu_titles,
       new_form_content_path: acts_as_person ? new_form_content_person_listings_path(person_id: new_listing_author.username, locale: I18n.locale) : new_form_content_listings_path(locale: I18n.locale)
     }
+  end
+
+  def buyer_fee?
+    stripe_in_use && !paypal_in_use &&
+      (stripe_settings[:commission_from_buyer].to_i > 0 ||
+      stripe_settings[:minimum_buyer_transaction_fee_cents].to_i > 0)
+  end
+
+  def pending_admin_approval?
+    is_marketplace_admin && listing.approval_pending?
+  end
+
+  def approval_in_use?
+    current_community.pre_approved_listings
+  end
+
+  def show_submit_for_review?
+    approval_in_use? && !current_user.has_admin_rights?(current_community)
+  end
+
+  def listing_form_object
+    if acts_as_person
+      [acts_as_person, listing]
+    else
+      listing
+    end
   end
 
   memoize_all_reader_methods

@@ -110,7 +110,7 @@ Rails.application.routes.draw do
   resources :communities, only: [:new, :create]
 
 
-  devise_for :people, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "sessions" }
+  devise_for :people, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "omniauth" }
 
   # Adds locale to every url right after the root path
   scope "(/:locale)", :constraints => { :locale => locale_matcher } do
@@ -191,8 +191,7 @@ Rails.application.routes.draw do
       get  "/paypal_preferences/permissions_verified" => "paypal_preferences#permissions_verified"
 
       # Settings
-      get   "/settings" => "communities#settings",        as: :settings
-      patch "/settings" => "communities#update_settings", as: :update_settings
+      resource :setting, path: 'settings', only: [:show, :update]
 
       # Guide
       get "getting_started_guide"                        => "getting_started_guide#index",                  as: :getting_started_guide
@@ -273,7 +272,12 @@ Rails.application.routes.draw do
           get "getting_started_guide/invitation",             to: redirect("/admin/getting_started_guide/invitation")
 
         end
-        resources :listings, controller: :community_listings, only: [:index]
+        resources :listings, controller: :community_listings, only: [:index, :edit, :update] do
+          member do
+            get :approve
+            get :reject
+          end
+        end
         resources :transactions, controller: :community_transactions, only: :index do
           collection do
             get 'export'
@@ -343,6 +347,8 @@ Rails.application.routes.draw do
         end
       end
       resource :plan, only: [:show]
+      resource :domain, only: [:show]
+      resource :community_seo_settings, only: [:show, :update]
     end
 
     resources :invitations, only: [:new, :create ] do
@@ -416,7 +422,7 @@ Rails.application.routes.draw do
       get :message_arrived
     end
 
-    devise_for :people, skip: :omniauth_callbacks, controllers: { confirmations: "confirmations", registrations: "people", omniauth_callbacks: "sessions"}, :path_names => { :sign_in => 'login'}
+    devise_for :people, skip: :omniauth_callbacks, controllers: { confirmations: "confirmations", registrations: "people", omniauth_callbacks: "omniauth"}, :path_names => { :sign_in => 'login'}
     devise_scope :person do
       # these matches need to be before the general resources to have more priority
       get "/people/confirmation" => "confirmations#show", :as => :confirmation
@@ -425,7 +431,6 @@ Rails.application.routes.draw do
 
       # List few specific routes here for Devise to understand those
       get "/signup" => "people#new", :as => :sign_up
-      get '/people/auth/:provider/setup' => 'sessions#facebook_setup' #needed for devise setup phase hook to work
 
       resources :people, param: :username, :path => "", :only => :show, :constraints => { :username => /[_a-z0-9]{3,20}/ }
 
@@ -435,7 +440,6 @@ Rails.application.routes.draw do
           get :check_email_availability
           get :check_email_availability_and_validity
           get :check_invitation_code
-          get :create_facebook_based
         end
       end
 

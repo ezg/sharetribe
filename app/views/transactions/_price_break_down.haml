@@ -1,3 +1,4 @@
+- has_buyer_fee = buyer_fee.present? && buyer_fee > 0
 .initiate-transaction-totals
   - if booking
     .initiate-transaction-per-unit-wrapper
@@ -54,7 +55,7 @@
           = quantity
 
   - if subtotal.present?
-    .initiate-transaction-sum-wrapper
+    .initiate-transaction-sum-wrapper#tx-subtotal
       %span.initiate-transaction-sum-label
         = t("transactions.initiate.subtotal")
       %span.initiate-transaction-sum-value
@@ -75,8 +76,8 @@
         = MoneyViewUtils.to_humanized(shipping_price)
 
   - if is_author
-    - if !is_author
-      .initiate-transaction-sum-wrapper
+    - unless has_buyer_fee && !is_author
+      .initiate-transaction-sum-wrapper#tx-total-to-pay
         %span.initiate-transaction-sum-label
           = t("transactions.total_to_pay")
         %span.initiate-transaction-sum-value
@@ -90,7 +91,7 @@
           = "-#{MoneyViewUtils.to_humanized(authenticate_fee)}"
 
     - if fee.present? && fee > 0
-      .initiate-transaction-sum-wrapper
+      .initiate-transaction-sum-wrapper#tx-fee
         %span.initiate-transaction-sum-label
           = t("conversations.accept.service_fee_label")
         %span.initiate-transaction-sum-value
@@ -100,7 +101,13 @@
           %em 3% fees are used to cover payment processing. Reswings does not collect fees at the moment. 
 
 
-  -# %h3 buyer and seller sees this
+  - if has_buyer_fee && !is_author
+    .initiate-transaction-sum-wrapper#tx-buyer-fee
+      %span.initiate-transaction-sum-label
+        = t("conversations.accept.buyer_service_fee_label")
+      %span.initiate-transaction-sum-value
+        = "#{is_author ? '-' : ''}#{MoneyViewUtils.to_humanized(buyer_fee)}"
+
   - if total.present?
     .initiate-transaction-total-wrapper
       %span.initiate-transaction-total-label

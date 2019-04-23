@@ -240,6 +240,7 @@ en-NZ:
         update_settings: "Save settings"
         automatically_confirmed_no_escrow: "Order will be automatically marked as completed %{days_dropdown} days after the payment has been made"
         automatically_confirmed_no_escrow_stripe_info: "For transactions processed by Stripe, payments to providers are delayed until the order is marked as completed. %{learn_more}."
+        buyer_transaction_fees_are_only_supported_with_stripe: ~
         automatic_newsletter_frequency: "Send automatic newsletter: %{frequency_dropdown}"
         newsletter_daily: Daily
         newsletter_weekly: Weekly
@@ -253,6 +254,7 @@ en-NZ:
         you_will_be_redirected_to: "After you have deleted your marketplace you will be redirected to %{destination}. You will not be able to access your marketplace anymore."
         delete_this_marketplace: "Delete this marketplace"
         payment_preferences: "Payment system"
+        pre_approved_listings: ~
       manage_members:
         manage_members: "Manage users"
         email: Email
@@ -324,6 +326,67 @@ en-NZ:
         enable_facebook_login: ~
         save: "Save settings"
         add_another_image: ~
+        google_connect: ~
+        google_instructions_link_text: ~
+        google_connect_info_text_with_instructions: ~
+        google_connect_info_text: ~
+        enable_google_login: ~
+        google_connect_id: ~
+        google_connect_secret: ~
+        linkedin_connect: ~
+        linkedin_instructions_link_text: ~
+        linkedin_connect_info_text_with_instructions: ~
+        linkedin_connect_info_text: ~
+        enable_linkedin_login: ~
+        linkedin_connect_id: ~
+        linkedin_connect_secret: ~
+      seo_settings:
+        seo: ~
+        title: ~
+        meta_title_label: ~
+        meta_title_info: ~
+        meta_title_link_text: ~
+        meta_description_label: ~
+        meta_description_info: ~
+        meta_description_link_text: ~
+        search_title: ~
+        search_meta_title_label: ~
+        search_meta_title_info: ~
+        search_meta_title_link_text: ~
+        search_meta_description_label: ~
+        search_meta_description_info: ~
+        search_meta_description_link_text: ~
+        listing_title: ~
+        listing_meta_title_label: ~
+        listing_meta_title_info: ~
+        listing_meta_title_link_text: ~
+        listing_meta_description_label: ~
+        listing_meta_description_info: ~
+        listing_meta_description_link_text: ~
+        category_title: ~
+        category_meta_title_label: ~
+        category_meta_title_info: ~
+        category_meta_title_link_text: ~
+        category_meta_description_label: ~
+        category_meta_description_info: ~
+        category_meta_description_link_text: ~
+        profile_title: ~
+        profile_meta_title_label: ~
+        profile_meta_title_info: ~
+        profile_meta_title_link_text: ~
+        profile_meta_description_label: ~
+        profile_meta_description_info: ~
+        profile_meta_description_link_text: ~
+        sitemap_label: ~
+        sitemap_info: ~
+        sitemap_info_link_text: ~
+        sitemap_info_public: ~
+        sitemap_info_private: ~
+        robots_label: ~
+        robots_info: ~
+        robots_info_link_text: ~
+        robots_info_2: ~
+        save: ~
       analytics:
         analytics: Analytics
         google_analytics_key: "Google Analytics tracking ID"
@@ -507,6 +570,8 @@ en-NZ:
           open: ~
           closed: ~
           expired: ~
+          approval_pending: ~
+          approval_rejected: ~
         headers:
           title: ~
           author: ~
@@ -517,6 +582,14 @@ en-NZ:
         open: ~
         closed: ~
         expired: ~
+        approved: ~
+        approval_pending: ~
+        approval_rejected: ~
+        form:
+          this_listing_has_not_not_been_approved_yet: ~
+          approve: ~
+          reject: ~
+          cancel: ~
       user_fields:
         user_fields: ~
       footer:
@@ -543,6 +616,16 @@ en-NZ:
         social:
           title: ~
           url: ~
+      domain:
+        domain: ~
+        marketplace_domain: ~
+        offer_pro: ~
+        upgrade_pro_plan_link: ~
+        your_marketplace_address_is: ~
+        would_you_like_to_change_address: ~
+        contact_us: ~
+        you_can_now_use_a_custom_domain: ~
+        would_you_like_to_change_domain: ~
     custom_fields:
       edit:
         edit_listing_field: "Edit listing field '%{field_name}'"
@@ -810,6 +893,8 @@ en-NZ:
       stripe_fee_notice: "%{stripe_fee_link} will be deducted from the transaction fee you are charging."
       fee_should_be_less_than_minimum_price: "Minimum transaction fee must be lower than minimum transaction size"
       confirm_disable: "Are you sure you want to disable %{gateway}? If you disable it, providers will no longer be able to receive money and buyers will no longer be able to pay through this payment method. If providers haven't configured another payment method, buyers will not be able to buy from them."
+      commission_from_buyer_label: ~
+      minimum_buyer_transaction_fee_label: ~
       stripe_connected:
         title: "Stripe connected"
         disable: "Disable Stripe"
@@ -822,6 +907,7 @@ en-NZ:
         enable: "Enable PayPal again"
       cannot_enable_gateway: "Cannot enable payment gateway %{gateway}."
       cannot_disable_gateway: "Cannot disable payment gateway %{gateway}."
+      cannot_enable_gateway_because_of_buyer_commission: ~
       stripe_form:
         add_your_api_keys: "Add your Stripe API keys"
         how_to_get_these: "How to get these?"
@@ -947,6 +1033,7 @@ en-NZ:
       quantity_label: "Quantity:"
       sum_label: "Subtotal:"
       service_fee_label: "%{service_name} fee:"
+      buyer_service_fee_label: ~
       you_will_get_label: "You will get:"
       total_label: "Total:"
       total_value: "%{seller_gets}*"
@@ -992,6 +1079,7 @@ en-NZ:
     message:
       accepted_request: "accepted the request"
       received_payment: "accepted the request, received payment"
+      received_payment_wo_sum: ~
       accepted_offer: "accepted the offer"
       rejected_request: "rejected the request, cancelled the payment"
       rejected_offer: "rejected the offer"
@@ -1001,8 +1089,10 @@ en-NZ:
       canceled_offer: "cancelled the offer"
       paid: "paid %{sum}"
       payment_preauthorized: "payment authorized"
+      payment_preauthorized_wo_sum: ~
       stripe:
         held_payment: ~
+        held_payment_wo_sum: ~
         confirmed_request: ~
     new:
       message: Message
@@ -1217,7 +1307,9 @@ en-NZ:
       shipping_total: "Shipping:"
       product: "Product:"
       price_payer_paid: "Price %{payer_full_name} paid:"
+      subtotal: ~
       service_fee: "%{service_name} service fee:"
+      buyer_service_fee: ~
       you_will_get: "Total:"
       new_payment: "You have received a new payment"
       price_per_unit_type: "Price per %{unit_type}"
@@ -1233,6 +1325,7 @@ en-NZ:
       duration: Duration
       quantity: Quantity
       subtotal: Subtotal
+      buyer_service_fee: ~
       total: Total
       price: Price
       service_fee: "Service fee"
@@ -1257,7 +1350,7 @@ en-NZ:
       subtotal: Subtotal
       total: Total
       price: Price
-      service_fee: "Service fee"
+      buyer_service_fee: ~
       stripe_gateway_fee: "Stripe's fee:"
       paypal_gateway_fee: "PayPal's fee:"
       money_will_be_transferred: "The money will be transferred to %{recipient_name} when a) you have marked the request completed or b) %{automatic_confirmation_days} days have passed since you paid."
@@ -1323,6 +1416,24 @@ en-NZ:
       this_is_automatic_message: "This is an automatic message sent to administrators of %{community}."
       person_name: "Name:"
       person_email: "Email:"
+    listing_submited_for_review:
+      subject: ~
+      there_is_a_new_listing_to_review: ~
+      review_the_listing: ~
+      this_is_automatic_message: ~
+    listing_approved:
+      subject: ~
+      listing_has_been_approved: ~
+      view_the_listing: ~
+    listing_rejected:
+      subject: ~
+      listing_has_been_rejected: ~
+      contact_link: ~
+      edit_the_listing: ~
+    edited_listing_submited_for_review:
+      subject: ~
+      there_is_a_edited_listing_to_review: ~
+      review_the_listing: ~
   error_messages:
     booking:
       booking_failed_payment_voided: "Booking failed due to an unexpected error. Please try again later. You haven't been charged."
@@ -1638,8 +1749,8 @@ en-NZ:
       comment_sent: "Comment sent"
       confirmation_link_is_wrong_or_used: "The confirmation link is already used or otherwise broken. Try logging in, or send feedback if the problem persists."
       additional_email_confirmed: "The email you entered is now confirmed."
-      could_not_get_email_from_facebook: "Could not get email address from Facebook and can't create an account without email."
-      facebook_email_unconfirmed: "The email address '%{email}' associated with your Facebook account is already used but it hasn't been confirmed yet. Please confirm the email address before logging in with Facebook."
+      could_not_get_email_from_social_network: ~
+      social_network_email_unconfirmed: ~
       create_new_listing: "Create another listing"
       create_one_here: "create one here"
       email_confirmation_sent_to_new_address: "Email confirmation is now sent to the new address."
@@ -1789,6 +1900,10 @@ en-NZ:
       show_in_updates_email_loading: Loading...
       show_in_updates_email_error: "Couldn't reach server. Try again after page refresh."
       show_in_updates_email_success: "This listing will be shown in the next automatic update email sent to the users"
+      listing_is_pending: ~
+      listing_is_rejected: ~
+      approve_listing: ~
+      reject_listing: ~
     map:
       open_in_google_maps: "Open in Google Maps"
     error:
@@ -1869,6 +1984,9 @@ en-NZ:
         origin: Origin
       send_button:
         save_listing: "Save listing"
+        submit_for_review: ~
+        will_be_reviewed: ~
+        we_noticed_youre_an_admin: ~
       share_type:
         select: Select
         borrow: Borrowing
@@ -1948,6 +2066,7 @@ en-NZ:
       select_one: ~
       start_time: ~
       end_time: ~
+      marketplace_fees_may_apply: ~
     new:
       listing: listing
       selected_category: "Category: %{category}"
@@ -2189,7 +2308,7 @@ en-NZ:
       username_is_invalid: "Username is invalid. Allowed characters are letters, numbers and underscore."
       visible_only_to_you: "visible only to you and the %{service_name} team"
       visible_to_everybody: "visible to everybody"
-      create_account_with_facebook: "Sign up with Facebook"
+      create_account_with_provider: ~
       OR: OR
       signup_with_email: "Sign up with email"
       this_field_will_be_publicly_visible: ~
@@ -2197,9 +2316,8 @@ en-NZ:
       grade: "grade:"
       and_gave_following_feedback: "and gave the following feedback"
     profile_listings:
-      show_also_closed: "Show also closed"
-      show_only_open: "Show only open"
       no_image: "No image"
+      manage_listings: ~
     show:
       contact: "Contact %{person}"
       about_me: "About me:"
@@ -2258,7 +2376,7 @@ en-NZ:
       account_creation_link_text: "click here"
       cancle_facebook_connect: "If you don't want to link this account, you can %{cancel_link}."
       facebook_cancel_link_text: cancel
-      log_in_with_your_facebook_account: "Log in with Facebook"
+      log_in_with_your_provider_account: ~
       or_sign_up_with_your_username: "...or with your username or email:"
       we_will_not_post_without_asking_you: "We will never post to Facebook without asking you."
     password_forgotten:
@@ -2573,6 +2691,7 @@ en-NZ:
       signup: "Sign up"
       admin_dashboard: "Admin dashboard"
       language: Language
+      listings: ~
     utils:
       km: km
       mi: mi
@@ -2665,6 +2784,7 @@ en-NZ:
       address_kanji_line1: ~
       male: ~
       female: ~
+      mcc: ~
     form_bank:
       bank_account_number: "Bank account number"
       bank_routing_number: "Routing number"
@@ -2713,3 +2833,12 @@ en-NZ:
     wrong_setup: "There is something wrong with the payment system setup in this marketplace: the platform has not been registered. Please contact the team to let them know that they should register their platform at Stripe."
     invalid_bank_account_number: "Please check that your bank account is entered correctly and matches your country."
     invalid_postal_code: "Invalid postal code for %{country}"
+  seo_sections:
+    you_can_use_variables: ~
+    placeholder:
+      search_results: ~
+      search_results_for: ~
+      listing_description: ~
+      category_description: ~
+      profile_title: ~
+      profile_description: ~

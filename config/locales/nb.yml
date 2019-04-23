@@ -240,6 +240,7 @@ nb:
         update_settings: "Lagre innstillinger"
         automatically_confirmed_no_escrow: "Transaksjoner vil automatisk bli satt som utført %{days_dropdown} dager etter at betaling er utført"
         automatically_confirmed_no_escrow_stripe_info: ~
+        buyer_transaction_fees_are_only_supported_with_stripe: ~
         automatic_newsletter_frequency: "Send automatisk nyhetsbrev:%{frequency_dropdown}"
         newsletter_daily: Daglig
         newsletter_weekly: Ukentlig
@@ -253,6 +254,7 @@ nb:
         you_will_be_redirected_to: "Etter du har slettet markedsplassen din vil du bli videresendt til %{destination}. Du vil ikke kunne få tilgang til markedsplassen din mer."
         delete_this_marketplace: "Slett denne markedsplassen"
         payment_preferences: ~
+        pre_approved_listings: ~
       manage_members:
         manage_members: "Administrer brukere"
         email: E-post
@@ -324,6 +326,67 @@ nb:
         enable_facebook_login: ~
         save: "Lagre innstillinger"
         add_another_image: ~
+        google_connect: ~
+        google_instructions_link_text: ~
+        google_connect_info_text_with_instructions: ~
+        google_connect_info_text: ~
+        enable_google_login: ~
+        google_connect_id: ~
+        google_connect_secret: ~
+        linkedin_connect: ~
+        linkedin_instructions_link_text: ~
+        linkedin_connect_info_text_with_instructions: ~
+        linkedin_connect_info_text: ~
+        enable_linkedin_login: ~
+        linkedin_connect_id: ~
+        linkedin_connect_secret: ~
+      seo_settings:
+        seo: ~
+        title: ~
+        meta_title_label: ~
+        meta_title_info: ~
+        meta_title_link_text: ~
+        meta_description_label: ~
+        meta_description_info: ~
+        meta_description_link_text: ~
+        search_title: ~
+        search_meta_title_label: ~
+        search_meta_title_info: ~
+        search_meta_title_link_text: ~
+        search_meta_description_label: ~
+        search_meta_description_info: ~
+        search_meta_description_link_text: ~
+        listing_title: ~
+        listing_meta_title_label: ~
+        listing_meta_title_info: ~
+        listing_meta_title_link_text: ~
+        listing_meta_description_label: ~
+        listing_meta_description_info: ~
+        listing_meta_description_link_text: ~
+        category_title: ~
+        category_meta_title_label: ~
+        category_meta_title_info: ~
+        category_meta_title_link_text: ~
+        category_meta_description_label: ~
+        category_meta_description_info: ~
+        category_meta_description_link_text: ~
+        profile_title: ~
+        profile_meta_title_label: ~
+        profile_meta_title_info: ~
+        profile_meta_title_link_text: ~
+        profile_meta_description_label: ~
+        profile_meta_description_info: ~
+        profile_meta_description_link_text: ~
+        sitemap_label: ~
+        sitemap_info: ~
+        sitemap_info_link_text: ~
+        sitemap_info_public: ~
+        sitemap_info_private: ~
+        robots_label: ~
+        robots_info: ~
+        robots_info_link_text: ~
+        robots_info_2: ~
+        save: ~
       analytics:
         analytics: Analytics
         google_analytics_key: "Google Analytics tracking ID"
@@ -507,6 +570,8 @@ nb:
           open: ~
           closed: ~
           expired: ~
+          approval_pending: ~
+          approval_rejected: ~
         headers:
           title: ~
           author: ~
@@ -517,6 +582,14 @@ nb:
         open: ~
         closed: ~
         expired: ~
+        approved: ~
+        approval_pending: ~
+        approval_rejected: ~
+        form:
+          this_listing_has_not_not_been_approved_yet: ~
+          approve: ~
+          reject: ~
+          cancel: ~
       user_fields:
         user_fields: ~
       footer:
@@ -543,6 +616,16 @@ nb:
         social:
           title: ~
           url: ~
+      domain:
+        domain: ~
+        marketplace_domain: ~
+        offer_pro: ~
+        upgrade_pro_plan_link: ~
+        your_marketplace_address_is: ~
+        would_you_like_to_change_address: ~
+        contact_us: ~
+        you_can_now_use_a_custom_domain: ~
+        would_you_like_to_change_domain: ~
     custom_fields:
       edit:
         edit_listing_field: "Rediger annonse felt'%{field_name}'"
@@ -806,6 +889,8 @@ nb:
       stripe_fee_notice: ~
       fee_should_be_less_than_minimum_price: ~
       confirm_disable: ~
+      commission_from_buyer_label: ~
+      minimum_buyer_transaction_fee_label: ~
       stripe_connected:
         title: ~
         disable: ~
@@ -818,6 +903,7 @@ nb:
         enable: ~
       cannot_enable_gateway: ~
       cannot_disable_gateway: ~
+      cannot_enable_gateway_because_of_buyer_commission: ~
       stripe_form:
         add_your_api_keys: ~
         how_to_get_these: ~
@@ -939,6 +1025,7 @@ nb:
       quantity_label: "Antall:"
       sum_label: "Delsum:"
       service_fee_label: "%{service_name}-kostnad:"
+      buyer_service_fee_label: ~
       you_will_get_label: "Du vil motta:"
       total_label: "Totalt:"
       total_value: "%{seller_gets}*"
@@ -986,6 +1073,7 @@ nb:
     message:
       accepted_request: "godtok forespørselen"
       received_payment: "godtok forespørselen og har mottatt betaling på %{sum}"
+      received_payment_wo_sum: ~
       accepted_offer: "Tilbud godtatt"
       rejected_request: "avslå forespørselen"
       rejected_offer: "avslå tilbudet"
@@ -995,8 +1083,10 @@ nb:
       canceled_offer: "avslo tilbudet"
       paid: "betalte %{sum}"
       payment_preauthorized: "Autorisert betaling: %{sum}"
+      payment_preauthorized_wo_sum: ~
       stripe:
         held_payment: ~
+        held_payment_wo_sum: ~
         confirmed_request: ~
     new:
       message: Melding
@@ -1213,7 +1303,9 @@ nb:
       shipping_total: ~
       product: ~
       price_payer_paid: ~
+      subtotal: ~
       service_fee: ~
+      buyer_service_fee: ~
       you_will_get: ~
       new_payment: ~
       price_per_unit_type: ~
@@ -1229,6 +1321,7 @@ nb:
       duration: ~
       quantity: ~
       subtotal: ~
+      buyer_service_fee: ~
       total: ~
       price: ~
       service_fee: ~
@@ -1253,7 +1346,7 @@ nb:
       subtotal: "Delsum:"
       total: Totalt
       price: Pris
-      service_fee: Tjenestekostnad
+      buyer_service_fee: ~
       stripe_gateway_fee: ~
       paypal_gateway_fee: ~
       money_will_be_transferred: "Pengene blir overført til %{recipient_name} når a) du har huket av for at forespørselen er utført eller b) %{automatic_confirmation_days} dager har gått fra du betalte."
@@ -1319,6 +1412,24 @@ nb:
       this_is_automatic_message: "Dette er en automatisk melding sendt til administratorer av %{community}."
       person_name: "Navn:"
       person_email: "E-post:"
+    listing_submited_for_review:
+      subject: ~
+      there_is_a_new_listing_to_review: ~
+      review_the_listing: ~
+      this_is_automatic_message: ~
+    listing_approved:
+      subject: ~
+      listing_has_been_approved: ~
+      view_the_listing: ~
+    listing_rejected:
+      subject: ~
+      listing_has_been_rejected: ~
+      contact_link: ~
+      edit_the_listing: ~
+    edited_listing_submited_for_review:
+      subject: ~
+      there_is_a_edited_listing_to_review: ~
+      review_the_listing: ~
   error_messages:
     booking:
       booking_failed_payment_voided: "Reservasjonen feilet på grunn av en uventet feil. Vennligst prøv igjen senere. Du har ikke blitt belastet for noe beløp."
@@ -1634,8 +1745,8 @@ nb:
       comment_sent: "Kommentar sendt"
       confirmation_link_is_wrong_or_used: "Bekreftelseslenken er allerede brukt eller ikke riktig. Forsøk å logge inn, eller send oss tilbakemelding hvis det fortsatt er et problem."
       additional_email_confirmed: "E-posten du benyttet er bekreftet."
-      could_not_get_email_from_facebook: "Kunne ikke hente e-post fra Facebook og kan ikke opprette konto uten e-post."
-      facebook_email_unconfirmed: "E-postadressen '%{email}' , som er assosiert med din Facebook-konto, er allerede brukt, men den har ikke blitt bekreftet enda. Vennligst bekreft e-postadressen før du logger inn med Facebook."
+      could_not_get_email_from_social_network: ~
+      social_network_email_unconfirmed: ~
       create_new_listing: "Opprett en annen annonse"
       create_one_here: "opprette en her"
       email_confirmation_sent_to_new_address: "E-postbekreftelse er nå sendt til den nye adressen."
@@ -1785,6 +1896,10 @@ nb:
       show_in_updates_email_loading: Laster…
       show_in_updates_email_error: "Kunne ikke nå server. Oppdater siden og prøv igjen."
       show_in_updates_email_success: "Denne annonsen vil bli vist i den neste automatiske e-post utsendelsen til brukere"
+      listing_is_pending: ~
+      listing_is_rejected: ~
+      approve_listing: ~
+      reject_listing: ~
     map:
       open_in_google_maps: "Åpne i Google Maps"
     error:
@@ -1865,6 +1980,9 @@ nb:
         origin: Opprinnelse
       send_button:
         save_listing: "Lagre annonse"
+        submit_for_review: ~
+        will_be_reviewed: ~
+        we_noticed_youre_an_admin: ~
       share_type:
         select: Velg
         borrow: Låne
@@ -1944,6 +2062,7 @@ nb:
       select_one: ~
       start_time: ~
       end_time: ~
+      marketplace_fees_may_apply: ~
     new:
       listing: annonse
       selected_category: "Kategori: %{category}"
@@ -2185,7 +2304,7 @@ nb:
       username_is_invalid: "Brukernavnet er ugyldig. Gyldige tegn er bokstaver, tall og understrek."
       visible_only_to_you: "synlig kun for deg og markedsplassens administrator"
       visible_to_everybody: "synlig for alle"
-      create_account_with_facebook: "Logg inn med Facebook"
+      create_account_with_provider: ~
       OR: ELLER
       signup_with_email: "Registrer deg med e-post"
       this_field_will_be_publicly_visible: ~
@@ -2193,9 +2312,8 @@ nb:
       grade: "karakter:"
       and_gave_following_feedback: "og gav følgende tilbakemelding"
     profile_listings:
-      show_also_closed: "Vis også lukkede"
-      show_only_open: "Vis kun åpne"
       no_image: "Uten bilder"
+      manage_listings: ~
     show:
       contact: "Kontakt %{person}"
       about_me: "Om meg:"
@@ -2254,7 +2372,7 @@ nb:
       account_creation_link_text: "klikk her"
       cancle_facebook_connect: "Hvis du ikke vil koble til din konto, kan du %{cancel_link}"
       facebook_cancel_link_text: avbryt
-      log_in_with_your_facebook_account: "Logg inn med Facebook"
+      log_in_with_your_provider_account: ~
       or_sign_up_with_your_username: "...eller med ditt brukernavn eller e-post:"
       we_will_not_post_without_asking_you: "Vi poster aldri på Facebook uten å spørre deg om det."
     password_forgotten:
@@ -2569,6 +2687,7 @@ nb:
       signup: "Registrer deg"
       admin_dashboard: Administrasjonspanel
       language: Språk
+      listings: ~
     utils:
       km: km
       mi: miles
@@ -2655,6 +2774,7 @@ nb:
       address_kanji_line1: ~
       male: ~
       female: ~
+      mcc: ~
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~
@@ -2703,3 +2823,12 @@ nb:
     wrong_setup: ~
     invalid_bank_account_number: ~
     invalid_postal_code: ~
+  seo_sections:
+    you_can_use_variables: ~
+    placeholder:
+      search_results: ~
+      search_results_for: ~
+      listing_description: ~
+      category_description: ~
+      profile_title: ~
+      profile_description: ~

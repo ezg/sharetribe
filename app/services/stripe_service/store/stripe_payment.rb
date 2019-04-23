@@ -12,6 +12,7 @@ module StripeService::Store::StripePayment
     [:sum_cents, :fixnum],
     [:authenticate_cents, :fixnum],
     [:commission_cents, :fixnum],
+    [:buyer_commission_cents, :fixnum],
     [:fee_cents, :fixnum],
     [:subtotal_cents, :fixnum],
     [:stripe_charge_id, :string]
@@ -26,6 +27,7 @@ module StripeService::Store::StripePayment
     [:sum, :money],
     [:commission, :money],
     [:authenticate, :money],
+    [:buyer_commission, :money],
     [:fee, :money],
     [:real_fee, :money],
     [:subtotal, :money],
@@ -68,9 +70,13 @@ module StripeService::Store::StripePayment
           sum: stripe_payment.sum,
           fee: stripe_payment.fee,
           commission: stripe_payment.commission,
+<<<<<<< HEAD
           authenticate: stripe_payment.authenticate,
+=======
+          buyer_commission: stripe_payment.buyer_commission,
+>>>>>>> 29fcc530a476b934f49b682b8c16b958153785f4
           subtotal: stripe_payment.subtotal,
-          real_fee: stripe_payment.real_fee,
+          real_fee: stripe_payment.real_fee
         }))
     StripePayment.call(hash)
   end
@@ -88,7 +94,7 @@ module StripeService::Store::StripePayment
   end
 
   def update_payment!(payment, data)
-    payment.update_attributes!(data)
+    payment.update!(data)
     from_model(payment.reload)
   end
 end

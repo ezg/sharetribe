@@ -275,6 +275,13 @@ CREATE TABLE `communities` (
   `footer_enabled` tinyint(1) DEFAULT '0',
   `hsts_max_age` int(11) DEFAULT NULL,
   `logo_link` varchar(255) DEFAULT NULL,
+  `google_connect_enabled` tinyint(1) DEFAULT NULL,
+  `google_connect_id` varchar(255) DEFAULT NULL,
+  `google_connect_secret` varchar(255) DEFAULT NULL,
+  `linkedin_connect_enabled` tinyint(1) DEFAULT NULL,
+  `linkedin_connect_id` varchar(255) DEFAULT NULL,
+  `linkedin_connect_secret` varchar(255) DEFAULT NULL,
+  `pre_approved_listings` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_communities_on_uuid` (`uuid`),
   KEY `index_communities_on_domain` (`domain`) USING BTREE,
@@ -307,6 +314,16 @@ CREATE TABLE `community_customizations` (
   `transaction_agreement_content` mediumtext,
   `social_media_title` varchar(255) DEFAULT NULL,
   `social_media_description` text,
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_description` text DEFAULT NULL,
+  `search_meta_title` varchar(255) DEFAULT NULL,
+  `search_meta_description` text DEFAULT NULL,
+  `listing_meta_title` varchar(255) DEFAULT NULL,
+  `listing_meta_description` text DEFAULT NULL,
+  `category_meta_title` varchar(255) DEFAULT NULL,
+  `category_meta_description` text DEFAULT NULL,
+  `profile_meta_title` varchar(255) DEFAULT NULL,
+  `profile_meta_description` text DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_community_customizations_on_community_id` (`community_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -805,19 +822,20 @@ CREATE TABLE `listings` (
   `shipping_price_additional_cents` int(11) DEFAULT NULL,
   `availability` varchar(32) DEFAULT 'none',
   `per_hour_ready` tinyint(1) DEFAULT '0',
+  `state` varchar(255) DEFAULT 'approved',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_listings_on_uuid` (`uuid`),
   KEY `index_listings_on_new_category_id` (`category_id`) USING BTREE,
   KEY `person_listings` (`community_id`,`author_id`) USING BTREE,
-  KEY `homepage_query` (`community_id`,`open`,`sort_date`,`deleted`) USING BTREE,
-  KEY `updates_email_listings` (`community_id`,`open`,`updates_email_at`) USING BTREE,
-  KEY `homepage_query_valid_until` (`community_id`,`open`,`valid_until`,`sort_date`,`deleted`) USING BTREE,
   KEY `index_listings_on_community_id` (`community_id`) USING BTREE,
   KEY `index_listings_on_listing_shape_id` (`listing_shape_id`) USING BTREE,
   KEY `index_listings_on_category_id` (`old_category_id`) USING BTREE,
   KEY `index_listings_on_open` (`open`) USING BTREE,
   KEY `index_on_author_id_and_deleted` (`author_id`,`deleted`),
-  KEY `community_author_deleted` (`community_id`,`author_id`,`deleted`)
+  KEY `community_author_deleted` (`community_id`,`author_id`,`deleted`),
+  KEY `index_listings_on_state` (`state`),
+  KEY `listings_homepage_query` (`community_id`,`open`,`state`,`deleted`,`valid_until`,`sort_date`),
+  KEY `listings_updates_email` (`community_id`,`open`,`state`,`deleted`,`valid_until`,`updates_email_at`,`created_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `locations`;
@@ -1042,6 +1060,10 @@ CREATE TABLE `payment_settings` (
   `api_verified` tinyint(1) DEFAULT NULL,
   `api_visible_private_key` varchar(255) DEFAULT NULL,
   `api_country` varchar(255) DEFAULT NULL,
+  `commission_from_buyer` int(11) DEFAULT NULL,
+  `minimum_buyer_transaction_fee_cents` int(11) DEFAULT NULL,
+  `minimum_buyer_transaction_fee_currency` varchar(3) DEFAULT NULL,
+  `key_encryption_padding` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `index_payment_settings_on_community_id` (`community_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1218,6 +1240,8 @@ CREATE TABLE `people` (
   `min_days_between_community_updates` int(11) DEFAULT '1',
   `deleted` tinyint(1) DEFAULT '0',
   `cloned_from` varchar(22) DEFAULT NULL,
+  `google_oauth2_id` varchar(255) DEFAULT NULL,
+  `linkedin_id` varchar(255) DEFAULT NULL,
   UNIQUE KEY `index_people_on_username_and_community_id` (`username`,`community_id`) USING BTREE,
   UNIQUE KEY `index_people_on_uuid` (`uuid`),
   UNIQUE KEY `index_people_on_email` (`email`) USING BTREE,
@@ -1227,7 +1251,11 @@ CREATE TABLE `people` (
   KEY `index_people_on_community_id` (`community_id`) USING BTREE,
   KEY `index_people_on_facebook_id` (`facebook_id`) USING BTREE,
   KEY `index_people_on_id` (`id`) USING BTREE,
-  KEY `index_people_on_username` (`username`) USING BTREE
+  KEY `index_people_on_username` (`username`) USING BTREE,
+  KEY `index_people_on_google_oauth2_id` (`google_oauth2_id`),
+  KEY `index_people_on_community_id_and_google_oauth2_id` (`community_id`,`google_oauth2_id`),
+  KEY `index_people_on_linkedin_id` (`linkedin_id`),
+  KEY `index_people_on_community_id_and_linkedin_id` (`community_id`,`linkedin_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `schema_migrations`;
@@ -1330,6 +1358,7 @@ CREATE TABLE `stripe_payments` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `authenticate_cents` int(11) DEFAULT NULL,
+  `buyer_commission_cents` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1443,6 +1472,9 @@ CREATE TABLE `transactions` (
   `deleted` tinyint(1) DEFAULT '0',
   `authenticate` tinyint(1) DEFAULT '0',
   `authenticate_fee_cents` int(11) DEFAULT NULL,
+  `commission_from_buyer` int(11) DEFAULT NULL,
+  `minimum_buyer_fee_cents` int(11) DEFAULT '0',
+  `minimum_buyer_fee_currency` varchar(3) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_transactions_on_listing_id` (`listing_id`) USING BTREE,
   KEY `index_transactions_on_conversation_id` (`conversation_id`) USING BTREE,
@@ -2329,12 +2361,28 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20181012065625'),
 ('20181024094615'),
 ('20181105134300'),
+('20181029064728'),
+('20181029132748'),
+('20181031072643'),
 ('20181106212306'),
+('20181211094456'),
 ('20181211125306'),
 ('20181219090801'),
 ('20181221120927'),
 ('20190104083132'),
 ('20190108075512'),
 ('20190208032229');
-
+('20190111072711'),
+('20190111122204'),
+('20190114141250'),
+('20190115083941'),
+('20190121064002'),
+('20190208032229'),
+('20190213073532'),
+('20190213082646'),
+('20190227111355'),
+('20190228084827'),
+('20190305112030'),
+('20190319122745'),
+('20190319114719');
 

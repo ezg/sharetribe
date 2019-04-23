@@ -240,6 +240,7 @@ es-ES:
         update_settings: "Guardar configuración"
         automatically_confirmed_no_escrow: "La transacción se marcará automáticamente como completada %{days_dropdown} días después de que se realice el pago."
         automatically_confirmed_no_escrow_stripe_info: "En transacciones procesadas por Stripe, los pagos a los vendedores son retrasados hasta que la transacción es marcada como completada. %{learn_more}."
+        buyer_transaction_fees_are_only_supported_with_stripe: ~
         automatic_newsletter_frequency: "Enviar newsletter automático: %{frequency_dropdown}"
         newsletter_daily: Diariamente
         newsletter_weekly: Semanalmente
@@ -253,6 +254,7 @@ es-ES:
         you_will_be_redirected_to: "Después de que elimines tu comunidad serás redirigido a %{destination}. Ya no podrás volver a acceder a tu marketplace."
         delete_this_marketplace: "Eliminar esta comunidad"
         payment_preferences: "Sistema de pagos"
+        pre_approved_listings: ~
       manage_members:
         manage_members: Usuarios
         email: Email
@@ -324,6 +326,67 @@ es-ES:
         enable_facebook_login: "Permitir a los usuarios conectarse con su cuenta de Facebook"
         save: "Guardar configuración"
         add_another_image: "Cambia la imagen"
+        google_connect: ~
+        google_instructions_link_text: ~
+        google_connect_info_text_with_instructions: ~
+        google_connect_info_text: ~
+        enable_google_login: ~
+        google_connect_id: ~
+        google_connect_secret: ~
+        linkedin_connect: ~
+        linkedin_instructions_link_text: ~
+        linkedin_connect_info_text_with_instructions: ~
+        linkedin_connect_info_text: ~
+        enable_linkedin_login: ~
+        linkedin_connect_id: ~
+        linkedin_connect_secret: ~
+      seo_settings:
+        seo: ~
+        title: ~
+        meta_title_label: ~
+        meta_title_info: ~
+        meta_title_link_text: ~
+        meta_description_label: ~
+        meta_description_info: ~
+        meta_description_link_text: ~
+        search_title: ~
+        search_meta_title_label: ~
+        search_meta_title_info: ~
+        search_meta_title_link_text: ~
+        search_meta_description_label: ~
+        search_meta_description_info: ~
+        search_meta_description_link_text: ~
+        listing_title: ~
+        listing_meta_title_label: ~
+        listing_meta_title_info: ~
+        listing_meta_title_link_text: ~
+        listing_meta_description_label: ~
+        listing_meta_description_info: ~
+        listing_meta_description_link_text: ~
+        category_title: ~
+        category_meta_title_label: ~
+        category_meta_title_info: ~
+        category_meta_title_link_text: ~
+        category_meta_description_label: ~
+        category_meta_description_info: ~
+        category_meta_description_link_text: ~
+        profile_title: ~
+        profile_meta_title_label: ~
+        profile_meta_title_info: ~
+        profile_meta_title_link_text: ~
+        profile_meta_description_label: ~
+        profile_meta_description_info: ~
+        profile_meta_description_link_text: ~
+        sitemap_label: ~
+        sitemap_info: ~
+        sitemap_info_link_text: ~
+        sitemap_info_public: ~
+        sitemap_info_private: ~
+        robots_label: ~
+        robots_info: ~
+        robots_info_link_text: ~
+        robots_info_2: ~
+        save: ~
       analytics:
         analytics: Analytics
         google_analytics_key: "Google Analytics tracking ID"
@@ -507,6 +570,8 @@ es-ES:
           open: Abierto
           closed: Cerrado
           expired: Expirado
+          approval_pending: ~
+          approval_rejected: ~
         headers:
           title: Título
           author: Autor
@@ -517,6 +582,14 @@ es-ES:
         open: Abierto
         closed: Cerrado
         expired: Expirado
+        approved: ~
+        approval_pending: ~
+        approval_rejected: ~
+        form:
+          this_listing_has_not_not_been_approved_yet: ~
+          approve: ~
+          reject: ~
+          cancel: ~
       user_fields:
         user_fields: "Datos de usuarios"
       footer:
@@ -543,6 +616,16 @@ es-ES:
         social:
           title: Título
           url: URL
+      domain:
+        domain: ~
+        marketplace_domain: ~
+        offer_pro: ~
+        upgrade_pro_plan_link: ~
+        your_marketplace_address_is: ~
+        would_you_like_to_change_address: ~
+        contact_us: ~
+        you_can_now_use_a_custom_domain: ~
+        would_you_like_to_change_domain: ~
     custom_fields:
       edit:
         edit_listing_field: "Editar campo '%{field_name}'"
@@ -810,6 +893,8 @@ es-ES:
       stripe_fee_notice: "%{stripe_fee_link} será reducida de la cuota/comisión de transacción que estas cargando."
       fee_should_be_less_than_minimum_price: "La cuota mínima de transacción debe ser menor que el precio mínimo de transacción"
       confirm_disable: "¿Estás seguro que quieres deshabilitar %{gateway}? Si lo deshabilitas, tus vendedores no podrán recibir dinero en linea y los compradores no podrán pagar con este método de pago. Si los vendedores no han configurado otro sistema de pagos, los compradores no podrán comprarles nada."
+      commission_from_buyer_label: ~
+      minimum_buyer_transaction_fee_label: ~
       stripe_connected:
         title: "Stripe conectado"
         disable: "Deshabilitar Stripe"
@@ -822,6 +907,7 @@ es-ES:
         enable: "Habilitar PayPal nuevamente"
       cannot_enable_gateway: "No es posible habilitar %{gateway}"
       cannot_disable_gateway: "No es posible habilitar %{gateway}"
+      cannot_enable_gateway_because_of_buyer_commission: ~
       stripe_form:
         add_your_api_keys: "Añade tus API keys de Stripe"
         how_to_get_these: "¿Cómo obtenerlas?"
@@ -947,6 +1033,7 @@ es-ES:
       quantity_label: "Cantidad:"
       sum_label: "Subtotal:"
       service_fee_label: "Comisión de %{service_name}:"
+      buyer_service_fee_label: ~
       you_will_get_label: "Recibirás:"
       total_label: "Total:"
       total_value: "%{seller_gets}*"
@@ -992,6 +1079,7 @@ es-ES:
     message:
       accepted_request: "aceptó la solicitud"
       received_payment: "solicitud aceptada, pago por la cantidad de %{sum} recibido"
+      received_payment_wo_sum: ~
       accepted_offer: "aceptó la oferta"
       rejected_request: "rechazó la solicitud, se canceló el pago"
       rejected_offer: "rechazó la oferta"
@@ -1001,8 +1089,10 @@ es-ES:
       canceled_offer: "canceló la oferta"
       paid: "pagó %{sum}"
       payment_preauthorized: "Pago autorizado: %{sum}"
+      payment_preauthorized_wo_sum: ~
       stripe:
         held_payment: "Aceptó la transacción. El pago por %{sum} está siendo guardado por %{service_name} hasta que la orden sea marcada como completada."
+        held_payment_wo_sum: ~
         confirmed_request: "Marcó la orden como completada. El dinero ha sido transferido a la cuenta de banco de %{author_name} or será transferido pronto."
     new:
       message: Mensaje
@@ -1154,7 +1244,7 @@ es-ES:
       we_have_marked_request_as_confirmed: "Hemos marcado tu solicitud sobre '%{request}' como completada de forma automática ya que han pasado %{days_passed} días desde que fue aceptada."
     booking_transaction_automatically_confirmed:
       subject: "Transacción completada automáticamente - Recuerda dar una valoración"
-      we_have_marked_request_as_confirmed: "Hemos marcado tu transacción sobre '%{request}' como completada de forma automática ya que ha pasado 1 día desde que se acabó el periodo de la reservación."
+      we_have_marked_request_as_confirmed: "Hemos marcado tu transacción sobre '%{request}' como completada de forma automática ya que ha pasado 1 día desde que se acabó el periodo de la reserva."
     automatically_confirmed_footer:
       giving_feedback_is_good_idea: "Ahora puedes escribir una valoración sobre %{other_party_given_name}. Dejar una valoración es siempre una buena idea. Si todo fue bien, deberías contar a otros que %{other_party_given_name} es de confianza. Si hubo algún problema, también es bueno que lo menciones."
       give_feedback_to: "Escribir una valoración sobre %{other_party_given_name}"
@@ -1217,7 +1307,9 @@ es-ES:
       shipping_total: "Envío:"
       product: "Producto:"
       price_payer_paid: "Precio que %{payer_full_name} pagó:"
+      subtotal: ~
       service_fee: "Cuota de servicio de %{service_name}:"
+      buyer_service_fee: ~
       you_will_get: "Total:"
       new_payment: "Has recibido un nuevo pago"
       price_per_unit_type: "Precio por %{unit_type}"
@@ -1233,6 +1325,7 @@ es-ES:
       duration: Duración
       quantity: Cantidad
       subtotal: Subtotal
+      buyer_service_fee: ~
       total: Total
       price: Precio
       service_fee: "Cuota de servicio"
@@ -1257,7 +1350,7 @@ es-ES:
       subtotal: Subtotal
       total: Total
       price: Precio
-      service_fee: "Cuota de servicio"
+      buyer_service_fee: ~
       stripe_gateway_fee: "Cuota de Stripe:"
       paypal_gateway_fee: "Cuota de PayPal:"
       money_will_be_transferred: "El dinero será transferido a %{recipient_name} cuando a) hayas marcado la solicitud como completada o b) %{automatic_confirmation_days} días hayan pasado desde que hiciste el pago."
@@ -1323,6 +1416,24 @@ es-ES:
       this_is_automatic_message: "Este es un mensaje automático enviado a los administradores de %{community}."
       person_name: "Nombre:"
       person_email: "Correo electrónico:"
+    listing_submited_for_review:
+      subject: ~
+      there_is_a_new_listing_to_review: ~
+      review_the_listing: ~
+      this_is_automatic_message: ~
+    listing_approved:
+      subject: ~
+      listing_has_been_approved: ~
+      view_the_listing: ~
+    listing_rejected:
+      subject: ~
+      listing_has_been_rejected: ~
+      contact_link: ~
+      edit_the_listing: ~
+    edited_listing_submited_for_review:
+      subject: ~
+      there_is_a_edited_listing_to_review: ~
+      review_the_listing: ~
   error_messages:
     booking:
       booking_failed_payment_voided: "La reserva falló debido a un error inesperado. Por favor intenta de nuevo más tarde. No se te ha cargado nada."
@@ -1638,8 +1749,8 @@ es-ES:
       comment_sent: "Comentario enviado"
       confirmation_link_is_wrong_or_used: "El link de confirmación ya ha sido usado o se ha roto el enlace. Intenta iniciar sesión o contáctanos si el problema persiste."
       additional_email_confirmed: "El correo electrónico que nos proporcionaste ya ha sido confirmado."
-      could_not_get_email_from_facebook: "No pudimos acceder a tu dirección de correo electrónico de Facebook. No es posible crear una cuenta sin una dirección de correo electrónico."
-      facebook_email_unconfirmed: "El correo electrónico %{email} asociado con tu cuenta de Facebook ya ha sido registrado pero no ha sido confirmado. Por favor confirma la cuenta de correo antes de iniciar sesión con Facebook."
+      could_not_get_email_from_social_network: ~
+      social_network_email_unconfirmed: ~
       create_new_listing: "Crear otro anuncio"
       create_one_here: "crear una aquí"
       email_confirmation_sent_to_new_address: "El correo de confirmación ha sido enviado a la nueva dirección."
@@ -1789,6 +1900,10 @@ es-ES:
       show_in_updates_email_loading: Cargando...
       show_in_updates_email_error: "No se ha podido conectar con el servidor. Por favor, actualiza la página y vuelve a intentarlo."
       show_in_updates_email_success: "Este producto será mostrado en el próximo correo de actualización para los usuarios"
+      listing_is_pending: ~
+      listing_is_rejected: ~
+      approve_listing: ~
+      reject_listing: ~
     map:
       open_in_google_maps: "Abrir en Google Maps"
     error:
@@ -1869,6 +1984,9 @@ es-ES:
         origin: Origen
       send_button:
         save_listing: "Publicar anuncio"
+        submit_for_review: ~
+        will_be_reviewed: ~
+        we_noticed_youre_an_admin: ~
       share_type:
         select: Seleccionar
         borrow: "Tomar Prestado"
@@ -1948,6 +2066,7 @@ es-ES:
       select_one: Selecciona...
       start_time: "Hora de inicio"
       end_time: "Hora de fin"
+      marketplace_fees_may_apply: ~
     new:
       listing: anuncio
       selected_category: "Categoría: %{category}"
@@ -2189,7 +2308,7 @@ es-ES:
       username_is_invalid: "Nombre de usuario no es válido. Los carácteres permitidos son letras, números y guión bajo."
       visible_only_to_you: "visible solamente para ti y el equipo de %{service_name}"
       visible_to_everybody: "Visible para todos"
-      create_account_with_facebook: "Registrate con tu cuenta de Facebook"
+      create_account_with_provider: ~
       OR: O
       signup_with_email: "Regístrate con tu correo electrónico"
       this_field_will_be_publicly_visible: "(Esta campo será público)"
@@ -2197,9 +2316,8 @@ es-ES:
       grade: "puntaje:"
       and_gave_following_feedback: "e hizo los siguientes comentarios"
     profile_listings:
-      show_also_closed: "Mostrar anuncios desactivados"
-      show_only_open: "Mostrar anuncios activados"
       no_image: "Sin imagen"
+      manage_listings: ~
     show:
       contact: "Contactar a %{person}"
       about_me: "Acerca de mí:"
@@ -2258,7 +2376,7 @@ es-ES:
       account_creation_link_text: "clic aquí"
       cancle_facebook_connect: "Si no quieres vincular esta cuenta, puedes %{cancel_link}."
       facebook_cancel_link_text: cancelar
-      log_in_with_your_facebook_account: "Inicia sesión con Facebook"
+      log_in_with_your_provider_account: ~
       or_sign_up_with_your_username: "...o con tu nombre de usuario o email:"
       we_will_not_post_without_asking_you: "Nunca publicaremos en Facebook sin preguntarte."
     password_forgotten:
@@ -2579,6 +2697,7 @@ es-ES:
       signup: Registrarse
       admin_dashboard: "Panel de administración"
       language: Idioma
+      listings: ~
     utils:
       km: km
       mi: mi
@@ -2677,6 +2796,7 @@ es-ES:
       address_kanji_line1: "Dirección (Kanji)"
       male: masculino
       female: femenino
+      mcc: ~
     form_bank:
       bank_account_number: "Número de cuenta de banco"
       bank_routing_number: "Número de ruta/routing"
@@ -2725,3 +2845,12 @@ es-ES:
     wrong_setup: "Hay un error con la configuración del sistema de pagos en esta comunidad. Stripe Connect no ha sido habilitado. Por favor contacta al equipo para dejarles saber que deben habilitar Stripe Connect desde su cuenta de Stripe."
     invalid_bank_account_number: "Por favor verifica que tu cuenta bancaria es correcta y que concuerda con tu país."
     invalid_postal_code: "Código postal invalido para %{country}"
+  seo_sections:
+    you_can_use_variables: ~
+    placeholder:
+      search_results: ~
+      search_results_for: ~
+      listing_description: ~
+      category_description: ~
+      profile_title: ~
+      profile_description: ~

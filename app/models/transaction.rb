@@ -38,6 +38,9 @@
 #  deleted                           :boolean          default(FALSE)
 #  authenticate                      :boolean          default(FALSE)
 #  authenticate_fee_cents            :integer
+#  commission_from_buyer             :integer
+#  minimum_buyer_fee_cents           :integer          default(0)
+#  minimum_buyer_fee_currency        :string(3)
 #
 # Indexes
 #
@@ -59,13 +62,14 @@ class Transaction < ApplicationRecord
 
   belongs_to :community
   belongs_to :listing
-  has_many :transaction_transitions, dependent: :destroy, foreign_key: :transaction_id
+  has_many :transaction_transitions, dependent: :destroy, foreign_key: :transaction_id, inverse_of: :tx
   has_one :booking, dependent: :destroy
   has_one :shipping_address, dependent: :destroy
-  belongs_to :starter, class_name: "Person", foreign_key: :starter_id
+  belongs_to :starter, class_name: "Person", foreign_key: :starter_id, inverse_of: :starter_transactions
   belongs_to :conversation
-  has_many :testimonials
+  has_many :testimonials, dependent: :destroy
   belongs_to :listing_author, class_name: 'Person'
+  has_many :stripe_payments, dependent: :destroy
 
   delegate :author, to: :listing
   delegate :title, to: :listing, prefix: true
@@ -87,7 +91,11 @@ class Transaction < ApplicationRecord
   monetize :minimum_commission_cents, with_model_currency: :minimum_commission_currency
   monetize :unit_price_cents, with_model_currency: :unit_price_currency
   monetize :shipping_price_cents, allow_nil: true, with_model_currency: :unit_price_currency
+<<<<<<< HEAD
   monetize :authenticate_fee_cents, allow_nil: true, with_model_currency: :unit_price_currency
+=======
+  monetize :minimum_buyer_fee_cents, with_model_currency: :minimum_buyer_fee_currency
+>>>>>>> 29fcc530a476b934f49b682b8c16b958153785f4
 
   scope :exist, -> { where(deleted: false) }
   scope :for_person, -> (person){
@@ -299,6 +307,14 @@ class Transaction < ApplicationRecord
       .max
   end
 
+  def buyer_commission
+    [(item_total * (commission_from_buyer / 100.0) unless commission_from_buyer.nil?),
+     (minimum_buyer_fee unless minimum_buyer_fee.nil? || minimum_buyer_fee.zero?),
+     Money.new(0, item_total.currency)]
+      .compact
+      .max
+  end
+
   def waiting_testimonial_from?(person_id)
     if starter_id == person_id && starter_skipped_feedback
       false
@@ -317,11 +333,18 @@ class Transaction < ApplicationRecord
   end
 
   def payment_total
+<<<<<<< HEAD
     unit_price            = self.unit_price || 0
     quantity              = self.listing_quantity || 1
     shipping_price        = self.shipping_price || 0
     authenticate_fee      = self.authenticate_fee || 0
     (unit_price * quantity) + shipping_price + authenticate_fee
+=======
+    unit_price       = self.unit_price || 0
+    quantity         = self.listing_quantity || 1
+    shipping_price   = self.shipping_price || 0
+    (unit_price * quantity) + shipping_price + buyer_commission
+>>>>>>> 29fcc530a476b934f49b682b8c16b958153785f4
   end
 
 end

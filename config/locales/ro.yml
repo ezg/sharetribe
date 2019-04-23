@@ -245,6 +245,7 @@ ro:
         update_settings: "Salvează setările"
         automatically_confirmed_no_escrow: ~
         automatically_confirmed_no_escrow_stripe_info: ~
+        buyer_transaction_fees_are_only_supported_with_stripe: ~
         automatic_newsletter_frequency: "Trimiteți buletinul informativ automat: %{frequency_dropdown}"
         newsletter_daily: Zilnic
         newsletter_weekly: Săptămânal
@@ -258,6 +259,7 @@ ro:
         you_will_be_redirected_to: ~
         delete_this_marketplace: ~
         payment_preferences: ~
+        pre_approved_listings: ~
       manage_members:
         manage_members: Utilizatori
         email: Email
@@ -329,6 +331,67 @@ ro:
         enable_facebook_login: "Permiteti utilizatorilor sa se autentifice folosind contul de Facebook"
         save: "Salveaza setarile"
         add_another_image: ~
+        google_connect: "Conectare cu Google"
+        google_instructions_link_text: ~
+        google_connect_info_text_with_instructions: ~
+        google_connect_info_text: ~
+        enable_google_login: ~
+        google_connect_id: ~
+        google_connect_secret: ~
+        linkedin_connect: ~
+        linkedin_instructions_link_text: ~
+        linkedin_connect_info_text_with_instructions: ~
+        linkedin_connect_info_text: ~
+        enable_linkedin_login: ~
+        linkedin_connect_id: ~
+        linkedin_connect_secret: ~
+      seo_settings:
+        seo: ~
+        title: ~
+        meta_title_label: ~
+        meta_title_info: ~
+        meta_title_link_text: ~
+        meta_description_label: ~
+        meta_description_info: ~
+        meta_description_link_text: ~
+        search_title: "Pagina rezultate cautare"
+        search_meta_title_label: "Pagina rezultate cautare titlu meta tag"
+        search_meta_title_info: ~
+        search_meta_title_link_text: "Afla mai multe despre meta tags"
+        search_meta_description_label: ~
+        search_meta_description_info: ~
+        search_meta_description_link_text: ~
+        listing_title: "Pagina listari"
+        listing_meta_title_label: ~
+        listing_meta_title_info: ~
+        listing_meta_title_link_text: ~
+        listing_meta_description_label: ~
+        listing_meta_description_info: ~
+        listing_meta_description_link_text: ~
+        category_title: "Pagina \"Categorii\""
+        category_meta_title_label: ~
+        category_meta_title_info: ~
+        category_meta_title_link_text: ~
+        category_meta_description_label: ~
+        category_meta_description_info: ~
+        category_meta_description_link_text: ~
+        profile_title: ~
+        profile_meta_title_label: ~
+        profile_meta_title_info: ~
+        profile_meta_title_link_text: ~
+        profile_meta_description_label: ~
+        profile_meta_description_info: ~
+        profile_meta_description_link_text: ~
+        sitemap_label: ~
+        sitemap_info: ~
+        sitemap_info_link_text: ~
+        sitemap_info_public: ~
+        sitemap_info_private: ~
+        robots_label: ~
+        robots_info: ~
+        robots_info_link_text: ~
+        robots_info_2: ~
+        save: ~
       analytics:
         analytics: Analiza
         google_analytics_key: "Cod de urmarire Google Analytics"
@@ -512,6 +575,8 @@ ro:
           open: ~
           closed: ~
           expired: ~
+          approval_pending: ~
+          approval_rejected: ~
         headers:
           title: ~
           author: ~
@@ -522,6 +587,14 @@ ro:
         open: ~
         closed: ~
         expired: ~
+        approved: ~
+        approval_pending: ~
+        approval_rejected: ~
+        form:
+          this_listing_has_not_not_been_approved_yet: ~
+          approve: ~
+          reject: ~
+          cancel: ~
       user_fields:
         user_fields: ~
       footer:
@@ -548,6 +621,16 @@ ro:
         social:
           title: ~
           url: ~
+      domain:
+        domain: ~
+        marketplace_domain: ~
+        offer_pro: ~
+        upgrade_pro_plan_link: ~
+        your_marketplace_address_is: ~
+        would_you_like_to_change_address: ~
+        contact_us: ~
+        you_can_now_use_a_custom_domain: ~
+        would_you_like_to_change_domain: ~
     custom_fields:
       edit:
         edit_listing_field: "Editați câmpul %{field_name}"
@@ -729,10 +812,10 @@ ro:
       units:
         piece: ~
         hour: ~
-        day: "Pe zi"
+        day: "Pe zi - 24h"
         night: ~
-        week: ~
-        month: ~
+        week: "Pe saptamana"
+        month: "Pe luna"
         unit: ~
       can_not_find: ~
       add_custom_unit: ~
@@ -747,7 +830,7 @@ ro:
         unit_type:
           heading: ~
           quantity_label: ~
-          time_label: ~
+          time_label: "Timp (pe 30 minute, pe 2 saptamani, pe an...)"
     paypal_accounts:
       marketplace_paypal_integration: "Preferintele sistemului de plata"
       preferences_updated: "Preferintele sistemului de plata actualizate"
@@ -799,6 +882,8 @@ ro:
       stripe_fee_notice: ~
       fee_should_be_less_than_minimum_price: ~
       confirm_disable: ~
+      commission_from_buyer_label: ~
+      minimum_buyer_transaction_fee_label: ~
       stripe_connected:
         title: ~
         disable: ~
@@ -811,6 +896,7 @@ ro:
         enable: ~
       cannot_enable_gateway: ~
       cannot_disable_gateway: ~
+      cannot_enable_gateway_because_of_buyer_commission: ~
       stripe_form:
         add_your_api_keys: ~
         how_to_get_these: ~
@@ -936,6 +1022,7 @@ ro:
       quantity_label: ~
       sum_label: ~
       service_fee_label: "Comision %{service_name}:"
+      buyer_service_fee_label: ~
       you_will_get_label: ~
       total_label: ~
       total_value: ~
@@ -958,7 +1045,7 @@ ro:
     details:
       day: zi
       days: zile
-      price_per_day: "Preț pe zi: %{price}"
+      price_per_day: "Preț pe zi - 24h: %{price}"
     index:
       loading_more_messages: "Se încarcă mai multe mesaje"
       message_partitive: mesaj
@@ -981,6 +1068,7 @@ ro:
     message:
       accepted_request: "a acceptat cererea"
       received_payment: "cerere acceptata, plata de %{sum} primita"
+      received_payment_wo_sum: ~
       accepted_offer: "acceptat oferta"
       rejected_request: "a refuzat cererea, a anulat plata"
       rejected_offer: "respins oferta"
@@ -990,8 +1078,10 @@ ro:
       canceled_offer: "anulat oferta"
       paid: "plătit %{sum}"
       payment_preauthorized: "Plata autorizata: %{sum}"
+      payment_preauthorized_wo_sum: ~
       stripe:
         held_payment: ~
+        held_payment_wo_sum: ~
         confirmed_request: ~
     new:
       message: Mesaj
@@ -1206,7 +1296,9 @@ ro:
       shipping_total: ~
       product: "Produs:"
       price_payer_paid: "Pret platit de %{payer_full_name}:"
+      subtotal: ~
       service_fee: "Comision %{service_name}:"
+      buyer_service_fee: ~
       you_will_get: ~
       new_payment: ~
       price_per_unit_type: "Pret pe %{unit_type}"
@@ -1222,6 +1314,7 @@ ro:
       duration: Durata
       quantity: ~
       subtotal: ~
+      buyer_service_fee: ~
       total: ~
       price: ~
       service_fee: Comision
@@ -1246,7 +1339,7 @@ ro:
       subtotal: ~
       total: Total
       price: Preț
-      service_fee: "Service fee"
+      buyer_service_fee: ~
       stripe_gateway_fee: ~
       paypal_gateway_fee: ~
       money_will_be_transferred: ~
@@ -1297,7 +1390,7 @@ ro:
       one_day_left: "Dacă nu acceptați solicitarea în termen de o zi, cererea va fi respinsă automat și nu veți fi plătit /a."
       click_here_to_reply: "Apasati aici pentru a raspunde solicitării"
     welcome_email:
-      welcome_email_subject: "Bine ai venit la %{service_name}"
+      welcome_email_subject: "Bine ai venit pe %{service_name}"
       welcome_to_marketplace: "Bine ați venit la %{service_name}! Ne bucurăm să vă avem alături."
       love_marketplace_crew: "Cu drag, <br /> <i>%{service_name} echipa </i>"
       welcome_email_footer_text: "Ce fel de emailuri doriţi să primiţi de la %{service_name}? %{settings_link}"
@@ -1312,6 +1405,24 @@ ro:
       this_is_automatic_message: ~
       person_name: ~
       person_email: ~
+    listing_submited_for_review:
+      subject: ~
+      there_is_a_new_listing_to_review: ~
+      review_the_listing: ~
+      this_is_automatic_message: ~
+    listing_approved:
+      subject: ~
+      listing_has_been_approved: ~
+      view_the_listing: ~
+    listing_rejected:
+      subject: ~
+      listing_has_been_rejected: ~
+      contact_link: ~
+      edit_the_listing: ~
+    edited_listing_submited_for_review:
+      subject: ~
+      there_is_a_edited_listing_to_review: ~
+      review_the_listing: ~
   error_messages:
     booking:
       booking_failed_payment_voided: ~
@@ -1627,8 +1738,8 @@ ro:
       comment_sent: "Comentariu trimis"
       confirmation_link_is_wrong_or_used: "Link-ul de confirmare este deja folosit sau corupt. Incercati sa va autentificati sau trimiteti feedback daca problema persista."
       additional_email_confirmed: "Adresa de email pe care ai introdus-o a fost confirmata"
-      could_not_get_email_from_facebook: "Nu s-a gasit adresa de e-mail de pe Facebook si fara e-mail nu se poate crea un cont."
-      facebook_email_unconfirmed: ~
+      could_not_get_email_from_social_network: ~
+      social_network_email_unconfirmed: ~
       create_new_listing: "Creați o altă postare"
       create_one_here: "creaza aici"
       email_confirmation_sent_to_new_address: "Email-ul de confirmare a fost trimis la noua adresa."
@@ -1706,7 +1817,7 @@ ro:
       you_cannot_send_message_to_yourself: "Nu poti trimite un mesaj catre tine"
       you_followed_listing: "Nu urmaresti acest anunt"
       you_have_already_given_feedback_about_this_event: "Ati oferit deja feedback despre aceasta tranzactie"
-      you_are_now_member: "Bine ai venit la %{service_name}!"
+      you_are_now_member: "Bine ai venit pe %{service_name}!"
       you_are_already_member: "Sunteți deja membru al serviciului %{service_name}. Bine ati revenit!"
       you_must_log_in_to_create_new_listing: "Trebuie sa va conectati pe %{service_name} pentru a crea un anunt nou. Daca nu aveti un cont puteti accesa %{sign_up_link}."
       additional_email_confirmed_dashboard: "Adresa de email a fost confirmata"
@@ -1774,6 +1885,10 @@ ro:
       show_in_updates_email_loading: Încarcă...
       show_in_updates_email_error: "Nu s-a putut ajunge la server. Încercați din nou după reîmprospătarea paginii."
       show_in_updates_email_success: "Acest produs va fi inclus in urmatorul email automat ce va fi trimis catre utilizatori"
+      listing_is_pending: ~
+      listing_is_rejected: ~
+      approve_listing: ~
+      reject_listing: ~
     map:
       open_in_google_maps: "Deschide in Google Maps"
     error:
@@ -1835,7 +1950,7 @@ ro:
       price:
         price: Preț
         per: per
-        per_day: "pe zi"
+        per_day: "pe zi - 24h"
         mass: "bucată, kg, l, m2, ..."
         time: "oră, zi, lună, ..."
         long_time: "săptămână, lună, ..."
@@ -1854,6 +1969,9 @@ ro:
         origin: origine
       send_button:
         save_listing: "Publicati listarea"
+        submit_for_review: ~
+        will_be_reviewed: ~
+        we_noticed_youre_an_admin: ~
       share_type:
         select: Selecteaza
         borrow: imprumut
@@ -1933,6 +2051,7 @@ ro:
       select_one: ~
       start_time: ~
       end_time: ~
+      marketplace_fees_may_apply: ~
     new:
       listing: Postați
       selected_category: "Categoria: %{category}"
@@ -1951,8 +2070,8 @@ ro:
       hour: ~
       day: "Numar de zile:"
       night: ~
-      week: ~
-      month: ~
+      week: "Numar de saptamani:"
+      month: "Numar de luni:"
       unit: ~
       custom: ~
     quantity_placeholder: ~
@@ -1990,7 +2109,7 @@ ro:
       listing_created_at: "Listarea a fost creată"
       price:
         per_quantity_unit: "per %{quantity_unit}"
-        per_day: "pe zi"
+        per_day: "pe zi - 24h"
       delivery: ~
       shipping: ~
       shipping_no_price: ~
@@ -2003,7 +2122,7 @@ ro:
       hour: ~
       day: zi
       night: ~
-      week: ~
+      week: saptamana
       month: ~
       unit: ~
     verification_required:
@@ -2175,7 +2294,7 @@ ro:
       username_is_invalid: "Numele de utilizator nu este valid. Caracterele permise sunt litere, numere si \"underscore\""
       visible_only_to_you: "vizibil numai pentru dvs. și echipa %{service_name}"
       visible_to_everybody: "vizibil tuturor"
-      create_account_with_facebook: "Inregistrare cu contul de Facebook"
+      create_account_with_provider: "Inscrie-te cu %{provider}"
       OR: SAU
       signup_with_email: "Inregistrare cu email"
       this_field_will_be_publicly_visible: ~
@@ -2183,16 +2302,15 @@ ro:
       grade: "nota:"
       and_gave_following_feedback: "și a oferit următorul feedback"
     profile_listings:
-      show_also_closed: "Arata si anunturile nevalabile"
-      show_only_open: "Arata doar anunturile valabile"
       no_image: "Fără imagine"
+      manage_listings: "Administreaza toate listarile mele"
     show:
       contact: "Contact %{person}"
       about_me: "Despre mine:"
       add_description: "Postati ceva despre Dumneavoastra"
       add_location: "Adauga locatia"
       add_phone_number: "Adaugati numarul de telefon"
-      address: "Locatie:"
+      address: "Oras:"
       as_expected: "Conform asteptarilor"
       edit_profile_info: "Editeaza profilul"
       exceeded_expectations: "A depasit asteptarile"
@@ -2244,7 +2362,7 @@ ro:
       account_creation_link_text: "Click aici"
       cancle_facebook_connect: "Daca nu vrei sa conectezi acest cont, poti anula folosing %{cancel_link}"
       facebook_cancel_link_text: Anulare
-      log_in_with_your_facebook_account: "Conectati-va cu Facebook"
+      log_in_with_your_provider_account: "Autentifica-te cu %{provider}"
       or_sign_up_with_your_username: "...sau cu numele de utilizator sau adresa de email:"
       we_will_not_post_without_asking_you: "Noi nu vom posta pe Facebook fără acordul dvs."
     password_forgotten:
@@ -2337,7 +2455,7 @@ ro:
       postal_code: "Cod postal"
       profile_page: "in pagina ta de profil"
       profilemap: Harta
-      street_address: Locatie
+      street_address: Oras
       these_fields_are_shown_in_your: "O parte din aceasta informatie este vizibila tuturor utilizatorilor %{service_name}"
       visible_to_everybody: "vizibil pentru toti"
       visible_to_registered_users: "(vizibil utilizatorilor care sunt logati)"
@@ -2389,7 +2507,7 @@ ro:
   date:
     formats:
       long_with_abbr_day_name: ~
-    first_day_of_week: ~
+    first_day_of_week: 0
   datepicker:
     days:
       sunday: Duminică
@@ -2479,7 +2597,7 @@ ro:
         one: "Zi rezervata:"
         few: "Zile rezervate:"
         other: "Zile rezervate"
-      price_per_day: "Pret pe zi:"
+      price_per_day: "Pret pe zi - 24h:"
       price_per_night: ~
       price_per_hour: ~
       price_per_unit: ~
@@ -2512,7 +2630,7 @@ ro:
         hour: ~
         day: zi
         night: ~
-        week: ~
+        week: saptamana
         month: ~
       edit_availability_header: Disponibilitate
       save_and_close_availability_editing: ~
@@ -2539,7 +2657,7 @@ ro:
       menu: Meniu
       more: "Mai mult"
       search_placeholder: ~
-      search_location_placeholder: Locatie
+      search_location_placeholder: Oras
       user: Utilizator
       inbox: "Casuta postala"
       profile: Profil
@@ -2550,6 +2668,7 @@ ro:
       signup: "Cont nou"
       admin_dashboard: "Tablou administrativ"
       language: Limba
+      listings: "Listarile mele"
     utils:
       km: ~
       mi: ~
@@ -2639,6 +2758,7 @@ ro:
       address_kanji_line1: ~
       male: ~
       female: ~
+      mcc: ~
     form_bank:
       bank_account_number: ~
       bank_routing_number: ~
@@ -2687,3 +2807,12 @@ ro:
     wrong_setup: ~
     invalid_bank_account_number: ~
     invalid_postal_code: ~
+  seo_sections:
+    you_can_use_variables: ~
+    placeholder:
+      search_results: ~
+      search_results_for: ~
+      listing_description: ~
+      category_description: ~
+      profile_title: ~
+      profile_description: ~

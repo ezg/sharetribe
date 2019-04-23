@@ -1,4 +1,3 @@
-# coding: utf-8
 class PreauthorizeTransactionsController < ApplicationController
 
   before_action do |controller|
@@ -128,18 +127,6 @@ class PreauthorizeTransactionsController < ApplicationController
     end
   end
 
-  def calculate_quantity(tx_params:, is_booking:, unit:)
-    if is_booking
-      if tx_params[:per_hour]
-        DateUtils.duration_in_hours(tx_params[:start_time], tx_params[:end_time])
-      else
-        DateUtils.duration(tx_params[:start_on], tx_params[:end_on])
-      end
-    else
-      tx_params[:quantity] || 1
-    end
-  end
-
   def error_path(tx_params)
     booking_dates = HashUtils.map_values(tx_params.slice(:start_on, :end_on).compact) { |date|
       TransactionViewUtils.stringify_booking_date(date)
@@ -191,7 +178,7 @@ class PreauthorizeTransactionsController < ApplicationController
 
   # Ensure that only users with appropriate visibility settings can reply to the listing
   def ensure_authorized_to_reply
-    unless listing.visible_to?(@current_user, @current_community)
+    unless Policy::ListingPolicy.new(listing, @current_community, @current_user).visible?
       flash[:error] = t("layouts.notifications.you_are_not_authorized_to_view_this_content")
       redirect_to search_path
     end
@@ -356,10 +343,16 @@ class PreauthorizeTransactionsController < ApplicationController
       "InitiatePreauthorizedTransaction",
       { listing_id: listing.id,
         listing_uuid: listing.uuid_object.to_s })
+
+    order = TransactionService::Order.new(
+      community: @current_community,
+      tx_params: tx_params,
+      listing: listing)
+
     render "listing_conversations/initiate",
            locals: {
-             start_on:   tx_params[:start_on],
-             end_on:     tx_params[:end_on],
+             start_on: tx_params[:start_on],
+             end_on: tx_params[:end_on],
              start_time: tx_params[:start_time],
              end_time:   tx_params[:end_time],
              per_hour:   tx_params[:per_hour],
@@ -369,15 +362,15 @@ class PreauthorizeTransactionsController < ApplicationController
              quantity: tx_params[:quantity],
              author: listing.author,
              action_button_label: translate(listing.action_button_tr_key),
-             paypal_in_use: PaypalHelper.user_and_community_ready_for_payments?(listing.author_id, @current_community.id),
+             paypal_in_use: order.paypal_in_use,
              paypal_expiration_period: TransactionService::Transaction.authorization_expiration_period(:paypal),
-             stripe_in_use: StripeHelper.user_and_community_ready_for_payments?(listing.author_id, @current_community.id),
+             stripe_in_use: order.stripe_in_use,
              stripe_publishable_key: StripeHelper.publishable_key(@current_community.id),
              stripe_shipping_required: listing.require_shipping_address && tx_params[:delivery] != :pickup,
              form_action: initiated_order_path(person_id: @current_user.id, listing_id: listing.id),
              country_code: LocalizationUtils.valid_country_code(@current_community.country),
              paypal_analytics_event: paypal_event_params(listing),
-             price_break_down_locals: price_break_down_locals(tx_params, listing)
+             price_break_down_locals: order.price_break_down_locals
            }
   end
 
@@ -407,29 +400,41 @@ class PreauthorizeTransactionsController < ApplicationController
   end
 
   def initiated_success(tx_params)
+<<<<<<< HEAD
     is_booking = is_booking?(listing)
 
     quantity = calculate_quantity(tx_params: tx_params, is_booking: is_booking, unit: listing.unit_type)
     shipping_total = calculate_shipping_from_listing(tx_params: tx_params, listing: listing, quantity: quantity)
     authenticate_total = calculate_authentication_from_listing(tx_params: tx_params, listing: listing)
+=======
+    order = TransactionService::Order.new(
+      community: @current_community,
+      tx_params: tx_params,
+      listing: listing)
+
+>>>>>>> 29fcc530a476b934f49b682b8c16b958153785f4
     tx_response = create_preauth_transaction(
       payment_type: params[:payment_type].to_sym,
       community: @current_community,
       listing: listing,
-      listing_quantity: quantity,
+      listing_quantity: order.quantity,
       user: @current_user,
       content: tx_params[:message],
       force_sync: !request.xhr?,
       delivery_method: tx_params[:delivery],
+<<<<<<< HEAD
       authenticate: tx_params[:authenticate],
       shipping_price: shipping_total.total,
       authenticate_fee: authenticate_total.total,
+=======
+      shipping_price: order.shipping_total,
+>>>>>>> 29fcc530a476b934f49b682b8c16b958153785f4
       booking_fields: {
-        start_on:   tx_params[:start_on],
-        end_on:     tx_params[:end_on],
+        start_on: tx_params[:start_on],
+        end_on: tx_params[:end_on],
         start_time: tx_params[:start_time],
-        end_time:   tx_params[:end_time],
-        per_hour:   tx_params[:per_hour]
+        end_time: tx_params[:end_time],
+        per_hour: tx_params[:per_hour]
       })
 
     handle_tx_response(tx_response, params[:payment_type].to_sym)

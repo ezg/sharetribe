@@ -237,6 +237,7 @@ lv:
         update_settings: ~
         automatically_confirmed_no_escrow: ~
         automatically_confirmed_no_escrow_stripe_info: ~
+        buyer_transaction_fees_are_only_supported_with_stripe: ~
         automatic_newsletter_frequency: ~
         newsletter_daily: ~
         newsletter_weekly: ~
@@ -250,6 +251,7 @@ lv:
         you_will_be_redirected_to: ~
         delete_this_marketplace: ~
         payment_preferences: ~
+        pre_approved_listings: ~
       manage_members:
         manage_members: Lietotāji
         email: E-pasts
@@ -321,6 +323,67 @@ lv:
         enable_facebook_login: ~
         save: ~
         add_another_image: ~
+        google_connect: ~
+        google_instructions_link_text: ~
+        google_connect_info_text_with_instructions: ~
+        google_connect_info_text: ~
+        enable_google_login: ~
+        google_connect_id: ~
+        google_connect_secret: ~
+        linkedin_connect: ~
+        linkedin_instructions_link_text: ~
+        linkedin_connect_info_text_with_instructions: ~
+        linkedin_connect_info_text: ~
+        enable_linkedin_login: ~
+        linkedin_connect_id: ~
+        linkedin_connect_secret: ~
+      seo_settings:
+        seo: ~
+        title: ~
+        meta_title_label: ~
+        meta_title_info: ~
+        meta_title_link_text: ~
+        meta_description_label: ~
+        meta_description_info: ~
+        meta_description_link_text: ~
+        search_title: ~
+        search_meta_title_label: ~
+        search_meta_title_info: ~
+        search_meta_title_link_text: ~
+        search_meta_description_label: ~
+        search_meta_description_info: ~
+        search_meta_description_link_text: ~
+        listing_title: ~
+        listing_meta_title_label: ~
+        listing_meta_title_info: ~
+        listing_meta_title_link_text: ~
+        listing_meta_description_label: ~
+        listing_meta_description_info: ~
+        listing_meta_description_link_text: ~
+        category_title: ~
+        category_meta_title_label: ~
+        category_meta_title_info: ~
+        category_meta_title_link_text: ~
+        category_meta_description_label: ~
+        category_meta_description_info: ~
+        category_meta_description_link_text: ~
+        profile_title: ~
+        profile_meta_title_label: ~
+        profile_meta_title_info: ~
+        profile_meta_title_link_text: ~
+        profile_meta_description_label: ~
+        profile_meta_description_info: ~
+        profile_meta_description_link_text: ~
+        sitemap_label: ~
+        sitemap_info: ~
+        sitemap_info_link_text: ~
+        sitemap_info_public: ~
+        sitemap_info_private: ~
+        robots_label: ~
+        robots_info: ~
+        robots_info_link_text: ~
+        robots_info_2: ~
+        save: ~
       analytics:
         analytics: ~
         google_analytics_key: ~
@@ -504,6 +567,8 @@ lv:
           open: ~
           closed: ~
           expired: ~
+          approval_pending: ~
+          approval_rejected: ~
         headers:
           title: ~
           author: ~
@@ -514,6 +579,14 @@ lv:
         open: ~
         closed: ~
         expired: "Beidzies termiņš"
+        approved: ~
+        approval_pending: ~
+        approval_rejected: ~
+        form:
+          this_listing_has_not_not_been_approved_yet: ~
+          approve: ~
+          reject: ~
+          cancel: ~
       user_fields:
         user_fields: ~
       footer:
@@ -540,6 +613,16 @@ lv:
         social:
           title: ~
           url: ~
+      domain:
+        domain: ~
+        marketplace_domain: ~
+        offer_pro: ~
+        upgrade_pro_plan_link: ~
+        your_marketplace_address_is: ~
+        would_you_like_to_change_address: ~
+        contact_us: ~
+        you_can_now_use_a_custom_domain: ~
+        would_you_like_to_change_domain: ~
     custom_fields:
       edit:
         edit_listing_field: "Rediģēt sludinājuma lauku '%{field_name}'"
@@ -791,6 +874,8 @@ lv:
       stripe_fee_notice: ~
       fee_should_be_less_than_minimum_price: ~
       confirm_disable: ~
+      commission_from_buyer_label: ~
+      minimum_buyer_transaction_fee_label: ~
       stripe_connected:
         title: ~
         disable: "Atslēgt Stripe"
@@ -803,6 +888,7 @@ lv:
         enable: "Pieslēgt PayPal atkārtoti"
       cannot_enable_gateway: ~
       cannot_disable_gateway: ~
+      cannot_enable_gateway_because_of_buyer_commission: ~
       stripe_form:
         add_your_api_keys: ~
         how_to_get_these: ~
@@ -926,6 +1012,7 @@ lv:
       quantity_label: "Daudzums:"
       sum_label: "Starpsumma:"
       service_fee_label: "Maksa par %{service_name}"
+      buyer_service_fee_label: ~
       you_will_get_label: "Jūs saņemsiet:"
       total_label: "Kopā:"
       total_value: "%{seller_gets}*"
@@ -971,6 +1058,7 @@ lv:
     message:
       accepted_request: "apstiprināja  pieprasījumu"
       received_payment: "apstiprināja pieprasījumu, saņēma maksājumu par %{sum}"
+      received_payment_wo_sum: ~
       accepted_offer: "piedāvājumu pieņēma"
       rejected_request: "noraidīja pieprasījumu, atcēla maksājumu"
       rejected_offer: "piedāvājumu noraidīja"
@@ -980,8 +1068,10 @@ lv:
       canceled_offer: "atcēla piedāvājumu"
       paid: "apmaksāts %{sum}"
       payment_preauthorized: "Maksājums atļauts: %{sum}"
+      payment_preauthorized_wo_sum: ~
       stripe:
         held_payment: "Apstiprināja pieprasījumu. %{service_name} pieturēs maksājumu par summu %{sum} līdz pasūtījums būs atzīmēts kā izpildīts."
+        held_payment_wo_sum: ~
         confirmed_request: "Pasūtījums atzīmēts kā izpildīts. Maksājums ir pārskaitīts uz %{author_name} bankas kontu vai arī drīz tiks pārskaitīts."
     new:
       message: Ziņa
@@ -1196,7 +1286,9 @@ lv:
       shipping_total: "Piegāde:"
       product: "Prece:"
       price_payer_paid: "%{payer_full_name} samaksāja cenu:"
+      subtotal: ~
       service_fee: "%{service_name} pakalpojuma komisijas maksa:"
+      buyer_service_fee: ~
       you_will_get: "Kopā:"
       new_payment: "Jūs esat saņēmis jaunu maksājumu"
       price_per_unit_type: "Cena par %{unit_type}"
@@ -1212,6 +1304,7 @@ lv:
       duration: Ilgums
       quantity: Daudzums
       subtotal: Starpsumma
+      buyer_service_fee: ~
       total: Kopā
       price: Cena
       service_fee: "Pakalpojuma komisijas maksa"
@@ -1236,7 +1329,7 @@ lv:
       subtotal: Starpsumma
       total: Kopā
       price: Cena
-      service_fee: "Pakalpojuma maksa"
+      buyer_service_fee: ~
       stripe_gateway_fee: "Stripe komisijas maksa:"
       paypal_gateway_fee: "PayPal komisijas maksa:"
       money_will_be_transferred: "Nauda tiks pārskaitīta %{recipient_name} ja a) esat pieprasījumu atzīmējis kā izpildītu vai b) %{automatic_confirmation_days} dienas ir pagājušas kopš Jūsu samaksas."
@@ -1302,6 +1395,24 @@ lv:
       this_is_automatic_message: "Šī ir automātiska ziņa, kas nosūtīta %{community} administratoriem."
       person_name: "Vārds:"
       person_email: "E-pasts:"
+    listing_submited_for_review:
+      subject: ~
+      there_is_a_new_listing_to_review: ~
+      review_the_listing: ~
+      this_is_automatic_message: ~
+    listing_approved:
+      subject: ~
+      listing_has_been_approved: ~
+      view_the_listing: ~
+    listing_rejected:
+      subject: ~
+      listing_has_been_rejected: ~
+      contact_link: ~
+      edit_the_listing: ~
+    edited_listing_submited_for_review:
+      subject: ~
+      there_is_a_edited_listing_to_review: ~
+      review_the_listing: ~
   error_messages:
     booking:
       booking_failed_payment_voided: "Rezervēšana neizdevās neparedzētas kļūdas dēļ. Lūdzu, mēģiniet vēlreiz vēlāk. Maksājums no Jums nav ieturēts."
@@ -1617,8 +1728,8 @@ lv:
       comment_sent: "Komentārs nosūtīs"
       confirmation_link_is_wrong_or_used: "Apstiprinājuma saite jau ir izmantota vai bojāta. Ja problēma atkārtojas, mēģiniet ienākt vai arī sūtiet ziņu."
       additional_email_confirmed: "Pievienotais e-pasts ir apstiprināts."
-      could_not_get_email_from_facebook: "Nevarēja saņemt e-pasta adresi no Facebook un tāpēc nevar izveidot kontu bez e-pasta."
-      facebook_email_unconfirmed: "E-pasta adrese '%{email}', kas ir sasaistīta ar Jūsu Facebook kontu, jau tiek izmantota, taču tā vēl nav apstiprināta. Lūdzu, apstipriniet e-pasta adresi pirms ienākšanas ar Facebook."
+      could_not_get_email_from_social_network: ~
+      social_network_email_unconfirmed: ~
       create_new_listing: "Izveidot jaunu sludinājumu"
       create_one_here: "izveidot šeit"
       email_confirmation_sent_to_new_address: "E-pasta apstiprinājums ir nosūtīts uz jauno adresi."
@@ -1768,6 +1879,10 @@ lv:
       show_in_updates_email_loading: Ielādē...
       show_in_updates_email_error: "Nevarēja sazināties ar serveri. Pēc lapas atsvaidzināšanas mēģiniet vēlreiz."
       show_in_updates_email_success: "Šis sludinājums tiks parādīts nākamajā automātiskajā e-pastā, kas nosūtīts lietotājiem"
+      listing_is_pending: ~
+      listing_is_rejected: ~
+      approve_listing: ~
+      reject_listing: ~
     map:
       open_in_google_maps: "Atvērt pakalpojumā Google Maps"
     error:
@@ -1848,6 +1963,9 @@ lv:
         origin: Izcelsme
       send_button:
         save_listing: "Publicēt sludinājumu"
+        submit_for_review: ~
+        will_be_reviewed: ~
+        we_noticed_youre_an_admin: ~
       share_type:
         select: Izvēlēties
         borrow: Aizņemties
@@ -1927,6 +2045,7 @@ lv:
       select_one: "Izvēlies vienu"
       start_time: "Sākuma laiks"
       end_time: "Beigu laiks"
+      marketplace_fees_may_apply: ~
     new:
       listing: Piedāvājums
       selected_category: "Kategorija: %{category}"
@@ -2168,7 +2287,7 @@ lv:
       username_is_invalid: "Lietotājvārds nav derīgs. Atļautās rakstu zīmes ir burti, cipari un pasvītrojums."
       visible_only_to_you: "redzams tikai Jums un %{service_name} komandai"
       visible_to_everybody: "redzams visiem"
-      create_account_with_facebook: "Reģistrēties ar Facebook"
+      create_account_with_provider: ~
       OR: VAI
       signup_with_email: "Reģistrējieties ar e-pastu"
       this_field_will_be_publicly_visible: "(Šis lauks būs visiem redzams)"
@@ -2176,9 +2295,8 @@ lv:
       grade: "vērtējums:"
       and_gave_following_feedback: "un sniedza tālāk norādītās atsauksmes"
     profile_listings:
-      show_also_closed: "Parādīt arī slēgtos"
-      show_only_open: "Rādīt tikai aktīvus"
       no_image: "Nav attēla"
+      manage_listings: ~
     show:
       contact: "Sazināties ar %{person}"
       about_me: "Par mani:"
@@ -2237,7 +2355,7 @@ lv:
       account_creation_link_text: "spied šeit"
       cancle_facebook_connect: "Ja nevēlaties saistīt šo kontu, varat %{cancel_link}."
       facebook_cancel_link_text: atcelt
-      log_in_with_your_facebook_account: "Ienākt ar Facebook"
+      log_in_with_your_provider_account: ~
       or_sign_up_with_your_username: "...vai ar Jūsu lietotājvārdu vai e-pastu:"
       we_will_not_post_without_asking_you: "Mēs nekad neko neievietosim Facebook bez pajautāšanas Jums."
     password_forgotten:
@@ -2559,6 +2677,7 @@ lv:
       signup: Reģistrēties
       admin_dashboard: "Administratora informācijas panelis"
       language: Valoda
+      listings: ~
     utils:
       km: km
       mi: mi
@@ -2649,6 +2768,7 @@ lv:
       address_kanji_line1: ~
       male: ~
       female: ~
+      mcc: ~
     form_bank:
       bank_account_number: "Bankas konta numurs"
       bank_routing_number: ~
@@ -2697,3 +2817,12 @@ lv:
     wrong_setup: "Šajā vietnē nav kaut kas pareizi ar maksājumu sistēmas uzstādīšanu: platforma nav reģistrēta. Lūdzu, sazinieties ar komandu, lai darītu viņiem zināmu, ka viņiem jāreģistrē platforma Stripe."
     invalid_bank_account_number: "Lūdzu, pārbaudiet, vai Jūsu bankas konts ir ievadīts pareizi un atbilst Jūsu valstij."
     invalid_postal_code: "Nederīgs pasta indeks valstij %{country}"
+  seo_sections:
+    you_can_use_variables: ~
+    placeholder:
+      search_results: ~
+      search_results_for: ~
+      listing_description: ~
+      category_description: ~
+      profile_title: ~
+      profile_description: ~
