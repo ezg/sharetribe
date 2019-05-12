@@ -292,6 +292,12 @@ module ApplicationHelper
       :icon_class => icon_class("how_to_use"),
       :path => how_to_use_infos_path,
       :name => "how_to_use"
+    }    
+    links << {
+      :text => t('layouts.infos.shipping'),
+      :icon_class => icon_class("shipping"),
+      :path => shipping_infos_path,
+      :name => "shipping"
     }
     links << {
       :text => t('layouts.infos.register_details'),

@@ -8,13 +8,18 @@ module ListingIndexService::Search::DatabaseSearchHelper
   end
 
   def fetch_from_db(community_id:, search:, included_models:, includes:)
+    Rails.logger.error(search)
     where_opts = HashUtils.compact(
       {
         community_id: community_id,
         author_id: search[:author_id],
         deleted: 0,
+        require_shipping_address: Maybe(search[:require_shipping_address]).or_else(nil),
+        pickup_enabled: Maybe(search[:pickup_enabled]).or_else(nil),
         listing_shape_id: Maybe(search[:listing_shape_ids]).or_else(nil)
       })
+
+    Rails.logger.error(where_opts)
 
     scope = Listing
     scope = scope.use_homepage_index if !search[:include_closed] && !search[:author_id]

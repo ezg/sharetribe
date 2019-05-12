@@ -146,7 +146,8 @@ class TransactionsController < ApplicationController
 
     @transaction.mark_as_seen_by_current(@current_user.id)
 
-    is_author = m_admin || @transaction.listing_author_id == @current_user.id
+    #is_author = m_admin || @transaction.listing_author_id == @current_user.id
+    is_author = @transaction.listing_author_id == @current_user.id
     is_actual_author = @transaction.listing_author_id == @current_user.id
 
     render "transactions/show", locals: {
@@ -371,15 +372,15 @@ class TransactionsController < ApplicationController
       payment = TransactionService::Transaction.payment_details(tx)
       #Rails.logger.error(tx.authenticate_fee)
 
-      seller_gets = Maybe(tx.payment_total).or_else(payment[:total_price]) - tx.commission - tx.buyer_commission,
+      seller_gets = Maybe(tx.payment_total).or_else(payment[:total_price]) - tx.commission - tx.buyer_commission
       if tx.authenticate_fee
         seller_gets -= tx.authenticate_fee
       end
 
       total = Maybe(tx.payment_total).or_else(payment[:total_price])
-      #if (@transaction.listing_author_id == @current_user.id) && tx.authenticate_fee
-      #  total -= tx.authenticate_fee
-      #end
+      if (@transaction.listing_author_id == @current_user.id) && tx.authenticate_fee
+        total -= tx.authenticate_fee
+      end
 
       TransactionViewUtils.price_break_down_locals({
         listing_price: tx.unit_price,

@@ -28,6 +28,8 @@ module ListingIndexService::DataTypes
     [:price_cents, :range, :optional],
     [:fields, :array, default: []],
     [:author_id, :string],
+    [:require_shipping_address, :optional],
+    [:pickup_enabled, :optional],
     [:include_closed, :to_bool, default: false],
     [:locale, :symbol, :optional]
   )

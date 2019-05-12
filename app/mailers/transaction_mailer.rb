@@ -77,7 +77,6 @@ class TransactionMailer < ActionMailer::Base
     payment = TransactionService::Transaction.payment_details(transaction)
     auth_fee = nil
     if transaction.authenticate
-      Rails.logger.error("A2")
       auth_fee = TransactionService::Validation::AuthenticationTotal.new(transaction.listing).total 
     end
     
@@ -116,7 +115,7 @@ class TransactionMailer < ActionMailer::Base
                    listing_price: MoneyViewUtils.to_humanized(transaction.unit_price),
                    listing_quantity: transaction.listing_quantity,
                    duration: transaction.booking.present? ? transaction.listing_quantity: nil,
-                   subtotal: MoneyViewUtils.to_humanized(subtotal),
+                   subtotal: MoneyViewUtils.to_humanized(transaction.item_total),
                    payment_total: MoneyViewUtils.to_humanized(buyer_service_fee > 0 ? subtotal : payment_total),
                    shipping_total: MoneyViewUtils.to_humanized(transaction.shipping_price),
                    authenticate_fee: MoneyViewUtils.to_humanized(auth_fee),

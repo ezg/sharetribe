@@ -203,6 +203,7 @@ class LandingPageController < ActionController::Metal
       "contact_us" => new_user_feedback_path(locale: locale_param),
       "post_a_new_listing" => new_listing_path(locale: locale_param),
       "how_to_use" => how_to_use_infos_path(locale: locale_param),
+      "shipping" => shipping_infos_path(locale: locale_param),
       "terms" => terms_infos_path(locale: locale_param),
       "new_invitation" => new_invitation_path(locale: locale_param),
       "privacy" => privacy_infos_path(locale: locale_param)

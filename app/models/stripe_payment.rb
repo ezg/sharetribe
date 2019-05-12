@@ -20,7 +20,7 @@
 #  available_on           :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  authenticate_cents :integer
+#  authenticate_cents     :integer
 #  buyer_commission_cents :integer          default(0)
 #
 

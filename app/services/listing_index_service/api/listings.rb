@@ -16,9 +16,10 @@ module ListingIndexService::API
         return Result::Error.new("Unknown included resources: #{(includes.to_set - RELATED_RESOURCES).to_a}")
       end
 
+      params = ListingIndexService::DataTypes.create_search_params(search)
       search_result = search_engine(engine, raise_errors).search(
         community_id: community_id,
-        search: ListingIndexService::DataTypes.create_search_params(search),
+        search: params,
         includes: includes
       )
 

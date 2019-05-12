@@ -29,9 +29,25 @@ class InfosController < ApplicationController
     @selected_left_navi_link = "privacy"
   end
 
+
+  def shipping
+    @selected_tribe_navi_tab = "about"
+    @selected_left_navi_link = "shipping"
+    content = if @community_customization && !@community_customization.shipping_page_content.nil?
+      @community_customization.shipping_page_content.html_safe
+    else
+      MarketplaceService.how_to_use_page_default_content(I18n.locale, @current_community.name(I18n.locale))
+    end
+    render locals: { shipping_content: content }
+  end
+
   private
 
   def how_to_use_content?
     Maybe(@community_customization).map { |customization| !customization.how_to_use_page_content.nil? }
+  end
+
+  def shipping_content?
+    Maybe(@community_customization).map { |customization| !customization.shipping_page_content.nil? }
   end
 end

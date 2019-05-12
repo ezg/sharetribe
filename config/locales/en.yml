@@ -1078,12 +1078,8 @@ en:
       message_content_not_available: "Message content not available"
     message:
       accepted_request: "accepted the request"
-<<<<<<< HEAD
       received_payment: "accepted the request, received payment"
-=======
-      received_payment: "accepted the request, received payment for %{sum}"
       received_payment_wo_sum: "accepted the request, received payment"
->>>>>>> 29fcc530a476b934f49b682b8c16b958153785f4
       accepted_offer: "accepted the offer"
       rejected_request: "rejected the request, canceled the payment"
       rejected_offer: "rejected the offer"
@@ -1092,12 +1088,8 @@ en:
       canceled_request: "canceled the order"
       canceled_offer: "canceled the offer"
       paid: "paid %{sum}"
-<<<<<<< HEAD
       payment_preauthorized: "payment authorized"
-=======
-      payment_preauthorized: "Payment authorized: %{sum}"
       payment_preauthorized_wo_sum: "Payment authorized"
->>>>>>> 29fcc530a476b934f49b682b8c16b958153785f4
       stripe:
         held_payment: "Accepted the request. Payment for %{sum} is being held by %{service_name} until the order is marked as completed."
         held_payment_wo_sum: "Accepted the request. Payment is being held by %{service_name} until the order is marked as completed."
@@ -1658,6 +1650,7 @@ en:
       grid_button: Grid
       list_button: List
       all_listing_types: "All listing types"
+      all_order_types: "All order types"
       all_categories: "All categories"
     errors:
       search_engine_not_responding: "Search is currently unavailable. Try searching again soon."
@@ -1716,6 +1709,7 @@ en:
       select_language: "Select language"
     infos:
       about: About
+      shipping: Shipping
       how_to_use: "How it works"
       info_about_kassi: "Information about %{service_name}"
       news: News

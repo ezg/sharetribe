@@ -42,11 +42,26 @@ class HomepageController < ApplicationController
       @category_menu_enabled = @show_categories || @show_custom_fields
     end
 
+    listing_order_type_menu_enabled = true
+    listing_shape_menu_enabled = false
+
     listing_shape_param = params[:transaction_type]
-
     selected_shape = all_shapes.find { |s| s[:name] == listing_shape_param }
-
     filter_params[:listing_shape] = Maybe(selected_shape)[:id].or_else(nil)
+
+    all_order_types = ["Shipping", "Pickup"]
+    order_type_param = params[:order_type]
+    selected_order_type = order_type_param
+    if selected_order_type == "all"
+      selected_order_type = nil
+    end
+
+    if order_type_param == "Shipping"
+      filter_params[:require_shipping_address] = true
+    end
+    if order_type_param == "Pickup"
+      filter_params[:pickup_enabled] = true
+    end
 
     compact_filter_params = HashUtils.compact(filter_params)
 
@@ -111,7 +126,10 @@ class HomepageController < ApplicationController
         shapes: all_shapes,
         filters: relevant_filters,
         show_price_filter: show_price_filter,
-        selected_category: selected_category,
+        selected_category: selected_category, 
+        order_types: all_order_types,
+        listing_order_type_menu_enabled: listing_order_type_menu_enabled,
+        selected_order_type: selected_order_type,
         selected_shape: selected_shape,
         shape_name_map: shape_name_map,
         listing_shape_menu_enabled: listing_shape_menu_enabled,
@@ -153,10 +171,15 @@ class HomepageController < ApplicationController
 
   def find_listings(params:, current_page:, listings_per_page:, filter_params:, includes:, location_search_in_use:, keyword_search_in_use:, relevant_search_fields:)
 
+    #filter_params["require_shipping_address"] = 1
+    #filter_params["pickup_enabled"] = 1
+
     search = {
       # Add listing_id
       categories: filter_params[:categories],
       listing_shape_ids: Array(filter_params[:listing_shape]),
+      require_shipping_address: filter_params[:require_shipping_address],
+      pickup_enabled: filter_params[:pickup_enabled],
       price_cents: filter_range(params[:price_min], params[:price_max]),
       keywords: keyword_search_in_use ? params[:q] : nil,
       fields: relevant_search_fields,

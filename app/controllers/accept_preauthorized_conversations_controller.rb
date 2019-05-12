@@ -161,12 +161,15 @@ class AcceptPreauthorizedConversationsController < ApplicationController
     seller_gets = payment_details[:total_price] - (payment_details[:charged_commission] || 0) - (payment_details[:buyer_commission] || 0)
     if @transaction.authenticate_fee
       seller_gets -= @transaction.authenticate_fee
+    end
       
     total_price = if payment_details[:buyer_commission] && payment_details[:buyer_commission] > 0
       payment_details[:total_price] - payment_details[:buyer_commission]
     else
       payment_details[:total_price]
     end
+
+    total_price = @listing.price
 
     render "accept", locals: {
       listing: @listing,

@@ -91,11 +91,8 @@ class Transaction < ApplicationRecord
   monetize :minimum_commission_cents, with_model_currency: :minimum_commission_currency
   monetize :unit_price_cents, with_model_currency: :unit_price_currency
   monetize :shipping_price_cents, allow_nil: true, with_model_currency: :unit_price_currency
-<<<<<<< HEAD
   monetize :authenticate_fee_cents, allow_nil: true, with_model_currency: :unit_price_currency
-=======
   monetize :minimum_buyer_fee_cents, with_model_currency: :minimum_buyer_fee_currency
->>>>>>> 29fcc530a476b934f49b682b8c16b958153785f4
 
   scope :exist, -> { where(deleted: false) }
   scope :for_person, -> (person){
@@ -299,7 +296,6 @@ class Transaction < ApplicationRecord
     else
       tot = (item_total + shipping_price) * (commission_from_seller / 100.0)
     end
-
     [(tot unless commission_from_seller.nil?),
      (minimum_commission unless minimum_commission.nil? || minimum_commission.zero?),
      Money.new(0, item_total.currency)]
@@ -333,18 +329,12 @@ class Transaction < ApplicationRecord
   end
 
   def payment_total
-<<<<<<< HEAD
-    unit_price            = self.unit_price || 0
-    quantity              = self.listing_quantity || 1
-    shipping_price        = self.shipping_price || 0
-    authenticate_fee      = self.authenticate_fee || 0
-    (unit_price * quantity) + shipping_price + authenticate_fee
-=======
     unit_price       = self.unit_price || 0
     quantity         = self.listing_quantity || 1
     shipping_price   = self.shipping_price || 0
-    (unit_price * quantity) + shipping_price + buyer_commission
->>>>>>> 29fcc530a476b934f49b682b8c16b958153785f4
+    buyer_commission   = self.buyer_commission || 0
+    authenticate_fee = self.authenticate_fee || 0
+    (unit_price * quantity) + shipping_price + buyer_commission + authenticate_fee
   end
 
 end

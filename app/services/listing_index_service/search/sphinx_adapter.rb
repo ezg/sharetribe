@@ -42,6 +42,7 @@ module ListingIndexService::Search
     private
 
     def search_with_sphinx(community_id:, search:, included_models:, includes:)
+
       numeric_search_fields = search[:fields].select { |f| f[:type] == :numeric_range }
       perform_numeric_search = numeric_search_fields.present?
 
@@ -66,6 +67,8 @@ module ListingIndexService::Search
             community_id: community_id,
             category_id: search[:categories], # array of accepted ids
             listing_shape_id: search[:listing_shape_id],
+            pickup_enabled: search[:pickup_enabled],
+            require_shipping_address: search[:require_shipping_address],
             price_cents: search[:price_cents],
             listing_id: numeric_search_match_listing_ids
           })

@@ -96,11 +96,6 @@
           = t("conversations.accept.sum_label")
         %span.conversation-sum-value
           = MoneyViewUtils.to_humanized(sum)
-      .conversation-service-fee-wrapper
-        %span.conversation-service-fee-label
-          = t("conversations.accept.service_fee_label")
-        %span.conversation-service-fee-value
-          = "-#{MoneyViewUtils.to_humanized(fee)}"
       -# if buyer_commission.present? && buyer_commission > 0
         .conversation-service-fee-wrapper
           %span.conversation-service-fee-label

@@ -34,6 +34,7 @@
 #  category_meta_description                  :text(65535)
 #  profile_meta_title                         :string(255)
 #  profile_meta_description                   :text(65535)
+#  shipping_page_content                      :text(65535)
 #
 # Indexes
 #
@@ -49,6 +50,7 @@ class CommunityCustomization < ApplicationRecord
   validates_length_of :welcome_email_content, maximum: 65535
   validates_length_of :how_to_use_page_content, maximum: 262140
   validates_length_of :about_page_content, maximum: 262140
+  validates_length_of :shipping_page_content, maximum: 262140
   validates_length_of :terms_page_content, maximum: 393210
   validates_length_of :privacy_page_content, maximum: 262140
   validates_length_of :signup_info_content, maximum: 65535
@@ -64,6 +66,7 @@ class CommunityCustomization < ApplicationRecord
     welcome_email_content
     how_to_use_page_content
     about_page_content
+    shipping_page_content
     terms_page_content
     privacy_page_content
     signup_info_content

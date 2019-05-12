@@ -17,7 +17,7 @@ class PreauthorizeTransactionsController < ApplicationController
         shipping_enabled: listing.require_shipping_address,
         pickup_enabled: listing.pickup_enabled)
       tx_params[:marketplace_id] = @current_community.id
-     
+      
       TransactionService::Validation::Validator.validate_initiate_params(
         marketplace_uuid: @current_community.uuid_object,
         listing: listing,
@@ -37,7 +37,7 @@ class PreauthorizeTransactionsController < ApplicationController
   end
 
   def initiated
-    
+    Rails.logger.error("12345")
     params_validator = params_per_hour? ? TransactionService::Validation::NewPerHourTransactionParams : TransactionService::Validation::NewTransactionParams
     validation_result = params_validator.validate(params).and_then { |params_entity|
       tx_params = add_defaults(
@@ -81,7 +81,6 @@ class PreauthorizeTransactionsController < ApplicationController
 
   def calculate_authentication_from_listing(tx_params:, listing:)
     if tx_params[:authenticate]
-      Rails.logger.error("A1")
       TransactionService::Validation::AuthenticationTotal.new(listing)
     else
       TransactionService::Validation::NoAuthenticationFee.new
@@ -295,44 +294,6 @@ class PreauthorizeTransactionsController < ApplicationController
     ]
   end
 
-  def price_break_down_locals(tx_params, listing)
-    is_booking = is_booking?(listing)
-    Rails.logger.error(listing.category.translations.where(locale: 'en').first().name)
-
-    quantity = calculate_quantity(tx_params: tx_params, is_booking: is_booking, unit: listing.unit_type)
-
-    item_total = TransactionService::Validation::ItemTotal.new(
-      unit_price: listing.price,
-      quantity: quantity)
-
-    shipping_total = calculate_shipping_from_listing(tx_params: tx_params, listing: listing, quantity: quantity)
-    authenticate_total = calculate_authentication_from_listing(tx_params: tx_params, listing: listing)
-    order_total = TransactionService::Validation::OrderTotal.new(
-      item_total: item_total,
-      shipping_total: shipping_total,
-      authenticate_total: authenticate_total
-    )
-
-    TransactionViewUtils.price_break_down_locals(
-                 booking:  is_booking,
-                 quantity: quantity,
-                 start_on: tx_params[:start_on],
-                 end_on:   tx_params[:end_on],
-                 duration: quantity,
-                 listing_price: listing.price,
-                 localized_unit_type: translate_unit_from_listing(listing),
-                 localized_selector_label: translate_selector_label_from_listing(listing),
-                 subtotal: subtotal_to_show(order_total),
-                 shipping_price: shipping_price_to_show(tx_params[:delivery], shipping_total),
-                 authenticate_fee: authentication_fee_to_show(tx_params[:authenticate], authenticate_total),
-                 total: order_total.total,
-                 unit_type: listing.unit_type,
-                 start_time: tx_params[:start_time],
-                 end_time:   tx_params[:end_time],
-                 per_hour:   tx_params[:per_hour]
-                )
-  end
-
   def params_per_hour?
     params[:per_hour] == '1'
   end
@@ -400,19 +361,11 @@ class PreauthorizeTransactionsController < ApplicationController
   end
 
   def initiated_success(tx_params)
-<<<<<<< HEAD
-    is_booking = is_booking?(listing)
-
-    quantity = calculate_quantity(tx_params: tx_params, is_booking: is_booking, unit: listing.unit_type)
-    shipping_total = calculate_shipping_from_listing(tx_params: tx_params, listing: listing, quantity: quantity)
-    authenticate_total = calculate_authentication_from_listing(tx_params: tx_params, listing: listing)
-=======
     order = TransactionService::Order.new(
       community: @current_community,
       tx_params: tx_params,
       listing: listing)
 
->>>>>>> 29fcc530a476b934f49b682b8c16b958153785f4
     tx_response = create_preauth_transaction(
       payment_type: params[:payment_type].to_sym,
       community: @current_community,
@@ -422,13 +375,9 @@ class PreauthorizeTransactionsController < ApplicationController
       content: tx_params[:message],
       force_sync: !request.xhr?,
       delivery_method: tx_params[:delivery],
-<<<<<<< HEAD
       authenticate: tx_params[:authenticate],
-      shipping_price: shipping_total.total,
-      authenticate_fee: authenticate_total.total,
-=======
       shipping_price: order.shipping_total,
->>>>>>> 29fcc530a476b934f49b682b8c16b958153785f4
+      authenticate_fee: order.authentication_fee,
       booking_fields: {
         start_on: tx_params[:start_on],
         end_on: tx_params[:end_on],

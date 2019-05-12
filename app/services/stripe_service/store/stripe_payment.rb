@@ -70,11 +70,8 @@ module StripeService::Store::StripePayment
           sum: stripe_payment.sum,
           fee: stripe_payment.fee,
           commission: stripe_payment.commission,
-<<<<<<< HEAD
           authenticate: stripe_payment.authenticate,
-=======
           buyer_commission: stripe_payment.buyer_commission,
->>>>>>> 29fcc530a476b934f49b682b8c16b958153785f4
           subtotal: stripe_payment.subtotal,
           real_fee: stripe_payment.real_fee
         }))

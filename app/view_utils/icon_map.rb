@@ -33,6 +33,7 @@ ICON_MAP = {
       "information" => "ss-info",
       "alert" => "ss-alert",
       "how_to_use" => "ss-signpost",
+      "shipping" => "ss-signpost",
       "privacy" => "ss-lockfile",
       "terms" => "ss-textfile",
       "testimonial" => "ss-star",
@@ -208,6 +209,7 @@ ICON_MAP = {
       "information" => "icon-info-sign",
       "alert" => "icon-warning-sign",
       "how_to_use" => "icon-book",
+      "shipping" => "icon-truck",
       "privacy" => "icon-lock",
       "terms" => "icon-file-alt",
 

@@ -401,6 +401,7 @@ Rails.application.routes.draw do
       collection do
         get :about
         get :how_to_use
+        get :shipping
         get :terms
         get :privacy
         get :news

@@ -20,6 +20,7 @@ module TransactionService
          localized_selector_label: translate_selector_label_from_listing,
          subtotal: subtotal_to_show,
          shipping_price: shipping_price_to_show,
+         authenticate_fee: authentication_fee,
          total: order_total,
          unit_type: listing.unit_type,
          start_time: tx_params[:start_time],
@@ -68,6 +69,7 @@ module TransactionService
     def order_total
       total = item_total + shipping_total
       total += buyer_fee if buyer_fee
+      total += authentication_fee if authentication_fee
       total
     end
 
@@ -103,6 +105,19 @@ module TransactionService
 
     def shipping_price_to_show
       shipping_total if tx_params[:delivery] == :shipping
+    end
+
+    def authentication_fee
+      authenticate_total = calculate_authentication_from_listing
+      authenticate_total.total if tx_params[:authenticate]
+    end
+
+    def calculate_authentication_from_listing
+      if tx_params[:authenticate]
+        TransactionService::Validation::AuthenticationTotal.new(listing)
+      else
+        TransactionService::Validation::NoAuthenticationFee.new
+      end
     end
 
     def paypal_in_use
