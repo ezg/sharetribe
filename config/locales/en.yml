@@ -1710,6 +1710,7 @@ en:
     infos:
       about: About
       shipping: Shipping
+      copyright: Copyright
       how_to_use: "How it works"
       info_about_kassi: "Information about %{service_name}"
       news: News

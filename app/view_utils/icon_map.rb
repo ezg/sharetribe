@@ -210,6 +210,7 @@ ICON_MAP = {
       "alert" => "icon-warning-sign",
       "how_to_use" => "icon-book",
       "shipping" => "icon-truck",
+      "copyright" => "icon-legal",
       "privacy" => "icon-lock",
       "terms" => "icon-file-alt",
 

@@ -300,6 +300,12 @@ module ApplicationHelper
       :name => "shipping"
     }
     links << {
+      :text => t('layouts.infos.copyright'),
+      :icon_class => icon_class("copyright"),
+      :path => copyright_infos_path,
+      :name => "copyright"
+    }
+    links << {
       :text => t('layouts.infos.register_details'),
       :icon_class => icon_class("privacy"),
       :path => privacy_infos_path,

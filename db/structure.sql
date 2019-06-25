@@ -325,6 +325,7 @@ CREATE TABLE `community_customizations` (
   `profile_meta_title` varchar(255) DEFAULT NULL,
   `profile_meta_description` text,
   `shipping_page_content` text,
+  `copyright_page_content` text,
   PRIMARY KEY (`id`),
   KEY `index_community_customizations_on_community_id` (`community_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2384,6 +2385,7 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20190305112030'),
 ('20190319114719'),
 ('20190319122745'),
-('20190503113330');
+('20190503113330'),
+('20190625113330');
 
 

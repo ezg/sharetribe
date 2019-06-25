@@ -41,6 +41,17 @@ class InfosController < ApplicationController
     render locals: { shipping_content: content }
   end
 
+  def copyright
+    @selected_tribe_navi_tab = "about"
+    @selected_left_navi_link = "copyright"
+    content = if @community_customization && !@community_customization.copyright_page_content.nil?
+      @community_customization.copyright_page_content.html_safe
+    else
+      MarketplaceService.how_to_use_page_default_content(I18n.locale, @current_community.name(I18n.locale))
+    end
+    render locals: { copyright_content: content }
+  end
+
   private
 
   def how_to_use_content?
@@ -49,5 +60,9 @@ class InfosController < ApplicationController
 
   def shipping_content?
     Maybe(@community_customization).map { |customization| !customization.shipping_page_content.nil? }
+  end
+
+  def copyright_content?
+    Maybe(@community_customization).map { |customization| !customization.copyright_page_content.nil? }
   end
 end

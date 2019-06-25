@@ -402,6 +402,7 @@ Rails.application.routes.draw do
         get :about
         get :how_to_use
         get :shipping
+        get :copyright
         get :terms
         get :privacy
         get :news

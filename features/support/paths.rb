@@ -54,6 +54,8 @@ module NavigationHelpers
       privacy_infos_path(:locale => "en")
     when /the shipping info page/
       shipping_infos_path(:locale => "en")
+    when /the copyright info page/
+      copyright_infos_path(:locale => "en")
     when /new tribe in English/
       new_tribe_path(:community_locale => "en", :locale => "en")
     when /invitations page/
