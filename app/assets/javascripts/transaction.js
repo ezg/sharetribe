@@ -59,6 +59,7 @@ window.ST.transaction = window.ST.transaction || {};
 
 
   function redirectFromOpResult(opResult) {
+    console.log("hhhh")
     window.location = opResult.data.redirect_url;
   }
 

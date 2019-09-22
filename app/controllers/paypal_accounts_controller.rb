@@ -36,13 +36,17 @@ class PaypalAccountsController < ApplicationController
   end
 
   def ask_billing_agreement
+    Rails.logger.error("ttt")
     return redirect_to person_payment_settings_path(@current_user) unless PaypalHelper.community_ready_for_payments?(@current_community)
 
+    Rails.logger.error("ttt 1")
+    
     account_response = accounts_api.get(
       community_id: @current_community.id,
       person_id: @current_user.id
     )
     m_account = account_response.maybe
+    Rails.logger.error(account_response)
 
     case m_account[:order_permission_state]
     when Some(:verified)
@@ -57,7 +61,7 @@ class PaypalAccountsController < ApplicationController
             cancel_url: billing_agreement_cancel_person_paypal_account_url
           }
         ))
-
+        Rails.logger.error(response)
       billing_agreement_url = response.data[:redirect_url]
 
       if billing_agreement_url.blank?

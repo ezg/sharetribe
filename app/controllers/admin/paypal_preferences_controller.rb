@@ -15,6 +15,7 @@ class Admin::PaypalPreferencesController < Admin::AdminBaseController
         callback_url: admin_paypal_preferences_permissions_verified_url,
         country: community_country_code
       }))
+      Rails.logger.error(response)
     permissions_url = response.data[:redirect_url]
 
     if permissions_url.blank?

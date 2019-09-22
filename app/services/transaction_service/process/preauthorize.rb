@@ -27,9 +27,6 @@ module TransactionService::Process
 
     def do_create(tx, gateway_fields)
       gateway_adapter = TransactionService::Transaction.gateway_adapter(tx.payment_gateway)
-      Rails.logger.error('hhhheeeehhhe')
-      Rails.logger.error(gateway_adapter)
-      Rails.logger.error(tx)
       completion = gateway_adapter.create_payment(
         tx: tx,
         gateway_fields: gateway_fields,

@@ -105,12 +105,16 @@ class PreauthorizeTransactionsController < ApplicationController
 
   def handle_tx_response(tx_response, gateway)
     if !tx_response[:success]
+      Rails.logger.error("11111")
       render_error_response(request.xhr?, t("error_messages.#{gateway}.generic_error"), action: :initiate)
     elsif (tx_response[:data][:gateway_fields][:redirect_url])
+      Rails.logger.error("2222")
       xhr_json_redirect tx_response[:data][:gateway_fields][:redirect_url]
     elsif gateway == :stripe
+      Rails.logger.error("3333")
       xhr_json_redirect person_transaction_path(@current_user, tx_response[:data][:transaction][:id])
     else
+      Rails.logger.error("4444")
       render json: {
         op_status_url: transaction_op_status_path(tx_response[:data][:gateway_fields][:process_token]),
         op_error_msg: t("error_messages.#{gateway}.generic_error")

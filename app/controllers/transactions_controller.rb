@@ -210,6 +210,7 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_op_status
+    Rails.logger.error("in here")
     process_token = params[:process_token]
 
     resp = Maybe(process_token)
@@ -222,7 +223,9 @@ class TransactionsController < ApplicationController
              .or_else(nil)
 
     if resp
-      render json: process_resp_to_json(resp)
+      ret = process_resp_to_json(resp)
+      Rails.logger.error(ret)
+      render json: ret
     else
       head :not_found
     end

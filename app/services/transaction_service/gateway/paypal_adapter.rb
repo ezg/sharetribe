@@ -86,10 +86,11 @@ module TransactionService::Gateway
       # Note: Quantity may be confusing in Paypal Checkout page, thus,
       # we don't use separated unit price and quantity, only the total
       # price for now.
+      Rails.logger.error("NEED TO FIX HERE auth_fee")
 
       shipping_total = Maybe(tx.shipping_price).or_else(0)
       auth_fee = calculate_authenticate_fee(tx)
-      tx.unit_price * tx.listing_quantity + shipping_total + auth_fee
+      tx.unit_price * tx.listing_quantity + shipping_total
     end
   end
 

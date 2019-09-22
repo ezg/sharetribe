@@ -172,6 +172,5 @@ gem 'twitter_cldr'
 gem 'memoist'
 gem 'biz'
 
-gem "unicorn-rails", "~> 2.2"
 gem 'ffi', '>= 1.9.25'
 gem 'rubyzip', '~> 1.2.2'

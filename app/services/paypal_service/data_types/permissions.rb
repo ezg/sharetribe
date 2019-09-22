@@ -25,7 +25,7 @@ module PaypalService
 
       GetAccessToken = EntityUtils.define_builder(
         [:method, const_value: :get_access_token],
-        [:request_token, :mandatory, :string],
+      [:request_token, :mandatory, :string],
         [:verification_code, :mandatory, :string])
 
       GetAccessTokenResponse = EntityUtils.define_builder(

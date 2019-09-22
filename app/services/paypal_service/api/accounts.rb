@@ -299,6 +299,7 @@ module PaypalService::API
     # Calls Permissions API with given request
     # Logs and returns if error, calls block if success
     def with_success_permissions(req, &block)
+      Rails.logger.error(req)
       handle_response(req, @permissions.do_request(req), &block)
     end
 
