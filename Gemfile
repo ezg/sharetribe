@@ -72,6 +72,8 @@ gem "premailer", '~> 1.10.4'
 gem 'stringex', '~> 2.7.1'
 gem 'paypal-sdk-permissions', '~> 1.96.4'
 gem 'paypal-sdk-merchant', '~> 1.116.0'
+gem 'paypal-checkout-sdk', '~> 1.0.3'
+gem 'paypal-sdk-rest',  '~> 1.7.3'
 gem 'airbrake', '~> 6.1.2'
 gem 'stripe', '~> 4.9.0'
 
@@ -172,6 +174,5 @@ gem 'twitter_cldr'
 gem 'memoist'
 gem 'biz'
 
-gem "unicorn-rails", "~> 2.2"
 gem 'ffi', '>= 1.9.25'
 gem 'rubyzip', '~> 1.2.2'

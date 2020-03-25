@@ -70,6 +70,7 @@ class Transaction < ApplicationRecord
   has_many :testimonials, dependent: :destroy
   belongs_to :listing_author, class_name: 'Person'
   has_many :stripe_payments, dependent: :destroy
+  has_many :pcp_payments, dependent: :destroy
 
   delegate :author, to: :listing
   delegate :title, to: :listing, prefix: true
@@ -84,7 +85,7 @@ class Transaction < ApplicationRecord
   validates :availability, inclusion: ["none", "booking", :none, :booking], on: :create
   validates :delivery_method, inclusion: ["none", "shipping", "pickup", nil, :none, :shipping, :pickup], on: :create
   validates :payment_process, inclusion: [:none, :postpay, :preauthorize], on: :create
-  validates :payment_gateway, inclusion: [:paypal, :checkout, :braintree, :stripe, :none], on: :create
+  validates :payment_gateway, inclusion: [:paypal, :checkout, :braintree, :pcp, :stripe, :none], on: :create
   validates :commission_from_seller, numericality: {only_integer: true}, on: :create
   validates :automatic_confirmation_after_days, numericality: {only_integer: true}, on: :create
 

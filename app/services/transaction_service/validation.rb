@@ -160,7 +160,6 @@ module TransactionService
                                     availability_enabled:,
                                     transaction_agreement_in_use:,
                                     stripe_in_use:)
-
         validate_delivery_method(tx_params: tx_params, shipping_enabled: shipping_enabled, pickup_enabled: pickup_enabled, authenticate: authenticate)
           .and_then { validate_booking(tx_params: tx_params, quantity_selector: quantity_selector, stripe_in_use: stripe_in_use) }
           .and_then { |result|

@@ -11,6 +11,7 @@ class TransactionConfirmedJob < Struct.new(:conversation_id, :community_id)
   end
 
   def perform
+    Rails.logger.error("in TransactionConfirmedJob")
     transaction = Transaction.find(conversation_id)
     community = Community.find(community_id)
     MailCarrier.deliver_now(PersonMailer.transaction_confirmed(transaction, community))
@@ -23,6 +24,9 @@ class TransactionConfirmedJob < Struct.new(:conversation_id, :community_id)
       when :destination then Delayed::Job.enqueue(StripePayoutJob.new(transaction.id, community_id), :priority => 9, :run_at => available_date)
       when :separate then Delayed::Job.enqueue(StripePayoutJob.new(transaction.id, community_id), :priority => 9)
       end
+    elsif transaction.payment_gateway == :pcp
+      Rails.logger.error("in pcp")
+      Delayed::Job.enqueue(PcpPayoutJob.new(transaction.id, community_id), :priority => 9)
     end
   end
 end

@@ -611,8 +611,9 @@ module ApplicationHelper
 
     paypal_ready = PaypalHelper.community_ready_for_payments?(@current_community.id)
     stripe_ready = StripeHelper.community_ready_for_payments?(@current_community.id)
+    pcp_ready = PcpHelper.community_ready_for_payments?(@current_community.id)
 
-    if !restrict_for_admin && (paypal_ready || stripe_ready)
+    if !restrict_for_admin && (paypal_ready || stripe_ready || pcp_ready)
       links << {
         :id => "settings-tab-payments",
         :text => t("layouts.settings.payments"),

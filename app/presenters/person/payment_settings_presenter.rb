@@ -29,7 +29,8 @@ class Person::PaymentSettingsPresenter
   end
 
   def payments_enabled?
-    paypal_enabled || stripe_enabled
+    # HEEEERRRREEEEE
+    paypal_enabled || stripe_enabled || pcp_enabled
   end
 
   def commission_from_seller
@@ -50,6 +51,10 @@ class Person::PaymentSettingsPresenter
 
   def stripe_enabled
     @stripe_enabled ||= StripeHelper.community_ready_for_payments?(community.id)
+  end
+
+  def pcp_enabled
+    @stripe_enabled = true
   end
 
   # seller_account

@@ -75,6 +75,8 @@ module TransactionService
                              expiration_period.days.from_now - 10.minutes
                            when :stripe
                              expiration_period.days.from_now - 10.minutes
+                           when :pcp
+                              expiration_period.days.from_now - 10.minutes
                            else
                              raise ArgumentError.new("Unknown payment_type: '#{payment_type}'")
                            end

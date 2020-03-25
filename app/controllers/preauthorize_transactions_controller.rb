@@ -38,6 +38,9 @@ class PreauthorizeTransactionsController < ApplicationController
 
   def initiated
     Rails.logger.error("12345")
+    Rails.logger.error("asdfasdfasdfasdfasd")
+    Rails.logger.error(params[:payment_type])
+
     params_validator = params_per_hour? ? TransactionService::Validation::NewPerHourTransactionParams : TransactionService::Validation::NewTransactionParams
     validation_result = params_validator.validate(params).and_then { |params_entity|
       tx_params = add_defaults(
@@ -45,6 +48,8 @@ class PreauthorizeTransactionsController < ApplicationController
         shipping_enabled: listing.require_shipping_address,
         pickup_enabled: listing.pickup_enabled)
 
+      
+      Rails.logger.error("111111")
       TransactionService::Validation::Validator.validate_initiated_params(
         tx_params: tx_params,
         marketplace_uuid: @current_community.uuid_object,
@@ -59,6 +64,7 @@ class PreauthorizeTransactionsController < ApplicationController
     }
 
     if validation_result.success
+      Rails.logger.error("222222")
       initiated_success(validation_result.data)
     else
       initiated_error(validation_result.data)
@@ -203,7 +209,7 @@ class PreauthorizeTransactionsController < ApplicationController
         community_id: @current_community.id,
         listing_author_id: listing.author.id
       })
-
+    Rails.logger.error(ready)
     unless ready[:data][:result]
       flash[:error] = t("layouts.notifications.listing_author_payment_details_missing")
 
@@ -233,6 +239,12 @@ class PreauthorizeTransactionsController < ApplicationController
           success_url: success_paypal_service_checkout_orders_url,
           cancel_url: cancel_paypal_service_checkout_orders_url(listing_id: opts[:listing].id)
         }
+    when :pcp
+        gateway_fields =
+          {
+            success_url: success_pcp_service_checkout_orders_url,
+            cancel_url: cancel_pcp_service_checkout_orders_url(listing_id: opts[:listing].id)
+          }        
     when :stripe
       gateway_fields =
         {
@@ -273,7 +285,7 @@ class PreauthorizeTransactionsController < ApplicationController
     if(opts[:authenticate])
       transaction[:authenticate_fee] = opts[:authenticate_fee]
     end
-
+    
     TransactionService::Transaction.create({
         transaction: transaction,
         gateway_fields: gateway_fields
@@ -309,7 +321,7 @@ class PreauthorizeTransactionsController < ApplicationController
       community: @current_community,
       tx_params: tx_params,
       listing: listing)
-
+      
     render "listing_conversations/initiate",
            locals: {
              start_on: tx_params[:start_on],
@@ -328,6 +340,7 @@ class PreauthorizeTransactionsController < ApplicationController
              stripe_in_use: order.stripe_in_use,
              stripe_publishable_key: StripeHelper.publishable_key(@current_community.id),
              stripe_shipping_required: listing.require_shipping_address && tx_params[:delivery] != :pickup,
+             pcp_in_use: order.pcp_in_use,
              form_action: initiated_order_path(person_id: @current_user.id, listing_id: listing.id),
              country_code: LocalizationUtils.valid_country_code(@current_community.country),
              paypal_analytics_event: paypal_event_params(listing),
@@ -361,11 +374,14 @@ class PreauthorizeTransactionsController < ApplicationController
   end
 
   def initiated_success(tx_params)
+    Rails.logger.error("params[:payment_type].to_sym,")
+    Rails.logger.error(params[:payment_type].to_sym)
     order = TransactionService::Order.new(
       community: @current_community,
       tx_params: tx_params,
       listing: listing)
-
+    
+    Rails.logger.error("333333")
     tx_response = create_preauth_transaction(
       payment_type: params[:payment_type].to_sym,
       community: @current_community,
@@ -385,7 +401,8 @@ class PreauthorizeTransactionsController < ApplicationController
         end_time: tx_params[:end_time],
         per_hour: tx_params[:per_hour]
       })
-
+    
+    Rails.logger.error("4444444")
     handle_tx_response(tx_response, params[:payment_type].to_sym)
   end
 

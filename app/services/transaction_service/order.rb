@@ -29,6 +29,7 @@ module TransactionService
          buyer_fee: buyer_fee,
          paypal_in_use: paypal_in_use,
          stripe_in_use: stripe_in_use,
+         pcp_in_use: pcp_in_use,
          total_label: nil
       }
     end
@@ -122,6 +123,10 @@ module TransactionService
 
     def paypal_in_use
       @paypal_in_use ||= PaypalHelper.user_and_community_ready_for_payments?(listing.author_id, community.id)
+    end
+
+    def pcp_in_use
+      @pcp_in_use ||= PcpHelper.user_and_community_ready_for_payments?(listing.author_id, community.id)
     end
 
     def stripe_in_use

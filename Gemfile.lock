@@ -368,6 +368,8 @@ GEM
     passenger (6.0.1)
       rack
       rake (>= 0.8.1)
+    paypal-checkout-sdk (1.0.3)
+      paypalhttp (~> 1.0.0)
     paypal-sdk-core (0.3.4)
       multi_json (~> 1.0)
       xml-simple
@@ -375,6 +377,10 @@ GEM
       paypal-sdk-core (~> 0.3.0)
     paypal-sdk-permissions (1.96.4)
       paypal-sdk-core (~> 0.3.0)
+    paypal-sdk-rest (1.7.3)
+      multi_json (~> 1.0)
+      xml-simple
+    paypalhttp (1.0.0)
     possibly (1.0.1)
     premailer (1.10.4)
       addressable
@@ -437,7 +443,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.2.2)
       rake
-    raindrops (0.19.0)
     rake (11.3.0)
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
@@ -566,12 +571,6 @@ GEM
     unf_ext (0.0.7.4)
     unicode-display_width (1.5.0)
     unicode_utils (1.4.0)
-    unicorn (5.4.1)
-      kgio (~> 2.6)
-      raindrops (~> 0.7)
-    unicorn-rails (2.2.1)
-      rack
-      unicorn
     uuidtools (2.1.5)
     warden (1.2.8)
       rack (>= 2.0.6)
@@ -660,8 +659,10 @@ DEPENDENCIES
   omniauth-linkedin-oauth2 (>= 1.0.0)
   paperclip (~> 5.2.1)
   passenger (~> 6.0.1)
+  paypal-checkout-sdk (~> 1.0.3)
   paypal-sdk-merchant (~> 1.116.0)
   paypal-sdk-permissions (~> 1.96.4)
+  paypal-sdk-rest (~> 1.7.3)
   possibly (~> 1.0.1)
   premailer (~> 1.10.4)
   pry-byebug
@@ -697,7 +698,6 @@ DEPENDENCIES
   twitter_cldr
   tzinfo-data (~> 1.2017, >= 1.2017.2)
   uglifier (~> 3.2.0)
-  unicorn-rails (~> 2.2)
   uuidtools (~> 2.1.5)
   web-console (~> 3.7.0)
   web_translate_it (~> 2.4.1)
@@ -708,8 +708,4 @@ RUBY VERSION
    ruby 2.6.2p47
 
 BUNDLED WITH
-<<<<<<< HEAD
-   1.16.4
-=======
    1.17.2
->>>>>>> 29fcc530a476b934f49b682b8c16b958153785f4

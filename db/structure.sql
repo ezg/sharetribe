@@ -1198,6 +1198,39 @@ CREATE TABLE `paypal_tokens` (
   KEY `index_paypal_tokens_on_transaction_id` (`transaction_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `pcp_payments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pcp_payments` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `community_id` int(11) DEFAULT NULL,
+  `transaction_id` int(11) DEFAULT NULL,
+  `payer_id` varchar(255) DEFAULT NULL,
+  `receiver_id` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `sum_cents` int(11) DEFAULT NULL,
+  `commission_cents` int(11) DEFAULT NULL,
+  `currency` varchar(255) DEFAULT NULL,
+  `pcp_id` varchar(255) DEFAULT NULL,
+  `pcp_self_url` varchar(255) DEFAULT NULL,
+  `pcp_approve_url` varchar(255) DEFAULT NULL,
+  `pcp_update_url` varchar(255) DEFAULT NULL,
+  `pcp_authorize_url` varchar(255) DEFAULT NULL,
+  `fee_cents` int(11) DEFAULT NULL,
+  `real_fee_cents` int(11) DEFAULT NULL,
+  `subtotal_cents` int(11) DEFAULT NULL,
+  `transfered_at` datetime DEFAULT NULL,
+  `available_on` datetime DEFAULT NULL,
+  `authenticate_cents` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `buyer_commission_cents` int(11) DEFAULT '0',
+  `pcp_authorization_id` varchar(255) DEFAULT NULL,
+  `pcp_capture_id` varchar(255) DEFAULT NULL,
+  `pcp_refund_id` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `people`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -2386,6 +2419,9 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20190319114719'),
 ('20190319122745'),
 ('20190503113330'),
-('20190625113330');
+('20190625113330'),
+('20191212125553'),
+('20191215084827'),
+('20191315084827');
 
 

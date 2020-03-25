@@ -134,6 +134,15 @@ module TransactionService::AvailableCurrencies
       (stripe_mode == :destination || StripeService::Store::StripeAccount::VALID_BANK_CURRENCIES.include?(currency))
   end
 
+  def pcp_allows_country_and_currency?(country, currency)
+    rule = VALID_CURRENCIES[currency]
+    if rule == :country_sets
+      COUNTRY_SET_STRIPE_AND_PAYPAL.include?(country) || COUNTRY_SET_PAYPAL_ONLY.include?(country)
+    else
+      country == rule
+    end
+  end
+
   def paypal_allows_country_and_currency?(country, currency)
     rule = VALID_CURRENCIES[currency]
     if rule == :country_sets

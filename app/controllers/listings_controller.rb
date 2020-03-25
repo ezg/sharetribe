@@ -331,6 +331,7 @@ class ListingsController < ApplicationController
 
   def form_content
     make_listing_presenter
+    Rails.logger.error("000000")
 
     if @listing.new_record?
       @listing.init_origin_location(@listing_presenter.new_listing_author.location)
@@ -421,6 +422,7 @@ class ListingsController < ApplicationController
   end
 
   def payment_setup_status(community:, user:, listing:, payment_type:, process:)
+    Rails.logger.error(payment_type)
     case [payment_type, process]
     when matches([nil]),
          matches([__, :none])

@@ -177,10 +177,12 @@ class ListingPresenter < MemoisticPresenter
   def commission
     paypal_ready = PaypalHelper.community_ready_for_payments?(@current_community.id)
     stripe_ready = StripeHelper.community_ready_for_payments?(@current_community.id)
+    pcp_ready = PcpHelper.community_ready_for_payments?(@current_community.id)
 
     supported = []
     supported << :paypal if paypal_ready
     supported << :stripe if stripe_ready
+    supported << :pcp if pcp_ready
     payment_type = supported.size > 1 ? supported : supported.first
 
     currency = @current_community.currency
@@ -200,7 +202,7 @@ class ListingPresenter < MemoisticPresenter
         stripe_commission: 0,
         stripe_minimum_transaction_fee: 0
       }
-    when matches([:paypal]), matches([:stripe]), matches([[:paypal, :stripe]])
+    when matches([:paypal]), matches([:stripe]), matches([:pcp]), matches([[:paypal, :stripe]])
       p_set = Maybe(payment_settings_api.get_active_by_gateway(community_id: @current_community.id, payment_gateway: payment_type))
         .select {|res| res[:success]}
         .map {|res| res[:data]}

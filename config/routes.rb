@@ -171,6 +171,15 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :pcp_service do
+      resources :checkout_orders do
+        collection do
+          get :success
+          get :cancel
+        end
+      end
+    end
+
     namespace :admin do
       get '' => "getting_started_guide#index"
 

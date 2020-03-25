@@ -13,24 +13,33 @@ class Admin::PaymentPreferencesController < Admin::AdminBaseController
       more_locals.merge!(stripe_index)
     end
 
+    if @pcp_enabled
+      more_locals.merge!(pcp_index)
+    end
+
     more_locals.merge!(build_prefs_form)
     view_locals = build_view_locals.merge(more_locals)
 
     stripe_connected =  view_locals[:stripe_enabled] && view_locals[:stripe_account] && view_locals[:stripe_account][:api_verified]
     paypal_connected =  view_locals[:paypal_enabled] && view_locals[:paypal_account].present?
+    pcp_connected =  view_locals[:pcp_enabled] && view_locals[:pcp_account].present?
 
     stripe_mode = stripe_api.charges_mode(@current_community.id)
     buyer_commission = stripe_tx_settings[:active] && (stripe_tx_settings[:commission_from_buyer].to_i > 0 || stripe_tx_settings[:minimum_buyer_transaction_fee_cents].to_i > 0)
     payment_locals = {
       stripe_connected: stripe_connected,
       paypal_connected: paypal_connected,
-      payments_connected: stripe_connected || paypal_connected,
+      pcp_connected: pcp_connected,
+      payments_connected: stripe_connected || paypal_connected || pcp_connected,
       stripe_allowed: TransactionService::AvailableCurrencies.stripe_allows_country_and_currency?(@current_community.country, @current_community.currency, stripe_mode),
       paypal_allowed: TransactionService::AvailableCurrencies.paypal_allows_country_and_currency?(@current_community.country, @current_community.currency),
+      pcp_allowed: TransactionService::AvailableCurrencies.pcp_allows_country_and_currency?(@current_community.country, @current_community.currency),
       stripe_ready: StripeHelper.community_ready_for_payments?(@current_community.id),
       paypal_ready: PaypalHelper.community_ready_for_payments?(@current_community.id),
+      pcp_ready: PcpHelper.community_ready_for_payments?(@current_community.id),
       paypal_enabled_by_admin: !!paypal_tx_settings[:active],
       stripe_enabled_by_admin: !!stripe_tx_settings[:active],
+      pcp_enabled_by_admin: !!pcp_tx_settings[:active],
       buyer_commission: buyer_commission
     }
 
@@ -73,7 +82,8 @@ class Admin::PaymentPreferencesController < Admin::AdminBaseController
   def ensure_payments_enabled
     @paypal_enabled = PaypalHelper.paypal_provisioned?(@current_community.id)
     @stripe_enabled = StripeHelper.stripe_provisioned?(@current_community.id)
-    unless @paypal_enabled || @stripe_enabled
+    @pcp_enabled = PcpHelper.pcp_provisioned?(@current_community.id)
+    unless @paypal_enabled || @stripe_enabled || @pcp_enabled
       flash[:error] = t("admin.communities.settings.payments_not_enabled")
       redirect_to admin_details_edit_path
     end
@@ -96,12 +106,27 @@ class Admin::PaymentPreferencesController < Admin::AdminBaseController
     }
   end
 
+  def pcp_index
+    pcp_account = pcp_tx_settings
+    {
+      pcp_account: pcp_account,
+      pcp_api_form: PcpApiKeysForm.new
+    }
+  end
+
   def tx_settings_by_gateway(gateway)
     tx_settings_api.get(community_id: @current_community.id, payment_gateway: gateway, payment_process: :preauthorize)
   end
 
   def paypal_tx_settings
     Maybe(tx_settings_by_gateway(:paypal))
+    .select { |result| result[:success] }
+    .map { |result| result[:data] }
+    .or_else({})
+  end
+
+  def pcp_tx_settings
+    Maybe(tx_settings_by_gateway(:pcp))
     .select { |result| result[:success] }
     .map { |result| result[:data] }
     .or_else({})
@@ -117,8 +142,10 @@ class Admin::PaymentPreferencesController < Admin::AdminBaseController
   def active_tx_setttings
     if @paypal_enabled
       paypal_tx_settings
-    else
+    elsif @stripe_enabled
       stripe_tx_settings
+    else
+      pcp_tx_settings
     end
   end
 
@@ -132,8 +159,12 @@ class Admin::PaymentPreferencesController < Admin::AdminBaseController
     if @stripe_enabled
       data[:stripe_prefs_form] = prefs_form_from_settings(stripe_tx_settings, 0, currency)
     end
+    if @pcp_enabled
+      data[:pcp_prefs_form] = prefs_form_from_settings(pcp_tx_settings, 0, currency)
+    end
+    
 
-    form = data[:paypal_prefs_form] || data[:stripe_prefs_form]
+    form = data[:paypal_prefs_form] || data[:stripe_prefs_form] || data[:pcp_prefs_form]
     data[:payment_prefs_form] = form
     data[:payment_prefs_valid] = form.valid?
     data
@@ -165,8 +196,10 @@ class Admin::PaymentPreferencesController < Admin::AdminBaseController
       support_email: APP_CONFIG.support_email,
       stripe_enabled: @stripe_enabled,
       paypal_enabled: @paypal_enabled,
+      pcp_enabled: @pcp_enabled,
       stripe_account: nil,
       paypal_account: nil,
+      pcp_account: nil,
       country_name: CountryI18nHelper.translate_country(@current_community.country)
     }
   end
@@ -252,6 +285,9 @@ class Admin::PaymentPreferencesController < Admin::AdminBaseController
         if stripe_tx_settings.present? && (params[:gateway] == 'stripe'|| form.mode == 'general')
           tx_settings_api.update(base_params.merge(payment_gateway: :stripe))
         end
+        if pcp_tx_settings.present? && (params[:gateway] == 'pcp'|| form.mode == 'general')
+          tx_settings_api.update(base_params.merge(payment_gateway: :pcp))
+        end
       end
 
       if form.mode == 'transaction_fee' || form.mode == 'paypal'
@@ -315,6 +351,13 @@ class Admin::PaymentPreferencesController < Admin::AdminBaseController
   end
 
   StripeApiKeysForm = FormUtils.define_form("StripeApiKeysForm",
+    :api_private_key,
+    :api_publishable_key).with_validations do
+    validates_format_of :api_private_key, with: Regexp.new(APP_CONFIG.stripe_private_key_pattern)
+    validates_format_of :api_publishable_key, with: Regexp.new(APP_CONFIG.stripe_publishable_key_pattern)
+  end
+
+  PcpApiKeysForm = FormUtils.define_form("ApiKeysForm",
     :api_private_key,
     :api_publishable_key).with_validations do
     validates_format_of :api_private_key, with: Regexp.new(APP_CONFIG.stripe_private_key_pattern)

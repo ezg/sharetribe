@@ -652,6 +652,7 @@ class Community < ApplicationRecord
     supported = []
     supported << :paypal if PaypalHelper.paypal_active?(self.id)
     supported << :stripe if StripeHelper.stripe_active?(self.id)
+    supported << :pcp if PcpHelper.pcp_active?(self.id)
     supported.size > 1 ? supported : supported.first
   end
 

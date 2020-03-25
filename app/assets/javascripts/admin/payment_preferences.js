@@ -25,6 +25,13 @@ window.ST = window.ST || {};
       return false;
     });
 
+    $("#config_pcp_toggle").click(function(){
+      $(".connect-row").hide();
+      $(".payment-tabs").show();
+      $(".tab-link.pcp").click();
+      return false;
+    });
+
     $("#transaction_preferences_form_paypal, #transaction_preferences_form_stripe").each(function() {
       $(this).validate({
         errorPlacement: function(error, element) {

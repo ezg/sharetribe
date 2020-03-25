@@ -65,12 +65,17 @@
               = t("listing_conversations.stripe_payment.payment")
         = render :partial => "listing_conversations/stripe_payment", locals: {  publishable_key: stripe_publishable_key, stripe_shipping_required: stripe_shipping_required, paypal_in_use: paypal_in_use}
 
+      - if pcp_in_use
+        .row
+          .col-12.payment-button-wrapper.paypal-payment
+            = button_tag t("paypal.pay_with_paypal"), class: "checkout-with-paypal-button"
+
       - if paypal_in_use && !stripe_in_use
         .row
           .col-12.payment-button-wrapper.paypal-payment
             = button_tag t("paypal.pay_with_paypal"), class: "checkout-with-paypal-button"
 
-      - if paypal_in_use  && stripe_in_use
+      - if paypal_in_use && stripe_in_use
         .row
           .col-12.paypal-or-stripe
             %span
@@ -81,7 +86,7 @@
               = t("paypal.checkout_with")
               = image_tag 'checkout_with_paypal.png'
 
-      - if stripe_in_use || paypal_in_use
+      - if stripe_in_use || paypal_in_use || pcp_in_use
         .row
           .col-12
             %p
@@ -93,7 +98,7 @@
     :javascript
       $(function(){
         $(".checkout-with-paypal-button").click(function(){
-          $("#payment_type").val("paypal");
+          $("#payment_type").val("pcp");
         });
         $(".checkout-with-stripe-button").click(function(){
           $("#payment_type").val("stripe");

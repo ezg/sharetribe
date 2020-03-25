@@ -27,15 +27,14 @@ module TransactionService::Process
 
     def do_create(tx, gateway_fields)
       gateway_adapter = TransactionService::Transaction.gateway_adapter(tx.payment_gateway)
-      Rails.logger.error('hhhheeeehhhe')
-      Rails.logger.error(gateway_adapter)
-      Rails.logger.error(tx)
+
       completion = gateway_adapter.create_payment(
         tx: tx,
         gateway_fields: gateway_fields,
         force_sync: true)
       if completion[:success] && completion[:sync]
-        finalize_create(tx: tx, gateway_adapter: gateway_adapter, force_sync: true)
+        Rails.logger.error("below commented out for pcp to work: search for 'fix is here' to see where status is set to preauthorized")
+        #finalize_create(tx: tx, gateway_adapter: gateway_adapter, force_sync: true)
       elsif !completion[:success]
         delete_failed_transaction(tx)
       end
@@ -60,49 +59,57 @@ module TransactionService::Process
 
     def do_finalize_create(transaction_id, community_id)
       tx = TxStore.get_in_community(community_id: community_id, transaction_id: transaction_id)
-      gateway_adapter = TransactionService::Transaction.gateway_adapter(tx.payment_gateway)
+      if tx.nil?
+        Rails.logger.error(">>>> do_finalize_create")
+        Rils.logger.error(transaction_id)
+        Rails.logger.error(tx)
+        Result::Success.new()
+      else
+        gateway_adapter = TransactionService::Transaction.gateway_adapter(tx.payment_gateway)
+        
+        res =
+          if tx.current_state == :preauthorized
+            Result::Success.new()
+          else
+            booking_res =
+              if tx.availability.to_sym == :booking && tx.booking.per_hour?
+                Result::Success.new()
+              elsif tx.availability.to_sym == :booking
 
-      res =
-        if tx.current_state == :preauthorized
-          Result::Success.new()
-        else
-          booking_res =
-            if tx.availability.to_sym == :booking && tx.booking.per_hour?
-              Result::Success.new()
-            elsif tx.availability.to_sym == :booking
+                initiate_booking(tx: tx).on_error { |error_msg, data|
+                  logger.error("Failed to initiate booking #{data.inspect} #{error_msg}", :failed_initiate_booking, tx.slice(:community_id, :id).merge(error_msg: error_msg))
 
-              initiate_booking(tx: tx).on_error { |error_msg, data|
-                logger.error("Failed to initiate booking #{data.inspect} #{error_msg}", :failed_initiate_booking, tx.slice(:community_id, :id).merge(error_msg: error_msg))
+                  void_res = gateway_adapter.reject_payment(tx: tx, reason: "")[:response]
+                  Rails.logger.error("bbb")
 
-                void_res = gateway_adapter.reject_payment(tx: tx, reason: "")[:response]
+                  void_res.on_success {
+                    logger.info("Payment voided after failed transaction", :void_payment, tx.slice(:community_id, :id))
+                  }.on_error { |payment_error_msg, payment_data|
+                    logger.error("Failed to void payment after failed booking", :failed_void_payment, tx.slice(:community_id, :id).merge(error_msg: payment_error_msg))
+                  }
+                }.on_success { |data|
+                  response_body = data[:body]
+                  booking = response_body[:data]
 
-                void_res.on_success {
-                  logger.info("Payment voided after failed transaction", :void_payment, tx.slice(:community_id, :id))
-                }.on_error { |payment_error_msg, payment_data|
-                  logger.error("Failed to void payment after failed booking", :failed_void_payment, tx.slice(:community_id, :id).merge(error_msg: payment_error_msg))
+                  TxStore.update_booking_uuid(
+                    community_id: tx.community_id,
+                    transaction_id: tx.id,
+                    booking_uuid: booking[:id]
+                  )
                 }
-              }.on_success { |data|
-                response_body = data[:body]
-                booking = response_body[:data]
+              else
+                Result::Success.new()
+              end
 
-                TxStore.update_booking_uuid(
-                  community_id: tx.community_id,
-                  transaction_id: tx.id,
-                  booking_uuid: booking[:id]
-                )
-              }
-            else
-              Result::Success.new()
-            end
+            booking_res.on_success {
+              TransactionService::StateMachine.transition_to(tx.id, :preauthorized)
+            }
+          end
 
-          booking_res.on_success {
-            TransactionService::StateMachine.transition_to(tx.id, :preauthorized)
-          }
-        end
-
-      res.and_then {
-        Result::Success.new(TransactionService::Transaction.create_transaction_response(tx))
-      }
+        res.and_then {
+          Result::Success.new(TransactionService::Transaction.create_transaction_response(tx))
+        }
+      end
     end
 
     def reject(tx:, message:, sender_id:, gateway_adapter:)
@@ -162,6 +169,8 @@ module TransactionService::Process
     # Stripe gateway works in sync mode. Failed transaction will be deleted.
     def delete_failed_transaction(tx)
       if tx.payment_gateway == :stripe
+        TransactionService::Store::Transaction.delete(community_id: tx.community_id, transaction_id: tx.id)
+      elsif tx.payment_gateway == :pcp
         TransactionService::Store::Transaction.delete(community_id: tx.community_id, transaction_id: tx.id)
       end
     end

@@ -14,12 +14,14 @@ module TransactionService::Transaction
   SETTINGS_ADAPTERS = {
     paypal: TransactionService::Gateway::PaypalSettingsAdapter.new,
     stripe: TransactionService::Gateway::StripeSettingsAdapter.new,
+    pcp: TransactionService::Gateway::PcpSettingsAdapter.new,
     none: TransactionService::Gateway::FreeSettingsAdapter.new
   }
 
   GATEWAY_ADAPTERS = {
     paypal: TransactionService::Gateway::PaypalAdapter.new,
     stripe: TransactionService::Gateway::StripeAdapter.new,
+    pcp: TransactionService::Gateway::PcpAdapter.new,
     none: TransactionService::Gateway::FreeAdapter.new
   }
 
@@ -42,6 +44,8 @@ module TransactionService::Transaction
       APP_CONFIG.paypal_expiration_period.to_i
     when :stripe
       APP_CONFIG.stripe_expiration_period.to_i
+    when :pcp
+      APP_CONFIG.pcp_expiration_period.to_i
     else
       raise ArgumentError.new("Unknown payment_type: '#{payment_type}'")
     end
@@ -107,17 +111,14 @@ module TransactionService::Transaction
 
   def create(opts, force_sync: true)
     opts_tx = opts[:transaction].to_hash
-
+    
     set_adapter = settings_adapter(opts_tx[:payment_gateway])
     tx_process_settings = set_adapter.tx_process_settings(opts_tx)
 
     tx = TxStore.create(opts_tx.merge(tx_process_settings))
-
     tx_process = tx_process(tx[:payment_process])
     gateway_adapter = gateway_adapter(tx[:payment_gateway])
     
-    
-    Rails.logger.error(tx[:payment_process])
     res = tx_process.create(tx: tx,
                             gateway_fields: opts[:gateway_fields],
                             gateway_adapter: gateway_adapter,

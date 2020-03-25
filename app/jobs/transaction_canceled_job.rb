@@ -11,6 +11,7 @@ class TransactionCanceledJob < Struct.new(:conversation_id, :community_id)
   end
 
   def perform
+    Rails.logger.error("in TransactionCanceledJob")
     begin
       transaction = Transaction.find(conversation_id)
       community = Community.find(community_id)

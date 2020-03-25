@@ -37,4 +37,5 @@ class PaymentSettings < ApplicationRecord
   scope :preauthorize, -> { where(payment_process: :preauthorize) }
   scope :paypal, -> { preauthorize.where(payment_gateway: :paypal) }
   scope :stripe, -> { preauthorize.where(payment_gateway: :stripe) }
+  scope :pcp, -> { preauthorize.where(payment_gateway: :pcp) }
 end

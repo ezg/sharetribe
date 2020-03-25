@@ -371,8 +371,10 @@ class ApplicationController < ActionController::Base
       has_paid_listings = PaymentHelper.open_listings_with_payment_process?(@current_community.id, @current_user.id)
       paypal_community  = PaypalHelper.community_ready_for_payments?(@current_community.id)
       stripe_community  = StripeHelper.community_ready_for_payments?(@current_community.id)
+      pcp_community     = PcpHelper.community_ready_for_payments?(@current_community.id)
       paypal_ready      = PaypalHelper.account_prepared_for_user?(@current_user.id, @current_community.id)
       stripe_ready      = StripeHelper.user_stripe_active?(@current_community.id, @current_user.id)
+      pcp_ready         = PcpHelper.user_stripe_active?(@current_community.id, @current_user.id)
 
       accept_payments = []
       if paypal_community && paypal_ready
@@ -380,6 +382,9 @@ class ApplicationController < ActionController::Base
       end
       if stripe_community && stripe_ready
         accept_payments << :stripe
+      end
+      if pcp_community && pcp_ready
+        accept_payments << :pcp
       end
 
       if has_paid_listings && accept_payments.blank?
