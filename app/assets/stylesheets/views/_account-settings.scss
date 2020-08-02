@@ -261,6 +261,14 @@
   display: none;
 }
 
+.pcp-wizard-connect-button {
+  cursor:pointer;
+  border: none;
+  &:hover {
+    opacity:0.8;
+  }
+}
+
 /* These styles are required for stripe.js card input form*/
 .StripeElement {
   background-color: white;

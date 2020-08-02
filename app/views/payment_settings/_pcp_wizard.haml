@@ -1,0 +1,19 @@
+- if @is_ready
+  .row
+    .col-12
+      PayPal account successfully connected. PayPal merchant id: #{@merchant_id}
+- else
+  .row
+    .col-12
+      In order to receive payments, please connect your PayPal account:
+
+
+= form_tag '', :method => :put do
+  .row
+    - if !@is_ready
+      .col-12
+        = image_submit_tag('https://www.paypalobjects.com/webstatic/en_US/developer/docs/login/connectwithpaypalbutton.png', class: 'pcp-wizard-connect-button')
+    - else
+      .col-12
+        = submit_tag "unlink PayPal account", class: 'button'
+

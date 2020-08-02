@@ -45,14 +45,14 @@ module PcpHelper
   end
 
   def user_and_community_ready_for_payments?(person_id, community_id)
-    pcp_active?(community_id)
-    # && user_stripe_active?(community_id, person_id)
+    pcp_active?(community_id) && user_pcp_active?(community_id, person_id)
   end
 
-  def user_stripe_active?(community_id, person_id)
-    #account = StripeService::API::Api.accounts.get(community_id: community_id, person_id: person_id).data
-    #account && account[:stripe_seller_id].present? && account[:stripe_bank_id].present?
-    true
+  def user_pcp_active?(community_id, person_id)
+    gateway_adapter = TransactionService::Transaction.gateway_adapter("pcp")
+    person = Person.find(person_id)     
+    is_ready = gateway_adapter.is_ready_for_payment(person.pcp_salt)
+    is_ready
   end
 
   def publishable_key(community_id)

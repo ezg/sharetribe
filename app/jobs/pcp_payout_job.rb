@@ -17,11 +17,7 @@ class PcpPayoutJob < Struct.new(:transaction_id, :community_id)
   def perform
     tx = ::Transaction.find(transaction_id)
     
-    PayPal::SDK.configure(
-      :mode =>  APP_CONFIG.pcp_mode,
-      :client_id => APP_CONFIG.pcp_client_id,
-      :client_secret => APP_CONFIG.pcp_client_secret,
-      :ssl_options => { } )
+    gateway_adapter = TransactionService::Transaction.gateway_adapter("pcp")
 
     Rails.logger.error("in payout 1")
     Rails.logger.error(tx.id)
@@ -29,33 +25,17 @@ class PcpPayoutJob < Struct.new(:transaction_id, :community_id)
     payment = PaymentStore.get(tx.community_id, tx.id)
     Rails.logger.error(payment)
 
-    seller_gets = payment[:subtotal] - payment[:commission] - payment[:authenticate] 
-    Rails.logger.error(seller_gets)
+    #seller_gets = payment[:subtotal] - payment[:commission] - payment[:authenticate] 
+    #Rails.logger.error(seller_gets)
 
-    @payout = Payout.new({
-                :sender_batch_header => {
-                    :sender_batch_id => SecureRandom.hex(8),
-                    :email_subject => 'You have a payout from RESWINGS!'
-                },
-                :items => [
-                    {
-                        :recipient_type => 'EMAIL',
-                        :amount => {
-                            :value => seller_gets.cents / 100.0,
-                            :currency => seller_gets.currency
-                        },
-                        :note => 'Thanks for your patronage!',
-                        :sender_item_id => tx.id,
-                        :receiver => 'emanuel.zgraggen@gmail.com'
-                    }
-                ]
-            })
-    begin
-      @payout_batch = @payout.create
-      Rails.logger.info("Created Payout with [#{@payout_batch.batch_header.payout_batch_id}]")
-    rescue ResourceNotFound => err
-      Rails.logger.error @payout.error.inspect
-    end
+    response = gateway_adapter.referenced_payout(payment[:pcp_capture_id])
+    puts response
+    response
+    #raise
+
+  rescue StandardError => exception
+    error(self, exception, {})
+    raise
   end
 
   def max_attempts

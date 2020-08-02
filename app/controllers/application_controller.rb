@@ -374,7 +374,7 @@ class ApplicationController < ActionController::Base
       pcp_community     = PcpHelper.community_ready_for_payments?(@current_community.id)
       paypal_ready      = PaypalHelper.account_prepared_for_user?(@current_user.id, @current_community.id)
       stripe_ready      = StripeHelper.user_stripe_active?(@current_community.id, @current_user.id)
-      pcp_ready         = PcpHelper.user_stripe_active?(@current_community.id, @current_user.id)
+      pcp_ready         = PcpHelper.user_pcp_active?(@current_community.id, @current_user.id)
 
       accept_payments = []
       if paypal_community && paypal_ready

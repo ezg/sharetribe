@@ -37,8 +37,6 @@ class PreauthorizeTransactionsController < ApplicationController
   end
 
   def initiated
-    Rails.logger.error("12345")
-    Rails.logger.error("asdfasdfasdfasdfasd")
     Rails.logger.error(params[:payment_type])
 
     params_validator = params_per_hour? ? TransactionService::Validation::NewPerHourTransactionParams : TransactionService::Validation::NewTransactionParams
@@ -48,8 +46,6 @@ class PreauthorizeTransactionsController < ApplicationController
         shipping_enabled: listing.require_shipping_address,
         pickup_enabled: listing.pickup_enabled)
 
-      
-      Rails.logger.error("111111")
       TransactionService::Validation::Validator.validate_initiated_params(
         tx_params: tx_params,
         marketplace_uuid: @current_community.uuid_object,
@@ -64,7 +60,6 @@ class PreauthorizeTransactionsController < ApplicationController
     }
 
     if validation_result.success
-      Rails.logger.error("222222")
       initiated_success(validation_result.data)
     else
       initiated_error(validation_result.data)

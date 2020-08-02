@@ -29,7 +29,6 @@ class Person::PaymentSettingsPresenter
   end
 
   def payments_enabled?
-    # HEEEERRRREEEEE
     paypal_enabled || stripe_enabled || pcp_enabled
   end
 
@@ -54,7 +53,7 @@ class Person::PaymentSettingsPresenter
   end
 
   def pcp_enabled
-    @stripe_enabled = true
+    @pcp_enabled = true
   end
 
   # seller_account
