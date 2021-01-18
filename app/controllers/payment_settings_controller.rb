@@ -14,22 +14,13 @@ class PaymentSettingsController < ApplicationController
 
   def update
     gateway_adapter = TransactionService::Transaction.gateway_adapter("pcp")
-    is_ready = gateway_adapter.is_ready_for_payment(@current_user.pcp_salt)
+    is_ready = gateway_adapter.is_ready_for_payment(@current_user)
 
-    if !is_ready
-      link_account_response = gateway_adapter.link_account(person_payment_settings_url(@current_user), @current_user.pcp_salt)
-      redirect_link = ""
-      for link in link_account_response.links
-          if link["rel"] == "action_url"
-            redirect_link = link["href"]
-          end
-      end
-      redirect_to redirect_link
-    else
-      @current_user.pcp_salt = SecureRandom.hex(10)
-      @current_user.set_pcp_salt(@current_user.pcp_salt)
-      redirect_to person_payment_settings_url(@current_user)
-    end
+    Rails.logger.error(">>> unlink")
+    @current_user.pcp_salt = SecureRandom.hex(10)
+    @current_user.set_pcp_salt(@current_user.pcp_salt)
+    @current_user.set_merchant_id(nil)
+    redirect_to person_payment_settings_url(@current_user)
   end
 
   private
@@ -37,18 +28,30 @@ class PaymentSettingsController < ApplicationController
   def set_presenter
     gateway_adapter = TransactionService::Transaction.gateway_adapter("pcp")
 
-    if @current_user.pcp_salt == nil
+    merchant_id = gateway_adapter.get_merchant_id_by_user(@current_user)
+    Rails.logger.error("kkkkkkk")
+    Rails.logger.error(merchant_id)
+
+    if merchant_id == nil || @current_user.pcp_salt == nil
       @current_user.pcp_salt = SecureRandom.hex(10)
       @current_user.set_pcp_salt(@current_user.pcp_salt)
     end
+
+    link_account_response = gateway_adapter.link_account(person_payment_settings_url(@current_user), @current_user.pcp_salt)
+    redirect_link = ""
+    for link in link_account_response.links
+        if link["rel"] == "action_url"
+          redirect_link = link["href"] + "&displayMode=minibrowser"
+        end
+    end
+    Rails.logger.error("-------")
+    Rails.logger.error(redirect_link)
     
-    is_ready = gateway_adapter.is_ready_for_payment(@current_user.pcp_salt)
-    merchant_id = gateway_adapter.get_merchant_id(@current_user.pcp_salt)
-    
-    Rails.logger.error(merchant_id)
+    is_ready = gateway_adapter.is_ready_for_payment(@current_user)
     
     @selected_left_navi_link = "payments"
     @is_ready = is_ready
+    @action_url = redirect_link
     @merchant_id = merchant_id
     @presenter = Person::PcpPaymentSettingsPresenter.new(community: @current_community, person_url: person_url(@current_user.username))
   end

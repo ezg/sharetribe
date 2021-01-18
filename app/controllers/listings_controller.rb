@@ -88,6 +88,8 @@ class ListingsController < ApplicationController
     make_onboarding_popup
 
     make_listing_presenter
+    Rails.logger.error("-_____-")
+    Rails.logger.error(new_transaction_path(listing_id: @listing.id))
     @listing_presenter.form_path = new_transaction_path(listing_id: @listing.id)
     @seo_service.listing = @listing
 

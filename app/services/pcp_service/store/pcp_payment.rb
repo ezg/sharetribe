@@ -19,7 +19,12 @@ module PcpService::Store::PcpPayment
     [:pcp_self_url, :string],
     [:pcp_approve_url, :string],
     [:pcp_update_url, :string],
-    [:pcp_authorize_url, :string]
+    [:pcp_authorize_url, :string],
+    [:order_debug_id, :string],
+    [:authorizations_capture_debug_id, :string],
+    [:authorize_debug_id, :string],
+    [:referenced_payout_debug_id, :string],
+    [:authorizations_void_debug_id, :string]
   )
 
   PcpPayment = EntityUtils.define_builder(
@@ -42,7 +47,11 @@ module PcpService::Store::PcpPayment
     [:pcp_self_url, :string],
     [:pcp_approve_url, :string],
     [:pcp_update_url, :string],
-    [:pcp_authorize_url, :string],
+    [:order_debug_id, :string],
+    [:authorizations_capture_debug_id, :string],
+    [:authorize_debug_id, :string],
+    [:referenced_payout_debug_id, :string],
+    [:authorizations_void_debug_id, :string],
     [:transfered_at, :time],
     [:available_on, :time]
   )

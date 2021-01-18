@@ -25,7 +25,7 @@ class PreauthorizeTransactionsController < ApplicationController
         quantity_selector: listing.quantity_selector&.to_sym,
         shipping_enabled: listing.require_shipping_address,
         pickup_enabled: listing.pickup_enabled,
-        authenticate: tx_params[:authenticate],
+        authenticate: false, #tx_params[:authenticate],
         availability_enabled: listing.availability.to_sym == :booking,
         stripe_in_use: StripeHelper.user_and_community_ready_for_payments?(listing.author_id, @current_community.id))
     }
@@ -37,6 +37,8 @@ class PreauthorizeTransactionsController < ApplicationController
   end
 
   def initiated
+    Rails.logger.error("oooooooooooooooooo")
+    #Rails.logger.error
     Rails.logger.error(params[:payment_type])
 
     params_validator = params_per_hour? ? TransactionService::Validation::NewPerHourTransactionParams : TransactionService::Validation::NewTransactionParams
@@ -108,7 +110,14 @@ class PreauthorizeTransactionsController < ApplicationController
     if !tx_response[:success]
       render_error_response(request.xhr?, t("error_messages.#{gateway}.generic_error"), action: :initiate)
     elsif (tx_response[:data][:gateway_fields][:redirect_url])
-      xhr_json_redirect tx_response[:data][:gateway_fields][:redirect_url]
+      Rails.logger.error(">////// 3")
+      # comment in for old way
+      #xhr_json_redirect tx_response[:data][:gateway_fields][:redirect_url]
+      render json: {
+        order_id: tx_response[:data][:gateway_fields][:pcp_id],
+        return_url: tx_response[:data][:gateway_fields][:return_url],
+        cancel_url: tx_response[:data][:gateway_fields][:cancel_url]
+      }
     elsif gateway == :stripe
       xhr_json_redirect person_transaction_path(@current_user, tx_response[:data][:transaction][:id])
     else
@@ -317,9 +326,13 @@ class PreauthorizeTransactionsController < ApplicationController
       tx_params: tx_params,
       listing: listing)
       
+    gateway_adapter = TransactionService::Transaction.gateway_adapter("pcp") 
+    merchant_id =  gateway_adapter.get_merchant_id_by_user(listing.author)
+
     render "listing_conversations/initiate",
            locals: {
              start_on: tx_params[:start_on],
+             merchant_id: merchant_id,
              end_on: tx_params[:end_on],
              start_time: tx_params[:start_time],
              end_time:   tx_params[:end_time],
@@ -384,7 +397,7 @@ class PreauthorizeTransactionsController < ApplicationController
       listing_quantity: order.quantity,
       user: @current_user,
       content: tx_params[:message],
-      force_sync: !request.xhr?,
+      force_sync: true,
       delivery_method: tx_params[:delivery],
       authenticate: tx_params[:authenticate],
       shipping_price: order.shipping_total,
@@ -397,7 +410,9 @@ class PreauthorizeTransactionsController < ApplicationController
         per_hour: tx_params[:per_hour]
       })
     
-    Rails.logger.error("4444444")
+    Rails.logger.error(">>><<<<<}")
+    Rails.logger.error(tx_response)
+    Rails.logger.error(tx_response[:data][:gateway_fields][:redirect_url])
     handle_tx_response(tx_response, params[:payment_type].to_sym)
   end
 

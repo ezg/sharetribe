@@ -12,7 +12,22 @@
   .row
     - if !@is_ready
       .col-12
-        = image_submit_tag('https://www.paypalobjects.com/webstatic/en_US/developer/docs/login/connectwithpaypalbutton.png', class: 'pcp-wizard-connect-button')
+        %div{}
+          - content_for :extra_javascript do
+            :javascript
+              (function(d, s, id) {
+                var js, ref = d.getElementsByTagName(s)[0];
+                if (!d.getElementById(id)) {
+                  js = d.createElement(s);
+                  js.id = id;
+                  js.async = true;
+                  js.src = "https://sandbox.paypal.com/webapps/merchantboarding/js/lib/lightbox/partner.js";
+                  ref.parentNode.insertBefore(js, ref);
+                }
+              }(document, "script", "paypal-js"));
+          %a{:href => "#{@action_url}", :target => "PPFrame", :"data-paypal-button" => "true"}
+            Connect with PayPal
+
     - else
       .col-12
         = submit_tag "unlink PayPal account", class: 'button'

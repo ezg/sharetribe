@@ -29,8 +29,15 @@ class PcpPayoutJob < Struct.new(:transaction_id, :community_id)
     #Rails.logger.error(seller_gets)
 
     response = gateway_adapter.referenced_payout(payment[:pcp_capture_id])
-    puts response
-    response
+    if response != nil
+      payment[:data] = { 
+        status: "PAYOUT",
+        referenced_payout_debug_id: response.result.headers["paypal-debug-id"][0]
+      }
+      PaymentStore.update(payment)
+      puts response.result
+      response.result
+    end
     #raise
 
   rescue StandardError => exception

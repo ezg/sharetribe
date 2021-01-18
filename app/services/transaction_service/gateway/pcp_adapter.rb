@@ -77,9 +77,10 @@ module TransactionService::Gateway
     def authorize_order(order_id)
         request = OrdersAuthorizeRequest::new(order_id)
         response = PcpClient::client::execute(request)
+
         puts PcpClient::openstruct_to_hash(response.result).to_json
 
-        response.result
+        response
       rescue StandardError => e
         Airbrake.notify(e)
         Result::Error.new(e.message)
@@ -144,7 +145,7 @@ module TransactionService::Gateway
       request.request_body(body)
 
       response = PcpClient::client::execute(request)
-      response.result
+      response
 
     rescue PayPalHttp::HttpError => ioe
       # Exception occured while processing the refund.
@@ -187,37 +188,27 @@ module TransactionService::Gateway
         response.result
     end
 
-    def get_merchant_id(pcp_salt)
-      if pcp_salt == nil
+    def get_merchant_id_by_user(user)
+      if user.merchant_id != nil
+        return user.merchant_id
+      end
+      if user.pcp_salt == nil
         return nil
       end
-      track_partner_response = track_partner(pcp_salt)
+      
+      track_partner_response = track_partner(user.pcp_salt)
       merchant_id = nil
       if track_partner_response != nil
         merchant_id = track_partner_response.merchant_id
+        user.set_merchant_id(merchant_id)
       end
       merchant_id
     end
 
-    def is_ready_for_payment(pcp_salt)
-      if pcp_salt == nil
-        return false
-      end
-      if merchant_dictionary.key?(pcp_salt)
-        obj = merchant_dictionary[pcp_salt]
-
-        elapsed = ((DateTime.now() - obj[:last_checked]) * 24 * 60 * 60).to_i
-        puts elapsed
-
-        if obj[:is_ready] && elapsed < (10 * 60)
-          return true
-        end
-      end 
-      
-      track_partner_response = track_partner(pcp_salt)
+    def is_ready_for_payment(user)
+      merchant_id = get_merchant_id_by_user(user)
       is_ready = false
-      if track_partner_response != nil
-        merchant_id = track_partner_response.merchant_id
+      if merchant_id != nil
         Rails.logger.info(">>> merchant_id: " + merchant_id)
 
         check_merchant_response = check_merchant(merchant_id)
@@ -243,17 +234,17 @@ module TransactionService::Gateway
             end
           end
 
+          Rails.logger.info(">>> yay: " + merchant_id)
           is_ready = has_payment && has_refund && has_partner_fee && has_delay_funds_disbursement && has_access_merchant_information
         end
       end
-      merchant_dictionary[pcp_salt] = {"is_ready": is_ready, last_checked: DateTime.now() }
-      puts merchant_dictionary
+
       is_ready
     end
 
     def create_payment(tx:, gateway_fields:, force_sync:)
       person = Person.find(tx.listing.author_id)     
-      merchant_id = get_merchant_id(person.pcp_salt)
+      merchant_id = get_merchant_id_by_user(person)
       #oo = pcp_order["shipping"]["dd"]
 
       subtotal   = order_total(tx) # contains authentication fee
@@ -276,7 +267,7 @@ module TransactionService::Gateway
                 cancel_url: gateway_fields[:cancel_url],
                 brand_name: 'RESWINGS',
                 landing_page: 'BILLING',
-                user_action: 'CONTINUE'
+                user_action: 'PAY_NOW'
             },
             purchase_units: [
                 {
@@ -324,11 +315,15 @@ module TransactionService::Gateway
         request.headers["PayPal-Partner-Attribution-Id"] = "Reswings_SP"
         request.headers["prefer"] = "return=representation"
         request.request_body(body)
+
+        puts "llllll"
+        puts request.to_json
         response = PcpClient::client.execute(request)
         puts "--------"
         puts PcpClient::openstruct_to_hash(response.result).to_json
 
         Rails.logger.error(response)
+        Rails.logger.error(response.headers)
 
         pcp_self_url = ""
         pcp_approve_url = ""
@@ -360,13 +355,18 @@ module TransactionService::Gateway
           pcp_self_url: pcp_self_url,
           pcp_approve_url: pcp_approve_url,
           pcp_update_url: pcp_update_url,
-          pcp_authorize_url: pcp_authorize_url
+          pcp_authorize_url: pcp_authorize_url,
+          order_debug_id: response.headers["paypal-debug-id"][0]
         }
         payment = PaymentStore.create(tx.community_id, tx.id, payload)
         
         result = {
             transaction_id: tx.id,
-            redirect_url: pcp_approve_url}
+            pcp_id: response.result.id,
+            redirect_url: pcp_approve_url,
+            return_url: gateway_fields[:success_url],
+            cancel_url: gateway_fields[:cancel_url]
+          }
 
         SyncCompletion.new(Result::Success.new(result))
 
@@ -399,13 +399,13 @@ module TransactionService::Gateway
       request = AuthorizationsVoidRequest::new(payment[:pcp_authorization_id])
       begin
         response = PcpClient::client::execute(request)
+        payment[:data] = { status: "rejected", authorizations_void_debug_id: response.headers["paypal-debug-id"][0] }
+        PaymentStore.update(payment)
       rescue PayPalHttp::HttpError => ioe
         # Exception occured while processing the refund.
         puts " Status Code: #{ioe.status_code}"
         puts " Response: #{ioe.result}"
       end
-      payment[:data] = { status: "rejected" }
-      PaymentStore.update(payment)
 
       SyncCompletion.new(Result::Success.new(payment))
     rescue StandardError => e
@@ -431,7 +431,7 @@ module TransactionService::Gateway
           response = PcpClient::client::execute(request)
           puts ">>>>>>>>>>>>>>>>>>>"
           puts response
-          payment[:data] = { status: "captured", pcp_capture_id: response.result.id }
+          payment[:data] = { status: "captured", pcp_capture_id: response.result.id, authorizations_capture_debug_id: response.headers["paypal-debug-id"][0] }
           PaymentStore.update(payment)
         rescue PayPalHttp::HttpError => ioe
           # Exception occured while processing the refund.

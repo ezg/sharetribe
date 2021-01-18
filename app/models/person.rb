@@ -44,9 +44,8 @@
 #  cloned_from                        :string(22)
 #  google_oauth2_id                   :string(255)
 #  linkedin_id                        :string(255)
-#  pcp_merchant_id                    :string(255)
-#  pcp_signed_up                      :boolean          default(FALSE)
 #  pcp_salt                           :string(255)
+#  merchant_id                        :string(255)
 #
 # Indexes
 #
@@ -354,6 +353,10 @@ class Person < ApplicationRecord
   
   def set_pcp_salt(salt)
     update({:pcp_salt => salt })
+  end
+
+  def set_merchant_id(id)
+    update({:merchant_id => id })
   end
 
   def street_address

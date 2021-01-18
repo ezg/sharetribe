@@ -96,9 +96,9 @@
           = t("conversations.accept.service_fee_label")
         %span.initiate-transaction-sum-value
           = "-#{MoneyViewUtils.to_humanized(fee)}"
-      .initiate-transaction-sum-wrapper
-        %p 
-          %em 3% fees are used to cover payment processing. Reswings does not collect fees at the moment. 
+    .initiate-transaction-sum-wrapper
+      %p 
+        %em PayPal might charge processing fees. Reswings does not collect fees. 
 
 
   - if has_buyer_fee && !is_author

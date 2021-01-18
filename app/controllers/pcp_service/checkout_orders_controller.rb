@@ -46,12 +46,15 @@ class PcpService::CheckoutOrdersController < ApplicationController
 
     # fix is here
     pcp_authorization = gateway_adapter.authorize_order(payment[:pcp_id])
-    status = pcp_authorization["status"]
+
+    status = pcp_authorization.result["status"]
 
     return redirect_to error_not_found_path if status != "COMPLETED"
     payment[:data] = { 
         status: status, 
-        pcp_authorization_id: pcp_authorization.purchase_units[0].payments.authorizations[0].id}
+        pcp_authorization_id: pcp_authorization.result.purchase_units[0].payments.authorizations[0].id,
+        authorize_debug_id: pcp_authorization.headers["paypal-debug-id"][0]
+      }
     PaymentStore.update(payment)
 
     TransactionService::StateMachine.transition_to(payment[:transaction_id], :preauthorized)

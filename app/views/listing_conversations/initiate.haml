@@ -68,7 +68,34 @@
       - if pcp_in_use
         .row
           .col-12.payment-button-wrapper.paypal-payment
-            = button_tag t("paypal.pay_with_paypal"), class: "checkout-with-paypal-button"
+            %div{:id => "paypal-button-container"}
+            - content_for :extra_javascript do
+              = javascript_include_tag "https://www.paypal.com/sdk/js?merchant-id=#{merchant_id}&intent=authorize&client-id=AQN33_SJt6LkntPeEVsMD1WToGWmVFJcLrqy54IYYkpRSBNWsuYreWA52lTebVO4NuZ9XhMR-DayfKuw"
+            - content_for :extra_javascript do
+              :javascript
+                $("#payment_type").val("pcp");
+                var form = $("#transaction-form");
+                var orderDetails;
+                paypal.Buttons({
+                  createOrder: function (data, actions) {
+                    return $.ajax({
+                      url: form.attr('action'),
+                      type: "POST", data: form.serialize(),
+                    }).then(function(res) {
+                      orderDetails = res;
+                      return res["order_id"];
+                    });
+                  },
+                  onApprove: function (data, actions) {
+                    console.log(orderDetails)
+                    console.log(data)
+                    console.log(actions)
+                    var url = orderDetails["return_url"] + "?token=" + orderDetails["order_id"];
+                    console.log(url)
+
+                    window.location.href = url;
+                  }
+                }).render('#paypal-button-container');
 
       - if paypal_in_use && !stripe_in_use
         .row

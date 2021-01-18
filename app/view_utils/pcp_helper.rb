@@ -51,7 +51,7 @@ module PcpHelper
   def user_pcp_active?(community_id, person_id)
     gateway_adapter = TransactionService::Transaction.gateway_adapter("pcp")
     person = Person.find(person_id)     
-    is_ready = gateway_adapter.is_ready_for_payment(person.pcp_salt)
+    is_ready = gateway_adapter.is_ready_for_payment(person)
     is_ready
   end
 

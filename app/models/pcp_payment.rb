@@ -2,32 +2,37 @@
 #
 # Table name: pcp_payments
 #
-#  id                     :integer          not null, primary key
-#  community_id           :integer
-#  transaction_id         :integer
-#  payer_id               :string(255)
-#  receiver_id            :string(255)
-#  status                 :string(255)
-#  sum_cents              :integer
-#  commission_cents       :integer
-#  currency               :string(255)
-#  pcp_id                 :string(255)
-#  pcp_authorization_id   :string(255)
-#  pcp_capture_id         :string(255)
-#  pcp_refund_id          :string(255)
-#  pcp_self_url           :string(255)
-#  pcp_approve_url        :string(255)
-#  pcp_update_url         :string(255)
-#  pcp_authorize_url      :string(255)
-#  fee_cents              :integer
-#  real_fee_cents         :integer
-#  subtotal_cents         :integer
-#  transfered_at          :datetime
-#  available_on           :datetime
-#  authenticate_cents     :integer
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  buyer_commission_cents :integer          default(0)
+#  id                              :integer          not null, primary key
+#  community_id                    :integer
+#  transaction_id                  :integer
+#  payer_id                        :string(255)
+#  receiver_id                     :string(255)
+#  status                          :string(255)
+#  sum_cents                       :integer
+#  commission_cents                :integer
+#  currency                        :string(255)
+#  pcp_id                          :string(255)
+#  pcp_self_url                    :string(255)
+#  pcp_approve_url                 :string(255)
+#  pcp_update_url                  :string(255)
+#  pcp_authorize_url               :string(255)
+#  fee_cents                       :integer
+#  real_fee_cents                  :integer
+#  subtotal_cents                  :integer
+#  transfered_at                   :datetime
+#  available_on                    :datetime
+#  authenticate_cents              :integer
+#  created_at                      :datetime         not null
+#  updated_at                      :datetime         not null
+#  buyer_commission_cents          :integer          default(0)
+#  pcp_authorization_id            :string(255)
+#  pcp_capture_id                  :string(255)
+#  pcp_refund_id                   :string(255)
+#  order_debug_id                  :string(255)
+#  authorizations_capture_debug_id :string(255)
+#  authorize_debug_id              :string(255)
+#  referenced_payout_debug_id      :string(255)
+#  authorizations_void_debug_id    :string(255)
 #
 
 class PcpPayment < ApplicationRecord

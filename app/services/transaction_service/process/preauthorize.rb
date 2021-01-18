@@ -12,6 +12,9 @@ module TransactionService::Process
       TransactionService::StateMachine.transition_to(tx.id, :initiated)
       tx.current_state = :initiated
 
+      Rails.logger.error("MMMMM")
+      Rails.logger.error(force_sync)
+
       if !force_sync
         proc_token = Worker.enqueue_preauthorize_op(
           community_id: tx.community_id,

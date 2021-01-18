@@ -1228,6 +1228,11 @@ CREATE TABLE `pcp_payments` (
   `pcp_authorization_id` varchar(255) DEFAULT NULL,
   `pcp_capture_id` varchar(255) DEFAULT NULL,
   `pcp_refund_id` varchar(255) DEFAULT NULL,
+  `order_debug_id` varchar(255) DEFAULT NULL,
+  `authorizations_capture_debug_id` varchar(255) DEFAULT NULL,
+  `authorize_debug_id` varchar(255) DEFAULT NULL,
+  `referenced_payout_debug_id` varchar(255) DEFAULT NULL,
+  `authorizations_void_debug_id` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1277,9 +1282,8 @@ CREATE TABLE `people` (
   `cloned_from` varchar(22) DEFAULT NULL,
   `google_oauth2_id` varchar(255) DEFAULT NULL,
   `linkedin_id` varchar(255) DEFAULT NULL,
-  `pcp_merchant_id` varchar(255) DEFAULT NULL,
-  `pcp_signed_up` tinyint(1) DEFAULT '0',
   `pcp_salt` varchar(255) DEFAULT NULL,
+  `merchant_id` varchar(255) DEFAULT NULL,
   UNIQUE KEY `index_people_on_username_and_community_id` (`username`,`community_id`) USING BTREE,
   UNIQUE KEY `index_people_on_uuid` (`uuid`),
   UNIQUE KEY `index_people_on_email` (`email`) USING BTREE,
@@ -2426,6 +2430,8 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20191212125553'),
 ('20191215084827'),
 ('20191315084827'),
-('20201207084827');
+('20201207084827'),
+('20201608084827'),
+('20201609084827');
 
 
