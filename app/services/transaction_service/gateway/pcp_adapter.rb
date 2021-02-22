@@ -259,7 +259,7 @@ module TransactionService::Gateway
 
       shipping_total = Maybe(tx.shipping_price).or_else(0)
       ret = tx.unit_price * tx.listing_quantity + shipping_total + auth_fee + tx.buyer_commission
-      
+
       body = {
             intent: 'AUTHORIZE',
             application_context: {
@@ -275,20 +275,21 @@ module TransactionService::Gateway
                     custom_id: tx.listing_id,
                     amount: {
                         currency_code: total.currency.iso_code,
-                        value: total.cents / 100,
+                        value: total.cents / 100.0,
                         breakdown: {
                             item_total: {
                                 currency_code: total.currency.iso_code,
-                                value: (tx.unit_price * tx.listing_quantity).cents / 100
+                                value: (tx.unit_price * tx.listing_quantity).cents / 100.0
                             },
                             shipping: {
                                 currency_code: total.currency.iso_code,
-                                value: shipping_total.cents / 100
-                            },
-                            handling: {
-                                currency_code: total.currency.iso_code,
-                                value: auth_fee.cents / 100
+                                value: shipping_total.cents / 100.0
                             }
+                            #,
+                            #handling: {
+                            #    currency_code: total.currency.iso_code,
+                            #    value: auth_fee.cents / 100
+                            #}
                         }
                     },
                     items: [
@@ -296,7 +297,7 @@ module TransactionService::Gateway
                             name: tx.listing_title,
                             unit_amount: {
                                 currency_code: total.currency.iso_code,
-                                value: (tx.unit_price * tx.listing_quantity).cents / 100
+                                value: (tx.unit_price * tx.listing_quantity).cents / 100.0
                             },
                             quantity: '1',
                             category: 'PHYSICAL_GOODS'
@@ -309,7 +310,9 @@ module TransactionService::Gateway
             ]
         }
         
+        Rails.logger.error("++++++")
         Rails.logger.error(body)
+        Rails.logger.error("++++++")
         
         request = OrdersCreateRequest::new
         request.headers["PayPal-Partner-Attribution-Id"] = "Reswings_SP"
